@@ -1521,7 +1521,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 6200000, guid: 7a0b87daf31564543be882c5ac2d01d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1654,7 +1654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  gotJumpInput: 0
   JumpButton: 32
   groundCheckPos: {fileID: 2019306864}
   groundCheckRadius: 0.45
@@ -1662,6 +1661,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpSpeed: 5
+  jumpBufferTime: 0.1
+  coyoteTime: 0.1
+  coyoteResetDelay: 0.1
+  jumpCooldownTime: 0.15
 --- !u!1 &1276397529
 GameObject:
   m_ObjectHideFlags: 0
