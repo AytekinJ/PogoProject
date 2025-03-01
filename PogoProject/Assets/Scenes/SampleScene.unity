@@ -170,7 +170,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -282,6 +282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619394802}
   - component: {fileID: 619394801}
+  - component: {fileID: 619394803}
   m_Layer: 0
   m_Name: Global Light 2D
   m_TagString: Untagged
@@ -356,6 +357,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1310776231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619394803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619394800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 3f9215ea0144899419cfbc0957140d3f, type: 2}
 --- !u!1 &684739154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,7 +1517,8 @@ GameObject:
   - component: {fileID: 1110109156}
   - component: {fileID: 1110109155}
   - component: {fileID: 1110109159}
-  m_Layer: 0
+  - component: {fileID: 1110109160}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1662,9 +1681,31 @@ MonoBehaviour:
     m_Bits: 64
   jumpSpeed: 5
   jumpBufferTime: 0.1
-  coyoteTime: 0.2
+  coyoteTime: 0.1
   sprintButton: 304
   sprintMultiplier: 1.5
+--- !u!114 &1110109160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110109154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackKey: 120
+  up: 0
+  down: 0
+  left: 0
+  right: 0
+  AttackCooldown: 0.5
+  attackRange: 1.5
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!1 &1276397529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,7 +1929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019306864}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
