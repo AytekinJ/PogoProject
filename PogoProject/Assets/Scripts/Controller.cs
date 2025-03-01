@@ -22,11 +22,10 @@ public class Controller : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.15f;
     private float coyoteTimeCounter;
     private bool hasJumpedDuringCoyote;
-    [SerializeField] private float coyoteResetDelay = 0.1f;
 
-    [Header("Jump Cooldown Settings")]
-    [SerializeField] private float jumpCooldownTime = 0.2f;
+    private float jumpCooldownTime;
     private float jumpCooldownCounter;
+
 
     [Header("Sprinting Settings")]
     [SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
@@ -36,6 +35,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        jumpCooldownTime = coyoteTime + 0.05f;
     }
 
     void Update()
@@ -89,18 +89,12 @@ public class Controller : MonoBehaviour
         if (CheckGrounded())
         {
             coyoteTimeCounter = coyoteTime;
-            StartCoroutine(ResetCoyoteJumpFlag());
+            hasJumpedDuringCoyote = false;
         }
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-    }
-
-    private IEnumerator ResetCoyoteJumpFlag()
-    {
-        yield return new WaitForSeconds(coyoteResetDelay);
-        hasJumpedDuringCoyote = false;
     }
 
     public bool CheckGrounded()

@@ -1662,9 +1662,9 @@ MonoBehaviour:
     m_Bits: 64
   jumpSpeed: 5
   jumpBufferTime: 0.1
-  coyoteTime: 0.1
-  coyoteResetDelay: 0.1
-  jumpCooldownTime: 0.15
+  coyoteTime: 0.2
+  sprintButton: 304
+  sprintMultiplier: 1.5
 --- !u!1 &1276397529
 GameObject:
   m_ObjectHideFlags: 0
