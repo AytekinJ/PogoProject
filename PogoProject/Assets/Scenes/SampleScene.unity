@@ -1859,7 +1859,8 @@ MonoBehaviour:
   left: 0
   right: 0
   AttackCooldown: 0.5
-  attackRange: 1.5
+  attackRange: 2
+  boxSize: {x: 2, y: 2}
   attackMask:
     serializedVersion: 2
     m_Bits: 119
