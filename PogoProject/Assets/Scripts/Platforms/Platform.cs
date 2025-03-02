@@ -13,14 +13,15 @@ public class Platform : MonoBehaviour
     public bool breakablePlatform = false;
     [SerializeField, HideInInspector] public float duration = 1f;
     [SerializeField, HideInInspector] public float delay = 3f;
-    [SerializeField, HideInInspector] public bool isInteracted;
+    [HideInInspector] public bool isInteracted;
 
     public bool jumpSwitch = false;
     [SerializeField, HideInInspector] public GameObject matchedPlatform;
-
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         isInteracted = true;
+
     }
 
     private void OnCollisionExit2D(Collision2D other)

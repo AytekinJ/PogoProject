@@ -27,7 +27,6 @@ public class PlatformEditor : Editor
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("duration"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("delay"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("isInteracted"));
         }
 
         EditorGUILayout.Space(5);
