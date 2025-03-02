@@ -14,6 +14,8 @@ public class PlatformEditor : Editor
         platform.movingPlatform = EditorGUILayout.Toggle("Moving Platform", platform.movingPlatform);
         if (platform.movingPlatform)
         {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("usePositions"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("useLength"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("startPosition"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("endPosition"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("moveLength"));
