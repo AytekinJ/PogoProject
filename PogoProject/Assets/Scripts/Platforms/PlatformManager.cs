@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Internal;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlatformManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlatformManager : MonoBehaviour
     public static PlatformManager main { get; private set; }
     [SerializeField] private Platform[] platforms;
     [SerializeField] private HashSet<Platform> activePlatforms = new HashSet<Platform>();
+    private Dictionary<Platform,Platform> switchPlatforms = new Dictionary<Platform, Platform>();
+    Color notActiveColor = new Color(1f, 1f, 1f, 0.2f); 
 
     private void Awake()
     {
@@ -52,10 +55,22 @@ public class PlatformManager : MonoBehaviour
         {
             StartCoroutine(BreakablePlatform(platform));
         }
-
         if (platform.movingPlatform)
         {
             StartCoroutine(MovingPlatform(platform));
+        }
+        if (platform.jumpSwitch)
+        {
+            if (platform.dominantPlatform)
+            {
+                    switchPlatforms.Add(platform, platform.matchedPlatform);
+                    StartCoroutine(JumpSwitch(platform,platform.matchedPlatform));
+            }
+            else
+            {
+                switchPlatforms.Add(platform.matchedPlatform, platform);
+                StartCoroutine(JumpSwitch(platform.matchedPlatform,platform));
+            }
         }
     }
     
@@ -112,6 +127,34 @@ public class PlatformManager : MonoBehaviour
         }
     }
 #endregion
+
+    #region JumpSwitch
+
+    private IEnumerator JumpSwitch(Platform dominant, Platform match)
+    {
+        BoxCollider2D dominantCollider = dominant.GetComponent<BoxCollider2D>();
+        BoxCollider2D matchCollider = match.GetComponent<BoxCollider2D>();
+        Controller playerController = player.GetComponent<Controller>();
+        
+        dominantCollider.enabled = false;
+        matchCollider.enabled = true;
+
+        while (activePlatforms.Contains(dominant) && activePlatforms.Contains(match))
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && !playerController.hasJumpedDuringCoyote)
+            {
+
+                dominantCollider.enabled = !dominantCollider.enabled;
+                matchCollider.enabled = !matchCollider.enabled;
+                
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            }
+
+            yield return null;
+        }
+    }
+        
+    #endregion
 #endregion
 
     #region Optimization
@@ -147,6 +190,16 @@ public class PlatformManager : MonoBehaviour
                             activePlatforms.Remove(platform);
                             platform.gameObject.SetActive(false);
                             Debug.Log($"Platform {platform.name} deactivated");
+
+                            // Platform devre dışı bırakıldığında collider'ları sıfırla
+                            if (platform.jumpSwitch)
+                            {
+                                BoxCollider2D collider = platform.GetComponent<BoxCollider2D>();
+                                if (collider != null)
+                                {
+                                    collider.enabled = true; // Varsayılan duruma getir
+                                }
+                            }
                         }
                     }
                 }

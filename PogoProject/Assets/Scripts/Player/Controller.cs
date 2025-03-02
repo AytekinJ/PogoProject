@@ -21,7 +21,7 @@ public class Controller : MonoBehaviour
     [Header("Coyote Time Settings")]
     [SerializeField] private float coyoteTime = 0.15f;
     private float coyoteTimeCounter;
-    private bool hasJumpedDuringCoyote;
+    public bool hasJumpedDuringCoyote;
 
     private float jumpCooldownTime;
     private float jumpCooldownCounter;

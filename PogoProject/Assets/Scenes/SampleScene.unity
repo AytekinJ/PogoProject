@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 73386215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.33, y: -2, z: 0}
+  m_LocalPosition: {x: 8.05, y: -2, z: 0}
   m_LocalScale: {x: 3.1155, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f01f4059a1176b039d7a8c9d5aaa9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingPlatform: 1
+  movingPlatform: 0
   usePositions: 0
   useLength: 1
   startPosition: {fileID: 0}
@@ -277,8 +277,9 @@ MonoBehaviour:
   delay: 3
   isInteracted: 0
   interactingObject: {fileID: 0}
-  jumpSwitch: 0
-  matchedPlatform: {fileID: 0}
+  jumpSwitch: 1
+  matchedPlatform: {fileID: 1963415068}
+  dominantPlatform: 1
   center: {x: 11.33, y: -2}
   active: 1
 --- !u!1 &281348116
@@ -1893,6 +1894,7 @@ MonoBehaviour:
   jumpSpeed: 5
   jumpBufferTime: 0.1
   coyoteTime: 0.1
+  hasJumpedDuringCoyote: 0
   sprintButton: 304
   sprintMultiplier: 1.5
 --- !u!114 &1110109160
@@ -2169,13 +2171,14 @@ MonoBehaviour:
   startPosition: {fileID: 0}
   endPosition: {fileID: 0}
   moveLength: 5.22
-  breakablePlatform: 1
+  breakablePlatform: 0
   duration: 0.3
   delay: 3
   isInteracted: 0
   interactingObject: {fileID: 0}
-  jumpSwitch: 0
-  matchedPlatform: {fileID: 0}
+  jumpSwitch: 1
+  matchedPlatform: {fileID: 73386220}
+  dominantPlatform: 0
   center: {x: 11.33, y: 0.66}
   active: 1
 --- !u!61 &1963415069
@@ -2288,7 +2291,7 @@ Transform:
   m_GameObject: {fileID: 1963415067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.33, y: -0.61, z: 0}
+  m_LocalPosition: {x: 14.95, y: -2, z: 0}
   m_LocalScale: {x: 3.1155, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

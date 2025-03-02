@@ -38,6 +38,7 @@ public class PlatformEditor : Editor
         if (platform.jumpSwitch)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("matchedPlatform"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("dominantPlatform"));
         }
 
         serializedObject.ApplyModifiedProperties();

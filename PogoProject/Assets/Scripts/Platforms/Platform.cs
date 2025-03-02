@@ -20,7 +20,8 @@ public class Platform : MonoBehaviour
     [HideInInspector] public GameObject interactingObject;
 
     public bool jumpSwitch = false;
-    [SerializeField, HideInInspector] public GameObject matchedPlatform;
+    [SerializeField, HideInInspector] public Platform matchedPlatform;
+    [SerializeField, HideInInspector] public bool dominantPlatform;
 
     public Vector2 center;
     public bool active = true;
