@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Internal;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -152,11 +153,10 @@ public class PlatformManager : MonoBehaviour
         mainSprite.color = notActiveColor;
         matchSprite.color = activeColor;
 
-        while (activePlatforms.Contains(main) && activePlatforms.Contains(match))
+        while (activePlatforms.Contains(main))
         {
             if (Input.GetKeyDown(KeyCode.Space) && !playerController.hasJumpedDuringCoyote)
             {
-
                 mainCollider.enabled = !mainCollider.enabled;
                 matchCollider.enabled = !matchCollider.enabled;
 
