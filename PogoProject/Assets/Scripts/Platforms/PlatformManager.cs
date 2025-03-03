@@ -106,9 +106,16 @@ public class PlatformManager : MonoBehaviour
 
         if (platform.useLength) // use this if platform doesnt use spesific positions
         {
-
-            startPos = new Vector2(platform.center.x - platform.moveLength, platform.center.y);
-            endPos = new Vector2(platform.center.x + platform.moveLength, platform.center.y);
+            if (platform.vertical)
+            {
+                startPos = new Vector2(platform.center.x, platform.center.y - platform.moveLength);
+                endPos = new Vector2(platform.center.x, platform.center.y + platform.moveLength);
+            }
+            else
+            {
+                startPos = new Vector2(platform.center.x - platform.moveLength, platform.center.y);
+                endPos = new Vector2(platform.center.x + platform.moveLength, platform.center.y);
+            }
         }
         else // use this if platform uses spesific positions
         {

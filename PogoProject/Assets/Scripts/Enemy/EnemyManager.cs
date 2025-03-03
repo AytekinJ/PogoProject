@@ -67,6 +67,7 @@ public class EnemyManager : MonoBehaviour
                 line.SetPosition(1, targetPos);
                 yield return new WaitForSeconds(eagle.dashDelay);
                 yield return StartCoroutine(EagleDash(eagle, targetPos, line));
+                yield return new WaitForSeconds(eagle.afterDashDelay);
                 line.positionCount = 0;
             }
             yield return null;
