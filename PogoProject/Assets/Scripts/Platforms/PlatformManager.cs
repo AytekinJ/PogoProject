@@ -163,7 +163,7 @@ public class PlatformManager : MonoBehaviour
                 mainSprite.color = mainCollider.enabled ? activeColor : notActiveColor;
                 matchSprite.color = matchCollider.enabled ? activeColor : notActiveColor;
 
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space)); // finished
             }
 
             yield return null;
