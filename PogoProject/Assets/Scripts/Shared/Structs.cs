@@ -1,5 +1,5 @@
+using Unity.Burst;
 using UnityEngine;
-
 
 public enum EnemyType
 {
@@ -7,6 +7,7 @@ public enum EnemyType
     Cannon,
     Goomba
 }
+[BurstCompile]
 public struct EnemyData
 {
     public EnemyType enemyType;

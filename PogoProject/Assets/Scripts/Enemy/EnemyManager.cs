@@ -85,4 +85,9 @@ public class EnemyManager : MonoBehaviour
         }
         eagle.locked = false;
     }
+
+    private IEnumerator Cannon(Enemy cannon)
+    {
+        yield return null;
+    }
 }
