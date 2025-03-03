@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour
     public bool movingPlatform = false;
     [SerializeField, HideInInspector] public bool usePositions;
     [SerializeField, HideInInspector] public bool useLength;
+    [SerializeField, HideInInspector] public bool vertical;
     [SerializeField, HideInInspector] public Transform startPosition;
     [SerializeField, HideInInspector] public Transform endPosition;
     [SerializeField, HideInInspector] public float moveLength = 4f;
@@ -21,7 +22,8 @@ public class Platform : MonoBehaviour
 
     public bool jumpSwitch = false;
     [SerializeField, HideInInspector] public Platform matchedPlatform;
-    [SerializeField, HideInInspector] public bool dominantPlatform;
+
+    public bool matched = false;
 
     public Vector2 center;
     public bool active = true;
@@ -67,21 +69,46 @@ public class Platform : MonoBehaviour
         {
             Gizmos.color = Color.yellow;
             Vector3 start = transform.position;
-            Vector3 end1 = new Vector3(start.x + moveLength, start.y, start.z);
-            Vector3 end2 = new Vector3(start.x - moveLength, start.y, start.z);
-
-            Gizmos.DrawLine(start, end1);
-            Gizmos.DrawLine(start, end2);
+            Vector3 end1 = Vector3.zero;
+            Vector3 end2 = Vector3.zero;
+            if (vertical)
+            {
+                end1 = new Vector3(start.x, start.y + moveLength, start.z);
+                end2 = new Vector3(start.x, start.y - moveLength, start.z);
+            }
+            else
+            {
+                end1 = new Vector3(start.x + moveLength, start.y, start.z);
+                end2 = new Vector3(start.x - moveLength, start.y, start.z);
+            }
+            if (useLength)
+            {
+                Gizmos.DrawLine(start, end1);
+                Gizmos.DrawLine(start, end2);
+            }
         }
         else if (movingPlatform)
         {
             Gizmos.color = Color.yellow;
             Vector3 start = center;
-            Vector3 end1 = new Vector3(start.x + moveLength, start.y, start.z);
-            Vector3 end2 = new Vector3(start.x - moveLength, start.y, start.z);
+            Vector3 end1 = Vector3.zero;
+            Vector3 end2 = Vector3.zero;
+            if (vertical)
+            {
+                end1 = new Vector3(start.x, start.y + moveLength, start.z);
+                end2 = new Vector3(start.x, start.y - moveLength, start.z);
+            }
+            else
+            {
+                end1 = new Vector3(start.x + moveLength, start.y, start.z);
+                end2 = new Vector3(start.x - moveLength, start.y, start.z);
+            }
 
-            Gizmos.DrawLine(start, end1);
-            Gizmos.DrawLine(start, end2);
+            if (useLength)
+            {
+                Gizmos.DrawLine(start, end1);
+                Gizmos.DrawLine(start, end2);
+            }
         }
     }
 }

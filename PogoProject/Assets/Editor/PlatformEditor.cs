@@ -10,18 +10,30 @@ public class PlatformEditor : Editor
 
         serializedObject.Update();
 
-        // movingPlatform değişkeni
         platform.movingPlatform = EditorGUILayout.Toggle("Moving Platform", platform.movingPlatform);
+
         if (platform.movingPlatform)
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("usePositions"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("useLength"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("startPosition"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("endPosition"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("moveLength"));
+            SerializedProperty usePositions = serializedObject.FindProperty("usePositions");
+            SerializedProperty useLength = serializedObject.FindProperty("useLength");
+
+            EditorGUILayout.PropertyField(usePositions);
+            EditorGUILayout.PropertyField(useLength);
+
+            if (usePositions.boolValue)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("startPosition"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("endPosition"));
+            }
+
+            if (useLength.boolValue)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("moveLength"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("vertical"));
+            }
         }
 
-        EditorGUILayout.Space(5);
+            EditorGUILayout.Space(5);
 
         // breakablePlatform değişkeni
         platform.breakablePlatform = EditorGUILayout.Toggle("Breakable Platform", platform.breakablePlatform);
@@ -38,7 +50,7 @@ public class PlatformEditor : Editor
         if (platform.jumpSwitch)
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("matchedPlatform"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("dominantPlatform"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("matched"));
         }
 
         serializedObject.ApplyModifiedProperties();

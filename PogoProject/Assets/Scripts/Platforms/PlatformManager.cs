@@ -22,7 +22,8 @@ public class PlatformManager : MonoBehaviour
     [SerializeField] private Platform[] platforms;
     [SerializeField] private HashSet<Platform> activePlatforms = new HashSet<Platform>();
     private Dictionary<Platform,Platform> switchPlatforms = new Dictionary<Platform, Platform>();
-    Color notActiveColor = new Color(1f, 1f, 1f, 0.2f); 
+    Color notActiveColor = new Color(1f, 1f, 1f, 0.2f);
+    Color activeColor = new Color(1f, 1f, 1f, 1f);
 
     private void Awake()
     {
@@ -61,16 +62,18 @@ public class PlatformManager : MonoBehaviour
         }
         if (platform.jumpSwitch)
         {
-            if (platform.dominantPlatform)
+            if (platform.jumpSwitch && !platform.matched)
             {
-                    switchPlatforms.Add(platform, platform.matchedPlatform);
-                    StartCoroutine(JumpSwitch(platform,platform.matchedPlatform));
+                StartCoroutine(JumpSwitch(platform, platform.matchedPlatform));
             }
             else
             {
-                switchPlatforms.Add(platform.matchedPlatform, platform);
                 StartCoroutine(JumpSwitch(platform.matchedPlatform,platform));
             }
+        }
+        if (platform.matched)
+        {
+            return;
         }
     }
     
@@ -99,18 +102,23 @@ public class PlatformManager : MonoBehaviour
     private IEnumerator MovingPlatform(Platform platform)
     {
         Vector2 startPos, endPos;
-        startPos = new Vector2(platform.center.x - platform.moveLength, platform.center.y);
-        endPos = new Vector2(platform.center.x + platform.moveLength, platform.center.y);
-        Debug.Log(startPos);
-        Debug.Log(endPos);
-        if (platform.useLength)
-        {
-            while (activePlatforms.Contains(platform))
-            {
 
-                yield return MoveToPosition(platform, endPos);
-                yield return MoveToPosition(platform, startPos);
-            }
+        if (platform.useLength) // use this if platform doesnt use spesific positions
+        {
+
+            startPos = new Vector2(platform.center.x - platform.moveLength, platform.center.y);
+            endPos = new Vector2(platform.center.x + platform.moveLength, platform.center.y);
+        }
+        else // use this if platform uses spesific positions
+        {
+            startPos = platform.startPosition.position;
+            endPos = platform.endPosition.position;
+        }
+        while (activePlatforms.Contains(platform)) 
+        {
+
+            yield return MoveToPosition(platform, endPos);
+            yield return MoveToPosition(platform, startPos);
         }
     }
 
@@ -130,23 +138,31 @@ public class PlatformManager : MonoBehaviour
 
     #region JumpSwitch
 
-    private IEnumerator JumpSwitch(Platform dominant, Platform match)
+    private IEnumerator JumpSwitch(Platform main, Platform match)
     {
-        BoxCollider2D dominantCollider = dominant.GetComponent<BoxCollider2D>();
+        BoxCollider2D mainCollider = main.GetComponent<BoxCollider2D>();
         BoxCollider2D matchCollider = match.GetComponent<BoxCollider2D>();
+        SpriteRenderer mainSprite = main.GetComponent<SpriteRenderer>();
+        SpriteRenderer matchSprite = match.GetComponent<SpriteRenderer>();
         Controller playerController = player.GetComponent<Controller>();
         
-        dominantCollider.enabled = false;
+        mainCollider.enabled = false;
         matchCollider.enabled = true;
 
-        while (activePlatforms.Contains(dominant) && activePlatforms.Contains(match))
+        mainSprite.color = notActiveColor;
+        matchSprite.color = activeColor;
+
+        while (activePlatforms.Contains(main) && activePlatforms.Contains(match))
         {
             if (Input.GetKeyDown(KeyCode.Space) && !playerController.hasJumpedDuringCoyote)
             {
 
-                dominantCollider.enabled = !dominantCollider.enabled;
+                mainCollider.enabled = !mainCollider.enabled;
                 matchCollider.enabled = !matchCollider.enabled;
-                
+
+                mainSprite.color = mainCollider.enabled ? activeColor : notActiveColor;
+                matchSprite.color = matchCollider.enabled ? activeColor : notActiveColor;
+
                 yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
             }
 
@@ -190,16 +206,6 @@ public class PlatformManager : MonoBehaviour
                             activePlatforms.Remove(platform);
                             platform.gameObject.SetActive(false);
                             Debug.Log($"Platform {platform.name} deactivated");
-
-                            // Platform devre dışı bırakıldığında collider'ları sıfırla
-                            if (platform.jumpSwitch)
-                            {
-                                BoxCollider2D collider = platform.GetComponent<BoxCollider2D>();
-                                if (collider != null)
-                                {
-                                    collider.enabled = true; // Varsayılan duruma getir
-                                }
-                            }
                         }
                     }
                 }

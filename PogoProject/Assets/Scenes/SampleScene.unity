@@ -202,8 +202,8 @@ Transform:
   m_GameObject: {fileID: 73386215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.05, y: -2, z: 0}
-  m_LocalScale: {x: 3.1155, y: 1, z: 1}
+  m_LocalPosition: {x: 7.81, y: -2, z: 0}
+  m_LocalScale: {x: 6.10638, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -269,6 +269,7 @@ MonoBehaviour:
   movingPlatform: 0
   usePositions: 0
   useLength: 1
+  vertical: 0
   startPosition: {fileID: 0}
   endPosition: {fileID: 0}
   moveLength: 5.22
@@ -279,7 +280,7 @@ MonoBehaviour:
   interactingObject: {fileID: 0}
   jumpSwitch: 1
   matchedPlatform: {fileID: 1963415068}
-  dominantPlatform: 1
+  matched: 0
   center: {x: 11.33, y: -2}
   active: 1
 --- !u!1 &281348116
@@ -312,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interpolationSpeed: 3
-  maxTriggerDistance: 15
+  maxTriggerDistance: 20
   canControl: 1
   player: {fileID: 0}
   platforms: []
@@ -2167,18 +2168,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingPlatform: 0
   usePositions: 0
-  useLength: 1
+  useLength: 0
+  vertical: 0
   startPosition: {fileID: 0}
   endPosition: {fileID: 0}
-  moveLength: 5.22
+  moveLength: 4.19
   breakablePlatform: 0
   duration: 0.3
   delay: 3
   isInteracted: 0
   interactingObject: {fileID: 0}
   jumpSwitch: 1
-  matchedPlatform: {fileID: 73386220}
-  dominantPlatform: 0
+  matchedPlatform: {fileID: 0}
+  matched: 1
   center: {x: 11.33, y: 0.66}
   active: 1
 --- !u!61 &1963415069
@@ -2291,8 +2293,8 @@ Transform:
   m_GameObject: {fileID: 1963415067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.95, y: -2, z: 0}
-  m_LocalScale: {x: 3.1155, y: 1, z: 1}
+  m_LocalPosition: {x: 15.22, y: -2, z: 0}
+  m_LocalScale: {x: 5.4353013, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
