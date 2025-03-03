@@ -196,7 +196,6 @@ public class PlatformManager : MonoBehaviour
                         {
                             platform.gameObject.SetActive(true);
                             ActivatePlatform(platform);
-                            Debug.Log($"Platform {platform.name} activated");
                         }
                     }
                     else
@@ -205,7 +204,6 @@ public class PlatformManager : MonoBehaviour
                         {
                             activePlatforms.Remove(platform);
                             platform.gameObject.SetActive(false);
-                            Debug.Log($"Platform {platform.name} deactivated");
                         }
                     }
                 }
