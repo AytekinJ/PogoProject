@@ -40,8 +40,7 @@ public class Enemy : MonoBehaviour
         #if UNITY_EDITOR
             Handles.color = Color.white;
             Handles.Label(transform.position + Vector3.up, $"Range: {range}");
-            string label = hitColliders.Length > 0 ? "Player" : "None";
-            Handles.Label(transform.position + Vector3.up*2, $"Target : {label}");
+            Handles.Label(transform.position + Vector3.up*2, $"Locked : {locked}");
 #endif
     }
     
