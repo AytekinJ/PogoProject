@@ -1,8 +1,14 @@
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Eagle Var.")]
+    public bool locked;
+    public float dashDelay = 0.3f;
+    public float dashSpeed = 10f;
+
     public EnemyData enemydata;
     public EnemyType type;
     public LayerMask playerlayer;

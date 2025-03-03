@@ -4,15 +4,70 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    private const float MAX_TOLERANCE = 0.01f;
     [SerializeField] Enemy[] enemiesInScene;
+    [SerializeField] HashSet<Enemy> activeEnemies;
     private void Awake()
     {
+        activeEnemies = new HashSet<Enemy>();
         enemiesInScene = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
     }
 
-
+    private void Start()
+    {
+        foreach (Enemy obj in enemiesInScene)
+        {
+            ActivateEnemy(obj);
+        }
+    }
+    private void ActivateEnemy(Enemy obj)
+    {
+        switch (obj.enemydata.enemyType)
+        {
+            case EnemyType.Eagle:
+                activeEnemies.Add(obj);
+                StartCoroutine(Eagle(obj));
+                Debug.Log("eagle type activated");
+                break;
+            case EnemyType.Cannon:
+                break;
+            case EnemyType.Goomba:
+                break;
+            default: Debug.LogError("Invalid type of enemy : "+obj.enemydata.enemyType);
+                break;
+        }
+    }
     private IEnumerator Eagle(Enemy eagle)
     {
+        Collider2D target = null;
+        Vector3 targetPos;
+        while (activeEnemies.Contains(eagle))
+        {
+            if (!eagle.locked)
+                target = Physics2D.OverlapCircle(eagle.transform.position, eagle.enemydata.range, eagle.playerlayer);
+            else
+                yield return null;
+
+            if (target != null)
+            {
+                eagle.locked = true;
+                targetPos = target.transform.position;
+                yield return new WaitForSeconds(eagle.dashDelay);
+                yield return StartCoroutine(EagleDash(eagle, targetPos));
+            }
+            yield return null;
+        }
+        yield return null;
+    }
+
+    private IEnumerator EagleDash(Enemy eagle, Vector2 target)
+    {
+        while (Vector2.Distance(eagle.transform.position,target) > MAX_TOLERANCE)
+        {
+            eagle.transform.position = Vector2.MoveTowards(eagle.transform.position, target, eagle.dashSpeed * Time.deltaTime);
+            yield return null;
+        }
+        eagle.locked = false;
         yield return null;
     }
 }
