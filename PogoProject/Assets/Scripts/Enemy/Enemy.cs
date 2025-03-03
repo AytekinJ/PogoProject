@@ -26,7 +26,9 @@ public class Enemy : MonoBehaviour
 
         foreach (var hit in hitColliders)
         {
-            Gizmos.DrawWireSphere(hit.transform.position, 0.2f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(hit.transform.position, new Vector3(2f,2f,2f));
+            Gizmos.DrawLine(transform.position, hit.transform.position);
         }
 
         #if UNITY_EDITOR
