@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 415672198}
   m_Layer: 0
   m_Name: Eagle (3)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2133,7 +2133,7 @@ MonoBehaviour:
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 64
-  jumpSpeed: 5
+  jumpForce: 7
   jumpBufferTime: 0.1
   coyoteTime: 0.1
   hasJumpedDuringCoyote: 0
@@ -2151,6 +2151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  POGOMultiplier: 5
   AttackKey: 120
   up: 0
   down: 0

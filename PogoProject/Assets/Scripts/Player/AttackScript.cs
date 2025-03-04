@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
+    public float POGOMultiplier = 5f;
+
     float Xinput, Yinput;
 
     public KeyCode AttackKey = KeyCode.X;
@@ -57,6 +59,11 @@ public class AttackScript : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.name);
+
+            if (direction == Vector2.down && !playerController.CheckGrounded())
+            {
+                OnAirJump();
+            }
         }
         else
         {
@@ -64,6 +71,11 @@ public class AttackScript : MonoBehaviour
         }
 
         DebugDrawBox(attackPosition, boxSize, Color.red, 0.5f);
+    }
+
+    void OnAirJump()
+    {
+        playerController.DoPOGO(POGOMultiplier);
     }
 
     void DebugDrawBox(Vector2 center, Vector2 size, Color color, float duration)
