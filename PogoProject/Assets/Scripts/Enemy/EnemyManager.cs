@@ -27,17 +27,24 @@ public class EnemyManager : MonoBehaviour
             case EnemyType.Eagle:
                 activeEnemies.Add(obj);
                 StartCoroutine(Eagle(obj));
+                Debug.Log("eagle");
                 break;
             case EnemyType.Cannon:
                 activeEnemies.Add(obj);
                 StartCoroutine(Cannon(obj));
+                Debug.Log("cannon");
                 break;
             case EnemyType.Goomba:
+                activeEnemies.Add(obj);
+                StartCoroutine(GoombaCR(obj)); 
+                Debug.Log("goomba");
                 break;
             default: Debug.LogError("Invalid type of enemy : "+obj.enemydata.enemyType);
                 break;
         }
     }
+    
+    #region Enemies
     private IEnumerator Eagle(Enemy eagle)
     {
         Collider2D target = null;
@@ -86,6 +93,8 @@ public class EnemyManager : MonoBehaviour
         }
         eagle.locked = false;
     }
+    
+    
 
     private IEnumerator Cannon(Enemy cannon)
     {
@@ -108,4 +117,37 @@ public class EnemyManager : MonoBehaviour
         }
         Destroy(bullet);
     }
+    
+    
+    
+
+    private IEnumerator GoombaCR(Enemy goomba)
+    {
+        bool direction = false; 
+        Debug.Log("wtf");
+        while (activeEnemies.Contains(goomba))
+        {
+            yield return StartCoroutine(GoombaMove(goomba, direction));
+            direction = !direction;
+        }
+    }
+
+    private IEnumerator GoombaMove(Enemy goomba, bool direction)
+    {
+        while (!goomba.collided)
+        {
+            if (direction)
+            {
+                goomba.transform.position += new Vector3(goomba.goombaSpeed * Time.deltaTime, 0, 0);
+            }
+            else
+            {
+                goomba.transform.position -= new Vector3(goomba.goombaSpeed * Time.deltaTime, 0, 0);
+            }
+            yield return null;
+            Debug.Log("wtf nigga");
+        }
+        goomba.collided = false;
+    }
+    #endregion
 }

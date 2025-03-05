@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
@@ -20,13 +21,19 @@ public class Enemy : MonoBehaviour
     public float bulletSpeed;
     public GameObject bulletPrefab;
     [Space(5f)]
+    [Header("Goomba")]
+    public bool activeGoomba;
+    public float goombaSpeed;
+    public bool collided;
+    [Space(5f)]
     
     [Header("Other")]
     public EnemyData enemydata;
     public EnemyType type;
     public LayerMask playerlayer;
+    public LayerMask groundlayer;
     public int level, hp;
-    void Start()
+    void Awake()
     {
         enemydata.DefineSpecifies(type, hp, level, range);
     }
@@ -75,6 +82,11 @@ public class Enemy : MonoBehaviour
 #endif
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        collided = true;
+        
+    }
 }
 
