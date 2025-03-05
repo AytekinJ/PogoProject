@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour
     [SerializeField] Transform groundCheckPos;
     [SerializeField] float groundCheckRadius = 0.25f;
     [SerializeField] LayerMask groundCheckLayer;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpForce = 5f;
 
     [Header("Jump Buffer Settings")]
     [SerializeField] private float jumpBufferTime = 0.1f;
@@ -77,10 +77,23 @@ public class Controller : MonoBehaviour
     {
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !hasJumpedDuringCoyote && jumpCooldownCounter <= 0)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             jumpBufferCounter = 0;
             hasJumpedDuringCoyote = true;
             jumpCooldownCounter = jumpCooldownTime;
+        }
+    }
+
+    public void DoPOGO(float pogoMultiplier)
+    {
+        if (rb.linearVelocityY < 0f)
+        {
+            rb.linearVelocityY = 0f;
+            rb.linearVelocityY += pogoMultiplier;
+        }
+        else if (rb.linearVelocityY >= 0f)
+        {
+            rb.linearVelocityY += pogoMultiplier / 2;
         }
     }
 
