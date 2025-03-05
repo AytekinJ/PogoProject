@@ -27,9 +27,10 @@ public class EnemyManager : MonoBehaviour
             case EnemyType.Eagle:
                 activeEnemies.Add(obj);
                 StartCoroutine(Eagle(obj));
-                Debug.Log("eagle type activated");
                 break;
             case EnemyType.Cannon:
+                activeEnemies.Add(obj);
+                StartCoroutine(Cannon(obj));
                 break;
             case EnemyType.Goomba:
                 break;
@@ -88,6 +89,23 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator Cannon(Enemy cannon)
     {
-        yield return null;
+        while (activeEnemies.Contains(cannon))
+        {
+            float radians = cannon.shootAngle * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)).normalized;
+            Vector2 target = (Vector2)cannon.transform.position + direction * cannon.shootRange;
+            StartCoroutine(CannonBullet(Instantiate(cannon.bulletPrefab, cannon.transform.position, Quaternion.identity), target, cannon));
+            yield return new WaitForSeconds(cannon.shootDelay);
+        }
+    }
+
+    private IEnumerator CannonBullet(GameObject bullet, Vector2 target, Enemy cannon)
+    {
+        while (Vector2.Distance(bullet.transform.position, target) > MAX_TOLERANCE)
+        {
+            bullet.transform.position = Vector2.MoveTowards(bullet.transform.position, target, cannon.bulletSpeed * Time.deltaTime);
+            yield return null;
+        }
+        Destroy(bullet);
     }
 }

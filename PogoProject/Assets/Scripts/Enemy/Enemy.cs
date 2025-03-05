@@ -10,12 +10,22 @@ public class Enemy : MonoBehaviour
     public float dashDelay = 0.3f;
     public float afterDashDelay = 0.5f;
     public float dashSpeed = 10f;
-
+    public float range;
+    [Space(5f)]
+    [Header("Cannon Var.")]
+    public bool active;
+    public float shootAngle;
+    public float shootDelay;
+    public float shootRange;
+    public float bulletSpeed;
+    public GameObject bulletPrefab;
+    [Space(5f)]
+    
+    [Header("Other")]
     public EnemyData enemydata;
     public EnemyType type;
     public LayerMask playerlayer;
     public int level, hp;
-    public float range;
     void Start()
     {
         enemydata.DefineSpecifies(type, hp, level, range);
@@ -45,6 +55,23 @@ public class Enemy : MonoBehaviour
             Handles.color = Color.white;
             Handles.Label(transform.position + Vector3.up, $"Range: {range}");
             Handles.Label(transform.position + Vector3.up * 2, $"Locked : {locked}");
+#endif
+        }
+
+        if (type == EnemyType.Cannon)
+        {
+            Gizmos.color = Color.red;
+
+            float angleInRadians = shootAngle * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
+            Vector2 endPoint = (Vector2)transform.position + direction * shootRange;
+
+            Gizmos.DrawLine(transform.position, endPoint);
+
+#if UNITY_EDITOR
+            Handles.color = Color.white;
+            Handles.Label(transform.position + Vector3.up, $"Shoot Range: {shootRange}");
+            Handles.Label(transform.position + Vector3.up * 2, $"Shoot Angle: {shootAngle}°");
 #endif
         }
     }

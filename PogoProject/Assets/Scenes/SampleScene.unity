@@ -224,13 +224,19 @@ MonoBehaviour:
   dashDelay: 0.3
   afterDashDelay: 0.5
   dashSpeed: 10
+  range: 1
+  active: 0
+  shootAngle: 0
+  shootDelay: 2
+  shootRange: 10
+  bulletSpeed: 10
+  bulletPrefab: {fileID: 6976742288042995816, guid: 715084efda2c0491faa44121a9c8e217, type: 3}
   type: 1
   playerlayer:
     serializedVersion: 2
     m_Bits: 128
   level: 0
   hp: 0
-  range: 1
 --- !u!1 &281348116
 GameObject:
   m_ObjectHideFlags: 0
