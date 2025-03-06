@@ -1,0 +1,37 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:TabView style="background-color: rgba(255, 255, 255, 0.28); height: 801px; width: 1396px;">
+        <engine:Tab label="Tab">
+            <engine:VisualElement style="flex-grow: 1; font-size: 22px; left: 0; top: 0; opacity: 1; color: rgb(0, 0, 0); background-color: rgba(145, 145, 145, 0); margin-left: 0; padding-left: 40px; padding-top: 20px;">
+                <engine:Label text="a" emoji-fallback-support="true" style="font-size: 26px;" />
+                <engine:DropdownField label="Resolution" choices="3840x2160,2560x1440,1920x1080,1600x900,1440x900,1366x768,1280x720,1280x800,800x600" style="width: 400px;" />
+                <engine:Toggle label="Shadows" style="margin-left: 30px;" />
+                <engine:Toggle label="V-Sync" style="margin-left: 30px;" />
+                <engine:DropdownField label="Anti Aliasing" choices="None,FXAA,MSAA,TAA" style="width: 400px;" />
+                <engine:DropdownField label="Frame Rate" choices="30,60,144,Unlimited" style="width: 400px;" />
+                <engine:Toggle label="Post-Processing" style="align-content: center; margin-left: 30px;" />
+            </engine:VisualElement>
+        </engine:Tab>
+        <engine:Tab label="Tab">
+            <engine:VisualElement style="flex-grow: 1; font-size: 22px; left: 0; top: 0; opacity: 1; color: rgb(0, 0, 0); background-color: rgba(145, 145, 145, 0); margin-left: 0; padding-left: 40px; padding-top: 20px;">
+                <engine:Label text="Video" emoji-fallback-support="true" style="font-size: 26px;" />
+                <engine:DropdownField label="Resolution" choices="3840x2160,2560x1440,1920x1080,1600x900,1440x900,1366x768,1280x720,1280x800,800x600" style="width: 400px;" />
+                <engine:Toggle label="Shadows" style="margin-left: 30px;" />
+                <engine:Toggle label="V-Sync" style="margin-left: 30px;" />
+                <engine:DropdownField label="Anti Aliasing" choices="None,FXAA,MSAA,TAA" style="width: 400px;" />
+                <engine:DropdownField label="Frame Rate" choices="30,60,144,Unlimited" style="width: 400px;" />
+                <engine:Toggle label="Post-Processing" style="align-content: center; margin-left: 30px;" />
+            </engine:VisualElement>
+        </engine:Tab>
+        <engine:Tab label="Tab">
+            <engine:VisualElement style="flex-grow: 1; font-size: 22px; left: 0; top: 0; opacity: 1; color: rgb(0, 0, 0); background-color: rgba(145, 145, 145, 0); margin-left: 0; padding-left: 40px; padding-top: 20px;">
+                <engine:Label text="Video" emoji-fallback-support="true" style="font-size: 26px;" />
+                <engine:DropdownField label="Resolution" choices="3840x2160,2560x1440,1920x1080,1600x900,1440x900,1366x768,1280x720,1280x800,800x600" style="width: 400px;" />
+                <engine:Toggle label="Shadows" style="margin-left: 30px;" />
+                <engine:Toggle label="V-Sync" style="margin-left: 30px;" />
+                <engine:DropdownField label="Anti Aliasing" choices="None,FXAA,MSAA,TAA" style="width: 400px;" />
+                <engine:DropdownField label="Frame Rate" choices="30,60,144,Unlimited" style="width: 400px;" />
+                <engine:Toggle label="Post-Processing" style="align-content: center; margin-left: 30px;" />
+            </engine:VisualElement>
+        </engine:Tab>
+    </engine:TabView>
+</engine:UXML>
