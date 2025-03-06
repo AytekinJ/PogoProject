@@ -1,37 +1,13 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:TabView style="background-color: rgba(255, 255, 255, 0.28); height: 801px; width: 1396px;">
-        <engine:Tab label="Tab">
-            <engine:VisualElement style="flex-grow: 1; font-size: 22px; left: 0; top: 0; opacity: 1; color: rgb(0, 0, 0); background-color: rgba(145, 145, 145, 0); margin-left: 0; padding-left: 40px; padding-top: 20px;">
-                <engine:Label text="a" emoji-fallback-support="true" style="font-size: 26px;" />
-                <engine:DropdownField label="Resolution" choices="3840x2160,2560x1440,1920x1080,1600x900,1440x900,1366x768,1280x720,1280x800,800x600" style="width: 400px;" />
-                <engine:Toggle label="Shadows" style="margin-left: 30px;" />
-                <engine:Toggle label="V-Sync" style="margin-left: 30px;" />
-                <engine:DropdownField label="Anti Aliasing" choices="None,FXAA,MSAA,TAA" style="width: 400px;" />
-                <engine:DropdownField label="Frame Rate" choices="30,60,144,Unlimited" style="width: 400px;" />
-                <engine:Toggle label="Post-Processing" style="align-content: center; margin-left: 30px;" />
-            </engine:VisualElement>
-        </engine:Tab>
-        <engine:Tab label="Tab">
-            <engine:VisualElement style="flex-grow: 1; font-size: 22px; left: 0; top: 0; opacity: 1; color: rgb(0, 0, 0); background-color: rgba(145, 145, 145, 0); margin-left: 0; padding-left: 40px; padding-top: 20px;">
-                <engine:Label text="Video" emoji-fallback-support="true" style="font-size: 26px;" />
-                <engine:DropdownField label="Resolution" choices="3840x2160,2560x1440,1920x1080,1600x900,1440x900,1366x768,1280x720,1280x800,800x600" style="width: 400px;" />
-                <engine:Toggle label="Shadows" style="margin-left: 30px;" />
-                <engine:Toggle label="V-Sync" style="margin-left: 30px;" />
-                <engine:DropdownField label="Anti Aliasing" choices="None,FXAA,MSAA,TAA" style="width: 400px;" />
-                <engine:DropdownField label="Frame Rate" choices="30,60,144,Unlimited" style="width: 400px;" />
-                <engine:Toggle label="Post-Processing" style="align-content: center; margin-left: 30px;" />
-            </engine:VisualElement>
-        </engine:Tab>
-        <engine:Tab label="Tab">
-            <engine:VisualElement style="flex-grow: 1; font-size: 22px; left: 0; top: 0; opacity: 1; color: rgb(0, 0, 0); background-color: rgba(145, 145, 145, 0); margin-left: 0; padding-left: 40px; padding-top: 20px;">
-                <engine:Label text="Video" emoji-fallback-support="true" style="font-size: 26px;" />
-                <engine:DropdownField label="Resolution" choices="3840x2160,2560x1440,1920x1080,1600x900,1440x900,1366x768,1280x720,1280x800,800x600" style="width: 400px;" />
-                <engine:Toggle label="Shadows" style="margin-left: 30px;" />
-                <engine:Toggle label="V-Sync" style="margin-left: 30px;" />
-                <engine:DropdownField label="Anti Aliasing" choices="None,FXAA,MSAA,TAA" style="width: 400px;" />
-                <engine:DropdownField label="Frame Rate" choices="30,60,144,Unlimited" style="width: 400px;" />
-                <engine:Toggle label="Post-Processing" style="align-content: center; margin-left: 30px;" />
-            </engine:VisualElement>
-        </engine:Tab>
-    </engine:TabView>
+    <Style src="project://database/Assets/UI/Settings.uss?fileID=7433441132597879392&amp;guid=6c5967c40508cc5cea2ac9f08f9c9f7a&amp;type=3#Settings" />
+    <engine:VisualElement name="Settings" style="flex-grow: 1; background-color: rgba(36, 36, 36, 0.69);">
+        <engine:GroupBox name="AudioSettings" style="top: 39px; width: 1200px; align-items: center; align-self: center;">
+            <engine:Label text="Audio Settings" name="AudioSettingsHeader" style="font-size: 35px; color: rgb(255, 255, 255);" />
+            <engine:GroupBox name="AudioSettingsSub" style="height: 254px; width: 1817px; justify-content: flex-start; align-self: center; font-size: 26px; color: rgb(255, 255, 255); align-items: center; left: 30px; top: 20px; padding-right: 0; background-color: rgba(0, 0, 0, 0.3); border-top-right-radius: 30px; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; border-top-color: rgb(34, 34, 34); border-right-color: rgb(35, 35, 35); border-right-width: 1px; border-top-width: 1px; border-left-width: 1px; border-bottom-width: 1px; border-left-color: rgb(35, 35, 35); border-bottom-color: rgb(35, 35, 35); align-content: flex-start; flex-direction: column; flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+                <engine:Slider label="Master Volume&#10;" value="100.3" high-value="100" name="MasterVolume" fill="true" direction="Horizontal" inverted="false" style="height: 66px; width: 1718px; background-color: rgba(0, 0, 0, 0); border-top-right-radius: 30px; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; align-content: auto; align-items: center; left: 0; top: 20px; opacity: 1; -unity-background-image-tint-color: rgb(255, 255, 255); margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; flex-wrap: nowrap;" />
+                <engine:Slider label="Master Volume&#10;" value="100.3" high-value="100" name="MasterVolume" fill="true" direction="Horizontal" inverted="false" style="height: 69px; width: 550px; background-color: rgba(0, 0, 0, 0); border-top-right-radius: 30px; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; align-content: auto; align-items: center; left: 0; top: 20px; opacity: 1; -unity-background-image-tint-color: rgb(255, 255, 255); margin-left: 50px; margin-top: 0; margin-right: 50px; margin-bottom: 0;" />
+                <engine:Slider label="Master Volume&#10;" value="100.3" high-value="100" name="MasterVolume" fill="true" direction="Horizontal" inverted="false" style="height: 69px; width: 550px; background-color: rgba(0, 0, 0, 0); border-top-right-radius: 30px; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; align-content: auto; align-items: center; left: 0; top: 20px; opacity: 1; -unity-background-image-tint-color: rgb(255, 255, 255); margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0;" />
+            </engine:GroupBox>
+        </engine:GroupBox>
+    </engine:VisualElement>
 </engine:UXML>
