@@ -32,9 +32,13 @@ public class PlatformManager : MonoBehaviour
             main = this;
         else
             Destroy(gameObject);
-
-        platforms = FindObjectsByType<Platform>(FindObjectsSortMode.None);
+        GetPlatformsInScene();
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void GetPlatformsInScene()
+    {
+        platforms = FindObjectsByType<Platform>(FindObjectsSortMode.None);
     }
 
     private void Start()
