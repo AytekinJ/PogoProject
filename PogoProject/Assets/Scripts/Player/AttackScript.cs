@@ -68,6 +68,11 @@ public class AttackScript : MonoBehaviour
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
                 OnAirJump();
+                if (hit.collider.gameObject.CompareTag("Tower"))
+                {
+                    ScoreManager.main.towerPogo = true;
+                    ScoreManager.main.ControlScores();
+                }
             }
         }
         else

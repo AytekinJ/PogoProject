@@ -23,6 +23,7 @@ public class Pickupable : MonoBehaviour
                 Score.player.addCoin();
                 Debug.Log("Coin Added");
             }
+            Destroy(Instantiate(Score.player.pickUpEffect, transform.position, Quaternion.identity),1f);
             Destroy(gameObject);
         }
     }

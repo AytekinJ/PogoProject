@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Controller : MonoBehaviour
 {
@@ -118,6 +120,16 @@ public class Controller : MonoBehaviour
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+    
+    // araya bende gireyim dedim
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Tower"))
+        {
+            ScoreManager.main.ControlScores();
         }
     }
 

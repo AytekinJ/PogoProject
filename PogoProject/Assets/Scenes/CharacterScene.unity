@@ -1907,6 +1907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7959cde06382945b43b9a52de3faf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpEffect: {fileID: 0}
   starsCollected: 0
   coinsCollected: 0
   maxStars: 5
@@ -1930,11 +1931,11 @@ MonoBehaviour:
   left: 0
   right: 0
   AttackCooldown: 0.5
-  attackRange: 0.75
-  boxSize: {x: 0.75, y: 0.75}
+  attackRange: 0
+  boxSize: {x: 1, y: 1}
   attackMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 832
 --- !u!114 &344119102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1956,7 +1957,7 @@ MonoBehaviour:
     m_Bits: 64
   jumpForce: 6
   jumpBufferTime: 0.1
-  coyoteTime: 0.1
+  coyoteTime: 0.18
   hasJumpedDuringCoyote: 0
   sprintButton: 304
   sprintMultiplier: 1.5
@@ -2182,7 +2183,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.5
+  orthographic size: 6.546875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2264,7 +2265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351454455}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
   m_Name: 
