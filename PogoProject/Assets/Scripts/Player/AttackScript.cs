@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour
@@ -18,10 +19,12 @@ public class AttackScript : MonoBehaviour
     public LayerMask attackMask;
 
     private Controller playerController;
+    Animator animator;
 
     void Start()
     {
         playerController = GetComponent<Controller>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -45,6 +48,8 @@ public class AttackScript : MonoBehaviour
             if (attackDirection != Vector3.zero)
             {
                 CastAttackBox(attackDirection);
+                //animasyonlar için gerekliydi, yazdım (ayt)
+                StartCoroutine(AttackAnimation());
             }
 
             attacktime = Time.time + AttackCooldown;
@@ -129,5 +134,12 @@ public class AttackScript : MonoBehaviour
         if (left) return Vector3.left;
         if (right) return Vector3.right;
         return Vector3.zero;
+    }
+    //animasyonlar için gerekliydi, yazdım (ayt)
+    IEnumerator AttackAnimation()
+    {
+        animator.SetBool("isAttacking", true);
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("isAttacking", false);
     }
 }

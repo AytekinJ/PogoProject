@@ -25,16 +25,19 @@ public class Controller : MonoBehaviour
 
     private float jumpCooldownTime;
     private float jumpCooldownCounter;
+    Animator animator;
 
 
     [Header("Sprinting Settings")]
     [SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
     [SerializeField] private float sprintMultiplier = 1.5f;
     private bool isSprinting;
+    bool isFacingRight = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         jumpCooldownTime = coyoteTime + 0.05f;
     }
 
@@ -44,10 +47,18 @@ public class Controller : MonoBehaviour
         Move();
         AppendJump();
         UpdateCoyoteTime();
+        AnimatorVariables();
+        Flip();
 
         if (jumpCooldownCounter > 0)
         {
             jumpCooldownCounter -= Time.deltaTime;
+        }
+
+        //dikenlere düşersen geri gelebil diye
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = new Vector3(-5, -4);
         }
     }
 
@@ -110,6 +121,33 @@ public class Controller : MonoBehaviour
         }
     }
 
+    //burayi ben yazdim ayt
+    void AnimatorVariables()
+    {
+        animator.SetFloat("Horizontal", Mathf.Abs(inputX));
+        animator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
+        animator.SetFloat("Vertical", rb.linearVelocity.y);
+        animator.SetBool("isGrounded", CheckGrounded());
+
+        if(Input.GetKeyDown(JumpButton))
+        {
+            StopAllCoroutines();
+            StartCoroutine(Jumping());
+        }
+
+    }
+    //burayi ben yazdim ayt
+    void Flip()
+    {
+        if (isFacingRight && inputX < 0f || !isFacingRight && inputX > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+
     public bool CheckGrounded()
     {
         return Physics2D.OverlapCircle(groundCheckPos.transform.position, groundCheckRadius, groundCheckLayer);
@@ -119,4 +157,13 @@ public class Controller : MonoBehaviour
     {
         Gizmos.DrawWireSphere(groundCheckPos.transform.position, groundCheckRadius);
     }
+
+    //burayi ben yazdim ayt
+    IEnumerator Jumping()
+    {
+        animator.SetBool("isJumping", true);
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("isJumping", false);
+    }
+
 }
