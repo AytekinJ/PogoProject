@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - Tower
+  - Thrones
+  - WorldSpawnPoint
   layers:
   - Default
   - TransparentFX
