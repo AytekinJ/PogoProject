@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641a972a6e1e07346803083b9ade3986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPlatformCheckPoint: 0
+  IsPlatformCheckPoint: 1
 --- !u!61 &221507662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7bc3e17b2c0a44b8a24bb8c184a1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
   JumpButton: 32
   groundCheckPos: {fileID: 147158853}
   groundCheckRadius: 0.1
@@ -2428,8 +2428,7 @@ MonoBehaviour:
   jumpBufferTime: 0.1
   coyoteTime: 0.1
   hasJumpedDuringCoyote: 0
-  sprintButton: 304
-  sprintMultiplier: 1.5
+  isFacingRight: 1
 --- !u!50 &344119103
 Rigidbody2D:
   serializedVersion: 5
