@@ -8,27 +8,29 @@ public class Controller : MonoBehaviour
     Rigidbody2D rb;
     private float inputX;
 
-    public float speed = 10f;
+    public float speed = 5f;
     public KeyCode JumpButton = KeyCode.Space;
 
     [SerializeField] Transform groundCheckPos;
-    [SerializeField] float groundCheckRadius = 0.25f;
+    [SerializeField] float groundCheckRadius = 0.1f;
     [SerializeField] LayerMask groundCheckLayer;
-    [SerializeField] float jumpForce = 5f;
+    [SerializeField] float jumpForce = 7f;
+    [SerializeField] float lowJumpMultiplier = 3f;
+    [SerializeField] float fallMultiplier = 2.5f;
+    private bool isJumping;
 
     [Header("Jump Buffer Settings")]
     [SerializeField] private float jumpBufferTime = 0.1f;
     private float jumpBufferCounter;
 
     [Header("Coyote Time Settings")]
-    [SerializeField] private float coyoteTime = 0.15f;
+    [SerializeField] private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
     public bool hasJumpedDuringCoyote;
 
     private float jumpCooldownTime;
     private float jumpCooldownCounter;
     Animator animator;
-
 
     [Header("Sprinting Settings")]
     [SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
@@ -48,6 +50,7 @@ public class Controller : MonoBehaviour
         HandleInputs();
         Move();
         AppendJump();
+        ApplyJumpPhysics();
         UpdateCoyoteTime();
         AnimatorVariables();
         Flip();
@@ -55,12 +58,6 @@ public class Controller : MonoBehaviour
         if (jumpCooldownCounter > 0)
         {
             jumpCooldownCounter -= Time.deltaTime;
-        }
-
-        //dikenlere düşersen geri gelebil diye
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            transform.position = new Vector3(-5, -4);
         }
     }
 
@@ -77,7 +74,14 @@ public class Controller : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        isSprinting = Input.GetKey(sprintButton);
+        if (CheckGrounded())
+        {
+            isSprinting = Input.GetKey(sprintButton);
+        }
+        else
+        {
+            isSprinting = false;
+        }
     }
 
     void Move()
@@ -91,22 +95,38 @@ public class Controller : MonoBehaviour
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !hasJumpedDuringCoyote && jumpCooldownCounter <= 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            isJumping = true;
             jumpBufferCounter = 0;
             hasJumpedDuringCoyote = true;
             jumpCooldownCounter = jumpCooldownTime;
         }
     }
 
+    void ApplyJumpPhysics()
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.gravityScale = fallMultiplier;
+        }
+        else if (rb.linearVelocity.y > 0 && !Input.GetKey(JumpButton))
+        {
+            rb.gravityScale = lowJumpMultiplier;
+        }
+        else
+        {
+            rb.gravityScale = 1f;
+        }
+    }
+
     public void DoPOGO(float pogoMultiplier)
     {
-        if (rb.linearVelocityY < 0f)
+        if (rb.linearVelocity.y < 0f)
         {
-            rb.linearVelocityY = 0f;
-            rb.linearVelocityY += pogoMultiplier;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoMultiplier);
         }
-        else if (rb.linearVelocityY >= 0f)
+        else if (rb.linearVelocity.y >= 0f)
         {
-            rb.linearVelocityY += pogoMultiplier / 2;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + (pogoMultiplier / 2));
         }
     }
 
@@ -133,7 +153,7 @@ public class Controller : MonoBehaviour
         }
     }
 
-    //burayi ben yazdim ayt
+    #region Animation
     void AnimatorVariables()
     {
         animator.SetFloat("Horizontal", Mathf.Abs(inputX));
@@ -141,14 +161,13 @@ public class Controller : MonoBehaviour
         animator.SetFloat("Vertical", rb.linearVelocity.y);
         animator.SetBool("isGrounded", CheckGrounded());
 
-        if(Input.GetKeyDown(JumpButton))
+        if (Input.GetKeyDown(JumpButton))
         {
             StopAllCoroutines();
             StartCoroutine(Jumping());
         }
-
     }
-    //burayi ben yazdim ayt
+
     void Flip()
     {
         if (isFacingRight && inputX < 0f || !isFacingRight && inputX > 0f)
@@ -159,6 +178,7 @@ public class Controller : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+    #endregion
 
     public bool CheckGrounded()
     {
@@ -170,12 +190,10 @@ public class Controller : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheckPos.transform.position, groundCheckRadius);
     }
 
-    //burayi ben yazdim ayt
     IEnumerator Jumping()
     {
         animator.SetBool("isJumping", true);
         yield return new WaitForSeconds(0.1f);
         animator.SetBool("isJumping", false);
     }
-
 }

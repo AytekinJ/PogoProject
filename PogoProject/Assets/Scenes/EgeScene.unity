@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641a972a6e1e07346803083b9ade3986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPlatformCheckPoint: 1
+  IsPlatformCheckPoint: 0
 --- !u!61 &221507662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2391,7 +2391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  POGOMultiplier: 6
+  POGOMultiplier: 10
   AttackKey: 120
   up: 0
   down: 0
@@ -2422,7 +2422,9 @@ MonoBehaviour:
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 64
-  jumpForce: 6
+  jumpForce: 7
+  lowJumpMultiplier: 3
+  fallMultiplier: 2.5
   jumpBufferTime: 0.1
   coyoteTime: 0.1
   hasJumpedDuringCoyote: 0
