@@ -20,6 +20,7 @@ public class AttackScript : MonoBehaviour
 
     private Controller playerController;
     Animator animator;
+    private Vector2 attackDirection;
 
     void Start()
     {
@@ -32,20 +33,21 @@ public class AttackScript : MonoBehaviour
         GetInputs();
         CalculateDirection();
         AppendAttack();
+        SetLastAttackPos();
     }
 
     void AppendAttack()
     {
         if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
         {
-            Vector3 attackDirection = GetAttackDirection();
+            attackDirection = GetAttackDirection();
 
-            if (attackDirection == Vector3.down && playerController.CheckGrounded())
+            if (attackDirection == Vector2.down && playerController.CheckGrounded())
             {
                 return;
             }
 
-            if (attackDirection != Vector3.zero)
+            if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
                 //animasyonlar için gerekliydi, yazdım (ayt)
@@ -54,6 +56,11 @@ public class AttackScript : MonoBehaviour
 
             attacktime = Time.time + AttackCooldown;
         }
+    }
+
+    void SetLastAttackPos()
+    {
+        
     }
 
     void CastAttackBox(Vector2 direction)
@@ -124,6 +131,19 @@ public class AttackScript : MonoBehaviour
             left = true; right = false;
             up = false; down = false;
         }
+        else if (Xinput == 0f && Yinput == 0f)
+        {
+            if (playerController.isFacingRight)
+            {
+                left = false; right = true;
+                up = false; down = false;
+            }
+            else
+            {
+                left = true; right = false;
+                up = false; down = false;
+            }
+        }
     }
 
     void GetInputs()
@@ -134,11 +154,11 @@ public class AttackScript : MonoBehaviour
 
     Vector3 GetAttackDirection()
     {
-        if (up) return Vector3.up;
-        if (down) return Vector3.down;
-        if (left) return Vector3.left;
-        if (right) return Vector3.right;
-        return Vector3.zero;
+        if (up) return Vector2.up;
+        if (down) return Vector2.down;
+        if (left) return Vector2.left;
+        if (right) return Vector2.right;
+        return Vector2.zero;
     }
     //animasyonlar için gerekliydi, yazdım (ayt)
     IEnumerator AttackAnimation()
