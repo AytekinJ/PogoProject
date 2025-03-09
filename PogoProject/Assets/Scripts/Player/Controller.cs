@@ -34,7 +34,7 @@ public class Controller : MonoBehaviour
     [SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
     [SerializeField] private float sprintMultiplier = 1.5f;
     private bool isSprinting;
-    bool isFacingRight = true;
+    [HideInInspector] public bool isFacingRight = true;
 
     void Start()
     {
