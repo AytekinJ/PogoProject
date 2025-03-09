@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public float POGOMultiplier = 5f;
+    public float POGOMultiplier = 10f;
 
     float Xinput, Yinput;
 
@@ -14,8 +14,8 @@ public class AttackScript : MonoBehaviour
     public float AttackCooldown = 0.5f;
     private float attacktime = 0f;
 
-    public float attackRange = 1.5f;
-    public Vector2 boxSize = new Vector2(1f, 1f);
+    public float attackRange = 0.75f;
+    public Vector2 boxSize = new Vector2(0.75f, 0.75f);
     public LayerMask attackMask;
 
     private Controller playerController;
