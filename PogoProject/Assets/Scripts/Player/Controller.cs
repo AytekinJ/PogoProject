@@ -15,7 +15,6 @@ public class Controller : MonoBehaviour
     [SerializeField] float jumpForce = 7f;
     [SerializeField] float lowJumpMultiplier = 3f;
     [SerializeField] float fallMultiplier = 2.5f;
-    private bool isJumping;
 
     [Header("Jump Buffer Settings")]
     [SerializeField] private float jumpBufferTime = 0.1f;
@@ -83,7 +82,6 @@ public class Controller : MonoBehaviour
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !hasJumpedDuringCoyote && jumpCooldownCounter <= 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            isJumping = true;
             jumpBufferCounter = 0;
             hasJumpedDuringCoyote = true;
             jumpCooldownCounter = jumpCooldownTime;
