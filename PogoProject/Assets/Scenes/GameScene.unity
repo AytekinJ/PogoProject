@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 28432418}
   - component: {fileID: 28432417}
   m_Layer: 5
-  m_Name: GameCanvaas
+  m_Name: GameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,16 +596,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a762c77b1452414ba2d962cd3598e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScaleInterpolationSpeed: 1
+  time: 120
   timerText: {fileID: 789828800}
-  playerScore: {fileID: 0}
   starsInLevel: 5
   coinsInLevel: 5
   totalScore: 0
   towerPogo: 0
-  isFinished: 0
-  gameOver: 0
-  time: 3
-  timeScaleInterpolationSpeed: 0.1
+  rewardPerCoin: 100
+  rewardPerStar: 250
+  pogoReward: 1000
+  rewardPerRemainingSecond: 5
 --- !u!1 &351554319
 GameObject:
   m_ObjectHideFlags: 0

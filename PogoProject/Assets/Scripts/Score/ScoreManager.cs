@@ -1,26 +1,39 @@
 using System;
 using System.Collections;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    private bool isFinished = false;
+    private bool gameOver;
+    private Score playerScore;
     public static ScoreManager main;
+    [Header("Other Settings")]
+    [SerializeField] private float timeScaleInterpolationSpeed = 1f;
+    [SerializeField] private float time;
+    [SerializeField] private string filePath;
+    
+    [Header("Score Settings")]
     public TextMeshProUGUI timerText;
-    public Score playerScore;
     public int starsInLevel;
     public int coinsInLevel;
     public int totalScore;
     public bool towerPogo;
-    public bool isFinished = false;
-    public bool gameOver;
-    public float time;
-    public float timeScaleInterpolationSpeed = 1f;
+    
+    
+    [Header("Rewards")]
+    [SerializeField] private int rewardPerCoin;
+    [SerializeField] private int rewardPerStar;
+    [SerializeField] private int pogoReward;
+    [SerializeField] private int rewardPerRemainingSecond;
 
     private void Awake()
     {
         main = this;
         playerScore = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
+        filePath = Application.persistentDataPath + "/" + filePath + ".txt";
     }
     private void Start()
     {
@@ -33,22 +46,25 @@ public class ScoreManager : MonoBehaviour
             return;
         if (playerScore.starsCollected == starsInLevel)
         {
-            totalScore++;
+            totalScore += playerScore.starsCollected * rewardPerStar;
         }
 
         if (playerScore.coinsCollected == coinsInLevel)
         {
-            totalScore++;
+            totalScore += playerScore.coinsCollected * rewardPerCoin;
         }
 
         if (towerPogo)
         {
-            totalScore++;
+            totalScore += pogoReward;
         }
-
+        
+        totalScore += ((int)time-(int)Time.time) * rewardPerRemainingSecond;
+            
         isFinished = true;
         Debug.Log(totalScore);
         CalculateCompletionPercentage();
+        int highScore = ControlAndSaveHighScore(totalScore);
     }
     private void CalculateCompletionPercentage()
     {
@@ -71,6 +87,32 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Tamamlanma Yüzdesi: " + completionPercentage + "%");
     }
 
+    private int ControlAndSaveHighScore(int score)
+    {
+        int currentHighScore;
+        if (!File.Exists(filePath))
+        {
+            currentHighScore = score;
+            using (StreamWriter sw = File.CreateText(filePath))
+            {
+                sw.WriteLine(currentHighScore);
+            }
+            return currentHighScore;
+        }
+        using (StreamReader sr = new StreamReader(filePath))
+        {
+            currentHighScore = int.Parse(sr.ReadLine());
+        }
+
+        if (score > currentHighScore)
+        {
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                sw.WriteLine(score);
+            }
+        }
+        return currentHighScore;
+    }
     private IEnumerator Timer()
     {
         float startTime = Time.time;
