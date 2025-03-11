@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     private bool gameOver;
     private Score playerScore;
     public static ScoreManager main;
-    [Header("Other Settings")]
+    [Header("Timer Settings")]
     [SerializeField] private float timeScaleInterpolationSpeed = 1f;
     [SerializeField] private float time;
     [SerializeField] private string filePath;
@@ -33,7 +33,8 @@ public class ScoreManager : MonoBehaviour
     {
         main = this;
         playerScore = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
-        filePath = Application.persistentDataPath + "/" + filePath + ".txt";
+        filePath = filePath + ".txt";
+        timerText = GameObject.FindWithTag("TimerUI").GetComponent<TextMeshProUGUI>();
     }
     private void Start()
     {
