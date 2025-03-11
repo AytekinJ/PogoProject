@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7707282676390004595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2750193023802318205}
+  - component: {fileID: 2551718567561927045}
+  - component: {fileID: 8194987036243697525}
+  - component: {fileID: 940803794112665605}
+  - component: {fileID: 5620163047529065854}
+  m_Layer: 0
+  m_Name: AddThisShitForMechanics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &2750193023802318205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.107437, y: -0.7749236, z: -0.004260203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2551718567561927045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805ef0764e650aeffb4b15920e72f9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 3
+  maxTriggerDistance: 20
+  canControl: 1
+  player: {fileID: 0}
+  platforms: []
+--- !u!114 &8194987036243697525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26244bfaf79e09946a6162b28be9de32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesInScene: []
+--- !u!114 &940803794112665605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a762c77b1452414ba2d962cd3598e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScaleInterpolationSpeed: 1
+  time: 120
+  filePath: 
+  timerText: {fileID: 0}
+  starsInLevel: 5
+  coinsInLevel: 5
+  totalScore: 0
+  towerPogo: 0
+  rewardPerCoin: 100
+  rewardPerStar: 250
+  pogoReward: 1000
+  rewardPerRemainingSecond: 5
+--- !u!114 &5620163047529065854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e785c444b12eb5cba554b4c1fcb657a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showFPS: 1
+  updateInterval: 0.1
+  fontSize: 24
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  position: {x: 10, y: 10}
