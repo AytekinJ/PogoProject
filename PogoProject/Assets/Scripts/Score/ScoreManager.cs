@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine;
 
@@ -33,7 +34,6 @@ public class ScoreManager : MonoBehaviour
     {
         main = this;
         playerScore = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
-        filePath = filePath + ".txt";
         timerText = GameObject.FindWithTag("TimerUI").GetComponent<TextMeshProUGUI>();
     }
     private void Start()
@@ -88,32 +88,56 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Tamamlanma Yüzdesi: " + completionPercentage + "%");
     }
 
+    #region Save And Encryption
     private int ControlAndSaveHighScore(int score)
     {
         int currentHighScore;
+        BinaryFormatter formatter = new BinaryFormatter();
+
         if (!File.Exists(filePath))
         {
             currentHighScore = score;
-            using (StreamWriter sw = File.CreateText(filePath))
-            {
-                sw.WriteLine(currentHighScore);
-            }
+            WriteFileAsSerializedAndEncrypted(score, formatter);
             return currentHighScore;
         }
-        using (StreamReader sr = new StreamReader(filePath))
-        {
-            currentHighScore = int.Parse(sr.ReadLine());
-        }
 
+        byte[] encryptedData2 = File.ReadAllBytes(filePath);
+        byte[] decryptedData = XorEncrypt(encryptedData2);
+        using (MemoryStream ms = new MemoryStream(decryptedData))
+        {
+            currentHighScore = (int)formatter.Deserialize(ms);
+
+        }
+        
         if (score > currentHighScore)
         {
-            using (StreamWriter sw = new StreamWriter(filePath))
-            {
-                sw.WriteLine(score);
-            }
+            WriteFileAsSerializedAndEncrypted(score, formatter);
         }
         return currentHighScore;
     }
+
+    private void WriteFileAsSerializedAndEncrypted(int score, BinaryFormatter formatter)
+    {
+        using (MemoryStream ms = new MemoryStream())
+        {
+            formatter.Serialize(ms, score);
+            byte[] rawData = ms.ToArray();
+            byte[] encryptedData = XorEncrypt(rawData);
+            File.WriteAllBytes(filePath, encryptedData);
+        }
+    }
+
+    private byte[] XorEncrypt(byte[] data)
+    {
+        byte xorKey = 0xBA;
+        byte[] result = new byte[data.Length];
+        for (int i = 0; i < result.Length; i++)
+        {
+            result[i] = (byte)(data[i] ^ xorKey);
+        }
+        return result;
+    }
+    #endregion
     private IEnumerator Timer()
     {
         float startTime = Time.time;
