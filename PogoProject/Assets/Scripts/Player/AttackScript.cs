@@ -51,9 +51,9 @@ public class AttackScript : MonoBehaviour
             {
                 CastAttackBox(attackDirection);
                 //animasyonlar için gerekliydi, yazdım (ayt)
-                StartCoroutine(AttackAnimation());
+                animator.SetTrigger("AttackTrigger");
             }
-
+            
             attacktime = Time.time + AttackCooldown;
         }
     }
@@ -93,6 +93,7 @@ public class AttackScript : MonoBehaviour
     void OnAirJump()
     {
         playerController.DoPOGO(POGOMultiplier);
+        animator.SetBool("isJumping", true);
     }
 
     void DebugDrawBox(Vector2 center, Vector2 size, Color color, float duration)
@@ -161,10 +162,10 @@ public class AttackScript : MonoBehaviour
         return Vector2.zero;
     }
     //animasyonlar için gerekliydi, yazdım (ayt)
-    IEnumerator AttackAnimation()
-    {
-        animator.SetBool("isAttacking", true);
-        yield return new WaitForSeconds(0.1f);
-        animator.SetBool("isAttacking", false);
-    }
+    // IEnumerator AttackAnimation()
+    // {
+    //     animator.SetBool("isAttacking", true);
+    //     yield return new WaitForSeconds(0.1f);
+    //     animator.SetBool("isAttacking", false);
+    // }
 }
