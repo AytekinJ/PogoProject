@@ -158,6 +158,7 @@ public class PlatformManager : MonoBehaviour
         SpriteRenderer matchSprite = match.GetComponent<SpriteRenderer>();
         Controller playerController = player.GetComponent<Controller>();
         
+        
         mainCollider.enabled = false;
         matchCollider.enabled = true;
 
@@ -166,7 +167,7 @@ public class PlatformManager : MonoBehaviour
 
         while (activePlatforms.Contains(main))
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !playerController.hasJumpedDuringCoyote)
+            if (Input.GetKeyDown(KeyCode.Space) && playerController.CheckGrounded())
             {
                 mainCollider.enabled = !mainCollider.enabled;
                 matchCollider.enabled = !matchCollider.enabled;
