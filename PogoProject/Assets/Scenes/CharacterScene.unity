@@ -537,7 +537,7 @@ MonoBehaviour:
   left: 0
   right: 0
   AttackCooldown: 0.5
-  attackRange: 0
+  attackRange: 0.9
   boxSize: {x: 1, y: 1}
   attackMask:
     serializedVersion: 2
@@ -802,7 +802,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 5.28125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
