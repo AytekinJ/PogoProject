@@ -100,15 +100,15 @@ public class ScoreManager : MonoBehaviour
             WriteFileAsSerializedAndEncrypted(score, formatter);
             return currentHighScore;
         }
-
-        byte[] encryptedData2 = File.ReadAllBytes(filePath);
-        byte[] decryptedData = XorEncrypt(encryptedData2);
+        //say gex
+        byte[] encryptedData = File.ReadAllBytes(filePath);
+        byte[] decryptedData = XorEncrypt(encryptedData);
         using (MemoryStream ms = new MemoryStream(decryptedData))
         {
             currentHighScore = (int)formatter.Deserialize(ms);
 
         }
-        
+        //31
         if (score > currentHighScore)
         {
             WriteFileAsSerializedAndEncrypted(score, formatter);
