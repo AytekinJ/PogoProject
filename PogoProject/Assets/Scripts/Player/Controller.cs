@@ -139,8 +139,7 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(JumpButton))
         {
-            StopAllCoroutines();
-            StartCoroutine(Jumping());
+            animator.SetTrigger("JumpTrigger");
         }
     }
 
@@ -164,12 +163,5 @@ public class Controller : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheckPos.transform.position, groundCheckRadius);
-    }
-
-    IEnumerator Jumping()
-    {
-        animator.SetBool("isJumping", true);
-        yield return new WaitForSeconds(0.1f);
-        animator.SetBool("isJumping", false);
     }
 }

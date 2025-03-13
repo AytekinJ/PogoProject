@@ -93,7 +93,7 @@ public class AttackScript : MonoBehaviour
     void OnAirJump()
     {
         playerController.DoPOGO(POGOMultiplier);
-        animator.SetBool("isJumping", true);
+        // animator.SetBool("isJumping", true);
     }
 
     void DebugDrawBox(Vector2 center, Vector2 size, Color color, float duration)
