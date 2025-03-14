@@ -47,6 +47,7 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         jumpCooldownTime = coyoteTime + 0.05f;
+        goldGfx.SetActive(false);
     }
 
     void Update()
@@ -65,6 +66,7 @@ public class Controller : MonoBehaviour
             goldGfx.SetActive(!change);
             change = !change;
         }
+        
         
 
         if (jumpCooldownCounter > 0)
@@ -147,15 +149,30 @@ public class Controller : MonoBehaviour
     #region Animation
     void AnimatorVariables()
     {
-        animator.SetFloat("Horizontal", Mathf.Abs(inputX));
-        animator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
-        animator.SetFloat("Vertical", rb.linearVelocity.y);
-        animator.SetBool("isGrounded", CheckGrounded());
+        #region Normal
+        normalGfx.GetComponent<Animator>().SetFloat("Horizontal", Mathf.Abs(inputX));
+        normalGfx.GetComponent<Animator>().SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
+        normalGfx.GetComponent<Animator>().SetFloat("Vertical", rb.linearVelocity.y);
+        normalGfx.GetComponent<Animator>().SetBool("isGrounded", CheckGrounded());
 
         if (Input.GetKeyDown(JumpButton))
         {
-            animator.SetTrigger("JumpTrigger");
+            normalGfx.GetComponent<Animator>().SetTrigger("JumpTrigger");
         }
+        #endregion
+
+        #region Gold
+        goldGfx.GetComponent<Animator>().SetFloat("Horizontal", Mathf.Abs(inputX));
+        goldGfx.GetComponent<Animator>().SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
+        goldGfx.GetComponent<Animator>().SetFloat("Vertical", rb.linearVelocity.y);
+        goldGfx.GetComponent<Animator>().SetBool("isGrounded", CheckGrounded());
+
+        if (Input.GetKeyDown(JumpButton))
+        {
+            goldGfx.GetComponent<Animator>().SetTrigger("JumpTrigger");
+        }
+        #endregion
+
     }
 
     void Flip()

@@ -627,7 +627,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 344119106}
-  - component: {fileID: 344119109}
   - component: {fileID: 344119105}
   - component: {fileID: 344119104}
   - component: {fileID: 344119103}
@@ -673,6 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   POGOMultiplier: 10
+  normalGfx: {fileID: 236839356}
+  goldGfx: {fileID: 1495157748}
   AttackKey: 120
   up: 0
   down: 0
@@ -882,18 +883,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a414599e6c7ba4eac4b51e01645292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &344119109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344119099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2491a2e9ffa0843800ec3748c44889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &351454455
@@ -4280,7 +4269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1495157749
 Transform:
   m_ObjectHideFlags: 0

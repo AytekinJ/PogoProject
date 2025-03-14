@@ -5,6 +5,11 @@ using UnityEngine;
 public class AttackScript : MonoBehaviour
 {
     public float POGOMultiplier = 10f;
+    #region silersiniz
+    public GameObject normalGfx;
+    public GameObject goldGfx;
+    
+    #endregion
 
     float Xinput, Yinput;
 
@@ -51,7 +56,8 @@ public class AttackScript : MonoBehaviour
             {
                 CastAttackBox(attackDirection);
                 //animasyonlar için gerekliydi, yazdım (ayt)
-                animator.SetTrigger("AttackTrigger");
+                normalGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
+                goldGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
             }
             
             attacktime = Time.time + AttackCooldown;
