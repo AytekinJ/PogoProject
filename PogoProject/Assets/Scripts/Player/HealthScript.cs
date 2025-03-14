@@ -18,6 +18,7 @@ public class HealthScript : MonoBehaviour
     private void Start()
     {
         HealthValue = StoredHealthValue;
+        HasArmor = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         WorldSpawnPoint = GameObject.FindGameObjectWithTag("WorldSpawnPoint");
     }
