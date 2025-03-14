@@ -1,7 +1,5 @@
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class Controller : MonoBehaviour
 {
@@ -31,10 +29,10 @@ public class Controller : MonoBehaviour
     private float jumpCooldownCounter;
     Animator animator;
 
-    [Header("Sprinting Settings")]
-    [SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
-    [SerializeField] private float sprintMultiplier = 1.5f;
-    private bool isSprinting;
+    //[Header("Sprinting Settings")]
+    //[SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
+    //[SerializeField] private float sprintMultiplier = 1.5f;
+    //private bool isSprinting;
     [HideInInspector] public bool isFacingRight = true;
 
     void Start()
@@ -72,21 +70,11 @@ public class Controller : MonoBehaviour
         {
             jumpBufferCounter -= Time.deltaTime;
         }
-
-        if (CheckGrounded())
-        {
-            isSprinting = Input.GetKey(sprintButton);
-        }
-        else
-        {
-            isSprinting = false;
-        }
     }
 
     void Move()
     {
-        float currentSpeed = isSprinting ? speed * sprintMultiplier : speed;
-        rb.linearVelocity = new Vector2(inputX * currentSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(inputX * speed, rb.linearVelocity.y);
     }
 
     void AppendJump()
@@ -138,16 +126,6 @@ public class Controller : MonoBehaviour
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
-        }
-    }
-    
-    // araya bende gireyim dedim
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Tower"))
-        {
-            ScoreManager.main.ControlScores();
         }
     }
 
