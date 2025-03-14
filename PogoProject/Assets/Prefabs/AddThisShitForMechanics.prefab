@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 2551718567561927045}
   - component: {fileID: 8194987036243697525}
   - component: {fileID: 940803794112665605}
+  - component: {fileID: 3888305927524890636}
   - component: {fileID: 5620163047529065854}
+  - component: {fileID: 6144324325400308651}
   m_Layer: 0
   m_Name: AddThisShitForMechanics
   m_TagString: Untagged
@@ -77,9 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a762c77b1452414ba2d962cd3598e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleInterpolationSpeed: 1
+  timeScaleInterpolationSpeed: 0.1
   time: 120
-  filePath: 
+  filePath: h_s
   timerText: {fileID: 0}
   starsInLevel: 5
   coinsInLevel: 5
@@ -89,6 +91,19 @@ MonoBehaviour:
   rewardPerStar: 250
   pogoReward: 1000
   rewardPerRemainingSecond: 5
+--- !u!114 &3888305927524890636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f85ce8a13d752f45a79dabeaedb3463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSetting: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
 --- !u!114 &5620163047529065854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,3 +121,17 @@ MonoBehaviour:
   fontSize: 24
   textColor: {r: 1, g: 1, b: 1, a: 1}
   position: {x: 10, y: 10}
+--- !u!114 &6144324325400308651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ac9a55d925b8c468dee887a5816138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xorKey: 0
+  filePath: 
