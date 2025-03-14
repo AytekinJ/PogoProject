@@ -6,6 +6,13 @@ public class Controller : MonoBehaviour
     Rigidbody2D rb;
     private float inputX;
 
+    #region silersiniz
+    public GameObject normalGfx;
+    public GameObject goldGfx;
+    bool change;
+    
+    #endregion
+
     public float speed = 5f;
     public KeyCode JumpButton = KeyCode.Space;
 
@@ -51,6 +58,14 @@ public class Controller : MonoBehaviour
         UpdateCoyoteTime();
         AnimatorVariables();
         Flip();
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            normalGfx.SetActive(change);
+            goldGfx.SetActive(!change);
+            change = !change;
+        }
+        
 
         if (jumpCooldownCounter > 0)
         {
