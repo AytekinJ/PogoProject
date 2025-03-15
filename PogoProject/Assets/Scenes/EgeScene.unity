@@ -6178,6 +6178,10 @@ PrefabInstance:
       propertyPath: timeScaleInterpolationSpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2551718567561927045, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 3425266311596079421}
     - target: {fileID: 2750193023802318205, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.107437
@@ -14240,6 +14244,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af8790135c9c3434599ae77c89c5dc82, type: 3}
+--- !u!1 &3425266311596079421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8057702433869587747, guid: af8790135c9c3434599ae77c89c5dc82, type: 3}
+  m_PrefabInstance: {fileID: 3425266311596079420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
