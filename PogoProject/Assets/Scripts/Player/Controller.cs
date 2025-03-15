@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Controller : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public static Rigidbody2D rb;
     private float inputX;
 
     public float speed = 5f;
@@ -74,7 +74,8 @@ public class Controller : MonoBehaviour
 
     void Move()
     {
-        rb.linearVelocity = new Vector2(inputX * speed, rb.linearVelocity.y);
+        HealthScript.ReduceXKnockBack();
+        rb.linearVelocity = new Vector2(inputX * speed + HealthScript.XKnockBack, rb.linearVelocity.y);
     }
 
     void AppendJump()
