@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public float Damage = 1;
+    public int Damage = 1;
     public float POGOMultiplier = 10f;
     #region silersiniz
     public GameObject normalGfx;
@@ -27,6 +27,9 @@ public class AttackScript : MonoBehaviour
     private Controller playerController;
     Animator animator;
     private Vector2 attackDirection;
+
+    [SerializeField] float CamShakeDuration = 0.1f;
+    [SerializeField] float CamShakeMagnitude = 0.2f;
 
     void Start()
     {
@@ -56,6 +59,9 @@ public class AttackScript : MonoBehaviour
             if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
+
+                CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
+
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 normalGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
                 goldGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
@@ -82,7 +88,7 @@ public class AttackScript : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
-                enemyHealth.GiveDamage((int)Damage);
+                enemyHealth.GiveDamage(Damage);
             }
 
             if (direction == Vector2.down && !playerController.CheckGrounded())
