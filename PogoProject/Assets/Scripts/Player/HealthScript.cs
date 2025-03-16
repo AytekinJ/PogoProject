@@ -10,6 +10,8 @@ public class HealthScript : MonoBehaviour
     public static int HealthValue = 10;
     private static int StoredHealthValue = 10;
 
+    public static float XKnockBack;
+
     public static Transform CurrentCheckpoint;
     public static Transform CurrentPlatformCheckpoint;
     public static GameObject WorldSpawnPoint;
@@ -18,6 +20,7 @@ public class HealthScript : MonoBehaviour
     private void Start()
     {
         HealthValue = StoredHealthValue;
+        HasArmor = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         WorldSpawnPoint = GameObject.FindGameObjectWithTag("WorldSpawnPoint");
     }
@@ -121,6 +124,34 @@ public class HealthScript : MonoBehaviour
     public static void AddArmor()
     {
         HasArmor = true;
+    }
+
+    #endregion
+
+    #region KnockBack
+
+    public static void PlayerKnockBack(float x, float y, Transform position)
+    {
+        if (Player == null || Controller.rb == null) return;
+
+        float direction = position.transform.position.x - Player.transform.position.x;
+
+        if (direction > 0f)
+        {
+            XKnockBack = -x;
+        }
+        else
+        {
+            XKnockBack = x;
+        }
+
+        Controller.rb.AddForce(new Vector2(0, y), ForceMode2D.Impulse);
+    }
+
+
+    public static void ReduceXKnockBack()
+    {
+        XKnockBack = Mathf.LerpUnclamped(XKnockBack, 0, 10f * Time.deltaTime);
     }
 
     #endregion
