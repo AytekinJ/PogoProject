@@ -129,6 +129,7 @@ public class Controller : MonoBehaviour
 
     public void DoPOGO(float pogoMultiplier)
     {
+        CameraShake.StartShake(0.1f, 0.05f);
         if (rb.linearVelocity.y < 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoMultiplier);

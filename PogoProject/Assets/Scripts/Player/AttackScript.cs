@@ -59,9 +59,6 @@ public class AttackScript : MonoBehaviour
             if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
-
-                CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
-
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 normalGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
                 goldGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
@@ -88,6 +85,7 @@ public class AttackScript : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
+                CameraShake.StartShake(0.1f, 0.05f);
                 enemyHealth.GiveDamage(Damage);
             }
 
@@ -96,6 +94,7 @@ public class AttackScript : MonoBehaviour
                 OnAirJump();
                 if (hit.collider.gameObject.CompareTag("Tower"))
                 {
+                    CameraShake.StartShake(0.1f, 0.05f);
                     ScoreManager.main.towerPogo = true;
                     ScoreManager.main.ControlScores();
                 }
