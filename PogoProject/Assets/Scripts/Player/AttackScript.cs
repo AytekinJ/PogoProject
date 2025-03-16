@@ -81,8 +81,8 @@ public class AttackScript : MonoBehaviour
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                EnemyHealth = hit.gameObject.GetComponent<EnemyHealth>();
-                EnemyHealth.GiveDamage(Damage);
+                EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
+                enemyHealth.GiveDamage((int)Damage);
             }
 
             if (direction == Vector2.down && !playerController.CheckGrounded())

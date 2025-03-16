@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 344119101}
   - component: {fileID: 344119100}
   - component: {fileID: 344119108}
+  - component: {fileID: 344119109}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -669,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 1
   POGOMultiplier: 10
   normalGfx: {fileID: 236839356}
   goldGfx: {fileID: 1495157748}
@@ -806,6 +808,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a414599e6c7ba4eac4b51e01645292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &344119109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344119099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb5a7d53f14239a8956c1d2a0eb8d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldGfx: {fileID: 1495157748}
+  normalGfx: {fileID: 236839356}
+  goldAnimator: {fileID: 0}
+  normalAnimator: {fileID: 0}
+  attackAnimations: []
+  currentAnimationName: 
 --- !u!1 &351454455
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +890,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.375
+  orthographic size: 6.703125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

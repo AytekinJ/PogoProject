@@ -2,11 +2,11 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
-public class EnemyHealth : MonoBehavior
+public class EnemyHealth : MonoBehaviour
 {
-    [serializedfield] int Health = 1
+   [SerializeField] private int Health = 1;
     
-    public void GiveDamage(float damage)
+    public void GiveDamage(int damage)
     {
        checkHealth(damage);
        Health -= damage;
