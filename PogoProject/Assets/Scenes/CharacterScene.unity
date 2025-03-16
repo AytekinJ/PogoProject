@@ -822,9 +822,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldGfx: {fileID: 1495157748}
   normalGfx: {fileID: 236839356}
-  goldAnimator: {fileID: 0}
-  normalAnimator: {fileID: 0}
-  attackAnimations: []
+  goldAnimator: {fileID: 1495157750}
+  normalAnimator: {fileID: 236839358}
+  attackAnimations:
+  - P_AttackDown
+  - P_AttackHorizontal
+  - P_AttackUp
   currentAnimationName: 
 --- !u!1 &351454455
 GameObject:

@@ -10,15 +10,16 @@ public class AnimationController : MonoBehaviour
     [SerializeField] private Animator normalAnimator;
     [SerializeField] private List<string> attackAnimations;
     [SerializeField] private string currentAnimationName;
+    private bool isBlocking = false;
 
     void Update()
     {
         Animator activeAnimator = goldGfx.activeSelf ? goldAnimator : normalAnimator;
 
-        var clipInfo = activeAnimator.GetCurrentAnimatorClipInfo(0);
-        if (clipInfo.Length > 0)
+        var stateInfo = activeAnimator.GetCurrentAnimatorStateInfo(0);
+        if (!isBlocking)
         {
-            currentAnimationName = clipInfo[0].clip.name;
+            currentAnimationName = activeAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
             if (attackAnimations.Contains(currentAnimationName))
             {
@@ -29,8 +30,8 @@ public class AnimationController : MonoBehaviour
 
     bool isAnimationPlaying(Animator animator, string animationName)
     {
-        var clipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        return clipInfo.Length > 0 && clipInfo[0].clip.name == animationName;
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        return stateInfo.IsName(animationName);
     }
 
     bool isAnimationEnded(Animator animator, string animationName)
@@ -39,21 +40,26 @@ public class AnimationController : MonoBehaviour
             return false;
 
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        return stateInfo.normalizedTime >= 1 && !stateInfo.loop;
+        return stateInfo.normalizedTime >= 1.0f && !stateInfo.loop;
     }
 
     IEnumerator AnimationSwitchBlock(string animationName)
     {
+        Debug.Log(animationName+" is blocking");
         Animator activeAnimator = goldGfx.activeSelf ? goldAnimator : normalAnimator;
 
         Controller.canFlip = false;
         Controller.canChangeAnim = false;
-        while (!isAnimationEnded(activeAnimator, animationName))
+        isBlocking = true;
+
+        while (!isAnimationEnded(activeAnimator, animationName) && isAnimationPlaying(activeAnimator, animationName))
         {
             yield return null;
         }
+
+        isBlocking = false;
         Controller.canFlip = true;
         Controller.canChangeAnim = true;
-   
+        Debug.Log(animationName+" released");
     }
 }
