@@ -110,7 +110,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 46
-        y: 39
+        y: 38
         width: 36
         height: 34
       alignment: 0
@@ -132,7 +132,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 71
-        y: 60
+        y: 59
         width: 44
         height: 29
       alignment: 0
@@ -154,7 +154,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 81
-        y: 40
+        y: 39
         width: 31
         height: 29
       alignment: 0

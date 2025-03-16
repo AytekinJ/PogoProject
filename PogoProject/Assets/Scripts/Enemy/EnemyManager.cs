@@ -139,10 +139,12 @@ public class EnemyManager : MonoBehaviour
             if (direction)
             {
                 goomba.transform.position += new Vector3(goomba.goombaSpeed * Time.deltaTime, 0, 0);
+                goomba.GetComponent<SpriteRenderer>().flipX = true;
             }
             else
             {
                 goomba.transform.position -= new Vector3(goomba.goombaSpeed * Time.deltaTime, 0, 0);
+                goomba.GetComponent<SpriteRenderer>().flipX = false;
             }
             yield return null;
             Debug.Log("wtf nigga");
