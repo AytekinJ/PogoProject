@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 236839357}
   - component: {fileID: 236839359}
   - component: {fileID: 236839358}
+  - component: {fileID: 236839360}
   m_Layer: 7
   m_Name: GFX Normal
   m_TagString: Untagged
@@ -526,6 +527,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &236839360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236839356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528fa239435bf6ff6a9af5b793e00bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &243509036
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +646,6 @@ GameObject:
   - component: {fileID: 344119101}
   - component: {fileID: 344119100}
   - component: {fileID: 344119108}
-  - component: {fileID: 344119109}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -685,6 +697,8 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 768
+  normal: {fileID: 236839358}
+  gold: {fileID: 1495157750}
   CamShakeDuration: 0.1
   CamShakeMagnitude: 0.2
 --- !u!114 &344119102
@@ -810,27 +824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a414599e6c7ba4eac4b51e01645292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &344119109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344119099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb5a7d53f14239a8956c1d2a0eb8d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldGfx: {fileID: 1495157748}
-  normalGfx: {fileID: 236839356}
-  goldAnimator: {fileID: 1495157750}
-  normalAnimator: {fileID: 236839358}
-  attackAnimations:
-  - P_AttackDown
-  - P_AttackHorizontal
-  - P_AttackUp
-  currentAnimationName: 
 --- !u!1 &351454455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3526,6 +3519,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 940803794112665605, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2750193023802318205, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.107437
@@ -3566,9 +3563,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6144324325400308651, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
+      propertyPath: filePath
+      value: hasan.txt
+      objectReference: {fileID: 0}
     - target: {fileID: 7707282676390004595, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
       propertyPath: m_Name
       value: AddThisShitForMechanics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707282676390004595, guid: e486c3086afe7c13aaee58cfcf778f6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4266,6 +4271,7 @@ GameObject:
   - component: {fileID: 1495157749}
   - component: {fileID: 1495157751}
   - component: {fileID: 1495157750}
+  - component: {fileID: 1495157752}
   m_Layer: 7
   m_Name: GFX Gold
   m_TagString: Untagged
@@ -4365,6 +4371,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1495157752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495157748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528fa239435bf6ff6a9af5b793e00bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1533817757
 GameObject:
   m_ObjectHideFlags: 0

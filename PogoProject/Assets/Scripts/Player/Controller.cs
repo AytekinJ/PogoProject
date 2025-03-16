@@ -16,7 +16,6 @@ public class Controller : MonoBehaviour
 
     public float speed = 5f;
     public KeyCode JumpButton = KeyCode.Space;
-    public static bool canFlip = true;
     public static bool canChangeAnim = true;
 
     [SerializeField] Transform groundCheckPos;
@@ -162,9 +161,9 @@ public class Controller : MonoBehaviour
         {
             normalGfxAnimator.SetFloat("Horizontal", Mathf.Abs(inputX));
             normalGfxAnimator.SetFloat("Vertical", rb.linearVelocity.y);
+            normalGfxAnimator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
+            normalGfxAnimator.SetBool("isGrounded", CheckGrounded());
         }
-        normalGfxAnimator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
-        normalGfxAnimator.SetBool("isGrounded", CheckGrounded());
 
         if (Input.GetKeyDown(JumpButton))
         {
@@ -177,9 +176,9 @@ public class Controller : MonoBehaviour
         {
             goldGfxAnimator.SetFloat("Horizontal", Mathf.Abs(inputX));
             goldGfxAnimator.SetFloat("Vertical", rb.linearVelocity.y);
+            goldGfxAnimator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
+            goldGfxAnimator.SetBool("isGrounded", CheckGrounded());
         }
-        goldGfxAnimator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
-        goldGfxAnimator.SetBool("isGrounded", CheckGrounded());
 
         if (Input.GetKeyDown(JumpButton))
         {
@@ -191,7 +190,9 @@ public class Controller : MonoBehaviour
 
     void Flip()
     {
-        if (isFacingRight && inputX < 0f || !isFacingRight && inputX > 0f && canFlip)
+        if (!canChangeAnim)
+            return;
+        if (isFacingRight && inputX < 0f || !isFacingRight && inputX > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
