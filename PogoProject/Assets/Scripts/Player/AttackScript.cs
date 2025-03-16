@@ -28,6 +28,9 @@ public class AttackScript : MonoBehaviour
     Animator animator;
     private Vector2 attackDirection;
 
+    [SerializeField] float CamShakeDuration = 0.1f;
+    [SerializeField] float CamShakeMagnitude = 0.2f;
+
     void Start()
     {
         playerController = GetComponent<Controller>();
@@ -56,6 +59,9 @@ public class AttackScript : MonoBehaviour
             if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
+
+                CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
+
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 normalGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
                 goldGfx.GetComponent<Animator>().SetTrigger("AttackTrigger");
