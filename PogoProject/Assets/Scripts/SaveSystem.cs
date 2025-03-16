@@ -23,6 +23,21 @@ public class SaveSystem : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            GameData data = new GameData()
+            {
+                health = 100,
+                currentLevel = 0,
+                coins = 100
+            };
+            SaveGame(data);
+            LoadGame();
+        }
+    }
+
     public void SaveGame(GameData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();

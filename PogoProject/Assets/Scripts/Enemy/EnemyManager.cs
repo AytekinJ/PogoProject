@@ -100,9 +100,7 @@ public class EnemyManager : MonoBehaviour
     {
         while (activeEnemies.Contains(cannon))
         {
-            float radians = cannon.shootAngle * Mathf.Deg2Rad;
-            Vector2 direction = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)).normalized;
-            Vector2 target = (Vector2)cannon.transform.position + direction * cannon.shootRange;
+            Vector2 target = (Vector2)cannon.transform.localPosition + (Vector2)cannon.transform.up * cannon.shootRange;
             StartCoroutine(CannonBullet(Instantiate(cannon.bulletPrefab, cannon.transform.position, Quaternion.identity), target, cannon));
             yield return new WaitForSeconds(cannon.shootDelay);
         }
