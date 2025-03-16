@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
+    public float Damage = 1;
     public float POGOMultiplier = 10f;
 
     float Xinput, Yinput;
@@ -71,6 +72,12 @@ public class AttackScript : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.name);
+
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                EnemyHealth = hit.gameObject.GetComponent<EnemyHealth>();
+                EnemyHealth.GiveDamage(Damage);
+            }
 
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
