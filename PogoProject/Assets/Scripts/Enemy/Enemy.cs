@@ -68,10 +68,7 @@ public class Enemy : MonoBehaviour
         if (type == EnemyType.Cannon)
         {
             Gizmos.color = Color.red;
-
-            float angleInRadians = shootAngle * Mathf.Deg2Rad;
-            Vector2 direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
-            Vector2 endPoint = (Vector2)transform.position + direction * shootRange;
+            Vector2 endPoint = (Vector2)transform.localPosition + (Vector2)transform.up * shootRange;
 
             Gizmos.DrawLine(transform.position, endPoint);
 
