@@ -60,35 +60,22 @@ public class EnemyManager : MonoBehaviour
             {
                 eagle.locked = true;
                 targetPos = target.transform.position;
-                LineRenderer line = eagle.GetComponent<LineRenderer>();
-                if (line == null)
-                {
-                    line = eagle.gameObject.AddComponent<LineRenderer>();
-                    line.startWidth = 0.1f;
-                    line.endWidth = 0.1f;
-                    line.material = new Material(Shader.Find("Sprites/Default"));
-                    line.startColor = Color.red;
-                    line.endColor = Color.yellow;
-                }
-                line.positionCount = 2;
-                line.SetPosition(0, eagle.transform.position);
-                line.SetPosition(1, targetPos);
+                eagle.GetComponent<Animator>().SetBool("isAttacking", true);
                 yield return new WaitForSeconds(eagle.dashDelay);
-                yield return StartCoroutine(EagleDash(eagle, targetPos, line));
+                yield return StartCoroutine(EagleDash(eagle, targetPos));
+                eagle.GetComponent<Animator>().SetBool("isAttacking", false);
                 yield return new WaitForSeconds(eagle.afterDashDelay);
-                line.positionCount = 0;
             }
             yield return null;
         }
         yield return null;
     }
 
-    private IEnumerator EagleDash(Enemy eagle, Vector2 target, LineRenderer line)
+    private IEnumerator EagleDash(Enemy eagle, Vector2 target)
     {
         while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE)
         {
             eagle.transform.position = Vector2.MoveTowards(eagle.transform.position, target, eagle.dashSpeed * Time.deltaTime);
-            line.SetPosition(0, eagle.transform.position);
             yield return null;
         }
         eagle.locked = false;
@@ -138,6 +125,7 @@ public class EnemyManager : MonoBehaviour
             {
                 goomba.transform.position += new Vector3(goomba.goombaSpeed * Time.deltaTime, 0, 0);
                 goomba.GetComponent<SpriteRenderer>().flipX = true;
+                
             }
             else
             {
