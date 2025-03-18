@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     private const float MAX_TOLERANCE = 0.01f;
+    [SerializeField] LayerMask groundLayer;
     [SerializeField] Enemy[] enemiesInScene;
     [SerializeField] HashSet<Enemy> activeEnemies;
     private void Awake()
@@ -60,35 +61,31 @@ public class EnemyManager : MonoBehaviour
             {
                 eagle.locked = true;
                 targetPos = target.transform.position;
-                LineRenderer line = eagle.GetComponent<LineRenderer>();
-                if (line == null)
+
+
+                RaycastHit2D hit = Physics2D.Raycast(eagle.transform.position, (targetPos - eagle.transform.position).normalized, Vector3.Distance(eagle.transform.position, targetPos), groundLayer);
+
+                if (hit.collider != null)
                 {
-                    line = eagle.gameObject.AddComponent<LineRenderer>();
-                    line.startWidth = 0.1f;
-                    line.endWidth = 0.1f;
-                    line.material = new Material(Shader.Find("Sprites/Default"));
-                    line.startColor = Color.red;
-                    line.endColor = Color.yellow;
+                    Debug.Log("Eagle duvara çarpacak! Dash iptal edildi.");
+                    yield return new WaitForSeconds(eagle.afterDashDelay);
+                    continue;
                 }
-                line.positionCount = 2;
-                line.SetPosition(0, eagle.transform.position);
-                line.SetPosition(1, targetPos);
                 yield return new WaitForSeconds(eagle.dashDelay);
-                yield return StartCoroutine(EagleDash(eagle, targetPos, line));
+                yield return StartCoroutine(EagleDash(eagle, targetPos));
                 yield return new WaitForSeconds(eagle.afterDashDelay);
-                line.positionCount = 0;
             }
             yield return null;
         }
         yield return null;
     }
 
-    private IEnumerator EagleDash(Enemy eagle, Vector2 target, LineRenderer line)
+
+    private IEnumerator EagleDash(Enemy eagle, Vector2 target)
     {
         while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE)
         {
             eagle.transform.position = Vector2.MoveTowards(eagle.transform.position, target, eagle.dashSpeed * Time.deltaTime);
-            line.SetPosition(0, eagle.transform.position);
             yield return null;
         }
         eagle.locked = false;
@@ -145,7 +142,6 @@ public class EnemyManager : MonoBehaviour
                 goomba.GetComponent<SpriteRenderer>().flipX = false;
             }
             yield return null;
-            Debug.Log("wtf nigga");
         }
         goomba.collided = false;
     }
