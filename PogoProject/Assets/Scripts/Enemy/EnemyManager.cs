@@ -71,8 +71,10 @@ public class EnemyManager : MonoBehaviour
                     yield return new WaitForSeconds(eagle.afterDashDelay);
                     continue;
                 }
+                eagle.GetComponent<Animator>().SetBool("isAttacking",true);
                 yield return new WaitForSeconds(eagle.dashDelay);
                 yield return StartCoroutine(EagleDash(eagle, targetPos));
+                eagle.GetComponent<Animator>().SetBool("isAttacking",false);
                 yield return new WaitForSeconds(eagle.afterDashDelay);
             }
             yield return null;
