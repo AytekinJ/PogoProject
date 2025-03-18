@@ -33,14 +33,29 @@ public class Enemy : MonoBehaviour
     public LayerMask playerlayer;
     public LayerMask groundlayer;
     public int level, hp;
+    [SerializeField] private GameObject PlayerObject;
+    [SerializeField] private SpriteRenderer sr;
     void Awake()
     {
         enemydata.DefineSpecifies(type, hp, level, range);
+        //optimizasyon
+        PlayerObject = PlayerObject == null ? GameObject.FindGameObjectWithTag("Player") : PlayerObject;
+        sr = sr == null ? GetComponent<SpriteRenderer>() : sr;
     }
 
     void Update()
     {
-        
+            if(type == EnemyType.Eagle)
+            {
+                if (PlayerObject.transform.position.x < transform.position.x)
+                {
+                    sr.flipX = true;
+                }
+                else
+                {
+                    sr.flipX = false;
+                }
+            }
     }
 
     private void OnDrawGizmos()
