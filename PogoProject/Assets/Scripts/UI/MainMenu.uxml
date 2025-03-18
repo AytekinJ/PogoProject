@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/mainmenu.uss?fileID=7433441132597879392&amp;guid=b5b6e735a2c20172888e46377430be9a&amp;type=3#mainmenu" />
+    <engine:VisualElement style="flex-grow: 1; flex-direction: column; margin-top: 20px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+        <engine:Label text="HEADER" style="align-self: center; font-size: 94px; color: rgb(255, 255, 255); margin-top: 57px; margin-bottom: 150px;" />
+        <engine:Button text="Button" class="button" style="align-self: center; height: 120px; width: 500px; border-top-right-radius: 75px; border-bottom-left-radius: 75px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; margin-top: 20px;" />
+        <engine:Button text="Button" class="button" style="align-self: center; height: 120px; width: 500px; border-top-right-radius: 75px; border-bottom-left-radius: 75px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; margin-top: 20px;" />
+        <engine:Button text="Button" class="button" style="align-self: center; height: 120px; width: 500px; border-top-right-radius: 75px; border-bottom-left-radius: 75px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; margin-top: 20px;" />
+        <engine:Button text="Button" class="button" style="align-self: center; height: 120px; width: 500px; border-top-right-radius: 75px; border-bottom-left-radius: 75px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; margin-top: 20px;" />
+    </engine:VisualElement>
+</engine:UXML>
