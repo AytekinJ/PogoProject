@@ -83,37 +83,44 @@ public class AttackScript : MonoBehaviour
     void CastAttackBox(Vector2 direction)
     {
         Vector2 attackPosition = (Vector2)transform.position + direction * attackRange;
-        RaycastHit2D hit = Physics2D.BoxCast(attackPosition, boxSize, 0f, direction, 0f, attackMask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(attackPosition, boxSize, 0f, direction, 0f, attackMask);
 
-        if (hit.collider != null)
+        if (hits.Length > 0)
         {
-            Debug.Log(hit.collider.name);
-
-            if (hit.collider.gameObject.CompareTag("Enemy"))
+            foreach (var hit in hits)
             {
-                EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
-                CameraShake.StartShake(0.1f, 0.05f);
-                enemyHealth.GiveDamage(Damage);
-            }
+         
 
-            if (direction == Vector2.down && !playerController.CheckGrounded())
-            {
-                OnAirJump();
-                if (hit.collider.gameObject.CompareTag("Tower"))
+                if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
-                    CameraShake.StartShake(0.1f, 0.05f);
-                    ScoreManager.main.towerPogo = true;
-                    ScoreManager.main.ControlScores();
+                    EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
+                    if (enemyHealth != null)
+                    {
+                        CameraShake.StartShake(0.1f, 0.05f);
+                        enemyHealth.GiveDamage(Damage);
+                    }
+                }
+
+                if (direction == Vector2.down && !playerController.CheckGrounded())
+                {
+                    OnAirJump();
+                    if (hit.collider.gameObject.CompareTag("Tower"))
+                    {
+                        CameraShake.StartShake(0.1f, 0.05f);
+                        ScoreManager.main.towerPogo = true;
+                        ScoreManager.main.ControlScores();
+                    }
                 }
             }
         }
         else
         {
-            Debug.Log("YOOOK");
+     
         }
 
         DebugDrawBox(attackPosition, boxSize, Color.red, 0.5f);
     }
+
 
     void OnAirJump()
     {

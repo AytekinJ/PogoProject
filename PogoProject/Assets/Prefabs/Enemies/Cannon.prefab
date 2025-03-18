@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8219778953363905476}
   - component: {fileID: 7113484342888264187}
   - component: {fileID: 7584990014960928456}
+  - component: {fileID: 5009512171272712874}
   m_Layer: 9
   m_Name: Cannon
   m_TagString: Enemy
@@ -124,7 +125,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   level: 0
-  hp: 0
+  hp: 1
   PlayerObject: {fileID: 0}
   sr: {fileID: 0}
 --- !u!61 &7584990014960928456
@@ -173,3 +174,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.45445094, y: 0.5225712}
   m_EdgeRadius: 0
+--- !u!114 &5009512171272712874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778559892664157125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3302004557f5c5dc4963209a2b3a0c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
