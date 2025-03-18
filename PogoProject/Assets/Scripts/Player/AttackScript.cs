@@ -25,6 +25,7 @@ public class AttackScript : MonoBehaviour
     public LayerMask attackMask;
 
     private Controller playerController;
+    HitParticleScript particleScript;
     Animator animator;
     private Vector2 attackDirection;
     [SerializeField] private Animator normal;
@@ -37,7 +38,7 @@ public class AttackScript : MonoBehaviour
     {
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
-
+        particleScript = GetComponent<HitParticleScript>();
     }
 
     void Update()
@@ -62,6 +63,7 @@ public class AttackScript : MonoBehaviour
             if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
+                particleScript.CastParticleRay(attackRange + boxSize.x/2, attackDirection);
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 
                 Controller.canChangeAnim = false;
