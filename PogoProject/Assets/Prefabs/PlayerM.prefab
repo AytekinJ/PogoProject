@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6207556270744994296}
   - component: {fileID: 5445450680041642344}
   - component: {fileID: 3082715184767687488}
+  - component: {fileID: 8813997501620555780}
   m_Layer: 7
   m_Name: GFX Gold
   m_TagString: Untagged
@@ -110,6 +111,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8813997501620555780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78928594970178162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528fa239435bf6ff6a9af5b793e00bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050014568179394337
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +200,7 @@ GameObject:
   - component: {fileID: 2540748845447814682}
   - component: {fileID: 4890451902156436231}
   - component: {fileID: 1491743274088363608}
+  - component: {fileID: 2463873496423336256}
   m_Layer: 7
   m_Name: PlayerM
   m_TagString: Player
@@ -317,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 1
   POGOMultiplier: 10
   normalGfx: {fileID: 4233213808909911435}
   goldGfx: {fileID: 78928594970178162}
@@ -331,6 +346,10 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 768
+  normal: {fileID: 6229085465704706925}
+  gold: {fileID: 3082715184767687488}
+  CamShakeDuration: 0.05
+  CamShakeMagnitude: 0.1
 --- !u!114 &4890451902156436231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +379,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a414599e6c7ba4eac4b51e01645292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2463873496423336256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430814374371888949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad17f413059bed4eac4bb15d8696b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPrefab: {fileID: 3121763401200467556, guid: a305551ce4697c144b160f1460dab62a, type: 3}
+  layerXmaxPro:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &4233213808909911435
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +406,7 @@ GameObject:
   - component: {fileID: 8119429966055260054}
   - component: {fileID: 6354704834457289264}
   - component: {fileID: 6229085465704706925}
+  - component: {fileID: 1600858888150095834}
   m_Layer: 7
   m_Name: GFX Normal
   m_TagString: Untagged
@@ -470,3 +506,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1600858888150095834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233213808909911435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528fa239435bf6ff6a9af5b793e00bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
