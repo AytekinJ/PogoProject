@@ -90,9 +90,11 @@ public class PlatformManager : MonoBehaviour
         {
             if (platform.isInteracted)
             {
+                platform.gameObject.GetComponent<Animator>().SetBool("isBreaking", true);
                 yield return new WaitForSeconds(platform.duration);
                 platform.gameObject.SetActive(false);
                 yield return new WaitForSeconds(platform.delay);
+                platform.gameObject.GetComponent<Animator>().SetBool("isBreaking", false);
                 platform.gameObject.SetActive(true);
             }
             else

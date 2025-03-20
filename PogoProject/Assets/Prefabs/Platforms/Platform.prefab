@@ -155,7 +155,7 @@ MonoBehaviour:
   endPosition: {fileID: 0}
   moveLength: 5.86
   breakablePlatform: 1
-  duration: 1
+  duration: 0.7
   delay: 3
   isInteracted: 0
   interactingObject: {fileID: 0}
