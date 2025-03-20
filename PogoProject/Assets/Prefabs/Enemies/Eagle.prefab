@@ -118,10 +118,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locked: 0
   move: 0
-  dashDelay: 0.6
-  afterDashDelay: 5
-  dashSpeed: 15
-  range: 7.29
+  dashDelay: 1
+  afterDashDelay: 3
+  dashSpeed: 10
+  range: 5
   active: 0
   shootAngle: 0
   shootDelay: 0
