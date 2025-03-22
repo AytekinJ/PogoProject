@@ -32,13 +32,13 @@ public class Enemy : MonoBehaviour
     public EnemyType type;
     public LayerMask playerlayer;
     public LayerMask groundlayer;
-    public int level, hp;
     [SerializeField] private GameObject PlayerObject;
     [SerializeField] private SpriteRenderer sr;
     void Awake()
     {
-        enemydata.DefineSpecifies(type, hp, level, range);
+        enemydata.DefineSpecifies(type, range);
         //optimizasyon
+        //aferin böyle böyle öğrencen (arda)
         PlayerObject = PlayerObject == null ? GameObject.FindGameObjectWithTag("Player") : PlayerObject;
         sr = sr == null ? GetComponent<SpriteRenderer>() : sr;
     }
@@ -98,6 +98,11 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         collided = true;
+        
+    }
+
+    private void OnDestroy()
+    {
         
     }
 }

@@ -1,0 +1,16 @@
+.button {
+    border-top-right-radius: 75px;
+    border-bottom-left-radius: 75px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgba(14, 0, 0, 0);
+    border-right-color: rgba(14, 0, 0, 0);
+    border-top-color: rgba(14, 0, 0, 0);
+    border-bottom-color: rgba(14, 0, 0, 0);
+    margin-top: 20px;
+    font-size: 40px;
+}

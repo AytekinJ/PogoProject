@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     {
        if (Health <= 0 || Health - damageToAppend <= 0)
        {
+          EnemyManager.deactivateEnemy(GetComponent<Enemy>());
           Destroy(gameObject);
        }
        else
