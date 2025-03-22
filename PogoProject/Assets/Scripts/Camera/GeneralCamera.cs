@@ -54,6 +54,6 @@ public class GeneralCamera : MonoBehaviour
     void Lerpcam()
     {
         Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, smoothValue * Time.deltatime);
+        transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, smoothValue * Time.deltaTime);
     }
 }

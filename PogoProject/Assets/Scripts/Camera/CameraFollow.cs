@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     //-3.5 normal, -0.65 up
     private void Update() {
         Vector3 movePosition = new Vector3(target.position.x, target.position.y) + offset;
-		transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, smoothValue * Time.deltatime);
+		transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, smoothValue * Time.deltaTime);
         
         
     }
