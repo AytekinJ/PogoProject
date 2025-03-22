@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264827a4ee36a0e4d9de7ff31ac287c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locked: 0
+  locked: 1
   move: 0
   dashDelay: 1
   afterDashDelay: 3
