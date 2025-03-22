@@ -174,8 +174,8 @@ public class AttackScript : MonoBehaviour
 
     void GetInputs()
     {
-        Xinput = Input.GetAxisRaw("Horizontal");
-        Yinput = Input.GetAxisRaw("Vertical");
+        Xinput = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
+        Yinput = Mathf.Floor(Input.GetAxisRaw("Vertical"));
     }
 
     Vector3 GetAttackDirection()

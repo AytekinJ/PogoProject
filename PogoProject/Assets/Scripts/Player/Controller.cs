@@ -45,6 +45,9 @@ public class Controller : MonoBehaviour
     //[SerializeField] private float sprintMultiplier = 1.5f;
     //private bool isSprinting;
     [HideInInspector] public bool isFacingRight = true;
+    AttackScript attackScript;
+
+    bool HasController;
 
     private void Awake()
     {
@@ -54,7 +57,45 @@ public class Controller : MonoBehaviour
         goldGfx.SetActive(false);
         goldGfxAnimator = goldGfx.GetComponent<Animator>();
         normalGfxAnimator = normalGfx.GetComponent<Animator>();
+        attackScript = GetComponent<AttackScript>();
     }
+
+    #region ControllerCheck
+    void Start()
+    {
+        CheckController();
+    }
+
+    void CheckController()
+    {
+        string[] controllers = Input.GetJoystickNames();
+
+        if (controllers.Length > 0)
+        {
+            HasController = true;
+            foreach (string controller in controllers)
+            {
+                if (!string.IsNullOrEmpty(controller))
+                {
+                    Debug.Log("Controller connected: " + controller);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No controller detected.");
+        }
+
+        if (controllers != null)
+        {
+            JumpButton = KeyCode.JoystickButton14;
+            attackScript.AttackKey = KeyCode.JoystickButton11;
+        }
+    }
+    #endregion
+
+
+
 
     void Update()
     {
@@ -83,7 +124,9 @@ public class Controller : MonoBehaviour
 
     void HandleInputs()
     {
-        inputX = Input.GetAxisRaw("Horizontal");
+        
+        inputX = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
+        
 
         if (Input.GetKeyDown(JumpButton))
         {

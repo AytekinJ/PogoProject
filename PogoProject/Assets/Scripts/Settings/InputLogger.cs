@@ -23,12 +23,12 @@ public class InputLogger : MonoBehaviour
             "JoystickButton12", "JoystickButton13", "JoystickButton14", "JoystickButton15"
         };
 
-        foreach (string button in buttonNames)
-        {
-            if (Input.GetButtonDown(button))
-            {
-                Debug.Log("Controller Button Pressed: " + button);
-            }
-        }
+        //foreach (string button in buttonNames)
+        //{
+        //    if (Input.GetButtonDown(button))
+        //    {
+        //        Debug.Log("Controller Button Pressed: " + button);
+        //    }
+        //}
     }
 }
