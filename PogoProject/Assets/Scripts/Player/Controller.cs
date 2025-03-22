@@ -72,11 +72,11 @@ public class Controller : MonoBehaviour
 
         if (controllers.Length > 0)
         {
-            HasController = true;
             foreach (string controller in controllers)
             {
                 if (!string.IsNullOrEmpty(controller))
                 {
+                    HasController = true;
                     Debug.Log("Controller connected: " + controller);
                 }
             }
@@ -86,11 +86,12 @@ public class Controller : MonoBehaviour
             Debug.Log("No controller detected.");
         }
 
-        if (controllers != null)
+        if (HasController)
         {
             JumpButton = KeyCode.JoystickButton14;
             attackScript.AttackKey = KeyCode.JoystickButton11;
         }
+        
     }
     #endregion
 
