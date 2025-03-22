@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -7,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     private const float MAX_TOLERANCE = 0.01f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Enemy[] enemiesInScene;
-    [SerializeField] HashSet<Enemy> activeEnemies;
+    [SerializeField] static HashSet<Enemy> activeEnemies;
     private void Awake()
     {
         activeEnemies = new HashSet<Enemy>();
@@ -28,19 +30,19 @@ public class EnemyManager : MonoBehaviour
             case EnemyType.Eagle:
                 activeEnemies.Add(obj);
                 StartCoroutine(Eagle(obj));
-                Debug.Log("eagle");
+         
                 break;
             case EnemyType.Cannon:
                 activeEnemies.Add(obj);
                 StartCoroutine(Cannon(obj));
-                Debug.Log("cannon");
+           
                 break;
             case EnemyType.Goomba:
                 activeEnemies.Add(obj);
                 StartCoroutine(GoombaCR(obj)); 
-                Debug.Log("goomba");
+           
                 break;
-            default: Debug.LogError("Invalid type of enemy : "+obj.enemydata.enemyType);
+            default: 
                 break;
         }
     }
@@ -67,7 +69,6 @@ public class EnemyManager : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    Debug.Log("Eagle duvara çarpacak! Dash iptal edildi.");
                     yield return new WaitForSeconds(eagle.afterDashDelay);
                     continue;
                 }
@@ -121,7 +122,7 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator GoombaCR(Enemy goomba)
     {
         bool direction = false; 
-        Debug.Log("wtf");
+
         while (activeEnemies.Contains(goomba))
         {
             yield return StartCoroutine(GoombaMove(goomba, direction));
@@ -131,7 +132,7 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator GoombaMove(Enemy goomba, bool direction)
     {
-        while (!goomba.collided)
+        while (!goomba.collided && activeEnemies.Contains(goomba))
         {
             if (direction)
             {
@@ -148,4 +149,11 @@ public class EnemyManager : MonoBehaviour
         goomba.collided = false;
     }
     #endregion
+
+    public static void deactivateEnemy(Enemy enemy)
+    {
+        activeEnemies.Remove(enemy);
+    }
+
+    
 }

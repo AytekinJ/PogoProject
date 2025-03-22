@@ -32,7 +32,7 @@ public class AttackScript : MonoBehaviour
     [SerializeField] private Animator gold;
 
     [SerializeField] float CamShakeDuration = 0.1f;
-    [SerializeField] float CamShakeMagnitude = 0.2f;
+    [SerializeField] float CamShakeMagnitude = 0.05f;
 
     void Start()
     {
@@ -101,7 +101,7 @@ public class AttackScript : MonoBehaviour
                 OnAirJump();
                 if (hit.collider.gameObject.CompareTag("Tower"))
                 {
-                    CameraShake.StartShake(0.1f, 0.05f);
+                    CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
                     ScoreManager.main.towerPogo = true;
                     ScoreManager.main.ControlScores();
                 }
