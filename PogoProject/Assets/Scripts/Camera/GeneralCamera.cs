@@ -19,7 +19,7 @@ public class GeneralCamera : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Main Camera not found!");
+            Debug.LogError("Main Camera not found");
         }
     }
 
@@ -28,7 +28,6 @@ public class GeneralCamera : MonoBehaviour
     {
         if (transform == null)
         {
-            Debug.LogWarning("Attempted to lock camera to a null transform!");
             return;
         }
         //cameraFollowScript.enabled = false;

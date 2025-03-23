@@ -5,7 +5,8 @@ using System.Collections;
 public class Controller : MonoBehaviour
 {
     public static Rigidbody2D rb;
-    private float inputX;
+    public float inputX;
+    public float inputY;
 
     #region silersiniz
     public GameObject normalGfx;
@@ -16,6 +17,10 @@ public class Controller : MonoBehaviour
 
     public float speed = 5f;
     public KeyCode JumpButton = KeyCode.Space;
+    public KeyCode DpadUp = KeyCode.JoystickButton4;
+    public KeyCode DpadDown = KeyCode.JoystickButton6;
+    public KeyCode DpadLeft = KeyCode.JoystickButton7;
+    public KeyCode DpadRight = KeyCode.JoystickButton5;
     public static bool canChangeAnim = true;
 
     [SerializeField] Transform groundCheckPos;
@@ -58,6 +63,7 @@ public class Controller : MonoBehaviour
         goldGfxAnimator = goldGfx.GetComponent<Animator>();
         normalGfxAnimator = normalGfx.GetComponent<Animator>();
         attackScript = GetComponent<AttackScript>();
+        InvokeRepeating(nameof(CheckController), 1, 1);
     }
 
     #region ControllerCheck
@@ -69,30 +75,35 @@ public class Controller : MonoBehaviour
     void CheckController()
     {
         string[] controllers = Input.GetJoystickNames();
+        bool controllerConnected = false;
 
-        if (controllers.Length > 0)
+        foreach (string controller in controllers)
         {
-            foreach (string controller in controllers)
+            if (!string.IsNullOrEmpty(controller))
             {
-                if (!string.IsNullOrEmpty(controller))
-                {
-                    HasController = true;
-                    Debug.Log("Controller connected: " + controller);
-                }
+                controllerConnected = true;
+                break;
             }
         }
-        else
-        {
-            Debug.Log("No controller detected.");
-        }
 
-        if (HasController)
+        if (controllerConnected != HasController)
         {
-            JumpButton = KeyCode.JoystickButton14;
-            attackScript.AttackKey = KeyCode.JoystickButton11;
+            HasController = controllerConnected;
+            if (HasController)
+            {
+                JumpButton = KeyCode.JoystickButton14;
+                attackScript.AttackKey = KeyCode.JoystickButton11;
+                Debug.Log("Controller connected.");
+            }
+            else
+            {
+                JumpButton = KeyCode.Space;
+                attackScript.AttackKey = KeyCode.X;
+                Debug.Log("No controller detected.");
+            }
         }
-        
     }
+
     #endregion
 
 
@@ -125,9 +136,45 @@ public class Controller : MonoBehaviour
 
     void HandleInputs()
     {
-        
-        inputX = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
-        
+        inputX = 0f;
+        inputY = 0f;
+
+        if (HasController)
+        {
+            bool dpadUsed = false;
+            if (Input.GetKey(DpadUp))
+            {
+                inputY = 1f;
+                dpadUsed = true;
+            }
+            else if (Input.GetKey(DpadDown))
+            {
+                inputY = -1f;
+                dpadUsed = true;
+            }
+
+            if (Input.GetKey(DpadLeft))
+            {
+                inputX = -1f;
+                dpadUsed = true;
+            }
+            else if (Input.GetKey(DpadRight))
+            {
+                inputX = 1f;
+                dpadUsed = true;
+            }
+
+            if (!dpadUsed)
+            {
+                inputX = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
+                inputY = Mathf.Floor(Input.GetAxisRaw("Vertical"));
+            }
+        }
+        else
+        {
+            inputX = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
+            inputY = Mathf.Floor(Input.GetAxisRaw("Vertical"));
+        }
 
         if (Input.GetKeyDown(JumpButton))
         {
@@ -138,6 +185,7 @@ public class Controller : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
     }
+
 
     void Move()
     {
