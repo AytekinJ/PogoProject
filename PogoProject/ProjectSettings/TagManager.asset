@@ -9,6 +9,7 @@ TagManager:
   - WorldSpawnPoint
   - Tower
   - TimerUI
+  - FadePanel
   layers:
   - Default
   - TransparentFX
