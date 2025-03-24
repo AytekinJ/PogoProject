@@ -26,7 +26,7 @@ public class DamageScript : MonoBehaviour
         else if (!IncreaseHealth)
         {
             HealthScript.DecreaseHealth(PointValue, gameObject.tag);
-            Debug.Log(gameObject.tag);
+            //Debug.Log(gameObject.tag);
         }
     }
 }

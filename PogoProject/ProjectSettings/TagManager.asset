@@ -10,6 +10,7 @@ TagManager:
   - Tower
   - TimerUI
   - FadePanel
+  - DamagePanel
   layers:
   - Default
   - TransparentFX
