@@ -68,7 +68,7 @@ public class HealthScript : MonoBehaviour
     public static void DecreaseHealth(int HealthInt, string GameobjectTag)
     {
         CameraShake.StartShake(0.1f, 0.05f);
-        //cameraFadeScript.StartDamageFlash(0.1f);
+        cameraFadeScript.StartDamageFlash(0.1f);
         if (HasArmor && GameobjectTag == "Thrones" && CurrentPlatformCheckpoint != null)
         {
             Debug.Log("1");
