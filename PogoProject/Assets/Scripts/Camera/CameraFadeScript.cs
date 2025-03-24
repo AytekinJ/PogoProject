@@ -62,13 +62,14 @@ public class CameraFadeScript : MonoBehaviour
 
         if (unfadeAfter)
         {
+            cameraFollowScript.enabled = true;
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(UnfadePlayer(duration * 2));
             StartCoroutine(FadeCoroutine(duration * 2, false, false));
         }
         else
         {
-            cameraFollowScript.enabled = true;
+            //cameraFollowScript.enabled = true;
         }
     }
 
