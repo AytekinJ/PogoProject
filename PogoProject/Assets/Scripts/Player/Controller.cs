@@ -91,8 +91,8 @@ public class Controller : MonoBehaviour
             HasController = controllerConnected;
             if (HasController)
             {
-                JumpButton = KeyCode.JoystickButton14;
-                attackScript.AttackKey = KeyCode.JoystickButton11;
+                JumpButton = KeyCode.JoystickButton0;
+                attackScript.AttackKey = KeyCode.JoystickButton2;
                 Debug.Log("Controller connected.");
             }
             else
