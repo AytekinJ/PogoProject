@@ -101,9 +101,14 @@ public class Enemy : MonoBehaviour
         
     }
 
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        collided = false;
+    }
+
     private void OnDestroy()
     {
-        
+        EnemyManager.deactivateEnemy(this);
     }
 }
 
