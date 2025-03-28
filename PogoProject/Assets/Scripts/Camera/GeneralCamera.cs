@@ -23,41 +23,56 @@ public class GeneralCamera : MonoBehaviour
         }
     }
 
+
     public static void LockToTransform(Transform transform)
     {
         if (transform == null)
         {
             return;
         }
+        //cameraFollowScript.enabled = false;
         TransformToLock = transform;
         IsLocked = true;
     }
 
+
     public static void UnlockCamera()
     {
+        //cameraFollowScript.enabled = true;
         IsLocked = false;
     }
 
+
     void Update()
     {
-        if (!IsLocked || TransformToLock == null || cameraFollowScript == null) return;
+        if (!IsLocked) return;
         Lerpcam();
     }
 
+
     void Lerpcam()
     {
+<<<<<<< Updated upstream
+        Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
+        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+=======
         Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
         Vector2 playerPos = new Vector2(cameraFollowScript.Target.position.x, cameraFollowScript.Target.position.y);
+        float distance = Vector2.Distance(playerPos, lockPos);
 
-        if (Vector2.Distance(lockPos, playerPos) > 3f)
-        {
+        float Magnitude = Mathf.InverseLerp(0f, TransformToLock.GetComponent<CamPoint>().Distance, distance);
+        Debug.Log(Magnitude);
+
+        //if (Vector2.Distance(lockPos, playerPos) > 3f)
+        //{
             Vector2 direction = (lockPos - playerPos).normalized;
-            Vector3 movePosition = new Vector3(TransformToLock.position.x + (direction.x * 3), TransformToLock.position.y + (direction.y * 3), offset.z);
+            Vector3 movePosition = new Vector3(TransformToLock.position.x + (direction.x * 2) * Magnitude, TransformToLock.position.y + (direction.y * 2) * Magnitude, offset.z);
             transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
-            return;
-        }
+        //    return;
+        //}
 
-        Vector3 finalPosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        transform.position = Vector3.Lerp(transform.position, finalPosition, smoothValue * Time.deltaTime);
+        //Vector3 finalPosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
+        //transform.position = Vector3.Lerp(transform.position, finalPosition, smoothValue * Time.deltaTime);
+>>>>>>> Stashed changes
     }
 }

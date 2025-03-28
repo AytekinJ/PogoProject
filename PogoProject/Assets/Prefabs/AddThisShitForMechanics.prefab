@@ -66,6 +66,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26244bfaf79e09946a6162b28be9de32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   enemiesInScene: []
 --- !u!114 &940803794112665605
 MonoBehaviour:
@@ -133,5 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac9a55d925b8c468dee887a5816138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xorKey: 0
   filePath: 

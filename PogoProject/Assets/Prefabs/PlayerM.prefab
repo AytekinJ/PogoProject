@@ -312,10 +312,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7bc3e17b2c0a44b8a24bb8c184a1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputX: 0
+  inputY: 0
   normalGfx: {fileID: 4233213808909911435}
   goldGfx: {fileID: 78928594970178162}
   speed: 5
   JumpButton: 32
+  DpadUp: 334
+  DpadDown: 336
+  DpadLeft: 337
+  DpadRight: 335
   groundCheckPos: {fileID: 7055823131214300178}
   groundCheckRadius: 0.125
   groundCheckLayer:
@@ -325,7 +331,7 @@ MonoBehaviour:
   lowJumpMultiplier: 3
   fallMultiplier: 2.5
   jumpBufferTime: 0.1
-  coyoteTime: 0.18
+  coyoteTime: 0.1
   hasJumpedDuringCoyote: 0
   isFacingRight: 1
 --- !u!114 &2540748845447814682
