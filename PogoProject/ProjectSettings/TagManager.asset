@@ -11,6 +11,7 @@ TagManager:
   - TimerUI
   - FadePanel
   - DamagePanel
+  - Door
   layers:
   - Default
   - TransparentFX

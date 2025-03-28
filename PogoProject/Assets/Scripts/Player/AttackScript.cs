@@ -64,7 +64,6 @@ public class AttackScript : MonoBehaviour
             {
                 CastAttackBox(attackDirection);
                 particleScript.CastParticleRay(attackRange + boxSize.x/2, attackDirection);
-                //animasyonlar için gerekliydi, yazdım (ayt)
                 
                 Controller.canChangeAnim = false;
                 normal.SetTrigger("AttackTrigger");
@@ -94,6 +93,14 @@ public class AttackScript : MonoBehaviour
                 EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
                 CameraShake.StartShake(0.1f, 0.05f);
                 enemyHealth.GiveDamage(Damage);
+            }
+
+            //Kapının kırılabilmesi için yazdım (ayt)
+            if(hit.collider.gameObject.CompareTag("Door"))
+            {
+                DoorScript doorScript = hit.collider.gameObject.GetComponent<DoorScript>();
+                CameraShake.StartShake(0.1f, 0.05f);
+                doorScript.DestroyDoor();
             }
 
             if (direction == Vector2.down && !playerController.CheckGrounded())
