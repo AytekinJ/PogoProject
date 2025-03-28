@@ -23,36 +23,41 @@ public class GeneralCamera : MonoBehaviour
         }
     }
 
-
     public static void LockToTransform(Transform transform)
     {
         if (transform == null)
         {
             return;
         }
-        //cameraFollowScript.enabled = false;
         TransformToLock = transform;
         IsLocked = true;
     }
 
-
     public static void UnlockCamera()
     {
-        //cameraFollowScript.enabled = true;
         IsLocked = false;
     }
 
-
     void Update()
     {
-        if (!IsLocked) return;
+        if (!IsLocked || TransformToLock == null || cameraFollowScript == null) return;
         Lerpcam();
     }
 
-
     void Lerpcam()
     {
-        Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+        Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
+        Vector2 playerPos = new Vector2(cameraFollowScript.player.transform.position.x, cameraFollowScript.player.transform.position.y);
+
+        if (Vector2.Distance(lockPos, playerPos) > 3f)
+        {
+            Vector2 direction = (lockPos - playerPos).normalized;
+            Vector3 movePosition = new Vector3(TransformToLock.position.x + (direction.x * 3), TransformToLock.position.y + (direction.y * 3), offset.z);
+            transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+            return;
+        }
+
+        Vector3 finalPosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
+        transform.position = Vector3.Lerp(transform.position, finalPosition, smoothValue * Time.deltaTime);
     }
 }
