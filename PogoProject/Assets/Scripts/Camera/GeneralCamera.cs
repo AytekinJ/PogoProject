@@ -47,7 +47,7 @@ public class GeneralCamera : MonoBehaviour
     void Lerpcam()
     {
         Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
-        Vector2 playerPos = new Vector2(cameraFollowScript.player.transform.position.x, cameraFollowScript.player.transform.position.y);
+        Vector2 playerPos = new Vector2(cameraFollowScript.Target.transform.position.x, cameraFollowScript.player.transform.position.y);
 
         if (Vector2.Distance(lockPos, playerPos) > 3f)
         {
