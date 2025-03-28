@@ -27744,7 +27744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbbb2c494e737049bde901bc7da0488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1639144805}
+  Target: {fileID: 1639144814}
   offset: {x: 0, y: 1, z: -10}
   smoothValue: 0.2
 --- !u!1 &1113102736
@@ -30439,6 +30439,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3430814374371888949, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
   m_PrefabInstance: {fileID: 1639144803}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!4 &1639144805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6489152749346875020, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
@@ -30463,6 +30464,9 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1673441624
+=======
+--- !u!114 &1639144806
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30474,6 +30478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f98e41e6004bdf4cb54f3a8954d0265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   UIPrefab: {fileID: 583258352732169087, guid: 04ffe773f933908469bb73256c33f445, type: 3}
   TranformPos: {fileID: 164504548}
 --- !u!61 &1673441625
@@ -30538,6 +30543,13 @@ Transform:
   - {fileID: 164504548}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+--- !u!4 &1639144814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 539143649889575921, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
+  m_PrefabInstance: {fileID: 1639144803}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1001 &1702140768
 PrefabInstance:
   m_ObjectHideFlags: 0
