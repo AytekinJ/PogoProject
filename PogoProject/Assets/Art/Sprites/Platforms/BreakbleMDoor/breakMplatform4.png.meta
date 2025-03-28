@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 847bebce0c9e7f44a9efb39f299b0587
+guid: e47de5a12c69c5c41b379d855e6bd27f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1019003738132808239
-    second: mavikarakter8_0
+      213: 3024563369265644028
+    second: breakMplatform4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mavikarakter8_0
+      name: breakMplatform4_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 38
-        width: 56
-        height: 27
+        x: 0
+        y: 15
+        width: 64
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f22833c308a342e00800000000000000
-      internalID: 1019003738132808239
+      spriteID: cf1ccb90c5869f920800000000000000
+      internalID: 3024563369265644028
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mavikarakter8_0: 1019003738132808239
+      breakMplatform4_0: 3024563369265644028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

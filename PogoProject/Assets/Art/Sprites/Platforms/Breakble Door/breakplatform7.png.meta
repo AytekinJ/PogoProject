@@ -26,6 +26,12 @@ TextureImporter:
   - first:
       213: -8385827137910726832
     second: breakplatform7_7
+  - first:
+      213: 8437003757133490950
+    second: breakplatform7_8
+  - first:
+      213: -4674574666004076865
+    second: breakplatform7_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -191,9 +197,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 41
-        y: 13
-        width: 23
-        height: 15
+        y: 1
+        width: 36
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +218,10 @@ TextureImporter:
       name: breakplatform7_4
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
-        width: 14
-        height: 9
+        x: 73
+        y: 16
+        width: 19
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +240,10 @@ TextureImporter:
       name: breakplatform7_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 2
-        width: 24
-        height: 14
+        x: 2
+        y: 1
+        width: 14
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +262,10 @@ TextureImporter:
       name: breakplatform7_6
       rect:
         serializedVersion: 2
-        x: 34
-        y: 1
-        width: 10
-        height: 9
+        x: 20
+        y: 2
+        width: 24
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +284,10 @@ TextureImporter:
       name: breakplatform7_7
       rect:
         serializedVersion: 2
-        x: 45
+        x: 34
         y: 1
-        width: 17
-        height: 13
+        width: 10
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,6 +298,50 @@ TextureImporter:
       bones: []
       spriteID: 05f1009e5ae8f9b80800000000000000
       internalID: -8385827137910726832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakplatform7_8
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60be3984732461570800000000000000
+      internalID: 8437003757133490950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakplatform7_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 2
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb669c4bb13902fb0800000000000000
+      internalID: -4674574666004076865
       vertices: []
       indices: 
       edges: []
@@ -318,6 +368,8 @@ TextureImporter:
       breakplatform7_5: -9156199498721808631
       breakplatform7_6: 8382629584508972312
       breakplatform7_7: -8385827137910726832
+      breakplatform7_8: 8437003757133490950
+      breakplatform7_9: -4674574666004076865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

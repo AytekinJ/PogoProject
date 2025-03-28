@@ -6,6 +6,6 @@ public class DoorScript : MonoBehaviour
     {
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Animator>().SetTrigger("Hit");
-        Destroy(gameObject, 0.9f);
+        Destroy(gameObject, 0.7f);
     }
 }

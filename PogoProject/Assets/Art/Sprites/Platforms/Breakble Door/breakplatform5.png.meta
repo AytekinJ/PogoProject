@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: -3356663466236282063
     second: breakplatform5_3
+  - first:
+      213: -4669657863729106814
+    second: breakplatform5_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -158,8 +161,8 @@ TextureImporter:
         serializedVersion: 2
         x: 40
         y: 16
-        width: 24
-        height: 17
+        width: 52
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,6 +199,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: breakplatform5_4
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 9
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28031d1f9ea023fb0800000000000000
+      internalID: -4669657863729106814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -214,6 +239,7 @@ TextureImporter:
       breakplatform5_1: 5694694477227386206
       breakplatform5_2: 1987762372611275622
       breakplatform5_3: -3356663466236282063
+      breakplatform5_4: -4669657863729106814
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

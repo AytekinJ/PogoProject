@@ -17,6 +17,15 @@ TextureImporter:
   - first:
       213: 6461186480900102867
     second: breakplatform9_4
+  - first:
+      213: 1573560772087357699
+    second: breakplatform9_5
+  - first:
+      213: 5528940957779008341
+    second: breakplatform9_6
+  - first:
+      213: 1651195418640142506
+    second: breakplatform9_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -205,7 +214,7 @@ TextureImporter:
         serializedVersion: 2
         x: 56
         y: 4
-        width: 8
+        width: 6
         height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -217,6 +226,72 @@ TextureImporter:
       bones: []
       spriteID: 3da5b9d1fdebaa950800000000000000
       internalID: 6461186480900102867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakplatform9_5
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 0
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 301a1c46f2966d510800000000000000
+      internalID: 1573560772087357699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakplatform9_6
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b968ce18ebabc40800000000000000
+      internalID: 5528940957779008341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakplatform9_7
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa05cce1c793ae610800000000000000
+      internalID: 1651195418640142506
       vertices: []
       indices: 
       edges: []
@@ -240,6 +315,9 @@ TextureImporter:
       breakplatform9_2: 1564767074886211927
       breakplatform9_3: -4529691507580515143
       breakplatform9_4: 6461186480900102867
+      breakplatform9_5: 1573560772087357699
+      breakplatform9_6: 5528940957779008341
+      breakplatform9_7: 1651195418640142506
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

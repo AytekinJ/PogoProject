@@ -323,7 +323,7 @@ MonoBehaviour:
   DpadLeft: 337
   DpadRight: 335
   groundCheckPos: {fileID: 7055823131214300178}
-  groundCheckRadius: 0.125
+  groundCheckRadius: 0.167
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 64

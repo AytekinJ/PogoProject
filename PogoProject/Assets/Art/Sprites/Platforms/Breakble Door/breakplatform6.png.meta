@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: 5577676921635478038
     second: breakplatform6_7
+  - first:
+      213: -8331878026951025489
+    second: breakplatform6_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -169,9 +172,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 40
-        y: 17
-        width: 24
-        height: 15
+        y: 11
+        width: 52
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +193,10 @@ TextureImporter:
       name: breakplatform6_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 11
-        width: 16
-        height: 14
+        x: 0
+        y: 4
+        width: 22
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +215,10 @@ TextureImporter:
       name: breakplatform6_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 22
-        height: 13
+        x: 20
+        y: 7
+        width: 15
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +237,10 @@ TextureImporter:
       name: breakplatform6_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 7
-        width: 15
-        height: 9
+        x: 30
+        y: 14
+        width: 14
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +259,10 @@ TextureImporter:
       name: breakplatform6_6
       rect:
         serializedVersion: 2
-        x: 30
-        y: 14
-        width: 14
-        height: 8
+        x: 34
+        y: 7
+        width: 12
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +281,10 @@ TextureImporter:
       name: breakplatform6_7
       rect:
         serializedVersion: 2
-        x: 34
-        y: 7
-        width: 12
-        height: 9
+        x: 60
+        y: 4
+        width: 23
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,6 +295,28 @@ TextureImporter:
       bones: []
       spriteID: 61a1af1cb93e76d40800000000000000
       internalID: 5577676921635478038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakplatform6_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 7
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fac93b324193f5c80800000000000000
+      internalID: -8331878026951025489
       vertices: []
       indices: 
       edges: []
@@ -318,6 +343,7 @@ TextureImporter:
       breakplatform6_5: 5601935847075486503
       breakplatform6_6: -9164027641501343251
       breakplatform6_7: 5577676921635478038
+      breakplatform6_8: -8331878026951025489
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
