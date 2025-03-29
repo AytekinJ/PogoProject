@@ -48,7 +48,7 @@ MonoBehaviour:
   FollowPlayer: 1
   FollowSpeed: 0.3
   FadeOutTime: 2
-  FadeInTime: 0.5
+  FadeInTime: 2
 --- !u!1 &6700277020419531876
 GameObject:
   m_ObjectHideFlags: 0
