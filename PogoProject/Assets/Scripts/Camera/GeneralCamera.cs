@@ -52,12 +52,11 @@ public class GeneralCamera : MonoBehaviour
 
     void Lerpcam()
     {
-<<<<<<< Updated upstream
-        Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
-=======
+        //Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
+        //transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+
         Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
-        Vector2 playerPos = new Vector2(cameraFollowScript.Target.position.x, cameraFollowScript.Target.position.y);
+        Vector2 playerPos = new Vector2(cameraFollowScript.target.position.x, cameraFollowScript.target.position.y);
         float distance = Vector2.Distance(playerPos, lockPos);
 
         float Magnitude = Mathf.InverseLerp(0f, TransformToLock.GetComponent<CamPoint>().Distance, distance);
@@ -73,6 +72,5 @@ public class GeneralCamera : MonoBehaviour
 
         //Vector3 finalPosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
         //transform.position = Vector3.Lerp(transform.position, finalPosition, smoothValue * Time.deltaTime);
->>>>>>> Stashed changes
     }
 }
