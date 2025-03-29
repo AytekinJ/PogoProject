@@ -6,11 +6,10 @@ public class HitParticleScript : MonoBehaviour
     public LayerMask layerXmaxPro;
     
     public Vector2 boxSize = new Vector2(1f, 1f);
-    public float angle = 0f;
 
     public void CastParticleBox(float RayLength, Vector2 direction)
     {
-        RaycastHit2D ray = Physics2D.BoxCast(transform.position, boxSize, angle, direction, RayLength, layerXmaxPro);
+        RaycastHit2D ray = Physics2D.BoxCast(transform.position, boxSize, 0f, direction, RayLength, layerXmaxPro);
 
         if (ray.collider != null)
         {
