@@ -34,8 +34,6 @@ public class AttackScript : MonoBehaviour
     [SerializeField] float CamShakeDuration = 0.1f;
     [SerializeField] float CamShakeMagnitude = 0.05f;
 
-    [SerializeField] GameObject SwordSwaySFX;
-
     void Start()
     {
         playerController = GetComponent<Controller>();
@@ -51,13 +49,6 @@ public class AttackScript : MonoBehaviour
         SetLastAttackPos();
     }
 
-    void PlaySFX()
-    {
-        var sfx = Instantiate(SwordSwaySFX, transform.position, Quaternion.identity, gameObject.transform);
-        sfx.GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(0.9f, 1.1f);
-        Destroy(sfx, 3f);
-    }
-
     void AppendAttack()
     {
         if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
@@ -68,8 +59,6 @@ public class AttackScript : MonoBehaviour
             {
                 return;
             }
-
-            PlaySFX();
 
             if (attackDirection != Vector2.zero)
             {
