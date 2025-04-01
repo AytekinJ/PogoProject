@@ -74,7 +74,7 @@ public class AttackScript : MonoBehaviour
             if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
-                particleScript.CastParticleBox(attackRange + 0.1f, attackDirection);
+                particleScript.CastParticleBox(attackRange + 0.1f, attackDirection, boxSize);
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 
                 Controller.canChangeAnim = false;

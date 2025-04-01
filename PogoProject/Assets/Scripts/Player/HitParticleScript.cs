@@ -4,10 +4,8 @@ public class HitParticleScript : MonoBehaviour
 {
     public GameObject HitPrefab;
     public LayerMask layerXmaxPro;
-    
-    public Vector2 boxSize = new Vector2(1f, 1f);
 
-    public void CastParticleBox(float RayLength, Vector2 direction)
+    public void CastParticleBox(float RayLength, Vector2 direction, Vector2 boxSize)
     {
         RaycastHit2D ray = Physics2D.BoxCast(transform.position, boxSize, 0f, direction, RayLength, layerXmaxPro);
 

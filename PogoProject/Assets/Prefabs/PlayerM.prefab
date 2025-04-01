@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 2050014568179394337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0638, y: -0.478, z: 0}
+  m_LocalPosition: {x: 0.0638, y: -0.453, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -365,6 +365,7 @@ MonoBehaviour:
   gold: {fileID: 3082715184767687488}
   CamShakeDuration: 0.05
   CamShakeMagnitude: 0.1
+  SwordSwaySFX: {fileID: 7269873125136112546, guid: 9eb3dafad259a1e40aa714758e1a089d, type: 3}
 --- !u!114 &4890451902156436231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +423,7 @@ GameObject:
   - component: {fileID: 6354704834457289264}
   - component: {fileID: 6229085465704706925}
   - component: {fileID: 1600858888150095834}
+  - component: {fileID: 2417297191564062656}
   m_Layer: 7
   m_Name: GFX Normal
   m_TagString: Untagged
@@ -533,3 +535,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528fa239435bf6ff6a9af5b793e00bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2417297191564062656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233213808909911435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90516e25271802d4d9a68ce8a6301b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FootstepSnow: {fileID: 7269873125136112546, guid: 6de2301350f968c4a8bdfd2949e83c80, type: 3}
+  FootStepStone: {fileID: 0}
