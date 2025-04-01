@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: e4a1e23b37cb58749addb0a3e9341e96
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1249429018652544183
+    second: Checkpoint and light_0
+  - first:
+      213: -3167144184941323596
+    second: Checkpoint and light_1
+  - first:
+      213: 7366918897761240030
+    second: Checkpoint and light_2
+  - first:
+      213: -1546848490343300335
+    second: Checkpoint and light_3
+  - first:
+      213: 3265603721974247875
+    second: Checkpoint and light_4
+  - first:
+      213: -5102241615517201336
+    second: Checkpoint and light_5
+  - first:
+      213: -4430108880092523186
+    second: Checkpoint and light_6
+  - first:
+      213: -7975768239596921338
+    second: Checkpoint and light_7
+  - first:
+      213: -8827845958722858151
+    second: Checkpoint and light_8
+  - first:
+      213: 4101423319830722936
+    second: Checkpoint and light_9
+  - first:
+      213: -6326317176116207781
+    second: Checkpoint and light_10
+  - first:
+      213: 3369414829646908569
+    second: Checkpoint and light_11
+  - first:
+      213: 8843395576377591790
+    second: Checkpoint and light_12
+  - first:
+      213: 3525841179921136733
+    second: Checkpoint and light_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Checkpoint and light_2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 18
+        width: 24
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3cb26b4bd8c3660800000000000000
+      internalID: 7366918897761240030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint and light_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 17
+        width: 38
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1130dbb5e7d788ae0800000000000000
+      internalID: -1546848490343300335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint and light_5
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 16
+        width: 19
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84cc1e498423139b0800000000000000
+      internalID: -5102241615517201336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint and light_6
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 63
+        width: 7
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4518cdf1771582c0800000000000000
+      internalID: -4430108880092523186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint and light_7
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 39
+        width: 21
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60e9bf32b01605190800000000000000
+      internalID: -7975768239596921338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint and light_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 18
+        width: 34
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 953d47a5fd03d7580800000000000000
+      internalID: -8827845958722858151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint and light_10
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 18
+        width: 24
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f142deb086438a0800000000000000
+      internalID: -6326317176116207781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b99167f635cdfcc468234eb1dcee987a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Checkpoint and light_0: 1249429018652544183
+      Checkpoint and light_1: -3167144184941323596
+      Checkpoint and light_10: -6326317176116207781
+      Checkpoint and light_11: 3369414829646908569
+      Checkpoint and light_12: 8843395576377591790
+      Checkpoint and light_13: 3525841179921136733
+      Checkpoint and light_2: 7366918897761240030
+      Checkpoint and light_3: -1546848490343300335
+      Checkpoint and light_4: 3265603721974247875
+      Checkpoint and light_5: -5102241615517201336
+      Checkpoint and light_6: -4430108880092523186
+      Checkpoint and light_7: -7975768239596921338
+      Checkpoint and light_8: -8827845958722858151
+      Checkpoint and light_9: 4101423319830722936
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
