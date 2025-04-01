@@ -9,6 +9,7 @@ public class GeneralCamera : MonoBehaviour
     public static Transform TransformToLock;
     public static bool IsLocked = false;
     public static CameraFollow cameraFollowScript;
+    public float distanceOffset = 5;
 
     private void Start()
     {
@@ -65,7 +66,7 @@ public class GeneralCamera : MonoBehaviour
         //if (Vector2.Distance(lockPos, playerPos) > 3f)
         //{
             Vector2 direction = (lockPos - playerPos).normalized;
-            Vector3 movePosition = new Vector3(TransformToLock.position.x + (direction.x * 2) * Magnitude, TransformToLock.position.y + (direction.y * 2) * Magnitude, offset.z);
+            Vector3 movePosition = new Vector3(TransformToLock.position.x + (direction.x * distanceOffset * 10) * Magnitude, TransformToLock.position.y + (direction.y * distanceOffset * 10) * Magnitude, offset.z);
             transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
         //    return;
         //}
