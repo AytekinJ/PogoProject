@@ -44,7 +44,6 @@ public class CamPoint : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, Player.transform.position);
 
-        // Change color based on player distance
         if (distance <= Distance)
         {
             Handles.color = Color.green;
@@ -54,7 +53,6 @@ public class CamPoint : MonoBehaviour
             Handles.color = Color.yellow;
         }
 
-        // Draw the circle representing the radius
         Handles.DrawWireDisc(transform.position, Vector3.up, Distance);
         Handles.DrawWireDisc(transform.position, Vector3.right, Distance);
         Handles.DrawWireDisc(transform.position, Vector3.forward, Distance);
