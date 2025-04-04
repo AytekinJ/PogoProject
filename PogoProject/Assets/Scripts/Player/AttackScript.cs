@@ -34,6 +34,8 @@ public class AttackScript : MonoBehaviour
     [SerializeField] float CamShakeDuration = 0.1f;
     [SerializeField] float CamShakeMagnitude = 0.05f;
 
+    [SerializeField] GameObject SwordSwaySFX;
+
     void Start()
     {
         playerController = GetComponent<Controller>();
@@ -49,10 +51,18 @@ public class AttackScript : MonoBehaviour
         SetLastAttackPos();
     }
 
+    void PlaySFX()
+    {
+        var sfx = Instantiate(SwordSwaySFX, transform.position, Quaternion.identity, gameObject.transform);
+        sfx.GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        Destroy(sfx, 3f);
+    }
+
     void AppendAttack()
     {
         if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
         {
+
             attackDirection = GetAttackDirection();
 
             if (attackDirection == Vector2.down && playerController.CheckGrounded())
@@ -60,10 +70,12 @@ public class AttackScript : MonoBehaviour
                 return;
             }
 
+            PlaySFX();
+
             if (attackDirection != Vector2.zero)
             {
                 CastAttackBox(attackDirection);
-                particleScript.CastParticleRay(attackRange + boxSize.x/2, attackDirection);
+                particleScript.CastParticleBox(attackRange + 0.1f, attackDirection, boxSize);
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 
                 Controller.canChangeAnim = false;
@@ -94,6 +106,13 @@ public class AttackScript : MonoBehaviour
                 EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
                 CameraShake.StartShake(0.1f, 0.05f);
                 enemyHealth.GiveDamage(Damage);
+            }
+
+            if(hit.collider.gameObject.CompareTag("Door"))
+            {
+                DoorScript doorScript = hit.collider.gameObject.GetComponent<DoorScript>();
+                CameraShake.StartShake(0.1f, 0.05f);
+                doorScript.DestroyDoor(gameObject);
             }
 
             if (direction == Vector2.down && !playerController.CheckGrounded())

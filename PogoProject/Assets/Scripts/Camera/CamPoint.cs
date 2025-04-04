@@ -6,7 +6,7 @@ public class CamPoint : MonoBehaviour
 
     Camera cam;
 
-    [SerializeField] GameObject Player;
+    GameObject Player;
 
     bool HasLocked = false;
 

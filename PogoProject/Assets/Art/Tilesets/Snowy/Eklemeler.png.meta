@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 29bef5348a5d0b8429f2595559632931
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -173826108983571975
+    second: Eklemeler_0
+  - first:
+      213: -6951281614126414434
+    second: Eklemeler_1
+  - first:
+      213: 8974854085592970230
+    second: Eklemeler_2
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Eklemeler_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: -6, y: 5}
+        - {x: -6, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f988592312769df0800000000000000
+      internalID: -173826108983571975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: 5, y: 5}
+        - {x: 5, y: 16}
+        - {x: -5, y: 16}
+        - {x: -5, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e958a409336188f90800000000000000
+      internalID: -6951281614126414434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f37bb27d361d8c70800000000000000
+      internalID: 8974854085592970230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e96fa107bb9c643a855ddff03ec9b7
+      internalID: -211103260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0be6851ab550f4ea77c9387b21e910
+      internalID: 2138079277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad4534b3cc0bd340802b4c61fa5854d
+      internalID: -1130181187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae27ef493ebfd3045bbc57578a03fba7
+      internalID: 1486055792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 6, y: -16}
+        - {x: 6, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b17aa89b2743f740ae05d38362d8151
+      internalID: -1899875740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1127a41cfe96d458eae5c7f326c525
+      internalID: 902841642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de1f0bc6da06684aac459621226246a
+      internalID: 906318735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0c9812063914444a0b9c643081a58a
+      internalID: -338098378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_11
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -16}
+        - {x: 6, y: -16}
+        - {x: 6, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb5a6aecd4840c40ba2b7b1b1afb97b
+      internalID: -567063045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d1a09f1a3e6b343a42ad64b40439ca
+      internalID: 1625943854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 5, y: -5}
+        - {x: 16, y: -5}
+        - {x: 16, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -5}
+        - {x: -5, y: -5}
+        - {x: -5, y: -16}
+        - {x: 5, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5318fa00369edb14db6d06c929e60410
+      internalID: -1596016711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -5}
+        - {x: 6, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537406e879dad12419c79d09fc4e9e5b
+      internalID: 806830268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711bd5681ee5ea9459e09fbc7390ec24
+      internalID: -161354276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -16}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c274eff353a569242b1758d90b471ab3
+      internalID: 228447659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: -5}
+        - {x: 16, y: -5}
+        - {x: 16, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b58e4c7a426714b868fc522a934f4f
+      internalID: -1183356261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_18
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -5}
+        - {x: 16, y: -5}
+        - {x: 16, y: 5}
+        - {x: 6, y: 5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3124114bf45bdb46ba1e9dcbeb19e2c
+      internalID: -1758024948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: -5}
+        - {x: 16, y: -5}
+        - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b83b45e5b0ac0647afc85025ced7970
+      internalID: -689542451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bda559ddd5de044e85714651a5e1e94
+      internalID: -1178167366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9bda331074d52458c45f8bee378aa3
+      internalID: -2102750550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a553bf64909e2f9478dd5d86056b5d3c
+      internalID: 262605992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: -6, y: 5}
+        - {x: -6, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb2edb742b82a741b6d25aebba6a65d
+      internalID: -1066531612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f81bb0c95e063e24cab824d80edaa35e
+      internalID: -1289827142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+        - {x: 6, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3efaf23d2ce49774189c3306cd87d795
+      internalID: -1756491812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: 16, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fdbda0532becc04d886d0d69be26e4c
+      internalID: 277547512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_27
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 5}
+        - {x: -16, y: 5}
+        - {x: -16, y: -5}
+        - {x: 6, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8341d4559cdf6f446a14643f6d4f1f41
+      internalID: 1419197929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e531163ca751948b6ce248ac321da5
+      internalID: -12644361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eklemeler_29
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 6, y: 16}
+        - {x: -6, y: 16}
+        - {x: -6, y: -6}
+        - {x: 6, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec400ed6131ea84bb012f2254cc2b88
+      internalID: 1246367943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cd639e10dd98873409ccf04615243251
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Eklemeler_0: -173826108983571975
+      Eklemeler_1: -6951281614126414434
+      Eklemeler_10: -338098378
+      Eklemeler_11: -567063045
+      Eklemeler_12: 1625943854
+      Eklemeler_13: -1596016711
+      Eklemeler_14: 806830268
+      Eklemeler_15: -161354276
+      Eklemeler_16: 228447659
+      Eklemeler_17: -1183356261
+      Eklemeler_18: -1758024948
+      Eklemeler_19: -689542451
+      Eklemeler_2: 8974854085592970230
+      Eklemeler_20: -1178167366
+      Eklemeler_21: -2102750550
+      Eklemeler_22: 262605992
+      Eklemeler_23: -1066531612
+      Eklemeler_24: -1289827142
+      Eklemeler_25: -1756491812
+      Eklemeler_26: 277547512
+      Eklemeler_27: 1419197929
+      Eklemeler_28: -12644361
+      Eklemeler_29: 1246367943
+      Eklemeler_3: -211103260
+      Eklemeler_4: 2138079277
+      Eklemeler_5: -1130181187
+      Eklemeler_6: 1486055792
+      Eklemeler_7: -1899875740
+      Eklemeler_8: 902841642
+      Eklemeler_9: 906318735
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

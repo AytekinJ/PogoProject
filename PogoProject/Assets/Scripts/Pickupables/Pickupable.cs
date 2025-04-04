@@ -3,7 +3,8 @@ using UnityEngine;
 public enum PickupableType
 {
     Coin,
-    Star
+    Star,
+    Health
 }
 public class Pickupable : MonoBehaviour
 {
@@ -18,10 +19,14 @@ public class Pickupable : MonoBehaviour
                 Score.player.addStar();
                 Debug.Log("Star Added");
             }
-            else
+            else if(type == PickupableType.Coin)
             {
                 Score.player.addCoin();
                 Debug.Log("Coin Added");
+            }
+            else if(type == PickupableType.Health)
+            {
+                HealthScript.IncreaseHealth(1);
             }
             Destroy(Instantiate(Score.player.pickUpEffect, transform.position, Quaternion.identity),1f);
             Destroy(gameObject);
