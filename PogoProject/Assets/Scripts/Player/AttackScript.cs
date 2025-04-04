@@ -111,7 +111,7 @@ public class AttackScript : MonoBehaviour
             {
                 DoorScript doorScript = hit.collider.gameObject.GetComponent<DoorScript>();
                 CameraShake.StartShake(0.1f, 0.05f);
-                doorScript.DestroyDoor();
+                doorScript.DestroyDoor(gameObject);
             }
 
             if (direction == Vector2.down && !playerController.CheckGrounded())
