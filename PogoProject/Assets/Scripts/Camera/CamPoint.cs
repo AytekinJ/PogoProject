@@ -39,14 +39,28 @@ public class CamPoint : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if (Player == null) return;
-
-        Gizmos.DrawLine(transform.position, Player.transform.position);
+        //if (Player == null) return;
+        Player = GameObject.FindGameObjectWithTag("Player");
 
         float distance = Vector3.Distance(transform.position, Player.transform.position);
 
-        Vector3 midPoint = (transform.position + Player.transform.position) / 2;
-        Handles.Label(midPoint, $"Distance: {distance:F2}");
+        // Change color based on player distance
+        if (distance <= Distance)
+        {
+            Handles.color = Color.green;
+        }
+        else
+        {
+            Handles.color = Color.yellow;
+        }
+
+        // Draw the circle representing the radius
+        Handles.DrawWireDisc(transform.position, Vector3.up, Distance);
+        Handles.DrawWireDisc(transform.position, Vector3.right, Distance);
+        Handles.DrawWireDisc(transform.position, Vector3.forward, Distance);
+
+        //Vector3 midPoint = (transform.position + Player.transform.position) / 2;
+        //Handles.Label(midPoint, $"Distance: {distance:F2}");
     }
 #endif
 }
