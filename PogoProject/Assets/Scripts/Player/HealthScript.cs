@@ -16,6 +16,7 @@ public class HealthScript : MonoBehaviour
     public static Transform CurrentPlatformCheckpoint;
     public static GameObject WorldSpawnPoint;
 
+    public static CameraFadeScript cameraFadeScript;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class HealthScript : MonoBehaviour
         HasArmor = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         WorldSpawnPoint = GameObject.FindGameObjectWithTag("WorldSpawnPoint");
+        cameraFadeScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFadeScript>();
     }
 
     #region Transforms
@@ -41,10 +43,11 @@ public class HealthScript : MonoBehaviour
     {
         if (CurrentPos == null || DesiredPos == null)
         {
+            
             TeleportToSpawn();
             return;
         }
-
+        cameraFadeScript.StartFade(0.2f, true, true);
         CurrentPos.position = DesiredPos.position;
     }
 
@@ -64,6 +67,8 @@ public class HealthScript : MonoBehaviour
 
     public static void DecreaseHealth(int HealthInt, string GameobjectTag)
     {
+        CameraShake.StartShake(0.1f, 0.05f);
+        cameraFadeScript.StartDamageFlash(0.1f);
         if (HasArmor && GameobjectTag == "Thrones" && CurrentPlatformCheckpoint != null)
         {
             Debug.Log("1");

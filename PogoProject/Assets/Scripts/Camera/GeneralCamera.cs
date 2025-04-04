@@ -3,7 +3,7 @@ using UnityEngine;
 public class GeneralCamera : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0, 0, -10);
-    public float smoothValue = 15f;
+    public float smoothValue = 3f;
     Vector3 velocity = Vector3.zero;
 
     public static Transform TransformToLock;
@@ -19,7 +19,7 @@ public class GeneralCamera : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Main Camera not found!");
+            Debug.LogError("Main Camera not found");
         }
     }
 
@@ -28,7 +28,6 @@ public class GeneralCamera : MonoBehaviour
     {
         if (transform == null)
         {
-            Debug.LogWarning("Attempted to lock camera to a null transform!");
             return;
         }
         //cameraFollowScript.enabled = false;
@@ -54,6 +53,6 @@ public class GeneralCamera : MonoBehaviour
     void Lerpcam()
     {
         Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, smoothValue * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
     }
 }
