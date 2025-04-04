@@ -62,6 +62,7 @@ public class AttackScript : MonoBehaviour
     {
         if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
         {
+
             attackDirection = GetAttackDirection();
 
             if (attackDirection == Vector2.down && playerController.CheckGrounded())

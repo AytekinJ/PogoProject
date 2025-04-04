@@ -61,7 +61,7 @@ public class GeneralCamera : MonoBehaviour
         float distance = Vector2.Distance(playerPos, lockPos);
 
         float Magnitude = Mathf.InverseLerp(0f, TransformToLock.GetComponent<CamPoint>().Distance, distance);
-        Debug.Log(Magnitude);
+        //Debug.Log(Magnitude);
 
         //if (Vector2.Distance(lockPos, playerPos) > 3f)
         //{
