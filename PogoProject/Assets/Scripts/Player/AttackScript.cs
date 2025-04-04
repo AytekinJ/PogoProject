@@ -108,6 +108,13 @@ public class AttackScript : MonoBehaviour
                 enemyHealth.GiveDamage(Damage);
             }
 
+            if(hit.collider.gameObject.CompareTag("Door"))
+            {
+                DoorScript doorScript = hit.collider.gameObject.GetComponent<DoorScript>();
+                CameraShake.StartShake(0.1f, 0.05f);
+                doorScript.DestroyDoor(gameObject);
+            }
+
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
                 OnAirJump();
