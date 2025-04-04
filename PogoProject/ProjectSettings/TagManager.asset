@@ -12,6 +12,8 @@ TagManager:
   - FadePanel
   - DamagePanel
   - Door
+  - GroundSnow
+  - GroundStone
   layers:
   - Default
   - TransparentFX
