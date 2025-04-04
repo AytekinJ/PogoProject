@@ -5,50 +5,65 @@ public class CameraFollow : MonoBehaviour
     public static CameraFollow Instance;
 
     public Transform target;
-	public Vector3 offset = new Vector3(0, 0, -10);
-	public float smoothValue = 0.2f;
+    public Transform UnGroundedTransform;
+    public Transform GroundedTransform;
+    public Vector3 offset = new Vector3(0, 0, -10);
+    public float smoothValue = 0.2f;
     public Controller controllerScript;
-    [SerializeField] float DownY = 0.5f;
+    [SerializeField] float DownY = 0.34f;
+    public LayerMask GroundMask;
 
     Vector3 movePosition;
-    float RecentYvalue;
+    Vector3 velocity = Vector3.zero;
 
     private void Start()
     {
         Instance = this;
         movePosition = new Vector3(target.position.x, target.position.y) + offset;
         controllerScript = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Controller>();
+
+        SetUnGrounded();
+        SetGrounded(); 
     }
 
-    Vector3 velocity = Vector3.zero;
-    //-3.5 normal, -0.65 up
-    private void Update() 
+    private void Update()
     {
-        //Vector3 movePosition = new Vector3(target.position.x, target.position.y) + offset;
-       
+        SetGrounded();
+        SetUnGrounded();
+        SetMovePosition();
+        Lerp();
+    }
 
-        if (controllerScript.CheckGrounded())
-        {
-            movePosition = new Vector3(target.position.x, target.position.y) + offset;
-        }
-        else if (!controllerScript.CheckGrounded())
-        {
-            movePosition = new Vector3(target.position.x, RecentYvalue) + offset;
-        }
-
+    void Lerp()
+    {
         transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, smoothValue);
-
     }
 
-    public void SetRecentY()
-    {
-        RecentYvalue = target.position.y - 0.167f + -DownY;
-    }
-
-    private void LateUpdate()
+    void SetMovePosition()
     {
         if (controllerScript.CheckGrounded())
-            RecentYvalue = transform.position.y -0.167f + -DownY;
-        else return;
+        {
+            movePosition = GroundedTransform.position;
+        }
+        else
+        {
+            movePosition = new Vector3(target.position.x, GroundedTransform.position.y, UnGroundedTransform.position.z);
+        }
+    }
+
+    void SetUnGrounded()
+    {
+        if (!controllerScript.CheckGrounded())
+        {
+            RaycastHit2D ray;
+            ray = Physics2D.Raycast(target.transform.position, Vector2.down, Mathf.Infinity, GroundMask);
+            UnGroundedTransform.position = new Vector3(ray.point.x, ray.point.y + 1f, offset.z);
+        }
+    }
+
+    void SetGrounded()
+    {
+        if (controllerScript.CheckGrounded())
+            GroundedTransform.position = target.position + offset;
     }
 }
