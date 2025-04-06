@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GeneralCamera : MonoBehaviour
 {
+    public static GeneralCamera Instance;
     public Vector3 offset = new Vector3(0, 0, -10);
     public float smoothValue = 3f;
     Vector3 velocity = Vector3.zero;
@@ -11,8 +12,12 @@ public class GeneralCamera : MonoBehaviour
     public static CameraFollow cameraFollowScript;
     public float distanceOffset = 5;
 
+    bool LockX;
+    bool LockY;
+
     private void Start()
     {
+        Instance = this;
         Camera mainCamera = Camera.main;
         if (mainCamera != null)
         {
@@ -24,25 +29,24 @@ public class GeneralCamera : MonoBehaviour
         }
     }
 
-
-    public static void LockToTransform(Transform transform)
+    public void LockToTransform(Transform transform, bool lockX, bool lockY)
     {
+        LockX = lockX;
+        LockY = lockY;
         if (transform == null)
         {
             return;
         }
-        //cameraFollowScript.enabled = false;
         TransformToLock = transform;
         IsLocked = true;
     }
 
-
-    public static void UnlockCamera()
+    public void UnlockCamera()
     {
-        //cameraFollowScript.enabled = true;
         IsLocked = false;
+        LockX = false;
+        LockY = false;
     }
-
 
     void Update()
     {
@@ -50,28 +54,21 @@ public class GeneralCamera : MonoBehaviour
         Lerpcam();
     }
 
-
     void Lerpcam()
     {
-        //Vector3 movePosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        //transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
-
         Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
         Vector2 playerPos = new Vector2(cameraFollowScript.target.position.x, cameraFollowScript.target.position.y);
         float distance = Vector2.Distance(playerPos, lockPos);
-
         float Magnitude = Mathf.InverseLerp(0f, TransformToLock.GetComponent<CamPoint>().Distance, distance);
-        //Debug.Log(Magnitude);
+        Vector2 direction = (lockPos - playerPos).normalized;
 
-        //if (Vector2.Distance(lockPos, playerPos) > 3f)
-        //{
-            Vector2 direction = (lockPos - playerPos).normalized;
-            Vector3 movePosition = new Vector3(TransformToLock.position.x + (direction.x * distanceOffset * 10) * Magnitude, TransformToLock.position.y + (direction.y * distanceOffset * 10) * Magnitude, offset.z);
-            transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
-        //    return;
-        //}
+        float targetX = TransformToLock.position.x + (direction.x * distanceOffset) * Magnitude;
+        float targetY = TransformToLock.position.y + (direction.y * distanceOffset) * Magnitude;
 
-        //Vector3 finalPosition = new Vector3(TransformToLock.position.x, TransformToLock.position.y, offset.z);
-        //transform.position = Vector3.Lerp(transform.position, finalPosition, smoothValue * Time.deltaTime);
+        if (LockX) targetX = TransformToLock.position.x;
+        if (LockY) targetY = TransformToLock.position.y;
+
+        Vector3 movePosition = new Vector3(targetX, targetY, offset.z);
+        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
     }
 }
