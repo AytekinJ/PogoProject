@@ -5,34 +5,51 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     public float respawnDelay = 1f;
-    private bool canRespawn = true;
+    private bool isRespawning = false;
+    private bool IsPlayerInside = false;
+
     Animator animator;
-    BoxCollider2D boxCollider2D;
+    [SerializeField] BoxCollider2D boxCollider2D;
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
     }
+
     public void DestroyDoor(GameObject player)
     {
-        // if(player.transform.position.x > transform.position.x)
-        // {
-        //     Vector3 localScale = transform.localScale;
-        //     localScale.x *= -1;
-        //     transform.localScale = localScale;
-        // }
-        
-        boxCollider2D.enabled = false;
-        animator.SetBool("isBreaking", true);
+        if (!isRespawning)
+        {
+            isRespawning = true;
+            boxCollider2D.enabled = false;
+            animator.SetBool("isBreaking", true);
+            StartCoroutine(RespawnDoor());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IsPlayerInside = true;
+        StopAllCoroutines();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        IsPlayerInside = false;
         StartCoroutine(RespawnDoor());
-        
     }
 
     IEnumerator RespawnDoor()
     {
+        while (IsPlayerInside)
+        {
+            yield return null;
+        }
+
         yield return new WaitForSeconds(respawnDelay);
         animator.SetBool("isBreaking", false);
         yield return new WaitForSeconds(1f);
         boxCollider2D.enabled = true;
+        isRespawning = false;
     }
 }
