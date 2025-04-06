@@ -36,6 +36,7 @@ public class CamPoint : MonoBehaviour
         }
     }
 
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (Player == null) return;
@@ -45,7 +46,8 @@ public class CamPoint : MonoBehaviour
         float distance = Vector3.Distance(transform.position, Player.transform.position);
 
         Vector3 midPoint = (transform.position + Player.transform.position) / 2;
+        
         UnityEditor.Handles.Label(midPoint, $"Distance: {distance:F2}");
     }
-
+    #endif
 }

@@ -1,8 +1,0 @@
-<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Settings.uss?fileID=7433441132597879392&amp;guid=6c5967c40508cc5cea2ac9f08f9c9f7a&amp;type=3#Settings" />
-    <engine:VisualElement name="Settings" style="flex-grow: 1; background-color: rgba(36, 36, 36, 0.69); background-image: url(&quot;project://database/Assets/Scripts/UI/ayarlar.png?fileID=2114394712287869782&amp;guid=3189edb0e8c69f477bb55ad151224586&amp;type=3#ayarlar_0&quot;);">
-        <engine:TabView style="height: 873px; width: 1438px; margin-left: 94px; left: 244px; right: -4px; top: 144px; margin-top: 0;">
-            <engine:Tab label="Tab" class="settingstab" style="margin-left: 0;" />
-        </engine:TabView>
-    </engine:VisualElement>
-</engine:UXML>
