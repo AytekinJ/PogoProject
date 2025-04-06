@@ -20,6 +20,7 @@ public class LightFlicker : MonoBehaviour
         light2D = GetComponent<Light2D>();
         LerpValue = Random.Range(MinIntensity, MaxIntensity);
         InvokeRepeating(nameof(AssingRandom), 0.1f, ChangeSpeed);
+        light2D.intensity = 0f;
     }
 
     void Update()
