@@ -7,9 +7,11 @@ public class DoorScript : MonoBehaviour
     public float respawnDelay = 1f;
     private bool canRespawn = true;
     Animator animator;
+    BoxCollider2D boxCollider2D;
     void Start()
     {
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
     public void DestroyDoor(GameObject player)
     {
@@ -20,7 +22,7 @@ public class DoorScript : MonoBehaviour
         //     transform.localScale = localScale;
         // }
         
-        GetComponent<BoxCollider2D>().enabled = false;
+        boxCollider2D.enabled = false;
         animator.SetBool("isBreaking", true);
         StartCoroutine(RespawnDoor());
         
@@ -31,6 +33,6 @@ public class DoorScript : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay);
         animator.SetBool("isBreaking", false);
         yield return new WaitForSeconds(1f);
-        GetComponent<BoxCollider2D>().enabled = true;
+        boxCollider2D.enabled = true;
     }
 }

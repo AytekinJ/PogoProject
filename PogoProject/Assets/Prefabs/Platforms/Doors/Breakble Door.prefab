@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8079769483212335827}
   - component: {fileID: 4111222558541798974}
   - component: {fileID: 8822939430116057605}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Breakble Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4138576893321897922}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -3.208, y: -4.259, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689471313dc50b94eab2e89045e41dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnDelay: 1
 --- !u!61 &4111222558541798974
 BoxCollider2D:
   m_ObjectHideFlags: 0
