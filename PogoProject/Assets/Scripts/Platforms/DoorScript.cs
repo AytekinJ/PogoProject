@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     public float respawnDelay = 1f;
-    private bool canRespawn = true;
+    //private bool canRespawn = true; kullanılmıyor
     Animator animator;
     BoxCollider2D boxCollider2D;
     void Start()

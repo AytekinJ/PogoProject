@@ -1,42 +1,71 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
-public class ButtonEventsForwarder : MonoBehaviour
+public class MainMenuController : MonoBehaviour
 {
-    public UIDocument mainmenu;
-    void Start()
-    {
-        var root = mainmenu.rootVisualElement;
-        
-        var startButton = root.Q<Button>("startGame");
-        var quitButton = root.Q<Button>("quitButton");
-        var settingsButton = root.Q<Button>("settingsButton");
-        var creditsButton = root.Q<Button>("creditsButton");
-        
-        startButton.RegisterCallback<ClickEvent>(evt => StartGame());
-        quitButton.RegisterCallback<ClickEvent>(evt => QuitGame());
-        settingsButton.RegisterCallback<ClickEvent>(evt => Settings());
-        creditsButton.RegisterCallback<ClickEvent>(evt => Credits());
-    }
+    [SerializeField] private GameObject general;
+    [SerializeField] private GameObject sound;
+    [SerializeField] private GameObject video;
+    [SerializeField] private GameObject other;
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject settingsMenu;
 
-    void StartGame()
+    public void StartGame()
     {
         SceneManager.LoadSceneAsync(1);
     }
 
-    void Settings()
+    public void Settings()
     {
-        
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+        ActivateSettingsPanel(general); 
     }
 
-    void Credits()
+    public void ActivateSettingsPanel(GameObject panelToShow)
     {
-        
+        general.SetActive(false);
+        sound.SetActive(false);
+        video.SetActive(false);
+        other.SetActive(false);
+
+        if (panelToShow != null)
+        {
+            panelToShow.SetActive(true);
+        }
     }
 
-    void QuitGame()
+    public void Credits()
     {
+        Debug.Log("Credits Button Pressed");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game Requested");
         Application.Quit();
+    }
+    public void General()
+    {
+        ActivateSettingsPanel(general);
+    }
+    
+    public void Video()
+    {
+        ActivateSettingsPanel(video);
+    }
+    public void Sound()
+    {
+        ActivateSettingsPanel(sound);
+    }
+    public void Other()
+    {
+        ActivateSettingsPanel(other);
+    }
+
+    public void backToMainMenu()
+    {
+        mainMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 }

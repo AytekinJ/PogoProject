@@ -86,11 +86,12 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator EagleDash(Enemy eagle, Vector2 target)
     {
-        while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE)
+        while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE && !eagle.collided)
         {
             eagle.transform.position = Vector2.MoveTowards(eagle.transform.position, target, eagle.dashSpeed * Time.deltaTime);
             yield return null;
         }
+        eagle.collided = false;
         eagle.locked = false;
     }
     

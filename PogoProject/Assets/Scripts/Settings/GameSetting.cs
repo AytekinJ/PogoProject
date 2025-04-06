@@ -24,19 +24,19 @@ public enum Quality
 [CreateAssetMenu(fileName = "GameSetting", menuName = "Scriptable Objects/GameSetting")]
 public class GameSetting : ScriptableObject
 {
-    [Header("Ekran Ayarlarý")]
+    [Header("Ekran Ayarlari")]
     [SerializeField] public int rWidth = 1920;
     [SerializeField] public int rHeight = 1080;
     [SerializeField] public FPS fps = FPS.Mid; 
     [SerializeField] public bool vsync = true; 
     [SerializeField] 
-    [Header("Grafik Ayarlarý")]
+    [Header("Grafik Ayarlari")]
     public bool shadows = true;                  
     [SerializeField] public bool postprocessing = true;          
     [SerializeField] public AntiAliasing antialiasing = AntiAliasing.FXAA; 
     [SerializeField] public Quality antialiasingQuality = Quality.Medium;
 
-    [Header("Ses Ayarlarý")]
+    [Header("Ses Ayarlari")]
     [Range(0, 100)] public int volume = 100;
 
     public void ApplySettings()
@@ -45,7 +45,7 @@ public class GameSetting : ScriptableObject
         QualitySettings.vSyncCount = vsync ? 1 : 0;
         Application.targetFrameRate = (int)fps;
         QualitySettings.antiAliasing = antialiasing == AntiAliasing.MSAA ? 4 : 0;
-        Debug.Log("Ayarlar uygulandý!");
+        Debug.Log("Ayarlar uygulandï¿½!");
     }
 }
 
