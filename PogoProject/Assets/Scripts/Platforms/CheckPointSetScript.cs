@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CheckPointSetScript : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class CheckPointSetScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             DecideCheckPoint();
+            GetComponent<Light2D>().enabled = true;
+            GetComponent<LightFlicker>().enabled = true;
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("Activate");
         }
         else
         {
@@ -29,4 +33,5 @@ public class CheckPointSetScript : MonoBehaviour
             Debug.Log(gameObject.name);
         }
     }
+    
 }

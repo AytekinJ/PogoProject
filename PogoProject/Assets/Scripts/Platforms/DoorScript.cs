@@ -7,10 +7,11 @@ public class DoorScript : MonoBehaviour
     public float respawnDelay = 1f;
     private bool canRespawn = true;
     Animator animator;
-    [SerializeField] private BoxCollider2D boxCollider2D;
+    BoxCollider2D boxCollider2D;
     void Start()
     {
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
     public void DestroyDoor(GameObject player)
     {

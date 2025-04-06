@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
         controllerScript = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Controller>();
 
         SetUnGrounded();
-        SetGrounded(); 
+        SetGrounded();
     }
 
     private void Update()
@@ -32,6 +32,11 @@ public class CameraFollow : MonoBehaviour
         SetUnGrounded();
         SetMovePosition();
         Lerp();
+
+        if(Mathf.Abs(target.position.y - gameObject.transform.position.y) > 2.5)
+        {
+            SetCamFollowPublic();
+        }
     }
 
     void Lerp()
@@ -65,5 +70,10 @@ public class CameraFollow : MonoBehaviour
     {
         if (controllerScript.CheckGrounded())
             GroundedTransform.position = target.position + offset;
+    }
+
+    public void SetCamFollowPublic()
+    {
+        GroundedTransform.position = target.position + offset;
     }
 }
