@@ -116,10 +116,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7713671136289503920, guid: ffe4c322f9c32bf4ba38bb2cfec5a072, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.03125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713671136289503920, guid: ffe4c322f9c32bf4ba38bb2cfec5a072, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8079769483212335827, guid: ffe4c322f9c32bf4ba38bb2cfec5a072, type: 3}
       propertyPath: boxCollider2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6275173055818381791}
     - target: {fileID: 8822939430116057605, guid: ffe4c322f9c32bf4ba38bb2cfec5a072, type: 3}
       propertyPath: m_Controller
       value: 
@@ -130,3 +138,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe4c322f9c32bf4ba38bb2cfec5a072, type: 3}
+--- !u!61 &6275173055818381791 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4111222558541798974, guid: ffe4c322f9c32bf4ba38bb2cfec5a072, type: 3}
+  m_PrefabInstance: {fileID: 7933121010824177633}
+  m_PrefabAsset: {fileID: 0}
