@@ -1,49 +1,31 @@
 fileFormatVersion: 2
-guid: e4a1e23b37cb58749addb0a3e9341e96
+guid: 4bdb55d7379ddbf4bae056c82eaf63e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1249429018652544183
-    second: Checkpoint and light_0
+      213: 5146474702296807467
+    second: snowflakes_png_0
   - first:
-      213: -3167144184941323596
-    second: Checkpoint and light_1
+      213: -2926544914863787137
+    second: snowflakes_png_1
   - first:
-      213: 7366918897761240030
-    second: Checkpoint and light_2
+      213: 6702839567607406609
+    second: snowflakes_png_2
   - first:
-      213: -1546848490343300335
-    second: Checkpoint and light_3
+      213: -7304669388390050946
+    second: snowflakes_png_3
   - first:
-      213: 3265603721974247875
-    second: Checkpoint and light_4
+      213: 6214925147075322339
+    second: snowflakes_png_4
   - first:
-      213: -5102241615517201336
-    second: Checkpoint and light_5
+      213: -3148646377908374445
+    second: snowflakes_png_5
   - first:
-      213: -4430108880092523186
-    second: Checkpoint and light_6
+      213: 1403426205348951008
+    second: snowflakes_png_6
   - first:
-      213: -7975768239596921338
-    second: Checkpoint and light_7
-  - first:
-      213: -8827845958722858151
-    second: Checkpoint and light_8
-  - first:
-      213: 4101423319830722936
-    second: Checkpoint and light_9
-  - first:
-      213: -6326317176116207781
-    second: Checkpoint and light_10
-  - first:
-      213: 3369414829646908569
-    second: Checkpoint and light_11
-  - first:
-      213: 8843395576377591790
-    second: Checkpoint and light_12
-  - first:
-      213: 3525841179921136733
-    second: Checkpoint and light_13
+      213: 8726023873502613034
+    second: snowflakes_png_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,155 +121,243 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Checkpoint and light_2
+      name: snowflakes_png_0
       rect:
         serializedVersion: 2
-        x: 91
-        y: 18
-        width: 24
-        height: 55
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed3cb26b4bd8c3660800000000000000
-      internalID: 7366918897761240030
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Checkpoint and light_3
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 17
-        width: 38
-        height: 55
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1130dbb5e7d788ae0800000000000000
-      internalID: -1546848490343300335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Checkpoint and light_5
-      rect:
-        serializedVersion: 2
-        x: 189
+        x: 0
         y: 16
-        width: 19
-        height: 53
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84cc1e498423139b0800000000000000
-      internalID: -5102241615517201336
+      spriteID: b287feb7973fb6740800000000000000
+      internalID: 5146474702296807467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint and light_6
+      name: snowflakes_png_1
       rect:
         serializedVersion: 2
-        x: 228
-        y: 63
-        width: 7
-        height: 61
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4518cdf1771582c0800000000000000
-      internalID: -4430108880092523186
+      spriteID: f73715ac7e2d267d0800000000000000
+      internalID: -2926544914863787137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint and light_7
+      name: snowflakes_png_2
       rect:
         serializedVersion: 2
-        x: 235
-        y: 39
-        width: 21
-        height: 88
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 60e9bf32b01605190800000000000000
-      internalID: -7975768239596921338
+      spriteID: 1102ca5d215450d50800000000000000
+      internalID: 6702839567607406609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint and light_8
+      name: snowflakes_png_3
       rect:
         serializedVersion: 2
-        x: 7
-        y: 18
-        width: 34
-        height: 55
+        x: 48
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 953d47a5fd03d7580800000000000000
-      internalID: -8827845958722858151
+      spriteID: e73575f94e990aa90800000000000000
+      internalID: -7304669388390050946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint and light_10
+      name: snowflakes_png_4
       rect:
         serializedVersion: 2
-        x: 54
-        y: 18
-        width: 24
-        height: 55
+        x: 64
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5f142deb086438a0800000000000000
-      internalID: -6326317176116207781
+      spriteID: 3e121114e79df3650800000000000000
+      internalID: 6214925147075322339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflakes_png_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35473713dc2cd44d0800000000000000
+      internalID: -3148646377908374445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflakes_png_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e37c46b2b8f97310800000000000000
+      internalID: 1403426205348951008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflakes_png_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e83b10b70191970800000000000000
+      internalID: 8726023873502613034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflakes_png_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3cb22984c224149863cf466f5880ee
+      internalID: -935465300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflakes_png_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0baba1fb8beb061428ed61a1bba7ab62
+      internalID: -278898535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snowflakes_png_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d58d45cec54f24caa4e73e6eb38b13
+      internalID: 492635852
       vertices: []
       indices: 
       edges: []
@@ -296,7 +366,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b99167f635cdfcc468234eb1dcee987a
+    spriteID: 73cb7600522e8924a8909d95eb4935a8
     internalID: 0
     vertices: []
     indices: 
@@ -306,20 +376,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Checkpoint and light_0: 1249429018652544183
-      Checkpoint and light_1: -3167144184941323596
-      Checkpoint and light_10: -6326317176116207781
-      Checkpoint and light_11: 3369414829646908569
-      Checkpoint and light_12: 8843395576377591790
-      Checkpoint and light_13: 3525841179921136733
-      Checkpoint and light_2: 7366918897761240030
-      Checkpoint and light_3: -1546848490343300335
-      Checkpoint and light_4: 3265603721974247875
-      Checkpoint and light_5: -5102241615517201336
-      Checkpoint and light_6: -4430108880092523186
-      Checkpoint and light_7: -7975768239596921338
-      Checkpoint and light_8: -8827845958722858151
-      Checkpoint and light_9: 4101423319830722936
+      snowflakes_png_0: 5146474702296807467
+      snowflakes_png_1: -2926544914863787137
+      snowflakes_png_10: 492635852
+      snowflakes_png_2: 6702839567607406609
+      snowflakes_png_3: -7304669388390050946
+      snowflakes_png_4: 6214925147075322339
+      snowflakes_png_5: -3148646377908374445
+      snowflakes_png_6: 1403426205348951008
+      snowflakes_png_7: 8726023873502613034
+      snowflakes_png_8: -935465300
+      snowflakes_png_9: -278898535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

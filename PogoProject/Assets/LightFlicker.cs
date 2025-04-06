@@ -15,11 +15,15 @@ public class LightFlicker : MonoBehaviour
 
     float LerpValue;
     float RandomValue;
+    float OuterRadius;
     void Start()
     {
         light2D = GetComponent<Light2D>();
         LerpValue = Random.Range(MinIntensity, MaxIntensity);
         InvokeRepeating(nameof(AssingRandom), 0.1f, ChangeSpeed);
+        light2D.intensity = 0f;
+        OuterRadius = light2D.pointLightOuterRadius;
+        light2D.pointLightOuterRadius = 0f;
     }
 
     void Update()
@@ -30,6 +34,7 @@ public class LightFlicker : MonoBehaviour
     void LerpLight()
     {
         light2D.intensity = Mathf.Lerp(light2D.intensity, RandomValue, LerpSpeed * Time.deltaTime);
+        light2D.pointLightOuterRadius = Mathf.Lerp(light2D.pointLightOuterRadius, OuterRadius, LerpSpeed/2 * Time.deltaTime);
     }
 
     void AssingRandom()
