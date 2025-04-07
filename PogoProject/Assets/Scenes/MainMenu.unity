@@ -3101,8 +3101,9 @@ GameObject:
   - component: {fileID: 773938698}
   - component: {fileID: 773938697}
   - component: {fileID: 773938700}
+  - component: {fileID: 773938701}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "SirayiBozarsanizListeyiGuncelleyinKafamCalismadigiIcinSacmaSapanBirSistemYapt\u0131m"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3214,6 +3215,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!114 &773938701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773938695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e973552e80cdfd59a74a9d3b642f5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 116749074}
+  - {fileID: 609401676}
+  - {fileID: 1221428794}
+  - {fileID: 941089512}
+  - {fileID: 592512091}
+  - {fileID: 1835892780}
+  - {fileID: 798888096}
+  - {fileID: 450592993}
+  - {fileID: 1031392171}
+  settings: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
 --- !u!1 &798888093
 GameObject:
   m_ObjectHideFlags: 0
