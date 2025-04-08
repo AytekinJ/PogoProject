@@ -24,6 +24,8 @@ public enum Quality
 [CreateAssetMenu(fileName = "GameSetting", menuName = "Scriptable Objects/GameSetting")]
 public class GameSetting : ScriptableObject
 {
+    public static GameSetting Instance;
+
     [Header("Ekran Ayarlari")]
     [SerializeField] public int rWidth = 1920;
     [SerializeField] public int rHeight = 1080;
@@ -52,9 +54,12 @@ public class GameSetting : ScriptableObject
     [SerializeField] public KeyCode leftAim = KeyCode.LeftArrow;
     [SerializeField] public KeyCode upAim = KeyCode.UpArrow;
     [SerializeField] public KeyCode downAim = KeyCode.DownArrow;
-    
-    
-    
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void ApplySettings()
     {

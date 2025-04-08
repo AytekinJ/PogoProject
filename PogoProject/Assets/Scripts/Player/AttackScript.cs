@@ -36,18 +36,21 @@ public class AttackScript : MonoBehaviour
 
     [SerializeField] GameObject SwordSwaySFX;
 
+    public static AttackScript Instance;
+
     void Start()
     {
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
         particleScript = GetComponent<HitParticleScript>();
+        Instance = this;
     }
 
     void Update()
     {
         GetInputs();
         CalculateDirection();
-        AppendAttack();
+        //AppendAttack();
         SetLastAttackPos();
     }
 
@@ -58,9 +61,9 @@ public class AttackScript : MonoBehaviour
         Destroy(sfx, 3f);
     }
 
-    void AppendAttack()
+    public void AppendAttack()
     {
-        if (Input.GetKey(AttackKey) && Time.time >= attacktime)
+        if (Time.time >= attacktime)
         {
 
             attackDirection = GetAttackDirection();
