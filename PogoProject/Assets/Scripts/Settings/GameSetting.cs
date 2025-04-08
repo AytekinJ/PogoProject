@@ -37,7 +37,24 @@ public class GameSetting : ScriptableObject
     [SerializeField] public Quality antialiasingQuality = Quality.Medium;
 
     [Header("Ses Ayarlari")]
-    [Range(0, 100)] public int volume = 100;
+    [Range(0, 100)] public int masterVolume = 100;
+    [Range(0, 100)] public int musicVolume = 100;
+    [Range(0, 100)] public int sfxVolume = 100;
+    
+    [Header("Input Ayarlari")]
+    [SerializeField] public bool inputEnabled = true;
+    [SerializeField] public KeyCode right = KeyCode.D;
+    [SerializeField] public KeyCode left = KeyCode.A;
+    [SerializeField] public KeyCode up = KeyCode.W;
+    [SerializeField] public KeyCode down = KeyCode.S;
+    [SerializeField] public KeyCode attack = KeyCode.X;
+    [SerializeField] public KeyCode rightAim = KeyCode.RightArrow;
+    [SerializeField] public KeyCode leftAim = KeyCode.LeftArrow;
+    [SerializeField] public KeyCode upAim = KeyCode.UpArrow;
+    [SerializeField] public KeyCode downAim = KeyCode.DownArrow;
+    
+    
+    
 
     public void ApplySettings()
     {
@@ -45,7 +62,7 @@ public class GameSetting : ScriptableObject
         QualitySettings.vSyncCount = vsync ? 1 : 0;
         Application.targetFrameRate = (int)fps;
         QualitySettings.antiAliasing = antialiasing == AntiAliasing.MSAA ? 4 : 0;
-        Debug.Log("Ayarlar uyguland�!");
+        Debug.Log("Ayarlar uygulandı!");
     }
 }
 
