@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5852642193139716449}
   - component: {fileID: 4530559121960181832}
+  - component: {fileID: 3694063786047402303}
   m_Layer: 0
   m_Name: Medium Rock
   m_TagString: Untagged
@@ -87,3 +88,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3694063786047402303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079190985260491819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_Priority: 4
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.2631445, y: -0.24939299, z: 0}
+  - {x: -0.14696121, y: 0.01889944, z: 0}
+  - {x: 0.057824135, y: 0.24541998, z: 0}
+  - {x: 0.16757393, y: 0.24564505, z: 0}
+  - {x: 0.2152338, y: 0.17046261, z: 0}
+  - {x: 0.25083828, y: 0.061774254, z: 0}
+  - {x: 0.25271225, y: -0.06377888, z: 0}
+  - {x: 0.15445614, y: -0.25126743, z: 0}
+  m_ShapePathHash: -359516251
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: -0.0052161217, y: -0.0028111935, z: 0}
+      m_Extent: {x: 0.25792837, y: 0.24845624, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0.02
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0.02
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0.02
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 4530559121960181832}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

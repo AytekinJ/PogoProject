@@ -141,10 +141,10 @@ TextureImporter:
       name: icons_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 285
-        width: 30
-        height: 20
+        x: 111
+        y: 280
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: icons_1
       rect:
         serializedVersion: 2
-        x: 182
-        y: 284
-        width: 31
-        height: 24
+        x: 179
+        y: 280
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,10 +185,10 @@ TextureImporter:
       name: icons_3
       rect:
         serializedVersion: 2
-        x: 258
-        y: 282
-        width: 30
-        height: 26
+        x: 257
+        y: 280
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,10 +207,10 @@ TextureImporter:
       name: icons_4
       rect:
         serializedVersion: 2
-        x: 333
-        y: 286
-        width: 24
-        height: 23
+        x: 329
+        y: 282
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5220379667984389358}
   - component: {fileID: 4026080244178399703}
+  - component: {fileID: 3202041447514194332}
   m_Layer: 0
   m_Name: Stone Figure
   m_TagString: Untagged
@@ -87,3 +88,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3202041447514194332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622131200655311496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_Priority: 4
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.6642647, y: -0.9847767, z: 0}
+  - {x: -0.65888596, y: -0.8646564, z: 0}
+  - {x: -0.48251152, y: -0.61056066, z: 0}
+  - {x: -0.42272568, y: -0.3773905, z: 0}
+  - {x: -0.3061409, y: -0.24585867, z: 0}
+  - {x: -0.30912971, y: 0.15172625, z: 0}
+  - {x: -0.3315487, y: 0.22944963, z: 0}
+  - {x: -0.3345394, y: 0.42674756, z: 0}
+  - {x: -0.306139, y: 0.4955027, z: 0}
+  - {x: -0.31510735, y: 0.8422687, z: 0}
+  - {x: -0.19247246, y: 1.028228, z: 0}
+  - {x: 0.16624641, y: 1.0255501, z: 0}
+  - {x: 0.27723312, y: 0.8796873, z: 0}
+  - {x: 0.2703781, y: 0.08457768, z: 0}
+  - {x: 0.3389244, y: -0.0011022091, z: 0}
+  - {x: 0.34235, y: -0.13133562, z: 0}
+  - {x: 0.28066063, y: -0.20330667, z: 0}
+  - {x: 0.2810936, y: -0.46982574, z: 0}
+  - {x: 0.37623596, y: -0.40287328, z: 0}
+  - {x: 0.5207138, y: -0.39582574, z: 0}
+  - {x: 0.5629978, y: -0.43811142, z: 0}
+  - {x: 0.55595016, y: -0.57554007, z: 0}
+  - {x: 0.48547363, y: -0.6565876, z: 0}
+  - {x: 0.6373577, y: -0.99374473, z: 0}
+  m_ShapePathHash: -81196811
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: -0.013453484, y: 0.017241597, z: 0}
+      m_Extent: {x: 0.6508112, y: 1.0109863, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0.07
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0.07
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0.07
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 4026080244178399703}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
