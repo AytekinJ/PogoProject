@@ -60,7 +60,7 @@ public class AttackScript : MonoBehaviour
 
     void AppendAttack()
     {
-        if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
+        if (Input.GetKey(AttackKey) && Time.time >= attacktime)
         {
 
             attackDirection = GetAttackDirection();
