@@ -30,6 +30,8 @@ public class Controller : MonoBehaviour
     [SerializeField] float lowJumpMultiplier = 3f;
     [SerializeField] float fallMultiplier = 2.5f;
 
+    public GameObject PogoSFX;
+
     [Header("Jump Buffer Settings")]
     [SerializeField] private float jumpBufferTime = 0.1f;
     private float jumpBufferCounter;
@@ -220,8 +222,10 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void DoPOGO(float pogoMultiplier)
+    public void DoPOGO(float pogoMultiplier, bool isEnemy)
     {
+        PlaySFX(isEnemy);
+
         CameraShake.StartShake(0.1f, 0.05f);
         if (rb.linearVelocity.y < 0f)
         {
@@ -231,6 +235,15 @@ public class Controller : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + (pogoMultiplier / 2));
         }
+    }
+
+    void PlaySFX(bool isEnemy)
+    {
+        if (isEnemy)
+            return;
+        var sfx = Instantiate(PogoSFX, transform.position, Quaternion.identity, gameObject.transform);
+        sfx.GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(1f, 1.3f);
+        Destroy(sfx, 3f);
     }
 
     void UpdateCoyoteTime()

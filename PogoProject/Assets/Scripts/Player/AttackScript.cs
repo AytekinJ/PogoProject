@@ -102,7 +102,7 @@ public class AttackScript : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
@@ -120,7 +120,8 @@ public class AttackScript : MonoBehaviour
 
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
-                OnAirJump();
+                bool isEnemy = hit.collider.gameObject.CompareTag("Enemy");
+                OnAirJump(isEnemy);
                 if (hit.collider.gameObject.CompareTag("Tower"))
                 {
                     CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
@@ -137,9 +138,9 @@ public class AttackScript : MonoBehaviour
         DebugDrawBox(attackPosition, boxSize, Color.red, 0.5f);
     }
 
-    void OnAirJump()
+    void OnAirJump(bool isEnemy)
     {
-        playerController.DoPOGO(POGOMultiplier);
+        playerController.DoPOGO(POGOMultiplier, isEnemy);
         Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic();
         // animator.SetBool("isJumping", true);
     }
