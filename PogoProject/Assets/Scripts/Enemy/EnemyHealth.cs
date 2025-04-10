@@ -7,8 +7,17 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour
 {
    [SerializeField] private int Health = 1;
-   [SerializeField] private bool respawnEagleEnemy;
-    
+   [Tooltip("Sadece Eagle Enemy ile çalışır. Aksi takdirde otomatik False olur.")]
+   [SerializeField] private bool respawn;
+   Enemy enemyScript;
+   BoxCollider2D boxCollider;
+   CircleCollider2D circleCollider;
+    private void Start() 
+    {
+       enemyScript = GetComponent<Enemy>();
+       boxCollider = GetComponent<BoxCollider2D>();
+       circleCollider = GetComponent<CircleCollider2D>();
+    }
     public void GiveDamage(int damage)
     {
        checkHealth(damage);
@@ -19,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
     {
        if (Health <= 0 || Health - damageToAppend <= 0)
        {
-         if(!respawnEagleEnemy)
+         if(!respawn)
          {
             EnemyManager.deactivateEnemy(GetComponent<Enemy>());
             Destroy(gameObject);
@@ -36,14 +45,18 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator EnemyRespawn()
     {
-      GetComponent<BoxCollider2D>().enabled = false;
-      GetComponent<CircleCollider2D>().enabled = false;
-      GetComponent<Animator>().SetBool("isVanishing", true);
-      yield return new WaitForSeconds(1f);
-      GetComponent<Animator>().SetBool("isVanishing", false);
-      yield return new WaitForSeconds(0.7f);
-      GetComponent<BoxCollider2D>().enabled = true;
-      GetComponent<CircleCollider2D>().enabled = true;
-      Health = 1;
+      if(enemyScript.enemydata.enemyType == EnemyType.Eagle)
+      {
+         boxCollider.enabled = false;
+         circleCollider.enabled = false;
+         GetComponent<Animator>().SetBool("isVanishing", true);
+         yield return new WaitForSeconds(1f);
+         GetComponent<Animator>().SetBool("isVanishing", false);
+         yield return new WaitForSeconds(0.7f);
+         boxCollider.enabled = true;
+         circleCollider.enabled = true;
+         Health = 1;
+      }
+      
     }
 }

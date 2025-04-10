@@ -2682,6 +2682,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1322334469}
   parallaxEffect: 0.2
+--- !u!1 &158042455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 158042456}
+  m_Layer: 0
+  m_Name: CameraGrounded
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &158042456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158042455}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &311542722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5228,8 +5259,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1094261897}
+  UnGroundedTransform: {fileID: 1582827019}
+  GroundedTransform: {fileID: 158042456}
   offset: {x: 0, y: 0, z: -10}
-  smooth: 0.125
+  smoothValue: 0.2
+  controllerScript: {fileID: 0}
+  DownY: 0.34
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1380085596
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,6 +5311,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1322334470}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1582827018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582827019}
+  m_Layer: 0
+  m_Name: CameraUnGrounded
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1582827019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582827018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1606668752
@@ -5685,6 +5754,7 @@ MonoBehaviour:
   gold: {fileID: 1163734936}
   CamShakeDuration: 0.1
   CamShakeMagnitude: 0.2
+  SwordSwaySFX: {fileID: 0}
 --- !u!114 &1832170179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5697,10 +5767,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7bc3e17b2c0a44b8a24bb8c184a1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputX: 0
+  inputY: 0
   normalGfx: {fileID: 1201580896}
   goldGfx: {fileID: 1163734933}
   speed: 5
   JumpButton: 32
+  DpadUp: 334
+  DpadDown: 336
+  DpadLeft: 337
+  DpadRight: 335
   groundCheckPos: {fileID: 115803201}
   groundCheckRadius: 0.1
   groundCheckLayer:
@@ -6130,3 +6206,5 @@ SceneRoots:
   - {fileID: 1380085598}
   - {fileID: 1223247108}
   - {fileID: 311542722}
+  - {fileID: 1582827019}
+  - {fileID: 158042456}
