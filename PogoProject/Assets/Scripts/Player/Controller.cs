@@ -4,6 +4,8 @@ using System.Collections;
 
 public class Controller : MonoBehaviour
 {
+    public GameSetting gameSetting;
+
     public static Rigidbody2D rb;
     public float inputX;
     public float inputY;
@@ -16,11 +18,11 @@ public class Controller : MonoBehaviour
     #endregion
 
     public float speed = 5f;
-    public KeyCode JumpButton = KeyCode.Space;
-    public KeyCode DpadUp = KeyCode.JoystickButton4;
-    public KeyCode DpadDown = KeyCode.JoystickButton6;
-    public KeyCode DpadLeft = KeyCode.JoystickButton7;
-    public KeyCode DpadRight = KeyCode.JoystickButton5;
+    public KeyCode JumpButton;
+    public KeyCode DpadUp;
+    public KeyCode DpadDown;
+    public KeyCode DpadLeft;
+    public KeyCode DpadRight;
     public static bool canChangeAnim = true;
 
     [SerializeField] Transform groundCheckPos;
@@ -47,10 +49,6 @@ public class Controller : MonoBehaviour
     private Animator goldGfxAnimator;
     private Animator normalGfxAnimator;
 
-    //[Header("Sprinting Settings")]
-    //[SerializeField] private KeyCode sprintButton = KeyCode.LeftShift;
-    //[SerializeField] private float sprintMultiplier = 1.5f;
-    //private bool isSprinting;
     [HideInInspector] public bool isFacingRight = true;
     AttackScript attackScript;
 
@@ -66,6 +64,12 @@ public class Controller : MonoBehaviour
         normalGfxAnimator = normalGfx.GetComponent<Animator>();
         attackScript = GetComponent<AttackScript>();
         InvokeRepeating(nameof(CheckController), 1, 1);
+
+        JumpButton = gameSetting.JumpButton;
+        DpadUp = gameSetting.DpadUp;
+        DpadDown = gameSetting.DpadDown;
+        DpadLeft = gameSetting.DpadLeft;
+        DpadRight = gameSetting.DpadRight;
     }
 
     #region ControllerCheck
