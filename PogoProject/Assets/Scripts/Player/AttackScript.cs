@@ -39,7 +39,7 @@ public class AttackScript : MonoBehaviour
     [SerializeField] GameObject SwordSwaySFX;
 
     public static AttackScript Instance;
-
+    Vector3 hitPoint;
     void Start()
     {
         playerController = GetComponent<Controller>();
@@ -101,7 +101,7 @@ public class AttackScript : MonoBehaviour
     {
         Vector2 attackPosition = (Vector2)transform.position + direction * attackRange;
         RaycastHit2D hit = Physics2D.BoxCast(attackPosition, boxSize, 0f, direction, 0f, attackMask);
-
+        hitPoint = hit.point;
         if (hit.collider != null)
         {
             //Debug.Log(hit.collider.name);
@@ -143,7 +143,7 @@ public class AttackScript : MonoBehaviour
     void OnAirJump(bool isEnemy)
     {
         playerController.DoPOGO(POGOMultiplier, isEnemy);
-        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic();
+        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(new Vector3(hitPoint.x, hitPoint.y + 2));
         // animator.SetBool("isJumping", true);
     }
 

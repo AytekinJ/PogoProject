@@ -202,7 +202,6 @@ GameObject:
   - component: {fileID: 1491743274088363608}
   - component: {fileID: 2463873496423336256}
   - component: {fileID: 288213466490073605}
-  - component: {fileID: 3179855308587880008}
   m_Layer: 7
   m_Name: PlayerM
   m_TagString: Player
@@ -314,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7bc3e17b2c0a44b8a24bb8c184a1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSetting: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
   inputX: 0
   inputY: 0
   normalGfx: {fileID: 4233213808909911435}
@@ -325,13 +325,14 @@ MonoBehaviour:
   DpadLeft: 337
   DpadRight: 335
   groundCheckPos: {fileID: 7055823131214300178}
-  groundCheckRadius: 0.167
+  groundCheckRadius: 0.15
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 1088
-  jumpForce: 6
+  jumpForce: 5
   lowJumpMultiplier: 3
-  fallMultiplier: 2.5
+  fallMultiplier: 2
+  PogoSFX: {fileID: 7269873125136112546, guid: 403e39824d779934993bcdc764e61abd, type: 3}
   jumpBufferTime: 0.1
   coyoteTime: 0.1
   hasJumpedDuringCoyote: 0
@@ -348,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSetting: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
   Damage: 1
   POGOMultiplier: 11
   normalGfx: {fileID: 4233213808909911435}
@@ -397,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a414599e6c7ba4eac4b51e01645292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgSFX: {fileID: 7269873125136112546, guid: b9dae31a2e5ea51498c278a3345289ae, type: 3}
 --- !u!114 &2463873496423336256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,19 +468,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &3179855308587880008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3430814374371888949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ff3f75cc6873b3429e88937349c6a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSetting: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
 --- !u!1 &4233213808909911435
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,6 @@ public class DoorScript : MonoBehaviour
 
         yield return new WaitForSeconds(respawnDelay);
         animator.SetBool("isBreaking", false);
-        yield return new WaitForSeconds(1f);
         boxCollider2D.enabled = true;
         isRespawning = false;
     }
