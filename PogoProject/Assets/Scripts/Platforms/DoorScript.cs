@@ -5,11 +5,12 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     public float respawnDelay = 1f;
-    private bool isRespawning = false;
-    private bool IsPlayerInside = false;
+    public bool isRespawning = false;
+    public bool IsPlayerInside = false;
 
     Animator animator;
     [SerializeField] BoxCollider2D boxCollider2D;
+
 
     void Start()
     {
@@ -27,19 +28,9 @@ public class DoorScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        IsPlayerInside = true;
-        StopAllCoroutines();
-    }
+    
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        IsPlayerInside = false;
-        StartCoroutine(RespawnDoor());
-    }
-
-    IEnumerator RespawnDoor()
+    public IEnumerator RespawnDoor()
     {
         while (IsPlayerInside)
         {
