@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3731109705701639968}
   - component: {fileID: 667414939542355187}
-  - component: {fileID: 1362680950736667032}
-  - component: {fileID: 2807925768478514608}
-  - component: {fileID: 5372147609609846253}
   - component: {fileID: 8825121604344716287}
   - component: {fileID: 7410161494037271763}
   - component: {fileID: 1089441848337650665}
+  - component: {fileID: 1362680950736667032}
+  - component: {fileID: 2807925768478514608}
   m_Layer: 9
   m_Name: Idle Goomba
   m_TagString: Enemy
@@ -93,48 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1362680950736667032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036694780153490903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3302004557f5c5dc4963209a2b3a0c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 1
-  respawn: 0
---- !u!114 &2807925768478514608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036694780153490903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a261cfe908846534e964e0c7aa2f0dd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X: 15
-  Y: 3
---- !u!114 &5372147609609846253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036694780153490903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa796e098debeb34891357fe055cadca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PointValue: 1
-  IncreaseHealth: 0
 --- !u!95 &8825121604344716287
 Animator:
   serializedVersion: 7
@@ -230,3 +187,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1362680950736667032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036694780153490903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3302004557f5c5dc4963209a2b3a0c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
+  respawnEagleEnemy: 0
+--- !u!114 &2807925768478514608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7036694780153490903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a261cfe908846534e964e0c7aa2f0dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  X: 15
+  Y: 3

@@ -35,19 +35,22 @@ public class AttackScript : MonoBehaviour
     [SerializeField] float CamShakeMagnitude = 0.05f;
 
     [SerializeField] GameObject SwordSwaySFX;
-    Vector3 hitPoint;
+
+    public static AttackScript Instance;
+
     void Start()
     {
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
         particleScript = GetComponent<HitParticleScript>();
+        Instance = this;
     }
 
     void Update()
     {
         GetInputs();
         CalculateDirection();
-        AppendAttack();
+        //AppendAttack();
         SetLastAttackPos();
     }
 
@@ -58,9 +61,9 @@ public class AttackScript : MonoBehaviour
         Destroy(sfx, 3f);
     }
 
-    void AppendAttack()
+    public void AppendAttack()
     {
-        if (Input.GetKey(AttackKey) && Time.time >= attacktime)
+        if (Time.time >= attacktime)
         {
 
             attackDirection = GetAttackDirection();
@@ -96,11 +99,10 @@ public class AttackScript : MonoBehaviour
     {
         Vector2 attackPosition = (Vector2)transform.position + direction * attackRange;
         RaycastHit2D hit = Physics2D.BoxCast(attackPosition, boxSize, 0f, direction, 0f, attackMask);
-        hitPoint = hit.point;
 
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
@@ -118,7 +120,8 @@ public class AttackScript : MonoBehaviour
 
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
-                OnAirJump();
+                bool isEnemy = hit.collider.gameObject.CompareTag("Enemy");
+                OnAirJump(isEnemy);
                 if (hit.collider.gameObject.CompareTag("Tower"))
                 {
                     CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
@@ -135,10 +138,10 @@ public class AttackScript : MonoBehaviour
         DebugDrawBox(attackPosition, boxSize, Color.red, 0.5f);
     }
 
-    void OnAirJump()
+    void OnAirJump(bool isEnemy)
     {
-        playerController.DoPOGO(POGOMultiplier);
-        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(new Vector3(hitPoint.x, hitPoint.y + 2));
+        playerController.DoPOGO(POGOMultiplier, isEnemy);
+        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic();
         // animator.SetBool("isJumping", true);
     }
 
