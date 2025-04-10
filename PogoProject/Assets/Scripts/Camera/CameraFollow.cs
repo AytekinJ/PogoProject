@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -34,10 +33,10 @@ public class CameraFollow : MonoBehaviour
         SetMovePosition();
         Lerp();
 
-        // if(Mathf.Abs(target.position.y - gameObject.transform.position.y) > 2.5)
-        // {
-        //     SetCamFollowPublic(target.position);
-        // }
+        if(Mathf.Abs(target.position.y - gameObject.transform.position.y) > 2.5)
+        {
+            SetCamFollowPublic();
+        }
     }
 
     void Lerp()
@@ -73,8 +72,8 @@ public class CameraFollow : MonoBehaviour
             GroundedTransform.position = target.position + offset;
     }
 
-    public void SetCamFollowPublic(Vector3 targetTransorm)
+    public void SetCamFollowPublic()
     {
-        GroundedTransform.position = targetTransorm + offset;
+        GroundedTransform.position = target.position + offset;
     }
 }
