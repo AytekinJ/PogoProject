@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
+    public GameSetting gameSetting;
+
     public int Damage = 1;
     public float POGOMultiplier = 10f;
     #region silersiniz
@@ -50,7 +52,7 @@ public class AttackScript : MonoBehaviour
     {
         GetInputs();
         CalculateDirection();
-        //AppendAttack();
+        AppendAttack();
         SetLastAttackPos();
     }
 
@@ -63,7 +65,7 @@ public class AttackScript : MonoBehaviour
 
     public void AppendAttack()
     {
-        if (Time.time >= attacktime)
+        if (Input.GetKeyDown(gameSetting.attack) && Time.time >= attacktime)
         {
 
             attackDirection = GetAttackDirection();

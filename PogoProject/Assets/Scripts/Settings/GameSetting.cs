@@ -54,7 +54,11 @@ public class GameSetting : ScriptableObject
     [SerializeField] public KeyCode leftAim = KeyCode.LeftArrow;
     [SerializeField] public KeyCode upAim = KeyCode.UpArrow;
     [SerializeField] public KeyCode downAim = KeyCode.DownArrow;
-
+    [SerializeField] public KeyCode JumpButton = KeyCode.Space;
+    [SerializeField] public KeyCode DpadUp = KeyCode.JoystickButton4;
+    [SerializeField] public KeyCode DpadDown = KeyCode.JoystickButton6;
+    [SerializeField] public KeyCode DpadLeft = KeyCode.JoystickButton7;
+    [SerializeField] public KeyCode DpadRight = KeyCode.JoystickButton5;
 
     private void Awake()
     {
