@@ -20,4 +20,21 @@ MonoBehaviour:
   postprocessing: 0
   antialiasing: 0
   antialiasingQuality: 0
-  volume: 100
+  masterVolume: 100
+  musicVolume: 100
+  sfxVolume: 100
+  inputEnabled: 1
+  right: 100
+  left: 97
+  up: 119
+  down: 115
+  attack: 120
+  rightAim: 275
+  leftAim: 276
+  upAim: 273
+  downAim: 274
+  JumpButton: 32
+  DpadUp: 334
+  DpadDown: 336
+  DpadLeft: 337
+  DpadRight: 335

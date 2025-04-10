@@ -65,7 +65,7 @@ public class AttackScript : MonoBehaviour
 
     public void AppendAttack()
     {
-        if (Input.GetKeyDown(gameSetting.attack) && Time.time >= attacktime)
+        if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
         {
 
             attackDirection = GetAttackDirection();
