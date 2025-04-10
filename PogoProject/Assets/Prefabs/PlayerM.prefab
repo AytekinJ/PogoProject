@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
-  POGOMultiplier: 12
+  POGOMultiplier: 11
   normalGfx: {fileID: 4233213808909911435}
   goldGfx: {fileID: 78928594970178162}
   AttackKey: 120
