@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 693026909036236307}
   - component: {fileID: 8485893733352391273}
+  - component: {fileID: 2220108992077521030}
   m_Layer: 0
   m_Name: Big Ice
   m_TagString: Untagged
@@ -87,3 +88,86 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2220108992077521030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739264518155773295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_Priority: 4
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.38420814, y: -0.87891245, z: 0}
+  - {x: -0.5439464, y: -0.7104778, z: 0}
+  - {x: -0.54956007, y: -0.5364518, z: 0}
+  - {x: -0.5190854, y: -0.4161563, z: 0}
+  - {x: -0.43407708, y: -0.27661467, z: 0}
+  - {x: -0.37954348, y: -0.27180243, z: 0}
+  - {x: -0.3506727, y: -0.32794, z: 0}
+  - {x: -0.30656123, y: -0.32845545, z: 0}
+  - {x: -0.46628326, y: 0.5058465, z: 0}
+  - {x: -0.30020553, y: 0.9112539, z: 0}
+  - {x: -0.2344, y: 0.9152446, z: 0}
+  - {x: -0.019581437, y: 0.60198355, z: 0}
+  - {x: 0.0534482, y: 0.46477652, z: 0}
+  - {x: 0.08885646, y: 0.25675297, z: 0}
+  - {x: 0.19729435, y: -0.2544546, z: 0}
+  - {x: 0.39198607, y: -0.08673477, z: 0}
+  - {x: 0.5005127, y: -0.08290672, z: 0}
+  - {x: 0.5005131, y: -0.23570013, z: 0}
+  - {x: 0.33026028, y: -0.3775773, z: 0}
+  - {x: 0.35208756, y: -0.4299636, z: 0}
+  - {x: 0.3848285, y: -0.37102938, z: 0}
+  - {x: 0.43939656, y: -0.37102938, z: 0}
+  - {x: 0.4459452, y: -0.34483862, z: 0}
+  - {x: 0.52015793, y: -0.34047318, z: 0}
+  - {x: 0.5522783, y: -0.37688494, z: 0}
+  - {x: 0.5572647, y: -0.5347376, z: 0}
+  - {x: 0.51579285, y: -0.56747866, z: 0}
+  - {x: 0.42411816, y: -0.7486448, z: 0}
+  - {x: 0.30625087, y: -0.9210801, z: 0}
+  - {x: 0.22548997, y: -0.9188976, z: 0}
+  - {x: 0.21894181, y: -0.8817911, z: 0}
+  - {x: 0.14472908, y: -0.8839736, z: 0}
+  - {x: 0.1469118, y: -0.91671467, z: 0}
+  - {x: -0.2066901, y: -0.9188976, z: 0}
+  - {x: -0.2132383, y: -0.8817911, z: 0}
+  m_ShapePathHash: -2074554930
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 0}
+  m_ShadowShape2DProvider:
+    rid: -2
+  m_ShadowCastingSource: 1
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0.0038523078, y: -0.0029177666, z: 0}
+      m_Extent: {x: 0.5534124, y: 0.91816235, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0.05
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0.05
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 1
+  m_PreviousShadowShape2DSource: {fileID: 8485893733352391273}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
