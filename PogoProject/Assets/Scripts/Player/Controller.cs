@@ -53,6 +53,7 @@ public class Controller : MonoBehaviour
     AttackScript attackScript;
 
     bool HasController;
+    [SerializeField] bool isPogoing;
 
     private void Awake()
     {
@@ -124,8 +125,9 @@ public class Controller : MonoBehaviour
         UpdateCoyoteTime();
         AnimatorVariables();
         Flip();
+        Landed();
 
-        if(Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             normalGfx.SetActive(change);
             goldGfx.SetActive(!change);
@@ -220,14 +222,33 @@ public class Controller : MonoBehaviour
         {
             rb.gravityScale = lowJumpMultiplier;
         }
+        else if (rb.linearVelocity.y > 0 && isPogoing)
+        {
+            rb.gravityScale = lowJumpMultiplier;
+        }
         else
         {
             rb.gravityScale = 1f;
         }
     }
 
+    void DoingPogo()
+    {
+        isPogoing = true;
+        rb.gravityScale = lowJumpMultiplier;
+    }
+
+    void Landed()
+    {
+        if (!isPogoing)
+            return;
+        if (CheckGrounded())
+        isPogoing = false;
+    }
+
     public void DoPOGO(float pogoMultiplier, bool isEnemy)
     {
+        DoingPogo();
         PlaySFX(isEnemy);
 
         CameraShake.StartShake(0.1f, 0.05f);
