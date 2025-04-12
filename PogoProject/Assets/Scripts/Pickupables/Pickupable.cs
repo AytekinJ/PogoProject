@@ -20,6 +20,7 @@ public class Pickupable : MonoBehaviour
             }
             else if(type == PickupableType.Health)
             {
+                Score.player.addHeart();
                 HealthScript.IncreaseHealth(1);
             }
             Destroy(Instantiate(Score.player.pickUpEffect, transform.position, Quaternion.identity),1f);
