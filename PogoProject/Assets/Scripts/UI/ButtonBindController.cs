@@ -9,11 +9,11 @@ public class KeyBinderInitializer : MonoBehaviour
     // !!! DİKKAT: Butonları Inspector'da AŞAĞIDAKİ SIRAYLA atayın !!!
     // 0: Up, 1: Right, 2: Left, 3: Down, 4: Attack,
     // 5: AimUp, 6: AimRight, 7: AimLeft, 8: AimDown
-    [SerializeField] private List<Button> buttons;
+    [SerializeField] public List<Button> buttons;
     [SerializeField] private GameSetting settings; // GameSetting ScriptableObject veya component'ini atayın
 
     // Ayarlardan alınacak KeyCode'ları tutacak liste (sıralı)
-    private List<KeyCode> targetKeyCodes = new List<KeyCode>();
+    public List<KeyCode> targetKeyCodes = new List<KeyCode>();
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class KeyBinderInitializer : MonoBehaviour
         }
 
         // Gerekli buton sayısını kontrol et (örneğin 9)
-        const int expectedButtonCount = 9;
+        const int expectedButtonCount = 13;
         if (buttons == null || buttons.Count != expectedButtonCount)
         {
             Debug.LogError($"KeyBinderInitializer: Lütfen Inspector'da tam olarak {expectedButtonCount} adet buton atayın! (Sırasıyla: Up, Right, Left, Down, Attack, AimUp, AimRight, AimLeft, AimDown)", this);
@@ -85,6 +85,10 @@ public class KeyBinderInitializer : MonoBehaviour
         targetKeyCodes.Add(settings.rightAim);// Index 6
         targetKeyCodes.Add(settings.leftAim); // Index 7
         targetKeyCodes.Add(settings.downAim); // Index 8  (Typo düzeltildi, aimDown varsayıldı)
+        targetKeyCodes.Add(settings.DpadUp);
+        targetKeyCodes.Add(settings.DpadRight);
+        targetKeyCodes.Add(settings.DpadLeft);
+        targetKeyCodes.Add(settings.DpadDown);
 
         // Eğer GameSetting'deki field isimleri farklıysa burayı güncellemelisin.
     }
