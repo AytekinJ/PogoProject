@@ -42,8 +42,8 @@ public class GameSetting : ScriptableObject
     [Range(0, 100)] public int masterVolume = 100;
     [Range(0, 100)] public int musicVolume = 100;
     [Range(0, 100)] public int sfxVolume = 100;
-    
-    [Header("Input Ayarlari")]
+
+    [Header("Kontrol Ayarlari")]
     [SerializeField] public bool inputEnabled = true;
     [SerializeField] public KeyCode right = KeyCode.D;
     [SerializeField] public KeyCode left = KeyCode.A;
@@ -59,6 +59,7 @@ public class GameSetting : ScriptableObject
     [SerializeField] public KeyCode DpadDown = KeyCode.JoystickButton6;
     [SerializeField] public KeyCode DpadLeft = KeyCode.JoystickButton7;
     [SerializeField] public KeyCode DpadRight = KeyCode.JoystickButton5;
+
 
     private void Awake()
     {

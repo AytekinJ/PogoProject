@@ -12,12 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc7ea2a9178de543ad5253e73864160, type: 3}
   m_Name: MainSettings
   m_EditorClassIdentifier: 
-  rWidth: 1920
-  rHeight: 1080
-  fps: -1
+  rWidth: 1600
+  rHeight: 900
+  fps: 30
   vsync: 0
   shadows: 0
   postprocessing: 0
   antialiasing: 0
   antialiasingQuality: 0
-  volume: 100
+  masterVolume: 89
+  musicVolume: 57
+  sfxVolume: 93
+  inputEnabled: 1
+  right: 100
+  left: 97
+  up: 119
+  down: 115
+  attack: 120
+  rightAim: 275
+  leftAim: 276
+  upAim: 273
+  downAim: 274
+  JumpButton: 32
+  DpadUp: 334
+  DpadDown: 336
+  DpadLeft: 337
+  DpadRight: 335

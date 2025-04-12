@@ -34,7 +34,19 @@ public class MainMenuController : MonoBehaviour
             panelToShow.SetActive(true);
         }
     }
+    public void ActivateAllPanels(){
+        general.SetActive(true);
+        sound.SetActive(true);
+        video.SetActive(true);
+        other.SetActive(true);
+    }
 
+    public void ActivateFirstPanel(){
+        general.SetActive(true);
+        sound.SetActive(false);
+        video.SetActive(false);
+        other.SetActive(false);
+    }
     public void Credits()
     {
         Debug.Log("Credits Button Pressed");

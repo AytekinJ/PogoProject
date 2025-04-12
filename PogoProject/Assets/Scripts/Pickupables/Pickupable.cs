@@ -2,7 +2,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 public enum PickupableType
 {
-    Coin,
     Star,
     Health
 }
@@ -18,11 +17,6 @@ public class Pickupable : MonoBehaviour
             {
                 Score.player.addStar();
                 Debug.Log("Star Added");
-            }
-            else if(type == PickupableType.Coin)
-            {
-                Score.player.addCoin();
-                Debug.Log("Coin Added");
             }
             else if(type == PickupableType.Health)
             {

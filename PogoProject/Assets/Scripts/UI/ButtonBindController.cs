@@ -2,94 +2,106 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using System.Linq; // LINQ kullanmak için (opsiyonel ama kullanışlı)
 
 public class KeyBinderInitializer : MonoBehaviour
 {
-    // !!! DİKKAT: Butonları Inspector'da AŞAĞIDAKİ SIRAYLA atayın !!!
-    // 0: Up, 1: Right, 2: Left, 3: Down, 4: Attack,
-    // 5: AimUp, 6: AimRight, 7: AimLeft, 8: AimDown
+    // Buttons in sequence: Up, Right, Left, Down, Attack, AimUp, AimRight, AimLeft, AimDown, DpadUp, DpadRight, DpadLeft, DpadDown
     [SerializeField] public List<Button> buttons;
-    [SerializeField] private GameSetting settings; // GameSetting ScriptableObject veya component'ini atayın
+    [SerializeField] private GameSetting settings;
+    
+    // List to store the keycodes from settings
+    private List<KeyCode> targetKeyCodes = new List<KeyCode>();
 
-    // Ayarlardan alınacak KeyCode'ları tutacak liste (sıralı)
-    public List<KeyCode> targetKeyCodes = new List<KeyCode>();
-
-    void Start()
+    private void Start()
     {
+        InitializeKeyBindings();
+    }
+    
+    public void InitializeKeyBindings()
+    {
+        // Check if settings are assigned
         if (settings == null)
         {
-            Debug.LogError("KeyBinderInitializer: GameSetting referansı atanmamış!", this);
+            Debug.LogError("KeyBinderInitializer: GameSetting reference is missing!", this);
             return;
         }
 
-        // Gerekli buton sayısını kontrol et (örneğin 9)
+        // Check if we have the correct number of buttons
         const int expectedButtonCount = 13;
         if (buttons == null || buttons.Count != expectedButtonCount)
         {
-            Debug.LogError($"KeyBinderInitializer: Lütfen Inspector'da tam olarak {expectedButtonCount} adet buton atayın! (Sırasıyla: Up, Right, Left, Down, Attack, AimUp, AimRight, AimLeft, AimDown)", this);
+            Debug.LogError($"KeyBinderInitializer: Please assign exactly {expectedButtonCount} buttons in the Inspector!", this);
             return;
         }
 
-        // Ayarlardaki KeyCode'ları doğru sırayla listeye doldur
+        // Populate the key codes from settings
         PopulateTargetKeyCodes();
 
-        // Butonları döngü ile işle
+        // Loop through buttons and set their text to display the corresponding key
         for (int i = 0; i < buttons.Count; i++)
         {
+            if (i >= targetKeyCodes.Count)
+            {
+                Debug.LogError($"KeyBinderInitializer: Not enough key codes for button at index {i}!");
+                continue;
+            }
+
             Button currentButton = buttons[i];
-            KeyCode targetKey = targetKeyCodes[i]; // Bu index'e karşılık gelen KeyCode
+            KeyCode targetKey = targetKeyCodes[i];
 
             if (currentButton == null)
             {
-                Debug.LogWarning($"KeyBinderInitializer: Listenin {i}. indeksindeki buton atanmamış/eksik.");
-                continue; // Sonraki butona geç
+                Debug.LogWarning($"KeyBinderInitializer: Button at index {i} is not assigned.");
+                continue;
             }
 
-            // Buton üzerinde KeyBinder scriptini bul
-            KeyBinder keyBinder = currentButton.GetComponent<KeyBinder>();
+            // Find the text component on the button
+            TextMeshProUGUI buttonText = currentButton.GetComponentInChildren<TextMeshProUGUI>();
+            if (buttonText == null)
+            {
+                Debug.LogWarning($"KeyBinderInitializer: Button '{currentButton.name}' does not have a TextMeshProUGUI component!", currentButton);
+                continue;
+            }
 
+            // Set the text to display the key
+            buttonText.text = targetKey.ToString();
+
+            // If the button has a KeyBinder component, initialize it
+            KeyBinder keyBinder = currentButton.GetComponent<KeyBinder>();
             if (keyBinder != null)
             {
-                // KeyBinder bulunduysa, ona InitializeKey metodu ile doğru tuşu ata
                 keyBinder.InitializeKey(targetKey);
-                // KeyBinder scripti bulunamadıysa, en azından text'i direkt ayarlayalım
-                // (Ama bu durumda butona tıklayınca tuş atama çalışmaz)
-                TextMeshProUGUI buttonText = currentButton.GetComponentInChildren<TextMeshProUGUI>();
-                if (buttonText != null)
-                {
-                    buttonText.text = targetKey.ToString();
-                }
-                else
-                {
-                    Debug.LogWarning($"KeyBinderInitializer: Buton '{currentButton.name}' üzerinde KeyBinder scripti ve TextMeshProUGUI bulunamadı!", currentButton);
-                }
+            }
+            else
+            {
+                Debug.LogWarning($"KeyBinderInitializer: Button '{currentButton.name}' does not have a KeyBinder component!", currentButton);
+                // Add KeyBinder component if not found
+                keyBinder = currentButton.gameObject.AddComponent<KeyBinder>();
+                keyBinder.InitializeKey(targetKey);
             }
         }
 
-        Debug.Log("KeyBinderInitializer: Butonlar başarıyla başlatıldı.");
+        Debug.Log("KeyBinderInitializer: All buttons initialized successfully.");
     }
 
-    // GameSetting objesinden KeyCode'ları alır ve sıralı listeye ekler
+    // Populate the target key codes list from settings
     private void PopulateTargetKeyCodes()
     {
-        targetKeyCodes.Clear(); // Listeyi temizle (yeniden başlatma durumları için)
+        targetKeyCodes.Clear();
 
-        // Ayarlardaki KeyCode'ları belirlenen sıraya göre ekle
-        targetKeyCodes.Add(settings.up);      // Index 0
-        targetKeyCodes.Add(settings.right);   // Index 1
-        targetKeyCodes.Add(settings.left);    // Index 2
-        targetKeyCodes.Add(settings.down);    // Index 3
-        targetKeyCodes.Add(settings.attack);  // Index 4
-        targetKeyCodes.Add(settings.upAim);   // Index 5
-        targetKeyCodes.Add(settings.rightAim);// Index 6
-        targetKeyCodes.Add(settings.leftAim); // Index 7
-        targetKeyCodes.Add(settings.downAim); // Index 8  (Typo düzeltildi, aimDown varsayıldı)
+        // Add keys in the expected order
+        targetKeyCodes.Add(settings.up);
+        targetKeyCodes.Add(settings.right);
+        targetKeyCodes.Add(settings.left);
+        targetKeyCodes.Add(settings.down);
+        targetKeyCodes.Add(settings.attack);
+        targetKeyCodes.Add(settings.upAim);
+        targetKeyCodes.Add(settings.rightAim);
+        targetKeyCodes.Add(settings.leftAim);
+        targetKeyCodes.Add(settings.downAim);
         targetKeyCodes.Add(settings.DpadUp);
         targetKeyCodes.Add(settings.DpadRight);
         targetKeyCodes.Add(settings.DpadLeft);
         targetKeyCodes.Add(settings.DpadDown);
-
-        // Eğer GameSetting'deki field isimleri farklıysa burayı güncellemelisin.
     }
 }
