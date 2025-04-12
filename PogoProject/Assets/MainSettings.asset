@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc7ea2a9178de543ad5253e73864160, type: 3}
   m_Name: MainSettings
   m_EditorClassIdentifier: 
-  rWidth: 1600
-  rHeight: 900
-  fps: 30
+  rWidth: 1920
+  rHeight: 1080
+  fps: -1
   vsync: 0
   shadows: 0
   postprocessing: 0
