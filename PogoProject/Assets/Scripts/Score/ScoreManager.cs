@@ -2,7 +2,11 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Mono.Cecil.Cil;
 using TMPro;
+using Unity.Burst;
+using Unity.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -10,6 +14,8 @@ public class ScoreManager : MonoBehaviour
     private bool isFinished = false;
     private bool gameOver;
     public static ScoreManager main;
+
+    private float scorePercentage;
     
     [Header("Timer Settings")]
     [SerializeField] private float timeScaleInterpolationSpeed = 1f;
@@ -28,6 +34,16 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int rewardPerStar;
     [SerializeField] private int pogoReward;
     [SerializeField] private int rewardPerRemainingSecond;
+
+    [Space(5f)]
+    [Header("Endgame Screen Settings")]
+    [SerializeField] private GameObject endGameScreenPrefab;
+    [SerializeField] private GameObject starsParent;
+    [SerializeField] private GameObject starPrefab;
+    [SerializeField] private TextMeshProUGUI percentageText;
+    [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI recordTimeText;
+    [SerializeField] private TextMeshProUGUI pogoText;
 
     private void Awake()
     {
@@ -62,8 +78,6 @@ public class ScoreManager : MonoBehaviour
         if (isFinished || gameOver)
             return;
             
-        // Calculate score for collected hearts (rewardPerStar for each heart)
-        totalScore += Score.player.heartsCollected * rewardPerStar;
         
         // Calculate score for collected stars (rewardPerCoin for each star)
         totalScore += Score.player.starsCollected * rewardPerCoin;
@@ -117,9 +131,11 @@ public class ScoreManager : MonoBehaviour
         }
         
         // Calculate completion percentage
-        float completionPercentage = ((float)collectedItems / totalCollectibles) * 100f;
+        scorePercentage = ((float)collectedItems / totalCollectibles) * 100f;
         Debug.Log($"Collected {collectedItems}/{totalCollectibles} items");
-        Debug.Log($"Completion Percentage: {completionPercentage:F2}%");
+        Debug.Log($"Completion Percentage: {scorePercentage:F2}%");
+
+        EndGame();
     }
 
     #region Save And Encryption
@@ -214,28 +230,106 @@ public class ScoreManager : MonoBehaviour
 
         if (!isFinished)
         {
-            gameOver = true;
-            float velocity = 0f;
-            float targetTimeScale = 0f;
-
-            while (Time.timeScale > 0.05f)
-            {
-                Time.timeScale = Mathf.SmoothDamp(Time.timeScale, targetTimeScale, ref velocity, timeScaleInterpolationSpeed);
-                yield return null;
-            }
-
-            Time.timeScale = 0;
-            
-            // Disable player controls on game over
-            if (Score.player != null && Score.player.gameObject != null) {
-                Controller controller = Score.player.gameObject.GetComponent<Controller>();
-                if (controller != null) controller.enabled = false;
-                
-                AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
-                if (attackScript != null) attackScript.enabled = false;
-            }
-            
-            Debug.Log("Time's up! Game over.");
+            StartCoroutine(SlowMoEnd());
         }
     }
+
+    private IEnumerator SlowMoEnd()
+    {
+        gameOver = true;
+        float velocity = 0f;
+        float targetTimeScale = 0f;
+
+        while (Time.timeScale > 0.05f)
+        {
+            Time.timeScale = Mathf.SmoothDamp(Time.timeScale, targetTimeScale, ref velocity, timeScaleInterpolationSpeed);
+            yield return null;
+        }
+
+        Time.timeScale = 0;
+
+        // Disable player controls on game over
+        if (Score.player != null && Score.player.gameObject != null)
+        {
+            Controller controller = Score.player.gameObject.GetComponent<Controller>();
+            if (controller != null) controller.enabled = false;
+
+            AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
+            if (attackScript != null) attackScript.enabled = false;
+        }
+
+        Debug.Log("Time's up! Game over.");
+    }
+
+    [BurstCompile]
+    public struct ScoreData
+    {
+        public int totalScore;
+        public int starsInLevel;
+        public bool towerPogo;
+        public float scorePercentage;
+    }
+    public ScoreData GetScoreData()
+    {
+        return new ScoreData {
+                totalScore = totalScore,
+                starsInLevel = starsInLevel,
+                towerPogo = towerPogo ,
+                scorePercentage = scorePercentage
+             };
+    }
+
+
+    public void EndGame()
+{
+    StartCoroutine(SlowMoEnd());
+    gameOver = true;
+    ControlScores();
+
+    if (Score.player != null && Score.player.gameObject != null)
+    {
+        Controller controller = Score.player.gameObject.GetComponent<Controller>();
+        if (controller != null) controller.enabled = false;
+
+        AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
+        if (attackScript != null) attackScript.enabled = false;
+    }
+
+    endGameScreenPrefab.SetActive(true);
+    percentageText.text = $"{scorePercentage:F2}%";
+    timeText.text = $"finished in {time - int.Parse(timerText.text)} seconds";
+    pogoText.text = towerPogo ? "Finished With POGO!" : "No POGO!";
+
+    for (int i = 0; i < starsInLevel; i++)
+    {
+        GameObject star = Instantiate(starPrefab, starsParent.transform);
+        if (i < Score.player.starsCollected)
+        {
+            Image starImage = star.GetComponent<Image>();
+            Color c = starImage.color;
+            c.a = 1f;  // Direkt alpha'yı ayarlıyoruz
+            starImage.color = c;
+        }
+    }
+    float finishedTime = time - int.Parse(timerText.text);
+    if (PlayerPrefs.HasKey("FinishedTime"))
+    {
+        finishedTime = PlayerPrefs.GetFloat("FinishedTime", 0f);
+    }
+    else
+    {
+        float fastest = PlayerPrefs.GetFloat("FastestTime", float.MaxValue);
+        if (finishedTime < fastest)
+        {
+        PlayerPrefs.SetFloat("FastestTime", finishedTime);
+        PlayerPrefs.Save();
+        recordTimeText.text = $"NEW RECORD! : {finishedTime} seconds";
+        }
+        else
+        {
+            recordTimeText.text = $"Record : {fastest} seconds";
+        }
+    }
+    Debug.Log("Game Over triggered manually.");
+}
 }
