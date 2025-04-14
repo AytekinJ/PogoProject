@@ -8,6 +8,7 @@ using Unity.Burst;
 using Unity.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -104,7 +105,12 @@ public class ScoreManager : MonoBehaviour
         int highScore = ControlAndSaveHighScore(totalScore);
         Debug.Log($"High Score: {highScore}");
     }
-    
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
     private void CalculateCompletionPercentage()
     {
         int totalCollectibles = starsInLevel;
