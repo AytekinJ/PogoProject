@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heart Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5000338155307514242, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
+      propertyPath: m_TagString
+      value: Heart
+      objectReference: {fileID: 0}
     - target: {fileID: 5757026453577721967, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -34,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5757026453577721967, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5757026453577721967, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5757026453577721967, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5757026453577721967, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -66,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7949560153829296866, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8238350264575017652, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_Size.x

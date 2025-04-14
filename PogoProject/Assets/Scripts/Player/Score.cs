@@ -4,23 +4,26 @@ public class Score : MonoBehaviour
 {
     public static Score player { get; set; }
     public GameObject pickUpEffect;
+    public int heartsCollected;
     public int starsCollected;
-    public int coinsCollected;
 
     public int maxStars;
-    public int maxCoins;
+    public int maxHearts;
     private void Awake()
     {
+        maxStars = GameObject.FindGameObjectsWithTag("Star").Length;
+        maxHearts = GameObject.FindGameObjectsWithTag("Heart").Length;
         player = this;
-    }
-    public void addCoin()
-    {
-        if (coinsCollected + 1 <= maxCoins)
-            coinsCollected += 1;
+
     }
     public void addStar()
     {
-        if (starsCollected+1 <= maxStars)
+        if (starsCollected + 1 <= maxStars)
             starsCollected += 1;
+    }
+    public void addHeart()
+    {
+        if (heartsCollected+1 <= maxHearts)
+            heartsCollected += 1;
     }
 }
