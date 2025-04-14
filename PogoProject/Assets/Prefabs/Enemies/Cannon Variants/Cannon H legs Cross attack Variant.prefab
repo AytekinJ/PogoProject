@@ -8,13 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 974700886520553768, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9238796
+      objectReference: {fileID: 0}
+    - target: {fileID: 974700886520553768, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 974700886520553768, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 974700886520553768, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.38268325
+      objectReference: {fileID: 0}
+    - target: {fileID: 974700886520553768, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 2077041525105888880, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.887
+      value: 1.0495619
       objectReference: {fileID: 0}
     - target: {fileID: 2077041525105888880, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.016
+      value: -3.0270638
       objectReference: {fileID: 0}
     - target: {fileID: 2077041525105888880, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon H legs Cross attack Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7648624695889362617, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9636eca6c7c4b22478100bf3d87cc5a3, type: 3}
     - target: {fileID: 8219778953363905476, guid: 033c1b0d7e0a765d8bbd5c76a47e0af4, type: 3}
       propertyPath: m_Size.x
       value: 3.5
@@ -95,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
+  respawn: 0
