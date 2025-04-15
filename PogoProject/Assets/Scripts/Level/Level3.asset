@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e97e38eb2a7394fa9037da9c58ddc7, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  sceneNumber: 0
+  sceneNumber: 3
+  levelIcon: {fileID: -6674868978544099146, guid: c1f8beeca522bf142bc17592afed0a25, type: 3}
   takenPickups: []
   allPickups: []
   bestTime: Infinity
