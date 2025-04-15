@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 940803794112665605}
   - component: {fileID: 3888305927524890636}
   - component: {fileID: 5620163047529065854}
-  - component: {fileID: 6144324325400308651}
+  - component: {fileID: 9167661191799293026}
   m_Layer: 0
   m_Name: AddThisShitForMechanics
   m_TagString: Untagged
@@ -83,17 +83,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeScaleInterpolationSpeed: 0.1
-  time: 120
-  filePath: h_s
+  time: 999
+  filePath: highscore
   timerText: {fileID: 0}
   starsInLevel: 5
-  coinsInLevel: 5
+  heartsInLevel: 0
   totalScore: 0
   towerPogo: 0
   rewardPerCoin: 100
   rewardPerStar: 250
   pogoReward: 1000
   rewardPerRemainingSecond: 5
+  endGameScreenPrefab: {fileID: 0}
+  starsParent: {fileID: 0}
+  starPrefab: {fileID: 2650631963025147304, guid: afbcadf933dc93442ae2763c9c398aaa, type: 3}
+  percentageText: {fileID: 0}
+  timeText: {fileID: 0}
+  recordTimeText: {fileID: 0}
+  pogoText: {fileID: 0}
 --- !u!114 &3888305927524890636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +131,7 @@ MonoBehaviour:
   fontSize: 24
   textColor: {r: 1, g: 1, b: 1, a: 1}
   position: {x: 10, y: 10}
---- !u!114 &6144324325400308651
+--- !u!114 &9167661191799293026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7707282676390004595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1ac9a55d925b8c468dee887a5816138, type: 3}
+  m_Script: {fileID: 11500000, guid: 07984bb09a756694a86312c9604b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: 
+  filePath: gamedata

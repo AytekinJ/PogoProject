@@ -2,13 +2,12 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Mono.Cecil.Cil;
 using TMPro;
-using Unity.Burst;
-using Unity.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -16,23 +15,25 @@ public class ScoreManager : MonoBehaviour
     private bool gameOver;
     public static ScoreManager main;
 
+    [SerializeField] private LevelsManager levelManager;
+
+    private LevelData levelData;
+
     private float scorePercentage;
-    
+
     [Header("Timer Settings")]
     [SerializeField] private float timeScaleInterpolationSpeed = 1f;
     [SerializeField] private float time;
-    [SerializeField] private string filePath;
-    
+
     [Header("Score Settings")]
     public TextMeshProUGUI timerText;
     public int starsInLevel;
     public int heartsInLevel;
     public int totalScore;
     public bool towerPogo;
-    
+
     [Header("Rewards")]
     [SerializeField] private int rewardPerCoin;
-    [SerializeField] private int rewardPerStar;
     [SerializeField] private int pogoReward;
     [SerializeField] private int rewardPerRemainingSecond;
 
@@ -46,296 +47,364 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recordTimeText;
     [SerializeField] private TextMeshProUGUI pogoText;
 
-    private void Awake()
+    private Dictionary<int, Pickupable> starLookup = new Dictionary<int, Pickupable>();
+    private List<int> collectedStarIDsThisRun = new List<int>();
+    private string highScoreFilePath;
+
+    private void Start()
     {
         main = this;
-        
-        // Find timer UI text
+
+        if (levelManager == null) { Debug.LogError("LevelsManager atanmamış!"); return; }
+        if (DatabaseManager.main == null) { Debug.LogError("DatabaseManager sahnede bulunamadı veya aktif değil!"); return; }
+
+        if (levelManager.currentLevel < 0 || levelManager.currentLevel >= levelManager.levels.Count) {
+             Debug.LogError($"Geçersiz currentLevel index: {levelManager.currentLevel}"); return;
+        }
+        levelData = levelManager.levels[levelManager.currentLevel];
+        if (levelData == null) { Debug.LogError("Mevcut level için LevelData alınamadı!"); return; }
+
+        levelData.takenPickups.Clear();
+        levelData.allPickups.Clear();
+        starLookup.Clear();
+        collectedStarIDsThisRun.Clear();
+        gameOver = false;
+        isFinished = false;
+        totalScore = 0;
+
+        LevelProgressData loadedProgress = DatabaseManager.main.GetLevelProgress(levelData.name);
+
+        if (loadedProgress != null) {
+            levelData.bestTime = loadedProgress.bestTime;
+            levelData.completionPercentage = loadedProgress.completionPercentage;
+            levelData.isCompleted = loadedProgress.isCompleted;
+
+        } else {
+             levelData.bestTime = float.PositiveInfinity;
+             levelData.completionPercentage = 0f;
+             levelData.isCompleted = false;
+
+        }
+
+        GameObject[] starObjects = GameObject.FindGameObjectsWithTag("Star");
+        starsInLevel = starObjects.Length;
+
+        for (int i = 0; i < starsInLevel; i++)
+        {
+            GameObject starGO = starObjects[i];
+            Pickupable pickupable = starGO.GetComponent<Pickupable>();
+            if (pickupable != null && pickupable.type == PickupableType.Star)
+            {
+                pickupable.id = i;
+                pickupable.hasTaken = false;
+                starLookup[i] = pickupable;
+                levelData.allPickups.Add(pickupable);
+            }
+            else if (pickupable == null) {
+                Debug.LogWarning($"'Star' etiketli nesne (index {i}) Pickupable içermiyor.");
+            }
+        }
+
+        int initialStarCount = 0;
+        if (loadedProgress != null && loadedProgress.takenStarIDs != null)
+        {
+
+            foreach (int starID in loadedProgress.takenStarIDs)
+            {
+                if (starLookup.TryGetValue(starID, out Pickupable star))
+                {
+                    star.hasTaken = true;
+                    levelData.takenPickups.Add(star);
+                    star.gameObject.SetActive(false);
+                    initialStarCount++;
+                }
+                else {
+                    Debug.LogWarning($"Yüklenen yıldız ID ({starID}) ile eşleşen yıldız bulunamadı.");
+                }
+            }
+        }
+
+        if (Score.player != null) {
+             Score.player.ResetStars();
+        } else {
+            Debug.LogError("Awake içinde Score.player referansı null!");
+        }
+
         GameObject timerObject = GameObject.FindWithTag("TimerUI");
         if (timerObject != null) {
             timerText = timerObject.GetComponent<TextMeshProUGUI>();
         } else {
-            Debug.LogError("Timer UI object with tag 'TimerUI' not found!");
+            Debug.LogError("Etiketi 'TimerUI' olan timer UI nesnesi bulunamadı!");
         }
-        
-        // Count stars in level
-        GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
-        starsInLevel = stars.Length;
-        Debug.Log($"Found {starsInLevel} stars in level");
-        
-        // Count hearts in level
+
         GameObject[] hearts = GameObject.FindGameObjectsWithTag("Heart");
         heartsInLevel = hearts.Length;
-        Debug.Log($"Found {heartsInLevel} hearts in level");
-    }
-    
-    private void Start()
-    {
-        StartCoroutine(Timer());
+
+
+        highScoreFilePath = Path.Combine(Application.persistentDataPath, levelData.name + "_highscore.dat");
+        if (time > 0)
+        {
+             StartCoroutine(Timer());
+        } else {
+            Debug.LogWarning("Level süresi (time) ayarlanmamış, zamanlayıcı başlamıyor.");
+        }
     }
 
-    public void ControlScores()
+    public void RegisterStarCollected(int id)
     {
-        if (isFinished || gameOver)
-            return;
-            
-        
-        // Calculate score for collected stars (rewardPerCoin for each star)
-        totalScore += Score.player.starsCollected * rewardPerCoin;
-        
-        // Add bonus for tower pogo if achieved
-        if (towerPogo)
+        if (!collectedStarIDsThisRun.Contains(id))
         {
+            collectedStarIDsThisRun.Add(id);
+
+        }
+    }
+
+    public void EndGame()
+    {
+        if (gameOver) return;
+
+        gameOver = true;
+        isFinished = true;
+        StopCoroutine(nameof(Timer)); 
+
+        StartCoroutine(SlowMoEnd());
+
+        if (Score.player != null && Score.player.gameObject != null)
+        {
+            Controller controller = Score.player.gameObject.GetComponent<Controller>();
+            if (controller != null) controller.enabled = false;
+            AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
+            if (attackScript != null) attackScript.enabled = false;
+        }
+
+        ControlScores();
+
+        LevelProgressData progressToSave = DatabaseManager.main.GetLevelProgress(levelData.name);
+        if (progressToSave == null) {
+             progressToSave = new LevelProgressData(levelData.name);
+        }
+
+        float finishedTime = 0;
+        if (timerText != null && float.TryParse(timerText.text, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out float remainingTimeValue))
+        {
+            finishedTime = time - remainingTimeValue;
+            if (finishedTime < 0) finishedTime = 0;
+        } else {
+            finishedTime = float.PositiveInfinity;
+            Debug.LogWarning("Bitirme süresi hesaplanamadı.");
+        }
+
+        if (finishedTime > 0 && finishedTime < progressToSave.bestTime)
+        {
+            progressToSave.bestTime = finishedTime;
+            recordTimeText.text = $"YENİ REKOR! : {progressToSave.bestTime:F2} saniye";
+        }
+        else if (progressToSave.bestTime != float.PositiveInfinity)
+        {
+            recordTimeText.text = $"Rekor : {progressToSave.bestTime:F2} saniye";
+        } else {
+            recordTimeText.text = "Rekor Yok";
+        }
+        levelData.bestTime = progressToSave.bestTime;
+
+        HashSet<int> allTakenStarIDs = new HashSet<int>(progressToSave.takenStarIDs);
+        allTakenStarIDs.UnionWith(collectedStarIDsThisRun);
+        progressToSave.takenStarIDs = allTakenStarIDs.ToList();
+
+        levelData.takenPickups.Clear();
+        foreach(int starID in progressToSave.takenStarIDs) {
+            if (starLookup.TryGetValue(starID, out Pickupable star)) {
+                levelData.takenPickups.Add(star);
+            }
+        }
+
+        CalculateCompletionPercentage();
+        progressToSave.completionPercentage = scorePercentage;
+        progressToSave.isCompleted = true;
+
+        levelData.completionPercentage = scorePercentage;
+        levelData.isCompleted = true;
+
+        DatabaseManager.main.SaveLevelProgress(progressToSave);
+
+        ControlAndSaveHighScore(totalScore);
+
+        endGameScreenPrefab.SetActive(true);
+        percentageText.text = $"{scorePercentage:F2}%";
+        if (finishedTime != float.PositiveInfinity) {
+             timeText.text = $"Bitirme Süresi: {finishedTime:F2} saniye";
+        } else {
+             timeText.text = "Süre Hesaplanamadı";
+        }
+        pogoText.text = towerPogo ? "POGO İLE BİTTİ!" : "POGO YOK!";
+
+        foreach (Transform child in starsParent.transform) { Destroy(child.gameObject); }
+        int totalStarsCollectedEver = progressToSave.takenStarIDs.Count;
+        for (int i = 0; i < starsInLevel; i++)
+        {
+            GameObject starUI = Instantiate(starPrefab, starsParent.transform);
+            if (i < totalStarsCollectedEver)
+            {
+                Image starImage = starUI.GetComponent<Image>();
+                if (starImage != null) {
+                    Color c = starImage.color; c.a = 1f; starImage.color = c;
+                }
+            }
+        }
+
+    }
+
+    private void ControlScores()
+    {
+        totalScore = 0;
+
+        if (Score.player != null) {
+            totalScore += Score.player.starsCollected * rewardPerCoin;
+        }
+
+        if (towerPogo) {
             totalScore += pogoReward;
         }
-        
-        // Add bonus for remaining time
-        int remainingSeconds = (int)time - (int)Time.time;
-        if (remainingSeconds > 0) {
+
+        if (timerText != null && int.TryParse(timerText.text, out int remainingSeconds) && remainingSeconds > 0) {
             totalScore += remainingSeconds * rewardPerRemainingSecond;
         }
-            
-        isFinished = true;
-        Debug.Log($"Final Score: {totalScore}");
-        
-        // Calculate completion percentage
-        CalculateCompletionPercentage();
-        
-        // Save high score
-        int highScore = ControlAndSaveHighScore(totalScore);
-        Debug.Log($"High Score: {highScore}");
+
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R)){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
+
     private void CalculateCompletionPercentage()
     {
-        int totalCollectibles = starsInLevel;
-        int collectedItems = Score.player.starsCollected;
-
-        // Check for division by zero
-        if (totalCollectibles == 0)
-        {
-            Debug.Log("No collectibles in level!");
+        if (starsInLevel == 0) {
+            scorePercentage = 100f;
             return;
         }
-        
-        // Check if all stars collected
-        if (Score.player.starsCollected == starsInLevel && starsInLevel > 0)
-        {
-            Debug.Log("All stars collected! Star goal complete!");
-        }
-    
-        
-        // Check tower pogo
-        if (towerPogo)
-        {
-            Debug.Log("Tower pogo completed!");
-        }
-        
-        // Calculate completion percentage
-        scorePercentage = ((float)collectedItems / totalCollectibles) * 100f;
-        Debug.Log($"Collected {collectedItems}/{totalCollectibles} items");
-        Debug.Log($"Completion Percentage: {scorePercentage:F2}%");
 
-        EndGame();
+        int totalCollectedEver = 0;
+        LevelProgressData currentProgress = DatabaseManager.main.GetLevelProgress(levelData.name);
+        HashSet<int> allTakenIDs = new HashSet<int>(currentProgress?.takenStarIDs ?? new List<int>());
+        allTakenIDs.UnionWith(collectedStarIDsThisRun);
+        totalCollectedEver = allTakenIDs.Count;
+
+        scorePercentage = ((float)totalCollectedEver / starsInLevel) * 100f;
+
+
     }
 
-    #region Save And Encryption
     private int ControlAndSaveHighScore(int score)
     {
-        // Make sure filepath is set
-        if (string.IsNullOrEmpty(filePath)) {
-            filePath = Application.persistentDataPath + "/highscore.dat";
-            Debug.Log($"Setting default filepath to: {filePath}");
-        }
-    
-        int currentHighScore;
+        highScoreFilePath = Path.Combine(Application.persistentDataPath, levelData.name + "_highscore.dat");
+
+        int currentHighScore = 0;
         BinaryFormatter formatter = new BinaryFormatter();
 
-        if (!File.Exists(filePath))
+        if (File.Exists(highScoreFilePath))
         {
-            currentHighScore = score;
-            WriteFileAsSerializedAndEncrypted(score, formatter);
-            return currentHighScore;
-        }
-        
-        try {
-            byte[] encryptedData = File.ReadAllBytes(filePath);
-            byte[] decryptedData = XorEncrypt(encryptedData);
-            using (MemoryStream ms = new MemoryStream(decryptedData))
-            {
-                currentHighScore = (int)formatter.Deserialize(ms);
+            try {
+                byte[] encryptedData = File.ReadAllBytes(highScoreFilePath);
+                byte[] decryptedData = XorEncryptHighScore(encryptedData);
+                using (MemoryStream ms = new MemoryStream(decryptedData)) {
+                    currentHighScore = (int)formatter.Deserialize(ms);
+                }
+            } catch (Exception e) {
+                Debug.LogError($"High score okuma hatası ({levelData.name}): {e.Message} - Dosya sıfırlanıyor.");
+                currentHighScore = 0;
             }
-            
-            if (score > currentHighScore)
-            {
-                WriteFileAsSerializedAndEncrypted(score, formatter);
-                return score; // Return the new high score
-            }
-            
-            return currentHighScore;
         }
-        catch (Exception e) {
-            Debug.LogError($"Error reading high score: {e.Message}");
-            // If file is corrupted, create a new one
-            WriteFileAsSerializedAndEncrypted(score, formatter);
+
+        if (score > currentHighScore)
+        {
+            WriteFileAsSerializedAndEncryptedHighScore(score, formatter);
             return score;
         }
+
+        return currentHighScore;
     }
 
-    private void WriteFileAsSerializedAndEncrypted(int score, BinaryFormatter formatter)
+    private void WriteFileAsSerializedAndEncryptedHighScore(int score, BinaryFormatter formatter)
     {
+        highScoreFilePath = Path.Combine(Application.persistentDataPath, levelData.name + "_highscore.dat");
         try {
-            using (MemoryStream ms = new MemoryStream())
-            {
+            using (MemoryStream ms = new MemoryStream()) {
                 formatter.Serialize(ms, score);
                 byte[] rawData = ms.ToArray();
-                byte[] encryptedData = XorEncrypt(rawData);
-                File.WriteAllBytes(filePath, encryptedData);
-                Debug.Log($"High score saved: {score}");
+                byte[] encryptedData = XorEncryptHighScore(rawData);
+                File.WriteAllBytes(highScoreFilePath, encryptedData);
+      
             }
-        }
-        catch (Exception e) {
-            Debug.LogError($"Error saving high score: {e.Message}");
+        } catch (Exception e) {
+            Debug.LogError($"High score kaydetme hatası ({levelData.name}): {e.Message}");
         }
     }
 
-    private byte[] XorEncrypt(byte[] data)
+    private byte[] XorEncryptHighScore(byte[] data)
     {
         byte xorKey = 0xBA;
         byte[] result = new byte[data.Length];
-        for (int i = 0; i < result.Length; i++)
-        {
+        for (int i = 0; i < result.Length; i++) {
             result[i] = (byte)(data[i] ^ xorKey);
         }
         return result;
     }
-    #endregion
-    
+
     private IEnumerator Timer()
     {
         float startTime = Time.time;
         float elapsedTime = 0f;
 
-        while (elapsedTime < time && !isFinished)
+        while (!isFinished)
         {
             elapsedTime = Time.time - startTime;
-            
+            float remainingTime = time - elapsedTime;
+
+            if (remainingTime <= 0) {
+                remainingTime = 0;
+                if (!gameOver) {
+                   
+                    EndGame();
+                }
+            }
+
             if (timerText != null) {
-                // Format remaining time in a more intuitive way
-                float remainingTime = time - elapsedTime;
                 timerText.text = Mathf.CeilToInt(remainingTime).ToString();
             }
-            
+
             yield return null;
         }
 
-        if (!isFinished)
-        {
-            StartCoroutine(SlowMoEnd());
-        }
     }
 
     private IEnumerator SlowMoEnd()
     {
-        gameOver = true;
         float velocity = 0f;
         float targetTimeScale = 0f;
+        float currentDuration = 0f;
+        float maxDuration = 2f;
 
-        while (Time.timeScale > 0.05f)
+        while (Time.timeScale > 0.01f && currentDuration < maxDuration)
         {
-            Time.timeScale = Mathf.SmoothDamp(Time.timeScale, targetTimeScale, ref velocity, timeScaleInterpolationSpeed);
+            Time.timeScale = Mathf.SmoothDamp(Time.timeScale, targetTimeScale, ref velocity, timeScaleInterpolationSpeed * Time.unscaledDeltaTime);
+            currentDuration += Time.unscaledDeltaTime;
             yield return null;
         }
 
         Time.timeScale = 0;
 
-        // Disable player controls on game over
-        if (Score.player != null && Score.player.gameObject != null)
-        {
-            Controller controller = Score.player.gameObject.GetComponent<Controller>();
-            if (controller != null) controller.enabled = false;
+    }
 
-            AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
-            if (attackScript != null) attackScript.enabled = false;
+    public Pickupable FindStarWithID(int id)
+    {
+        if (starLookup.TryGetValue(id, out Pickupable star))
+        {
+            return star;
         }
-
-        Debug.Log("Time's up! Game over.");
+        return null;
     }
 
-    [BurstCompile]
-    public struct ScoreData
+    void Update()
     {
-        public int totalScore;
-        public int starsInLevel;
-        public bool towerPogo;
-        public float scorePercentage;
-    }
-    public ScoreData GetScoreData()
-    {
-        return new ScoreData {
-                totalScore = totalScore,
-                starsInLevel = starsInLevel,
-                towerPogo = towerPogo ,
-                scorePercentage = scorePercentage
-             };
-    }
-
-
-    public void EndGame()
-{
-    StartCoroutine(SlowMoEnd());
-    gameOver = true;
-    ControlScores();
-
-    if (Score.player != null && Score.player.gameObject != null)
-    {
-        Controller controller = Score.player.gameObject.GetComponent<Controller>();
-        if (controller != null) controller.enabled = false;
-
-        AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
-        if (attackScript != null) attackScript.enabled = false;
-    }
-
-    endGameScreenPrefab.SetActive(true);
-    percentageText.text = $"{scorePercentage:F2}%";
-    timeText.text = $"finished in {time - int.Parse(timerText.text)} seconds";
-    pogoText.text = towerPogo ? "Finished With POGO!" : "No POGO!";
-
-    for (int i = 0; i < starsInLevel; i++)
-    {
-        GameObject star = Instantiate(starPrefab, starsParent.transform);
-        if (i < Score.player.starsCollected)
-        {
-            Image starImage = star.GetComponent<Image>();
-            Color c = starImage.color;
-            c.a = 1f;  // Direkt alpha'yı ayarlıyoruz
-            starImage.color = c;
+        if (Input.GetKeyDown(KeyCode.R)) {
+             Time.timeScale = 1f;
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-    float finishedTime = time - int.Parse(timerText.text);
-    if (PlayerPrefs.HasKey("FinishedTime"))
-    {
-        finishedTime = PlayerPrefs.GetFloat("FinishedTime", 0f);
-    }
-    else
-    {
-        float fastest = PlayerPrefs.GetFloat("FastestTime", float.MaxValue);
-        if (finishedTime < fastest)
-        {
-        PlayerPrefs.SetFloat("FastestTime", finishedTime);
-        PlayerPrefs.Save();
-        recordTimeText.text = $"NEW RECORD! : {finishedTime} seconds";
-        }
-        else
-        {
-            recordTimeText.text = $"Record : {fastest} seconds";
-        }
-    }
-    Debug.Log("Game Over triggered manually.");
-}
 }
