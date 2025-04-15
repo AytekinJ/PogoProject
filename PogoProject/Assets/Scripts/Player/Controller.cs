@@ -256,7 +256,7 @@ public class Controller : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoMultiplier);
         }
-        else if (rb.linearVelocity.y >= .5f)
+        else if (rb.linearVelocity.y >= 3f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + (pogoMultiplier / 2));
         }
