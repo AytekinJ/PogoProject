@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2551718567561927045}
   - component: {fileID: 8194987036243697525}
   - component: {fileID: 940803794112665605}
+  - component: {fileID: 8981786501056274860}
   - component: {fileID: 3888305927524890636}
   - component: {fileID: 5620163047529065854}
   - component: {fileID: 6144324325400308651}
@@ -87,13 +88,32 @@ MonoBehaviour:
   filePath: h_s
   timerText: {fileID: 0}
   starsInLevel: 5
-  coinsInLevel: 5
+  heartsInLevel: 0
   totalScore: 0
   towerPogo: 0
   rewardPerCoin: 100
   rewardPerStar: 250
   pogoReward: 1000
   rewardPerRemainingSecond: 5
+  endGameScreenPrefab: {fileID: 0}
+  starsParent: {fileID: 0}
+  starPrefab: {fileID: 0}
+  percentageText: {fileID: 0}
+  timeText: {fileID: 0}
+  recordTimeText: {fileID: 0}
+  pogoText: {fileID: 0}
+--- !u!114 &8981786501056274860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b23f228c96260b4e896df88455d0b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3888305927524890636
 MonoBehaviour:
   m_ObjectHideFlags: 0
