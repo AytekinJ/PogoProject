@@ -15,6 +15,7 @@ public class LevelData : ScriptableObject
     [SerializeField] public bool isCompleted = false;
 }
 
+
 [System.Serializable]
 public class LevelProgressData
 {

@@ -11,15 +11,16 @@ public class LevelsManager : ScriptableObject
     [SerializeField] public int currentLevel = 0;
 
     public void LoadLevelsUI(GameObject parentUI){
-        foreach (Transform child in parentUI.transform)
+        for (int i = 0; i < parentUI.transform.childCount; i++)
         {
-            Image levelImage = child.GetComponent<Image>();
+            Transform child = parentUI.transform.GetChild(i);
+            Image levelImage = child.transform.GetChild(1).GetComponent<Image>();
             TextMeshProUGUI levelInfo = child.GetComponentInChildren<TextMeshProUGUI>();
-            levelImage.sprite = levels[currentLevel].levelIcon;
-            levelInfo.text = "Level " + (currentLevel + 1) + "\n" +
-                "Best Time: " + levels[currentLevel].bestTime.ToString("F2") + "s\n" +
-                "Completion: " + levels[currentLevel].completionPercentage.ToString("F0") + "%\n" +
-                (levels[currentLevel].isCompleted ? "Completed" : "Not Completed");
+            levelImage.sprite = levels[i].levelIcon;
+            levelInfo.text = "Level " + (i + 1) + "\n" +
+            "Best Time: " + levels[i].bestTime.ToString("F2") + "s\n" +
+            "Completion: " + levels[i].completionPercentage.ToString("F0") + "%\n" +
+            (levels[i].isCompleted ? "Completed" : "Not Completed");
         }
     }
 }
