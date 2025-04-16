@@ -254,7 +254,7 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    private void ControlScores()
+    public void ControlScores()
     {
         totalScore = 0;
 
@@ -374,23 +374,27 @@ public class ScoreManager : MonoBehaviour
     }
 
     private IEnumerator SlowMoEnd()
-    {
-        float velocity = 0f;
-        float targetTimeScale = 0f;
-        float currentDuration = 0f;
-        float maxDuration = 2f;
 
-        while (Time.timeScale > 0.01f && currentDuration < maxDuration)
-        {
-            Time.timeScale = Mathf.SmoothDamp(Time.timeScale, targetTimeScale, ref velocity, timeScaleInterpolationSpeed * Time.unscaledDeltaTime);
-            currentDuration += Time.unscaledDeltaTime;
-            yield return null;
-        }
-
-        Time.timeScale = 0;
-
-    }
-
+    {
+        gameOver = true;
+        float velocity = 0f;
+        float targetTimeScale = 0f;
+        while (Time.timeScale > 0.05f)
+        {
+            Time.timeScale = Mathf.SmoothDamp(Time.timeScale, targetTimeScale, ref velocity, timeScaleInterpolationSpeed);
+            yield return null;
+        }
+        Time.timeScale = 0;
+        // Disable player controls on game over
+        if (Score.player != null && Score.player.gameObject != null)
+        {
+            Controller controller = Score.player.gameObject.GetComponent<Controller>();
+            if (controller != null) controller.enabled = false;
+            AttackScript attackScript = Score.player.gameObject.GetComponent<AttackScript>();
+            if (attackScript != null) attackScript.enabled = false;
+        }
+        Debug.Log("Time's up! Game over.");
+    }
     public Pickupable FindStarWithID(int id)
     {
         if (starLookup.TryGetValue(id, out Pickupable star))
