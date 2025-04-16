@@ -254,7 +254,7 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    private void ControlScores()
+    public void ControlScores()
     {
         totalScore = 0;
 
