@@ -21,6 +21,7 @@ public class HealthScript : MonoBehaviour
     public static GameObject WorldSpawnPoint;
 
     public static CameraFadeScript cameraFadeScript;
+    ResetPlatforms resetScript;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class HealthScript : MonoBehaviour
         HasArmor = false;
         Player = GameObject.FindGameObjectWithTag("Player");
         WorldSpawnPoint = GameObject.FindGameObjectWithTag("WorldSpawnPoint");
+        resetScript = GetComponent<ResetPlatforms>();
 
         DamageSFX = dmgSFX;
         cameraFadeScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFadeScript>();
@@ -81,7 +83,7 @@ public class HealthScript : MonoBehaviour
     public static void DecreaseHealth(int HealthInt, string GameobjectTag)
     {
         PlaySFX();
-
+        ResetPlatforms.ResetAllPlatforms();
         CameraShake.StartShake(0.1f, 0.05f);
         cameraFadeScript.StartDamageFlash(0.1f);
         if (HasArmor && GameobjectTag == "Thrones" && CurrentPlatformCheckpoint != null)

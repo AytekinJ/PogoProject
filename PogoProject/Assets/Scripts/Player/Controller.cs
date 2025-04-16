@@ -55,6 +55,7 @@ public class Controller : MonoBehaviour
     bool HasController;
     [SerializeField] bool isPogoing;
 
+    [SerializeField] GameObject CameraFollowPoint;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -133,8 +134,7 @@ public class Controller : MonoBehaviour
             goldGfx.SetActive(!change);
             change = !change;
         }
-        
-        
+
 
         if (jumpCooldownCounter > 0)
         {
@@ -256,7 +256,7 @@ public class Controller : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoMultiplier);
         }
-        else if (rb.linearVelocity.y >= .5f)
+        else if (rb.linearVelocity.y >= 3f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + (pogoMultiplier / 2));
         }
@@ -341,5 +341,11 @@ public class Controller : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheckPos.transform.position, groundCheckRadius);
+    }
+
+    IEnumerator ChangeCamPointPos()
+    {
+        yield return new WaitForSeconds(1f);
+
     }
 }
