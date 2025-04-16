@@ -26,4 +26,9 @@ public class Score : MonoBehaviour
         if (heartsCollected+1 <= maxHearts)
             heartsCollected += 1;
     }
+
+    public void ResetStars()
+    {
+        starsCollected = 0;
+    }
 }
