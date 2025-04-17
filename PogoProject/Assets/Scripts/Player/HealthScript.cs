@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,11 +49,11 @@ public class HealthScript : MonoBehaviour
         CurrentPlatformCheckpoint = TransformToSet;
     }
 
-    public static void Teleport(Transform CurrentPos, Transform DesiredPos)
+    public void Teleport(Transform CurrentPos, Transform DesiredPos)
     {
         if (CurrentPos == null || DesiredPos == null)
         {
-            ReloadScene();
+            StartCoroutine(ReloadScene());
             //TeleportToSpawn();
             return;
         }
@@ -68,7 +70,7 @@ public class HealthScript : MonoBehaviour
 
     #region Health
 
-    public static void IncreaseHealth(int HealthInt)
+    public void IncreaseHealth(int HealthInt)
     {
         HealthValue += HealthInt;
     }
@@ -80,7 +82,7 @@ public class HealthScript : MonoBehaviour
         Destroy(sfx, 3f);
     }
 
-    public static void DecreaseHealth(int HealthInt, string GameobjectTag)
+    public void DecreaseHealth(int HealthInt, string GameobjectTag)
     {
         PlaySFX();
         ResetPlatforms.ResetAllPlatforms();
@@ -111,13 +113,13 @@ public class HealthScript : MonoBehaviour
 
         if (HealthValue <= 0)
         {
-            ReloadScene();
+            StartCoroutine(ReloadScene());
         }
 
         HealthValue -= HealthInt;
         if (HealthValue <= 0)
         {
-            ReloadScene();
+            StartCoroutine(ReloadScene());
         }
 
         Teleport(Player.transform, CurrentCheckpoint);
@@ -129,10 +131,16 @@ public class HealthScript : MonoBehaviour
         HealthValue = HealthInt;
     }
 
-    private static void ReloadScene()
+    private static IEnumerator ReloadScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        cameraFadeScript.StartFade(0.2f, true, true);
+        yield return new WaitForSeconds(0.2f);
+        yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        yield return Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
+
 
     #endregion
 

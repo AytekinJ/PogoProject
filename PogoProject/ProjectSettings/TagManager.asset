@@ -16,6 +16,7 @@ TagManager:
   - GroundStone
   - Star
   - Heart
+  - TowerBody
   layers:
   - Default
   - TransparentFX
