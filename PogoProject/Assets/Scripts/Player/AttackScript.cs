@@ -41,6 +41,8 @@ public class AttackScript : MonoBehaviour
 
     public static AttackScript Instance;
     Vector3 hitPoint;
+
+    
     void Start()
     {
         AttackKey = gameSetting.attack;
