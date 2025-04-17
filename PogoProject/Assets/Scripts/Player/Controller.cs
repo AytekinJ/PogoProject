@@ -157,7 +157,7 @@ public class Controller : MonoBehaviour
         // Attack tuşu AttackScript'te atanmalı
     }
 
-    void CheckController()
+    public void CheckController()
     {
         string[] controllers = Input.GetJoystickNames();
         bool controllerConnected = false;
