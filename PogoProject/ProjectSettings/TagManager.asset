@@ -17,6 +17,8 @@ TagManager:
   - Star
   - Heart
   - TowerBody
+  - PauseMenu
+  - PauseSettings
   layers:
   - Default
   - TransparentFX

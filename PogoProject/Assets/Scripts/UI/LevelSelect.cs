@@ -30,6 +30,9 @@ public class LevelSelect : MonoBehaviour
 
         levelsManager.currentLevel = levelIndex;
         Debug.Log("Loading Level Scene : " + levelsManager.levels[levelIndex].sceneNumber);
-        SceneManager.LoadSceneAsync(levelsManager.levels[levelIndex].sceneNumber);
+        SceneData.SceneToLoad = levelsManager.levels[levelIndex].sceneName;
+        SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
+        System.GC.Collect();
+        Resources.UnloadUnusedAssets();
     }
 }
