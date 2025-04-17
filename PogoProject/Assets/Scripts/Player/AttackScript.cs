@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public GameSetting gameSetting;
+    public static GameSetting gameSetting;
 
     public int Damage = 1;
     public float POGOMultiplier = 10f;
@@ -17,7 +17,7 @@ public class AttackScript : MonoBehaviour
 
     float Xinput, Yinput;
 
-    public KeyCode AttackKey = KeyCode.X;
+    public static KeyCode AttackKey = KeyCode.X;
     public bool up, down, left, right;
 
     public float AttackCooldown = 0.5f;
@@ -43,6 +43,7 @@ public class AttackScript : MonoBehaviour
     Vector3 hitPoint;
     void Start()
     {
+        AttackKey = gameSetting.attack;
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
         particleScript = GetComponent<HitParticleScript>();
@@ -96,6 +97,10 @@ public class AttackScript : MonoBehaviour
     void SetLastAttackPos()
     {
         
+    }
+
+    public static void UpdateAttackKey(){
+        AttackKey = gameSetting.attack;
     }
 
     void CastAttackBox(Vector2 direction)
