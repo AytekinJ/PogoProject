@@ -199,6 +199,7 @@ public class ApplySettings : MonoBehaviour
         ApplyVideo();
 
         Debug.Log("Yeni Ayarlar Uyguland�!");
+        Controller.Instance.CheckController();
 
     }
 
@@ -227,7 +228,6 @@ public class ApplySettings : MonoBehaviour
             return option.text.Equals(((int)settings.fps).ToString(), StringComparison.OrdinalIgnoreCase);
         });
         postprocess.isOn = settings.postprocessing;
-        Controller.Instance.CheckController();
         if (mainMenuController != null)
         mainMenuController.ActivateFirstPanel(); 
         else
