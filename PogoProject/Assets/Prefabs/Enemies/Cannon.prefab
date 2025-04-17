@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8150733656240999391}
   - component: {fileID: 7113484342888264187}
   - component: {fileID: 7584990014960928456}
-  - component: {fileID: 9116001554114656950}
+  - component: {fileID: 1920243297908855466}
   m_Layer: 9
   m_Name: Cannon
   m_TagString: Enemy
@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
-  respawn: 0
 --- !u!114 &7113484342888264187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,9 +69,9 @@ MonoBehaviour:
   range: 0
   active: 1
   shootAngle: 0
-  shootDelay: 3
+  shootDelay: 1
   shootRange: 10
-  bulletSpeed: 5
+  bulletSpeed: 20
   bulletPrefab: {fileID: 6976742288042995816, guid: 715084efda2c0491faa44121a9c8e217, type: 3}
   activeGoomba: 0
   goombaSpeed: 0
@@ -132,7 +131,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.45445094, y: 0.5225712}
   m_EdgeRadius: 0
---- !u!114 &9116001554114656950
+--- !u!114 &1920243297908855466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,11 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2778559892664157125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa796e098debeb34891357fe055cadca, type: 3}
+  m_Script: {fileID: 11500000, guid: a261cfe908846534e964e0c7aa2f0dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointValue: 1
-  IncreaseHealth: 0
+  X: 15
+  Y: 7
 --- !u!1 &7631497038539899516
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +171,7 @@ Transform:
   m_GameObject: {fileID: 7631497038539899516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -221,7 +220,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4167dddbabec7f4448bdd67db966e82f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

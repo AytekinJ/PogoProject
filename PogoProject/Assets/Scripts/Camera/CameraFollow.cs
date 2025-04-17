@@ -16,14 +16,13 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 movePosition;
     Vector3 velocity = Vector3.zero;
-    private Vector3 defaultOffset;
-    float inputYHoldTime;
+
     private void Start()
     {
         Instance = this;
         movePosition = new Vector3(target.position.x, target.position.y) + offset;
         controllerScript = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Controller>();
-        defaultOffset = offset;
+
         SetUnGrounded();
         SetGrounded();
     }
@@ -39,21 +38,6 @@ public class CameraFollow : MonoBehaviour
         // {
         //     SetCamFollowPublic(target.position);
         // }
-
-        if(controllerScript.inputX == 0 && controllerScript.inputY != 0 && controllerScript.CheckGrounded())
-        {
-            inputYHoldTime += Time.deltaTime;
-
-            if(inputYHoldTime > 1)
-            {
-                offset = new Vector3(defaultOffset.x, defaultOffset.y + 1 * controllerScript.inputY, defaultOffset.z);
-            }
-        }
-        else
-        {
-            offset = defaultOffset;
-            inputYHoldTime = 0;
-        }
     }
 
     void Lerp()

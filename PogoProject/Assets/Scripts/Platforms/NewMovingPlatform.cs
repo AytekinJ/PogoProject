@@ -15,17 +15,15 @@ public class NewMovingPlatform : MonoBehaviour
     private Transform targetPoint;
     private float waitTimer = 0f;
     private bool isWaiting = false;
-    public bool isActive = false;
+    private bool isActive = false;
     private Vector3 lastPosition;
     
     // Track player for delayed parenting
     private Transform playerToParent = null;
     private Transform playerToDetach = null;
-    private Vector3 startPos;
 
     private void Start()
     {
-        startPos = transform.position;
         // İlk hedef noktasını seçilen değere göre ayarla
         targetPoint = startTowardsPointB ? pointB : pointA;
         lastPosition = transform.position;
@@ -131,26 +129,22 @@ public class NewMovingPlatform : MonoBehaviour
         }
     }
 
+    // Public method to activate platform externally
     public void ActivatePlatform()
     {
         isActive = true;
     }
 
+    // Public method to deactivate platform externally
     public void DeactivatePlatform()
     {
         isActive = false;
     }
 
+    // Hareket yönünü manuel olarak değiştirmek için
     public void SetDirection(bool towardsPointB)
     {
         targetPoint = towardsPointB ? pointB : pointA;
-    }
-
-    public void ResetPlatform()
-    {
-        isActive = startOnPlayerContact == true ? false : true;
-        transform.position = startPos;
-        isWaiting = startOnPlayerContact == true ? false : true;
     }
 
     // Optional: Visualize the path in the editor

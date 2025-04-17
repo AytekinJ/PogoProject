@@ -143,7 +143,7 @@ public class AttackScript : MonoBehaviour
     void OnAirJump(bool isEnemy)
     {
         playerController.DoPOGO(POGOMultiplier, isEnemy);
-        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(new Vector3(hitPoint.x, hitPoint.y + 1.5f));
+        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(new Vector3(hitPoint.x, hitPoint.y + 2));
         // animator.SetBool("isJumping", true);
     }
 
