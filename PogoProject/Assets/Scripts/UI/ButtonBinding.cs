@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class KeyBinder : MonoBehaviour
 {
@@ -58,14 +59,16 @@ public class KeyBinder : MonoBehaviour
         if (!isWaitingForKeyInput) return;
 
         // Check for any key press
-        foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+        
+        foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
         {
-            if (Input.GetKeyDown(keyCode))
-            {
-                AssignNewKey(keyCode);
-                break;
-            }
+        if (Input.GetKeyDown(key))
+        {
+            AssignNewKey(key);
+            break;
         }
+        }
+        
         
         // Allow canceling with Escape key
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -77,7 +80,7 @@ public class KeyBinder : MonoBehaviour
     private void AssignNewKey(KeyCode newKey)
     {
         // Skip keys that shouldn't be bindable
-        if (newKey == KeyCode.Escape || newKey == KeyCode.Return || newKey == KeyCode.Space)
+        if (newKey == KeyCode.Escape || newKey == KeyCode.Return)
         {
             CancelKeyBinding();
             return;
