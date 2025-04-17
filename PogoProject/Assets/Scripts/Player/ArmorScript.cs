@@ -20,11 +20,11 @@ public class ArmorScript : MonoBehaviour
     {
         if (GiveArmor)
         {
-            HealthScript.AddArmor();
+            HealthScript.Instance.AddArmor();
         }
         else if (!GiveArmor)
         {
-            HealthScript.RemoveArmor();
+            HealthScript.Instance.RemoveArmor();
         }
     }
 }

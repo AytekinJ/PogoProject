@@ -19,6 +19,7 @@ TagManager:
   - TowerBody
   - PauseMenu
   - PauseSettings
+  - EndScreen
   layers:
   - Default
   - TransparentFX

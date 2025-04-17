@@ -413,7 +413,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
-            SceneLoader.ReloadCurrentScene_ClearAllocatedMemory();
+            SceneLoader.ReloadCurrentScene();
         }
     }
 }

@@ -24,12 +24,12 @@ public class CheckPointSetScript : MonoBehaviour
     {
         if (IsPlatformCheckPoint)
         {
-            HealthScript.SetPlatformCheckpoint(gameObject.transform);
+            HealthScript.Instance.SetPlatformCheckpoint(gameObject.transform);
             Debug.Log(gameObject.name);
         }
         else if (!IsPlatformCheckPoint)
         {
-            HealthScript.SetCheckpoint(gameObject.transform);
+            HealthScript.Instance.SetCheckpoint(gameObject.transform);
             Debug.Log(gameObject.name);
         }
     }

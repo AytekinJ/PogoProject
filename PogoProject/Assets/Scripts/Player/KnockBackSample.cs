@@ -7,6 +7,6 @@ public class KnockBackSample : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            HealthScript.PlayerKnockBack(X, Y, transform);
+            HealthScript.Instance.PlayerKnockBack(X, Y, transform);
     }
 }

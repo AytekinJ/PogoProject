@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805ef0764e650aeffb4b15920e72f9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interpolationSpeed: 3
-  maxTriggerDistance: 20
+  interpolationSpeed: 2
+  maxTriggerDistance: 999
   canControl: 1
   player: {fileID: 0}
   platforms: []
@@ -85,9 +85,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 11400000, guid: 432993ac5c54f4941995c90cd36cede7, type: 2}
   timeScaleInterpolationSpeed: 0.1
-  time: 150
+  time: 200
   timerText: {fileID: 0}
-  starsInLevel: 5
+  starsInLevel: 3
   heartsInLevel: 0
   totalScore: 0
   towerPogo: 0

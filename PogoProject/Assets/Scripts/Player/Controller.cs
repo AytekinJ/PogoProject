@@ -4,137 +4,197 @@ using System.Collections;
 
 public class Controller : MonoBehaviour
 {
-    public GameSetting gameSetting;
+    // GameSetting referansı Inspector'dan atanmalı
+    [SerializeField] private GameSetting gameSetting;
 
-    public static Rigidbody2D rb;
+    // --- Singleton Deseni (AttackScript'in erişmesi için eklendi) ---
+    public static Controller Instance { get; private set; }
+    // ----------------------------------------------------------------
+
+    // --- Static Değil! ---
+    public bool canChangeAnim = true;
+    // ---------------------
+
+    public static Rigidbody2D rb; // Bu hala static kalabilir mi? Genellikle instance olması daha iyi.
+                                  // Eğer static kalacaksa, her sahne yüklemesinde doğru Rigidbody'ye atandığından emin olunmalı.
+                                  // Instance yapalım:
+    private Rigidbody2D playerRb;
+    // ---------------------
+
     public float inputX;
     public float inputY;
 
-    #region silersiniz
+    [Header("Görsel Referansları (Inspector'dan atanmalı)")]
     public GameObject normalGfx;
     public GameObject goldGfx;
-    bool change;
-    
-    #endregion
+    private bool isGoldActive = false; // Aktif görseli takip etmek için
 
+    [Header("Hareket Ayarları")]
     public float speed = 5f;
     public KeyCode JumpButton;
     public KeyCode DpadUp;
     public KeyCode DpadDown;
     public KeyCode DpadLeft;
     public KeyCode DpadRight;
-    public static bool canChangeAnim = true;
 
+
+    [Header("Zıplama Ayarları")]
     [SerializeField] Transform groundCheckPos;
     [SerializeField] float groundCheckRadius = 0.1f;
     [SerializeField] LayerMask groundCheckLayer;
     [SerializeField] float jumpForce = 7f;
     [SerializeField] float lowJumpMultiplier = 3f;
     [SerializeField] float fallMultiplier = 2.5f;
-
     public GameObject PogoSFX;
 
-    [Header("Jump Buffer Settings")]
+    [Header("Jump Buffer & Coyote Time")]
     [SerializeField] private float jumpBufferTime = 0.1f;
     private float jumpBufferCounter;
-
-    [Header("Coyote Time Settings")]
     [SerializeField] private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
     public bool hasJumpedDuringCoyote;
-
     private float jumpCooldownTime;
     private float jumpCooldownCounter;
-    Animator animator;
+
+    // Animator referansları
+    private Animator currentAnimator; // O an aktif olan animator (normal veya gold)
     private Animator goldGfxAnimator;
     private Animator normalGfxAnimator;
 
     [HideInInspector] public bool isFacingRight = true;
-    AttackScript attackScript;
+    private AttackScript attackScript; // Referans
 
-    bool HasController;
-    [SerializeField] bool isPogoing;
+    private bool HasController;
+    [SerializeField] private bool isPogoing;
 
-    [SerializeField] GameObject CameraFollowPoint;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        jumpCooldownTime = coyoteTime + 0.05f;
-        goldGfx.SetActive(false);
-        goldGfxAnimator = goldGfx.GetComponent<Animator>();
-        normalGfxAnimator = normalGfx.GetComponent<Animator>();
-        attackScript = GetComponent<AttackScript>();
-        InvokeRepeating(nameof(CheckController), 1, 1);
+        // --- Singleton ---
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        // -----------------
 
+        // Rigidbody referansını al (static olmayan)
+        playerRb = GetComponent<Rigidbody2D>();
+        if (playerRb == null) Debug.LogError("Rigidbody2D bulunamadı!", this);
+        // Eski static atamayı kaldır: rb = GetComponent<Rigidbody2D>();
+
+        // Animator referanslarını al ve kontrol et
+        if (normalGfx != null) {
+            normalGfxAnimator = normalGfx.GetComponent<Animator>();
+            if (normalGfxAnimator == null) Debug.LogError("Normal GFX üzerinde Animator bulunamadı!", normalGfx);
+        } else {
+            Debug.LogError("Normal GFX GameObject atanmamış!", this);
+        }
+
+        if (goldGfx != null) {
+            goldGfxAnimator = goldGfx.GetComponent<Animator>();
+             if (goldGfxAnimator == null) Debug.LogError("Gold GFX üzerinde Animator bulunamadı!", goldGfx);
+        } else {
+             Debug.LogError("Gold GFX GameObject atanmamış!", this);
+        }
+
+        // Başlangıçta aktif olan animator'ü belirle
+        SetActiveAnimator(false); // Başlangıçta normal aktif olsun
+
+        attackScript = GetComponent<AttackScript>(); // AttackScript referansını al
+        if (attackScript == null) Debug.LogWarning("AttackScript bulunamadı.", this);
+
+        jumpCooldownTime = coyoteTime + 0.05f;
+
+        // GameSetting kontrolü
+        if (gameSetting == null)
+        {
+            Debug.LogError("GameSetting ScriptableObject atanmamış!", this);
+            // Varsayılan tuşlar atanabilir veya hata verilebilir
+        }
+        else
+        {
+            // Tuşları GameSetting'den yükle
+            LoadKeysFromSettings();
+        }
+
+        InvokeRepeating(nameof(CheckController), 1, 1);
+    }
+
+    void Start()
+    {
+        // İlk controller kontrolünü yap
+        CheckController(); // Awake'de de çağrılıyor, Start'ta tekrar gerekebilir mi?
+                           // Sahne yüklemesinden sonra emin olmak için Start'ta olabilir.
+    }
+
+    void SetActiveAnimator(bool gold)
+    {
+        isGoldActive = gold;
+        if (normalGfx != null) normalGfx.SetActive(!gold);
+        if (goldGfx != null) goldGfx.SetActive(gold);
+
+        currentAnimator = gold ? goldGfxAnimator : normalGfxAnimator;
+
+        // Eğer animator null ise uyarı ver
+        if (currentAnimator == null)
+        {
+            Debug.LogWarning($"Aktif Animator ({(gold ? "Gold" : "Normal")}) null! Animasyonlar çalışmayabilir.");
+        }
+    }
+
+    void LoadKeysFromSettings()
+    {
+        if (gameSetting == null) return;
         JumpButton = gameSetting.JumpButton;
         DpadUp = gameSetting.DpadUp;
         DpadDown = gameSetting.DpadDown;
         DpadLeft = gameSetting.DpadLeft;
         DpadRight = gameSetting.DpadRight;
-    }
-
-    #region ControllerCheck
-    void Start()
-    {
-        CheckController();
+        // Attack tuşu AttackScript'te atanmalı
     }
 
     void CheckController()
     {
         string[] controllers = Input.GetJoystickNames();
         bool controllerConnected = false;
-
         foreach (string controller in controllers)
         {
-            if (!string.IsNullOrEmpty(controller))
-            {
-                controllerConnected = true;
-                break;
-            }
+            if (!string.IsNullOrEmpty(controller)) { controllerConnected = true; break; }
         }
 
         if (controllerConnected != HasController)
         {
             HasController = controllerConnected;
-            if (HasController)
-            {
-                JumpButton = KeyCode.JoystickButton0;
-                attackScript.AttackKey = KeyCode.JoystickButton2;
-                Debug.Log("Controller connected.");
-            }
-            else
-            {
-                JumpButton = KeyCode.Space;
-                attackScript.AttackKey = KeyCode.X;
-                Debug.Log("No controller detected.");
-            }
+            LoadKeysFromSettings(); // Controller durumu değişince tuşları tekrar yükle (varsa)
+             // AttackScript'teki tuşu da güncellemek gerekebilir
+
+            Debug.Log(HasController ? "Controller connected." : "No controller detected.");
         }
     }
 
-    #endregion
-
-
-
-
     void Update()
     {
+        // Rigidbody null ise çık
+        if (playerRb == null) return;
+
         HandleInputs();
         Move();
         AppendJump();
         ApplyJumpPhysics();
         UpdateCoyoteTime();
-        AnimatorVariables();
+        AnimatorVariables(); // Aktif animator'ü kullanır
         Flip();
         Landed();
 
+        // Test için G tuşu (Görsel değiştirme)
         if (Input.GetKeyDown(KeyCode.G))
         {
-            normalGfx.SetActive(change);
-            goldGfx.SetActive(!change);
-            change = !change;
+            SetActiveAnimator(!isGoldActive);
         }
-
 
         if (jumpCooldownCounter > 0)
         {
@@ -144,186 +204,139 @@ public class Controller : MonoBehaviour
 
     void HandleInputs()
     {
+        // Input alma mantığı aynı kalabilir...
         inputX = 0f;
         inputY = 0f;
 
         if (HasController)
         {
             bool dpadUsed = false;
-            if (Input.GetKey(DpadUp))
-            {
-                inputY = 1f;
-                dpadUsed = true;
-            }
-            else if (Input.GetKey(DpadDown))
-            {
-                inputY = -1f;
-                dpadUsed = true;
-            }
-
-            if (Input.GetKey(DpadLeft))
-            {
-                inputX = -1f;
-                dpadUsed = true;
-            }
-            else if (Input.GetKey(DpadRight))
-            {
-                inputX = 1f;
-                dpadUsed = true;
-            }
+            // Dpad kontrolü...
+            if (Input.GetKey(DpadUp)) { inputY = 1f; dpadUsed = true; }
+            else if (Input.GetKey(DpadDown)) { inputY = -1f; dpadUsed = true; }
+            if (Input.GetKey(DpadLeft)) { inputX = -1f; dpadUsed = true; }
+            else if (Input.GetKey(DpadRight)) { inputX = 1f; dpadUsed = true; }
 
             if (!dpadUsed)
             {
-                inputX = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
-                inputY = Mathf.Floor(Input.GetAxisRaw("Vertical"));
+                // Analog stick kontrolü
+                inputX = Input.GetAxisRaw("Horizontal"); // GetAxisRaw genellikle daha iyi
+                inputY = Input.GetAxisRaw("Vertical");
+                // Küçük analog hareketlerini yok saymak için deadzone eklenebilir
+                if (Mathf.Abs(inputX) < 0.1f) inputX = 0f;
+                if (Mathf.Abs(inputY) < 0.1f) inputY = 0f;
             }
         }
         else
         {
-            inputX = Mathf.Floor(Input.GetAxisRaw("Horizontal"));
-            inputY = Mathf.Floor(Input.GetAxisRaw("Vertical"));
+            // Klavye kontrolü
+            inputX = Input.GetAxisRaw("Horizontal"); // GetAxisRaw kullan
+            inputY = Input.GetAxisRaw("Vertical"); // GetAxisRaw kullan
         }
 
-        if (Input.GetKeyDown(JumpButton))
-        {
-            jumpBufferCounter = jumpBufferTime;
-        }
-        else
-        {
-            jumpBufferCounter -= Time.deltaTime;
-        }
+
+        if (Input.GetKeyDown(JumpButton)) { jumpBufferCounter = jumpBufferTime; }
+        else { jumpBufferCounter -= Time.deltaTime; }
     }
 
 
     void Move()
     {
-        HealthScript.ReduceXKnockBack();
-        rb.linearVelocity = new Vector2(inputX * speed + HealthScript.XKnockBack, rb.linearVelocity.y);
+        float currentKnockback = 0f;
+        // HealthScript Instance üzerinden knockback al
+        if (HealthScript.Instance != null)
+        {
+             currentKnockback = HealthScript.Instance.XKnockBack;
+        }
+        // Static olmayan playerRb kullan
+        playerRb.linearVelocity = new Vector2(inputX * speed + currentKnockback, playerRb.linearVelocity.y);
     }
 
     void AppendJump()
     {
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0 && !hasJumpedDuringCoyote && jumpCooldownCounter <= 0)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce); // Static olmayan playerRb
             jumpBufferCounter = 0;
             hasJumpedDuringCoyote = true;
             jumpCooldownCounter = jumpCooldownTime;
+            // Zıplama trigger'ını aktif animator'de tetikle
+            if (currentAnimator != null) currentAnimator.SetTrigger("JumpTrigger");
         }
     }
 
     void ApplyJumpPhysics()
     {
-        if (rb.linearVelocity.y < 0)
-        {
-            rb.gravityScale = fallMultiplier;
-        }
-        else if (rb.linearVelocity.y > 0 && !Input.GetKey(JumpButton))
-        {
-            rb.gravityScale = lowJumpMultiplier;
-        }
-        else if (rb.linearVelocity.y > 0 && isPogoing)
-        {
-            rb.gravityScale = lowJumpMultiplier;
-        }
-        else
-        {
-            rb.gravityScale = 1f;
-        }
+        if (playerRb.linearVelocity.y < 0) { playerRb.gravityScale = fallMultiplier; } // Static olmayan playerRb
+        else if (playerRb.linearVelocity.y > 0 && !Input.GetKey(JumpButton)) { playerRb.gravityScale = lowJumpMultiplier; } // Static olmayan playerRb
+        else if (playerRb.linearVelocity.y > 0 && isPogoing) { playerRb.gravityScale = lowJumpMultiplier; } // Static olmayan playerRb
+        else { playerRb.gravityScale = 1f; }
     }
 
-    void DoingPogo()
-    {
-        isPogoing = true;
-        rb.gravityScale = lowJumpMultiplier;
-    }
-
-    void Landed()
-    {
-        if (!isPogoing)
-            return;
-        if (CheckGrounded())
-        isPogoing = false;
-    }
+    void DoingPogo() { isPogoing = true; /* rb.gravityScale = lowJumpMultiplier; */ ApplyJumpPhysics(); } // ApplyJumpPhysics çağrısı daha doğru
+    void Landed() { if (!isPogoing) return; if (CheckGrounded()) isPogoing = false; }
 
     public void DoPOGO(float pogoMultiplier, bool isEnemy)
     {
         DoingPogo();
-        PlaySFX(isEnemy);
+        PlayPogoSFX(isEnemy);
 
-        CameraShake.StartShake(0.1f, 0.05f);
-        if (rb.linearVelocity.y < 0f)
+        CameraShake.StartShake(0.1f, 0.05f); // Static kalabilir
+
+        // Pogo gücünü uygula (Y hızını doğrudan ayarlamak yerine kuvvet uygulamak daha iyi olabilir)
+        // Örnek: Var olan Y hızını sıfırla ve yukarı doğru kuvvet uygula
+        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, 0); // Önce Y hızını sıfırla
+        playerRb.AddForce(Vector2.up * pogoMultiplier, ForceMode2D.Impulse); // Sonra kuvvet uygula
+
+
+        // Eski Y hızına dayalı mantık (daha az tercih edilir):
+        /*
+        if (playerRb.velocity.y < 0f)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoMultiplier);
+            playerRb.velocity = new Vector2(playerRb.velocity.x, pogoMultiplier);
         }
-        else if (rb.linearVelocity.y >= 3f)
+        else // Zaten yukarı gidiyorsa ek güç ver
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y + (pogoMultiplier / 2));
+            // Çok yüksek hızları engellemek için bir limit eklemek iyi olabilir
+             playerRb.velocity = new Vector2(playerRb.velocity.x, playerRb.velocity.y + (pogoMultiplier / 1.5f)); // /2 yerine /1.5f daha fazla güç
         }
+        */
     }
 
-    void PlaySFX(bool isEnemy)
+
+    void PlayPogoSFX(bool isEnemy)
     {
-        if (isEnemy)
-            return;
-        var sfx = Instantiate(PogoSFX, transform.position, Quaternion.identity, gameObject.transform);
-        sfx.GetComponent<AudioSource>().pitch = UnityEngine.Random.Range(1f, 1.3f);
-        Destroy(sfx, 3f);
+        if (isEnemy || PogoSFX == null) return;
+        var sfx = Instantiate(PogoSFX, transform.position, Quaternion.identity);
+        AudioSource audioSource = sfx.GetComponent<AudioSource>();
+        if (audioSource != null) audioSource.pitch = UnityEngine.Random.Range(1f, 1.3f);
+        Destroy(sfx, 3f); // Sesi Parent yapmaya gerek yok
     }
 
     void UpdateCoyoteTime()
     {
-        if (CheckGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-            hasJumpedDuringCoyote = false;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
+        if (CheckGrounded()) { coyoteTimeCounter = coyoteTime; hasJumpedDuringCoyote = false; }
+        else { coyoteTimeCounter -= Time.deltaTime; }
     }
 
     #region Animation
     void AnimatorVariables()
     {
-        #region Normal
-        if (canChangeAnim)
+        // Sadece aktif animator'ü güncelle
+        if (currentAnimator != null && canChangeAnim)
         {
-            normalGfxAnimator.SetFloat("Horizontal", Mathf.Abs(inputX));
-            normalGfxAnimator.SetFloat("Vertical", rb.linearVelocity.y);
-            normalGfxAnimator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
-            normalGfxAnimator.SetBool("isGrounded", CheckGrounded());
+            currentAnimator.SetFloat("Horizontal", Mathf.Abs(inputX));
+            currentAnimator.SetFloat("Vertical", playerRb.linearVelocity.y); // Static olmayan playerRb
+            currentAnimator.SetFloat("VerticalInput", inputY); // inputY kullanmak daha doğru
+            currentAnimator.SetBool("isGrounded", CheckGrounded());
         }
-
-        if (Input.GetKeyDown(JumpButton))
-        {
-            normalGfxAnimator.SetTrigger("JumpTrigger");
-        }
-        #endregion
-
-        #region Gold
-        if (canChangeAnim)
-        {
-            goldGfxAnimator.SetFloat("Horizontal", Mathf.Abs(inputX));
-            goldGfxAnimator.SetFloat("Vertical", rb.linearVelocity.y);
-            goldGfxAnimator.SetFloat("VerticalInput", Input.GetAxisRaw("Vertical"));
-            goldGfxAnimator.SetBool("isGrounded", CheckGrounded());
-        }
-
-        if (Input.GetKeyDown(JumpButton))
-        {
-            goldGfxAnimator.SetTrigger("JumpTrigger");
-        }
-        #endregion
-
+        // Jump trigger AppendJump içinde tetikleniyor
     }
 
     void Flip()
     {
-        if (!canChangeAnim)
-            return;
-        if (isFacingRight && inputX < 0f || !isFacingRight && inputX > 0f)
+        if (!canChangeAnim) return;
+        if ((isFacingRight && inputX < 0f) || (!isFacingRight && inputX > 0f))
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -331,21 +344,35 @@ public class Controller : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+    // Bu metod AttackScript tarafından Animation Event ile çağrılmalı
+    public void EnableAnimationChange()
+    {
+        canChangeAnim = true;
+        Debug.Log("Animation Change Enabled");
+    }
+
+    // Bu metod AttackScript tarafından çağrılmalı
+    public void DisableAnimationChange()
+    {
+         canChangeAnim = false;
+         Debug.Log("Animation Change Disabled");
+    }
+
     #endregion
 
     public bool CheckGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheckPos.transform.position, groundCheckRadius, groundCheckLayer);
+        if (groundCheckPos == null) return false;
+        return Physics2D.OverlapCircle(groundCheckPos.position, groundCheckRadius, groundCheckLayer);
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected() // OnDrawGizmos yerine Selected kullanmak daha az kalabalık yapar
     {
-        Gizmos.DrawWireSphere(groundCheckPos.transform.position, groundCheckRadius);
-    }
-
-    IEnumerator ChangeCamPointPos()
-    {
-        yield return new WaitForSeconds(1f);
-
+        if (groundCheckPos != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(groundCheckPos.position, groundCheckRadius);
+        }
     }
 }

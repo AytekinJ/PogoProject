@@ -71,9 +71,8 @@ public class ESCMenu : MonoBehaviour
         cameraFadeScript.StartFade(0.2f,true,true);
         yield return new WaitForSeconds(0.2f);
         SceneData.SceneToLoad = "MainMenu";
-        SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
-        GC.Collect();
-        Resources.UnloadUnusedAssets();
+        SceneData.LoadScene();
+
     }
 
     public void Settings()
@@ -95,7 +94,7 @@ public class ESCMenu : MonoBehaviour
     {
         cameraFadeScript.StartFade(0.1f,true,true);
         yield return new WaitForSeconds(0.1f);
-        SceneLoader.ReloadCurrentScene_ClearAllocatedMemory();
+        SceneLoader.ReloadCurrentScene();
     }
 
     public void BackButton()

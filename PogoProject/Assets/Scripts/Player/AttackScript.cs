@@ -84,7 +84,7 @@ public class AttackScript : MonoBehaviour
                 particleScript.CastParticleBox(attackRange + 0.1f, attackDirection, boxSize);
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 
-                Controller.canChangeAnim = false;
+                Controller.Instance.canChangeAnim = false;
                 normal.SetTrigger("AttackTrigger");
                 gold.SetTrigger("AttackTrigger");
             }
