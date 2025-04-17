@@ -186,6 +186,11 @@ private float timeElapsed = 0f;
         int randomIndex = UnityEngine.Random.Range(0, funnyMessages.Length);
         return funnyMessages[randomIndex];
     }
+
+    public static void ClearAllocatedData(){
+            Resources.UnloadUnusedAssets();
+            System.GC.Collect();
+    }
 }
 
 public static class SceneData

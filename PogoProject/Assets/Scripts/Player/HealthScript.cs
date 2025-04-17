@@ -131,6 +131,7 @@ public class HealthScript : MonoBehaviour
 
     private static void ReloadScene()
     {
+        SceneLoader.ClearAllocatedData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

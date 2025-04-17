@@ -414,8 +414,7 @@ public class ScoreManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             Time.timeScale = 1f;
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-            Resources.UnloadUnusedAssets();
-            System.GC.Collect();
+            SceneLoader.ClearAllocatedData();
             SceneData.SceneToLoad = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
         }
