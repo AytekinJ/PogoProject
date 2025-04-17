@@ -170,7 +170,6 @@ public class Controller : MonoBehaviour
         {
             HasController = controllerConnected;
             LoadKeysFromSettings(); // Controller durumu değişince tuşları tekrar yükle (varsa)
-             // AttackScript'teki tuşu da güncellemek gerekebilir
 
             Debug.Log(HasController ? "Controller connected." : "No controller detected.");
         }
