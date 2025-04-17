@@ -416,7 +416,8 @@ public class ScoreManager : MonoBehaviour
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
             Resources.UnloadUnusedAssets();
             System.GC.Collect();
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            SceneData.SceneToLoad = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
         }
     }
 }

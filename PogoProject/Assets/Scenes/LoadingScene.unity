@@ -900,7 +900,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1166626585}
   infoText: {fileID: 509620934}
-  sceneToLoad: 
+  minimumLoadTime: 4
+  progressBarSpeed: 0.3
+  messageChangeInterval: 1
 --- !u!4 &1599547812
 Transform:
   m_ObjectHideFlags: 0
