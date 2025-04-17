@@ -82,16 +82,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a762c77b1452414ba2d962cd3598e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 11400000, guid: 432993ac5c54f4941995c90cd36cede7, type: 2}
   timeScaleInterpolationSpeed: 0.1
   time: 999
-  filePath: highscore
   timerText: {fileID: 0}
   starsInLevel: 5
   heartsInLevel: 0
   totalScore: 0
   towerPogo: 0
   rewardPerCoin: 100
-  rewardPerStar: 250
   pogoReward: 1000
   rewardPerRemainingSecond: 5
   endGameScreenPrefab: {fileID: 0}
@@ -143,4 +142,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07984bb09a756694a86312c9604b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: gamedata

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8830842442108611601}
   - component: {fileID: 9172919201531096841}
-  - component: {fileID: 5656540441969715527}
   m_Layer: 0
   m_Name: Big Rock
   m_TagString: Untagged
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_Sprite: {fileID: 1093322335628213334, guid: a22092b3e4e4ffa45885b2ba7d4f5930, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -88,60 +87,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5656540441969715527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4188630826779300981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 5
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.37202644, y: -0.397007, z: 0}
-  - {x: -0.37106895, y: -0.35015678, z: 0}
-  - {x: -0.3305769, y: -0.34891558, z: 0}
-  - {x: -0.33411312, y: -0.22284842, z: 0}
-  - {x: -0.42376423, y: 0.04043436, z: 0}
-  - {x: -0.43083668, y: 0.32687902, z: 0}
-  - {x: -0.36619568, y: 0.40920925, z: 0}
-  - {x: -0.14657593, y: 0.3986001, z: 0}
-  - {x: 0.4333868, y: -0.41274548, z: 0}
-  m_ShapePathHash: 1283079839
-  m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 0}
-  m_ShadowShape2DProvider:
-    rid: -2
-  m_ShadowCastingSource: 1
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: 0.0012750626, y: -0.0017681122, z: 0}
-      m_Extent: {x: 0.43211174, y: 0.41097736, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0.04
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0.04
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0.04
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 1
-  m_PreviousShadowShape2DSource: {fileID: 9172919201531096841}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
