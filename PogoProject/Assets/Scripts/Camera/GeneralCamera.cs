@@ -55,20 +55,42 @@ public class GeneralCamera : MonoBehaviour
     }
 
     void Lerpcam()
+{
+    if (TransformToLock == null)
     {
-        Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
-        Vector2 playerPos = new Vector2(cameraFollowScript.target.position.x, cameraFollowScript.target.position.y);
-        float distance = Vector2.Distance(playerPos, lockPos);
-        float Magnitude = Mathf.InverseLerp(0f, TransformToLock.GetComponent<CamPoint>().Distance, distance);
-        Vector2 direction = (lockPos - playerPos).normalized;
-
-        float targetX = TransformToLock.position.x + (direction.x * distanceOffset) * Magnitude;
-        float targetY = TransformToLock.position.y + (direction.y * distanceOffset) * Magnitude;
-
-        if (LockX) targetX = TransformToLock.position.x;
-        if (LockY) targetY = TransformToLock.position.y;
-
-        Vector3 movePosition = new Vector3(targetX, targetY, offset.z);
-        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+        UnlockCamera(); 
+        return;
     }
+
+    Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
+
+
+    if (cameraFollowScript == null || cameraFollowScript.target == null)
+    {
+         
+         UnlockCamera();
+         return;
+    }
+
+    Vector2 playerPos = new Vector2(cameraFollowScript.target.position.x, cameraFollowScript.target.position.y);
+    float distance = Vector2.Distance(playerPos, lockPos);
+
+    CamPoint camPoint = TransformToLock.GetComponent<CamPoint>();
+    if (camPoint == null) {
+        UnlockCamera();
+        return;
+    }
+
+    float Magnitude = Mathf.InverseLerp(0f, camPoint.Distance, distance);
+    Vector2 direction = (lockPos - playerPos).normalized;
+
+    float targetX = TransformToLock.position.x + (direction.x * distanceOffset) * Magnitude;
+    float targetY = TransformToLock.position.y + (direction.y * distanceOffset) * Magnitude;
+
+    if (LockX) targetX = TransformToLock.position.x;
+    if (LockY) targetY = TransformToLock.position.y;
+
+    Vector3 movePosition = new Vector3(targetX, targetY, offset.z);
+    transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+}
 }
