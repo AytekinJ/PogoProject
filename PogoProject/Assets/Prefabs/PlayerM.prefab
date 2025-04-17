@@ -337,6 +337,8 @@ MonoBehaviour:
   coyoteTime: 0.1
   hasJumpedDuringCoyote: 0
   isFacingRight: 1
+  isPogoing: 0
+  CameraFollowPoint: {fileID: 0}
 --- !u!114 &2540748845447814682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,10 +385,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpEffect: {fileID: 3121763401200467556, guid: a88d35477d7777fd5901fb7bc4ea1143, type: 3}
+  heartsCollected: 0
   starsCollected: 0
-  coinsCollected: 0
   maxStars: 5
-  maxCoins: 10
+  maxHearts: 0
 --- !u!114 &1491743274088363608
 MonoBehaviour:
   m_ObjectHideFlags: 0

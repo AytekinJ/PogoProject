@@ -54,7 +54,6 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         main = this;
-        timerText = GameObject.FindGameObjectWithTag("TimerUI").GetComponent<TextMeshProUGUI>();
 
         if (levelManager == null) { Debug.LogError("LevelsManager atanmamış!"); return; }
         if (DatabaseManager.main == null) { Debug.LogError("DatabaseManager sahnede bulunamadı veya aktif değil!"); return; }
@@ -405,18 +404,11 @@ public class ScoreManager : MonoBehaviour
         return null;
     }
 
-
-    // başlangıçta eğer bu şekilde bir temizleme yapılmazsa, singleton objeler bellekte kalıyor ve oyun kapatılmadığı sürece
-    // değişmiyorlar. Önceki verilerle birlikte üst üste bindikleri için oyunun çoğu mekaniği (singleton ile çalışanlar)
-    // bozuluyor. Bu yüzden sahne yüklendiğinde, sahne değiştiğinde veya oyun sıfırlandığında bu temizleme yapılmalı.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
-            Time.timeScale = 1f;
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-            Resources.UnloadUnusedAssets();
-            System.GC.Collect();
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+             Time.timeScale = 1f;
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
