@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour
@@ -119,16 +120,24 @@ public class AttackScript : MonoBehaviour
                 CameraShake.StartShake(0.1f, 0.05f);
                 doorScript.DestroyDoor(gameObject);
             }
-
+            if (hit.collider.gameObject.CompareTag("TowerBody") && direction != Vector2.down) // kuleye düz vurulursa tetiklenir
+            {
+                CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
+                ScoreManager.main.towerPogo = false;
+                ScoreManager.main.ControlScores();
+                ScoreManager.main.EndGame();
+                Debug.Log("TowerBody hit!");
+            }
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
                 bool isEnemy = hit.collider.gameObject.CompareTag("Enemy");
                 OnAirJump(isEnemy);
-                if (hit.collider.gameObject.CompareTag("Tower"))
+                if (hit.collider.gameObject.CompareTag("Tower")) // kuleye pogo yapılırsa tetiklenir
                 {
                     CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
                     ScoreManager.main.towerPogo = true;
                     ScoreManager.main.ControlScores();
+                    ScoreManager.main.EndGame();
                 }
             }
         }

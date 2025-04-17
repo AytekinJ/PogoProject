@@ -54,6 +54,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         main = this;
+        
         timerText = GameObject.FindGameObjectWithTag("TimerUI").GetComponent<TextMeshProUGUI>();
 
         if (levelManager == null) { Debug.LogError("LevelsManager atanmamış!"); return; }
@@ -412,11 +413,7 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
-            Time.timeScale = 1f;
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-            SceneLoader.ClearAllocatedData();
-            SceneData.SceneToLoad = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
+            SceneLoader.ReloadCurrentScene_ClearAllocatedMemory();
         }
     }
 }

@@ -19,14 +19,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   allPickups:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bestTime: 1
-  completionPercentage: 83.33334
+  bestTime: 34
+  completionPercentage: 100
   isCompleted: 1

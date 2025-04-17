@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 public class SceneLoader : MonoBehaviour
 {
    [Header("UI Elements")]
@@ -172,8 +174,10 @@ private float timeElapsed = 0f;
                 asyncOperation.allowSceneActivation = true;
             
             }
-
+            Resources.UnloadUnusedAssets();
+            GC.Collect();
             yield return null;
+            
         }
     }
 
@@ -187,9 +191,13 @@ private float timeElapsed = 0f;
         return funnyMessages[randomIndex];
     }
 
-    public static void ClearAllocatedData(){
-            Resources.UnloadUnusedAssets();
-            System.GC.Collect();
+    public static void ReloadCurrentScene_ClearAllocatedMemory()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        Resources.UnloadUnusedAssets();
+        GC.Collect();
+        SceneData.SceneToLoad = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
     }
 }
 
