@@ -51,8 +51,8 @@ public class HealthScript : MonoBehaviour
     {
         if (CurrentPos == null || DesiredPos == null)
         {
-            
-            TeleportToSpawn();
+            ReloadScene();
+            //TeleportToSpawn();
             return;
         }
         cameraFadeScript.StartFade(0.2f, true, true);
