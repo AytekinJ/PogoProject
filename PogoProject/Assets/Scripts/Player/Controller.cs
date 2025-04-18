@@ -80,7 +80,7 @@ public class Controller : MonoBehaviour
             return;
         }
         // -----------------
-
+        gameSetting = GameSetting.Instance;
         // Rigidbody referansını al (static olmayan)
         playerRb = GetComponent<Rigidbody2D>();
         if (playerRb == null) Debug.LogError("Rigidbody2D bulunamadı!", this);

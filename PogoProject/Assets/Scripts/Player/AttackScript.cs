@@ -45,6 +45,7 @@ public class AttackScript : MonoBehaviour
     
     void Start()
     {
+        gameSetting = GameSetting.Instance;
         //AttackKey = gameSetting.attack;
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
@@ -114,6 +115,18 @@ public class AttackScript : MonoBehaviour
         {
             //Debug.Log(hit.collider.name);
 
+            if (direction == Vector2.down && !playerController.CheckGrounded())
+            {
+                bool isEnemy = hit.collider.gameObject.CompareTag("Enemy");
+                OnAirJump(isEnemy);
+                if (hit.collider.gameObject.CompareTag("Tower")) // kuleye pogo yapılırsa tetiklenir
+                {
+                    CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
+                    ScoreManager.main.towerPogo = true;
+                    ScoreManager.main.ControlScores();
+                    ScoreManager.main.EndGame();
+                }
+            }
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
@@ -134,18 +147,6 @@ public class AttackScript : MonoBehaviour
                 ScoreManager.main.ControlScores();
                 ScoreManager.main.EndGame();
                 Debug.Log("TowerBody hit!");
-            }
-            if (direction == Vector2.down && !playerController.CheckGrounded())
-            {
-                bool isEnemy = hit.collider.gameObject.CompareTag("Enemy");
-                OnAirJump(isEnemy);
-                if (hit.collider.gameObject.CompareTag("Tower")) // kuleye pogo yapılırsa tetiklenir
-                {
-                    CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
-                    ScoreManager.main.towerPogo = true;
-                    ScoreManager.main.ControlScores();
-                    ScoreManager.main.EndGame();
-                }
             }
         }
         else

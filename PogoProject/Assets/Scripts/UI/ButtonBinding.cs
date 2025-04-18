@@ -15,6 +15,7 @@ public class KeyBinder : MonoBehaviour
 
     private void Awake()
     {
+        settings = GameSetting.Instance;
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
         button = GetComponent<Button>();
         

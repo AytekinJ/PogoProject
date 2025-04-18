@@ -14,6 +14,7 @@ public class KeyBinderInitializer : MonoBehaviour
 
     private void Start()
     {
+        settings = GameSetting.Instance;
         buttons.Clear();
         foreach (Transform childTransform in transform)
         {

@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSetting: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
+  canChangeAnim: 1
   inputX: 0
   inputY: 0
   normalGfx: {fileID: 4233213808909911435}
@@ -338,7 +339,6 @@ MonoBehaviour:
   hasJumpedDuringCoyote: 0
   isFacingRight: 1
   isPogoing: 0
-  CameraFollowPoint: {fileID: 0}
 --- !u!114 &2540748845447814682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +356,6 @@ MonoBehaviour:
   POGOMultiplier: 11
   normalGfx: {fileID: 4233213808909911435}
   goldGfx: {fileID: 78928594970178162}
-  AttackKey: 120
   up: 0
   down: 0
   left: 0
@@ -401,7 +400,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a414599e6c7ba4eac4b51e01645292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgSFX: {fileID: 7269873125136112546, guid: b9dae31a2e5ea51498c278a3345289ae, type: 3}
+  HasArmor: 0
+  HealthValue: 10
+  XKnockBack: 0
+  CurrentCheckpoint: {fileID: 0}
+  CurrentPlatformCheckpoint: {fileID: 0}
+  startingHealth: 10
+  damageSFXPrefab: {fileID: 7269873125136112546, guid: b9dae31a2e5ea51498c278a3345289ae, type: 3}
+  worldSpawnPoint: {fileID: 0}
+  cameraFadeScript: {fileID: 0}
 --- !u!114 &2463873496423336256
 MonoBehaviour:
   m_ObjectHideFlags: 0

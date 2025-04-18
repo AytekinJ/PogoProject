@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,87 +7,109 @@ using UnityEngine.UI;
 public class ESCMenu : MonoBehaviour
 {
     private bool isPaused = false;
+
+    [Header("UI Panels")]
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
     public GameObject[] settingsPanels;
-    public List<Button> buttons;
-    public CameraFadeScript cameraFadeScript;
 
-    // Main Events
+    [Header("Settings Navigation Buttons")]
+    public List<Button> buttons;
+
+    [Header("Camera Fade Script")]
+    public CameraFadeScript cameraFadeScript;
 
     void Awake()
     {
+        // 🧽 UI bileşenlerini buluyoruz
         pauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu");
         settingsMenuUI = GameObject.FindGameObjectWithTag("PauseSettings");
         cameraFadeScript = FindFirstObjectByType<CameraFadeScript>();
 
         if (pauseMenuUI == null || settingsMenuUI == null || cameraFadeScript == null)
         {
-            Debug.LogError("Pause Menu UI or Settings Menu UI or Camera Fade Script not found in the scene.");
+            Debug.LogError("🚨 UI veya Fade Script eksik! Sahneye düzgün atılmamış olabilir.");
+            return;
         }
 
+        // 🔁 Settings panellerini sırayla al (BackGround altından, 0. ve 1. çocuğu atlıyoruz)
+        Transform parent = GameObject.Find("BackGround").transform;
+        settingsPanels = new GameObject[4];
+        for (int i = 0; i < 4; i++)
+        {
+            settingsPanels[i] = parent.GetChild(i + 1).gameObject; // i+1 çünkü 0'ı atlıyoruz
+        }
+        settingsPanels[0].SetActive(true); // İlk panel aktif
+
+        // 🔁 Settings navigation butonlarını tersten sırayla al
+        GameObject[] buttonObjects = GameObject.FindGameObjectsWithTag("SettingsNavigation");
+        buttons = new List<Button>();
+        for (int i = buttonObjects.Length - 1; i >= 0; i--)
+        {
+            Button btn = buttonObjects[i].GetComponent<Button>();
+            if (btn != null)
+                buttons.Add(btn);
+        }
+
+        // 🧠 Her butona panel açma eventi ekle
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            int index = i; // closure için sabitleme
+            buttons[i].onClick.AddListener(() => OpenMenu(index));
+        }
+
+        // Başlangıçta UI'lar kapalı
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(false);
         isPaused = false;
-        int count = 0;
-        foreach (Button btn in buttons)
-        {
-            int index = count; 
-            btn.onClick.AddListener(() => OpenMenu(index));
-            count++;
-        }
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             TogglePauseMenu();
-        }
     }
 
     private void TogglePauseMenu()
     {
-        if (isPaused)
-        {
-            Time.timeScale = 1f;
-            pauseMenuUI.SetActive(false);
-            settingsMenuUI.SetActive(false);
-            isPaused = false;
-        }
-        else
-        {
-            Time.timeScale = 0f;
-            pauseMenuUI.SetActive(true);
-            settingsMenuUI.SetActive(false);
-            isPaused = true;
-        }
+        isPaused = !isPaused;
+
+        Time.timeScale = isPaused ? 0f : 1f;
+        pauseMenuUI.SetActive(isPaused);
+        settingsMenuUI.SetActive(false); // ESC'den çıkarken ayar menüsünü de kapat
     }
 
-    // Button Events
-
-    public void OpenMenu(int index){
+    public void OpenMenu(int index)
+    {
         for (int i = 0; i < settingsPanels.Length; i++)
-        {
-            settingsPanels[i].SetActive(false);
-        }
-        settingsPanels[index].SetActive(true);
+            settingsPanels[i].SetActive(i == index); // sadece istenen aktif
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1f;
-        isPaused = false;
-        pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(false);
+        ResetPauseState();
         StartCoroutine(MainMenuCoroutine());
     }
-    public IEnumerator MainMenuCoroutine()
+
+    private IEnumerator MainMenuCoroutine()
     {
-        cameraFadeScript.StartFade(0.2f,true,true);
+        cameraFadeScript.StartFade(0.2f, true, true);
         yield return new WaitForSeconds(0.2f);
         SceneData.SceneToLoad = "MainMenu";
         SceneData.LoadScene();
+    }
 
+    public void Restart()
+    {
+        ResetPauseState();
+        StartCoroutine(RestartCoroutine());
+    }
+
+    private IEnumerator RestartCoroutine()
+    {
+        cameraFadeScript.StartFade(0.1f, true, true);
+        yield return new WaitForSeconds(0.1f);
+        SceneLoader.ReloadCurrentScene();
     }
 
     public void Settings()
@@ -98,27 +118,17 @@ public class ESCMenu : MonoBehaviour
         settingsMenuUI.SetActive(true);
     }
 
-    public void Restart()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-        pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(false);
-        StartCoroutine(RestartCoroutine());
-    }
-
-    public IEnumerator RestartCoroutine()
-    {
-        cameraFadeScript.StartFade(0.1f,true,true);
-        yield return new WaitForSeconds(0.1f);
-        SceneLoader.ReloadCurrentScene();
-    }
-
     public void BackButton()
     {
         pauseMenuUI.SetActive(true);
         settingsMenuUI.SetActive(false);
     }
 
-
+    private void ResetPauseState()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
+    }
 }

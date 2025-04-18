@@ -20,6 +20,8 @@ TagManager:
   - PauseMenu
   - PauseSettings
   - EndScreen
+  - SettingsNavigation
+  - SettingsPanel
   layers:
   - Default
   - TransparentFX

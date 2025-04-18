@@ -49,6 +49,7 @@ public class ApplySettings : MonoBehaviour
     [SerializeField] GameObject otherPanel;
 
     private void Start() {
+        settings = GameSetting.Instance;
         LoadSettings();
     }
     public void ApplyKeyBindings()
