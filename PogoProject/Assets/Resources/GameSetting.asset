@@ -10,30 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edc7ea2a9178de543ad5253e73864160, type: 3}
-  m_Name: MainSettings
+  m_Name: GameSetting
   m_EditorClassIdentifier: 
   rWidth: 1920
   rHeight: 1080
-  fps: -1
-  vsync: 0
-  shadows: 0
-  postprocessing: 0
-  antialiasing: 0
-  antialiasingQuality: 0
-  masterVolume: 89
-  musicVolume: 57
-  sfxVolume: 93
+  fps: 144
+  vsync: 1
+  shadows: 1
+  postprocessing: 1
+  antialiasing: 1
+  antialiasingQuality: 2
+  masterVolume: 100
+  musicVolume: 100
+  sfxVolume: 100
   inputEnabled: 1
-  right: 336
-  left: 337
-  up: 334
-  down: 335
-  attack: 332
-  rightAim: 336
-  leftAim: 337
-  upAim: 334
-  downAim: 335
-  JumpButton: 330
+  right: 100
+  left: 97
+  up: 119
+  down: 115
+  attack: 32
+  rightAim: 275
+  leftAim: 276
+  upAim: 273
+  downAim: 274
+  JumpButton: 32
   DpadUp: 334
   DpadDown: 336
   DpadLeft: 337

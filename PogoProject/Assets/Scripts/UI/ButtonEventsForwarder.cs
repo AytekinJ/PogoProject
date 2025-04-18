@@ -31,6 +31,7 @@ public class MainMenuController : MonoBehaviour
         sound.SetActive(false);
         video.SetActive(false);
         other.SetActive(false);
+        levelSelectionMenu.SetActive(false);
 
         if (panelToShow != null)
         {
@@ -42,6 +43,7 @@ public class MainMenuController : MonoBehaviour
         sound.SetActive(true);
         video.SetActive(true);
         other.SetActive(true);
+        levelSelectionMenu.SetActive(true);
     }
 
     public void ActivateFirstPanel(){
@@ -49,6 +51,7 @@ public class MainMenuController : MonoBehaviour
         sound.SetActive(false);
         video.SetActive(false);
         other.SetActive(false);
+        levelSelectionMenu.SetActive(false);
     }
     public void Credits()
     {
@@ -82,5 +85,6 @@ public class MainMenuController : MonoBehaviour
     {
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
+        levelSelectionMenu.SetActive(false);
     }
 }

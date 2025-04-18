@@ -123,6 +123,7 @@ public class ApplySettings : MonoBehaviour
         settings.DpadRight = parsedKeyCodes[13];
 
         Debug.Log("Tu� atamalar� (indeks tabanl�) tamamland�.");
+        DatabaseManager.main.SaveSettingsData();
     }
 
     public void ApplySoundLevels()

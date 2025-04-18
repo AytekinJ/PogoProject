@@ -116,6 +116,8 @@ public class SceneLoader : MonoBehaviour
     {
         timeElapsed = 0f;
         progressBar.value = 0f;
+        GC.Collect();
+        Resources.UnloadUnusedAssets();
 
         // Sahneyi asenkron olarak yüklemeye başla
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);

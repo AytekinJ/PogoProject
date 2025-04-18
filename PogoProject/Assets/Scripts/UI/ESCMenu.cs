@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ESCMenu : MonoBehaviour
 {
     private bool isPaused = false;
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
-
+    public GameObject[] settingsPanels;
+    public List<Button> buttons;
     public CameraFadeScript cameraFadeScript;
 
     // Main Events
@@ -28,7 +31,13 @@ public class ESCMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(false);
         isPaused = false;
-
+        int count = 0;
+        foreach (Button btn in buttons)
+        {
+            int index = count; 
+            btn.onClick.AddListener(() => OpenMenu(index));
+            count++;
+        }
     }
     void Update()
     {
@@ -57,6 +66,14 @@ public class ESCMenu : MonoBehaviour
     }
 
     // Button Events
+
+    public void OpenMenu(int index){
+        for (int i = 0; i < settingsPanels.Length; i++)
+        {
+            settingsPanels[i].SetActive(false);
+        }
+        settingsPanels[index].SetActive(true);
+    }
 
     public void MainMenu()
     {
@@ -102,4 +119,6 @@ public class ESCMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         settingsMenuUI.SetActive(false);
     }
+
+
 }

@@ -7,7 +7,7 @@ public class SettingsManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            gameSetting.ApplySettings();
+            //gameSetting.ApplySettings(); // öylesine duruyo
         }
     }
 }

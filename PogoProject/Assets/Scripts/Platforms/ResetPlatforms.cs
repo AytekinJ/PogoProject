@@ -3,18 +3,9 @@ using UnityEngine;
 public class ResetPlatforms : MonoBehaviour
 {
 
-    public static ResetPlatforms instance;
     void Start()
     {
-        if (instance)
-        {
-            Destroy(instance);
-            instance = this;
-        }
-        else
-        {
-            instance = this;
-        }
+
     }
 
     void Update()
