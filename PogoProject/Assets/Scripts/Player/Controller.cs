@@ -129,6 +129,7 @@ public class Controller : MonoBehaviour
         // İlk controller kontrolünü yap
         CheckController(); // Awake'de de çağrılıyor, Start'ta tekrar gerekebilir mi?
                            // Sahne yüklemesinden sonra emin olmak için Start'ta olabilir.
+        InvokeRepeating(nameof(LoadKeysFromSettings), 1,1);
     }
 
     void SetActiveAnimator(bool gold)

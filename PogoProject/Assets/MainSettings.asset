@@ -24,16 +24,16 @@ MonoBehaviour:
   musicVolume: 57
   sfxVolume: 93
   inputEnabled: 1
-  right: 100
-  left: 97
-  up: 119
-  down: 115
-  attack: 120
-  rightAim: 275
-  leftAim: 276
-  upAim: 273
-  downAim: 274
-  JumpButton: 32
+  right: 336
+  left: 337
+  up: 334
+  down: 335
+  attack: 345
+  rightAim: 336
+  leftAim: 337
+  upAim: 334
+  downAim: 335
+  JumpButton: 344
   DpadUp: 334
   DpadDown: 336
   DpadLeft: 337
