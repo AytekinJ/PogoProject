@@ -72,7 +72,7 @@ MonoBehaviour:
   shootAngle: 0
   shootDelay: 3
   shootRange: 10
-  bulletSpeed: 5
+  bulletSpeed: 4
   bulletPrefab: {fileID: 6976742288042995816, guid: 715084efda2c0491faa44121a9c8e217, type: 3}
   activeGoomba: 0
   goombaSpeed: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointValue: 1
   IncreaseHealth: 0
+  healthScript: {fileID: 0}
 --- !u!1 &7631497038539899516
 GameObject:
   m_ObjectHideFlags: 0

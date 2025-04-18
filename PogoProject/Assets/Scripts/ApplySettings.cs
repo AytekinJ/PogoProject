@@ -107,20 +107,20 @@ public class ApplySettings : MonoBehaviour
 
         Debug.Log($"Okunan {parsedKeyCodes.Count} KeyCode, GameSetting'e indeks tabanl� atan�yor...");
 
-
-        settings.up = parsedKeyCodes[0];
-        settings.down = parsedKeyCodes[1];
-        settings.left = parsedKeyCodes[2];
-        settings.right = parsedKeyCodes[3];
-        settings.attack = parsedKeyCodes[4];
-        settings.upAim = parsedKeyCodes[5];
-        settings.downAim = parsedKeyCodes[6];
-        settings.leftAim = parsedKeyCodes[7];
-        settings.rightAim = parsedKeyCodes[8];
-        settings.DpadUp = parsedKeyCodes[9];  
-        settings.DpadDown = parsedKeyCodes[10]; 
-        settings.DpadLeft = parsedKeyCodes[11]; 
-        settings.DpadRight = parsedKeyCodes[12];
+        settings.JumpButton = parsedKeyCodes[0];
+        settings.up = parsedKeyCodes[1];
+        settings.down = parsedKeyCodes[2];
+        settings.left = parsedKeyCodes[3];
+        settings.right = parsedKeyCodes[4];
+        settings.attack = parsedKeyCodes[5];
+        settings.upAim = parsedKeyCodes[6];
+        settings.downAim = parsedKeyCodes[7];
+        settings.leftAim = parsedKeyCodes[8];
+        settings.rightAim = parsedKeyCodes[9];
+        settings.DpadUp = parsedKeyCodes[10];  
+        settings.DpadDown = parsedKeyCodes[11]; 
+        settings.DpadLeft = parsedKeyCodes[12]; 
+        settings.DpadRight = parsedKeyCodes[13];
 
         Debug.Log("Tu� atamalar� (indeks tabanl�) tamamland�.");
     }
@@ -199,7 +199,12 @@ public class ApplySettings : MonoBehaviour
         ApplyVideo();
 
         Debug.Log("Yeni Ayarlar Uyguland�!");
-        Controller.Instance.CheckController();
+
+        if (Controller.Instance != null)
+            Controller.Instance.CheckController();
+        else
+            Debug.Log("Controller Bulunamadı veya 'Menu Scene'deyiz.");
+
 
     }
 
