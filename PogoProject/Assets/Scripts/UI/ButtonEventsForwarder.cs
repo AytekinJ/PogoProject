@@ -9,10 +9,13 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject other;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject levelSelectionMenu;
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        mainMenu.SetActive(false);
+        levelSelectionMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 
     public void Settings()

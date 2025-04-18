@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3888305927524890636}
   - component: {fileID: 5620163047529065854}
   - component: {fileID: 9167661191799293026}
+  - component: {fileID: 8658737421118108031}
   m_Layer: 0
   m_Name: AddThisShitForMechanics
   m_TagString: Untagged
@@ -49,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805ef0764e650aeffb4b15920e72f9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interpolationSpeed: 3
-  maxTriggerDistance: 20
+  interpolationSpeed: 2
+  maxTriggerDistance: 999
   canControl: 1
   player: {fileID: 0}
   platforms: []
@@ -84,9 +85,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 11400000, guid: 432993ac5c54f4941995c90cd36cede7, type: 2}
   timeScaleInterpolationSpeed: 0.1
-  time: 999
+  time: 200
   timerText: {fileID: 0}
-  starsInLevel: 5
+  starsInLevel: 3
   heartsInLevel: 0
   totalScore: 0
   towerPogo: 0
@@ -142,3 +143,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07984bb09a756694a86312c9604b6521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8658737421118108031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20cdeeb5e68a9a4a8364d392a9c00b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}
+  settingsMenuUI: {fileID: 0}
+  cameraFadeScript: {fileID: 0}

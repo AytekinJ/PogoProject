@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e97e38eb2a7394fa9037da9c58ddc7, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
+  sceneName: Level 1
   sceneNumber: 1
   levelIcon: {fileID: -6674868978544099146, guid: c1f8beeca522bf142bc17592afed0a25, type: 3}
-  takenPickups: []
+  takenPickups:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   allPickups:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bestTime: 0
-  completionPercentage: 0
-  isCompleted: 0
+  bestTime: 34
+  completionPercentage: 100
+  isCompleted: 1

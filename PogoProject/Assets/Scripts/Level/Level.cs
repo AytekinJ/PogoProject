@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class LevelData : ScriptableObject
 {
+    [SerializeField] public string sceneName;
     [SerializeField] public int sceneNumber;
     [SerializeField] public Sprite levelIcon;
     [SerializeField] public List<Pickupable> takenPickups = new List<Pickupable>();

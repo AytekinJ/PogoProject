@@ -56,10 +56,22 @@ public class GeneralCamera : MonoBehaviour
 
     void Lerpcam()
     {
+        if (!IsLocked || TransformToLock == null || cameraFollowScript == null || cameraFollowScript.target == null)
+        {
+            return;
+        }
+
+        CamPoint camPoint = TransformToLock.GetComponent<CamPoint>();
+        if (camPoint == null)
+        {
+            UnlockCamera();
+            return;
+        }
         Vector2 lockPos = new Vector2(TransformToLock.position.x, TransformToLock.position.y);
         Vector2 playerPos = new Vector2(cameraFollowScript.target.position.x, cameraFollowScript.target.position.y);
         float distance = Vector2.Distance(playerPos, lockPos);
-        float Magnitude = Mathf.InverseLerp(0f, TransformToLock.GetComponent<CamPoint>().Distance, distance);
+
+        float Magnitude = Mathf.InverseLerp(0f, camPoint.Distance, distance);
         Vector2 direction = (lockPos - playerPos).normalized;
 
         float targetX = TransformToLock.position.x + (direction.x * distanceOffset) * Magnitude;
@@ -69,6 +81,6 @@ public class GeneralCamera : MonoBehaviour
         if (LockY) targetY = TransformToLock.position.y;
 
         Vector3 movePosition = new Vector3(targetX, targetY, offset.z);
-        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, movePosition, smoothValue * Time.deltaTime);       
     }
 }

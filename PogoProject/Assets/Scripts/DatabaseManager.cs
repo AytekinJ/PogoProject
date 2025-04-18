@@ -26,7 +26,6 @@ public class DatabaseManager : MonoBehaviour
         if (main == null)
         {
             main = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (main != this)
         {

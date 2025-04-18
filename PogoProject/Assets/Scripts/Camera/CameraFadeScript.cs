@@ -16,12 +16,15 @@ public class CameraFadeScript : MonoBehaviour
 
     void Start()
     {
+
         FadePannel = GameObject.FindGameObjectWithTag("FadePanel");
         DamagePanel = GameObject.FindGameObjectWithTag("DamagePanel");
 
         FadeUI = FadePannel.GetComponent<Image>();
         DamageUI = DamagePanel.GetComponent<Image>();
         cameraFollowScript = GetComponent<CameraFollow>();
+        FadeUI.color = new Color(FadeUI.color.r, FadeUI.color.g, FadeUI.color.b, 1f);
+        StartCoroutine(UnFadeCoroutine(0.1f));
 
         PlayerNormalSkins = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<SpriteRenderer>();
 
@@ -71,6 +74,14 @@ public class CameraFadeScript : MonoBehaviour
         {
             //cameraFollowScript.enabled = true;
         }
+    }
+
+    private IEnumerator UnFadeCoroutine(float duration)
+    {
+        cameraFollowScript.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(UnfadePlayer(duration * 2));
+        StartCoroutine(FadeCoroutine(duration * 2, false, false));
     }
 
     private IEnumerator DamageFlashCoroutine(float duration)

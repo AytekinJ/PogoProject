@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public GameSetting gameSetting;
+    public static GameSetting gameSetting;
 
     public int Damage = 1;
     public float POGOMultiplier = 10f;
@@ -16,7 +17,7 @@ public class AttackScript : MonoBehaviour
 
     float Xinput, Yinput;
 
-    public KeyCode AttackKey = KeyCode.X;
+    public static KeyCode AttackKey = KeyCode.X;
     public bool up, down, left, right;
 
     public float AttackCooldown = 0.5f;
@@ -40,8 +41,11 @@ public class AttackScript : MonoBehaviour
 
     public static AttackScript Instance;
     Vector3 hitPoint;
+
+    
     void Start()
     {
+        AttackKey = gameSetting.attack;
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
         particleScript = GetComponent<HitParticleScript>();
@@ -83,7 +87,7 @@ public class AttackScript : MonoBehaviour
                 particleScript.CastParticleBox(attackRange + 0.1f, attackDirection, boxSize);
                 //animasyonlar için gerekliydi, yazdım (ayt)
                 
-                Controller.canChangeAnim = false;
+                Controller.Instance.canChangeAnim = false;
                 normal.SetTrigger("AttackTrigger");
                 gold.SetTrigger("AttackTrigger");
             }
@@ -95,6 +99,10 @@ public class AttackScript : MonoBehaviour
     void SetLastAttackPos()
     {
         
+    }
+
+    public static void UpdateAttackKey(){
+        AttackKey = gameSetting.attack;
     }
 
     void CastAttackBox(Vector2 direction)
@@ -119,16 +127,24 @@ public class AttackScript : MonoBehaviour
                 CameraShake.StartShake(0.1f, 0.05f);
                 doorScript.DestroyDoor(gameObject);
             }
-
+            if (hit.collider.gameObject.CompareTag("TowerBody") && direction != Vector2.down) // kuleye düz vurulursa tetiklenir
+            {
+                CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
+                ScoreManager.main.towerPogo = false;
+                ScoreManager.main.ControlScores();
+                ScoreManager.main.EndGame();
+                Debug.Log("TowerBody hit!");
+            }
             if (direction == Vector2.down && !playerController.CheckGrounded())
             {
                 bool isEnemy = hit.collider.gameObject.CompareTag("Enemy");
                 OnAirJump(isEnemy);
-                if (hit.collider.gameObject.CompareTag("Tower"))
+                if (hit.collider.gameObject.CompareTag("Tower")) // kuleye pogo yapılırsa tetiklenir
                 {
                     CameraShake.StartShake(CamShakeDuration, CamShakeMagnitude);
                     ScoreManager.main.towerPogo = true;
                     ScoreManager.main.ControlScores();
+                    ScoreManager.main.EndGame();
                 }
             }
         }

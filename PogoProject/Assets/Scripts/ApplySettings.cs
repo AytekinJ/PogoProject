@@ -42,6 +42,12 @@ public class ApplySettings : MonoBehaviour
     [SerializeField] TMP_Dropdown fps;
     [SerializeField] Toggle postprocess;
 
+    [Header("Panels")]
+    [SerializeField] GameObject generalPanel;
+    [SerializeField] GameObject soundPanel;
+    [SerializeField] GameObject videoPanel;
+    [SerializeField] GameObject otherPanel;
+
     private void Start() {
         LoadSettings();
     }
@@ -193,12 +199,21 @@ public class ApplySettings : MonoBehaviour
         ApplyVideo();
 
         Debug.Log("Yeni Ayarlar Uyguland�!");
+        Controller.Instance.CheckController();
 
     }
 
     void LoadSettings()
     {
+        if (mainMenuController != null)
         mainMenuController.ActivateAllPanels();
+        else
+        {
+            generalPanel.SetActive(true);
+            soundPanel.SetActive(true);
+            videoPanel.SetActive(true);
+            otherPanel.SetActive(true);
+        }
         if (settings == null) { Debug.LogError("GameSetting Instance bulunamad�!"); return; }
 
         masterSlider.value = settings.masterVolume / 100f;
@@ -213,7 +228,16 @@ public class ApplySettings : MonoBehaviour
             return option.text.Equals(((int)settings.fps).ToString(), StringComparison.OrdinalIgnoreCase);
         });
         postprocess.isOn = settings.postprocessing;
+        if (mainMenuController != null)
         mainMenuController.ActivateFirstPanel(); 
+        else
+        {
+            generalPanel.SetActive(true);
+            soundPanel.SetActive(false);
+            videoPanel.SetActive(false);
+            otherPanel.SetActive(false);
+
+        }
         
     }
 }

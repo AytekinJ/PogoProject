@@ -14,6 +14,33 @@ public class KeyBinderInitializer : MonoBehaviour
 
     private void Start()
     {
+        buttons.Clear();
+        foreach (Transform childTransform in transform)
+        {
+      
+            Button button = childTransform.GetComponent<Button>();
+            if (button != null)
+            {
+                buttons.Add(button);
+            }
+            else
+            {
+                if (childTransform.childCount > 0)
+                {
+                    Button childButton = childTransform.GetChild(0).GetComponent<Button>();
+                    if (childButton != null)
+                    {
+                        buttons.Add(childButton);
+                    }
+                    else
+                    {
+                         Debug.LogWarning($"'{childTransform.name}' nesnesinde veya ilk çocuğunda Button bulunamadı.", childTransform);
+                    }
+                } else {
+                     Debug.LogWarning($"'{childTransform.name}' nesnesinde Button bulunamadı ve çocuğu yok.", childTransform);
+                }
+            }
+        }
         InitializeKeyBindings();
     }
     
@@ -27,7 +54,7 @@ public class KeyBinderInitializer : MonoBehaviour
         }
 
         // Check if we have the correct number of buttons
-        const int expectedButtonCount = 13;
+        const int expectedButtonCount = 14;
         if (buttons == null || buttons.Count != expectedButtonCount)
         {
             Debug.LogError($"KeyBinderInitializer: Please assign exactly {expectedButtonCount} buttons in the Inspector!", this);
@@ -90,6 +117,7 @@ public class KeyBinderInitializer : MonoBehaviour
         targetKeyCodes.Clear();
 
         // Add keys in the expected order
+        targetKeyCodes.Add(settings.JumpButton);
         targetKeyCodes.Add(settings.up);
         targetKeyCodes.Add(settings.right);
         targetKeyCodes.Add(settings.left);

@@ -16,6 +16,10 @@ TagManager:
   - GroundStone
   - Star
   - Heart
+  - TowerBody
+  - PauseMenu
+  - PauseSettings
+  - EndScreen
   layers:
   - Default
   - TransparentFX

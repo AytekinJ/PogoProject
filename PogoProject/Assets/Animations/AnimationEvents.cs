@@ -4,6 +4,6 @@ public class AnimationEvents : MonoBehaviour
 {
     public void EndAttack()
     {
-        Controller.canChangeAnim = true;
+        Controller.Instance.canChangeAnim = true;
     }
 }
