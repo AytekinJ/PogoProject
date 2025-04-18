@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    public static GameSetting gameSetting;
+    public GameSetting gameSetting;
 
     public int Damage = 1;
     public float POGOMultiplier = 10f;
@@ -17,7 +17,7 @@ public class AttackScript : MonoBehaviour
 
     float Xinput, Yinput;
 
-    public static KeyCode AttackKey = KeyCode.X;
+    //public KeyCode AttackKey = KeyCode.X;
     public bool up, down, left, right;
 
     public float AttackCooldown = 0.5f;
@@ -45,7 +45,7 @@ public class AttackScript : MonoBehaviour
     
     void Start()
     {
-        AttackKey = gameSetting.attack;
+        //AttackKey = gameSetting.attack;
         playerController = GetComponent<Controller>();
         animator = GetComponent<Animator>();
         particleScript = GetComponent<HitParticleScript>();
@@ -69,7 +69,7 @@ public class AttackScript : MonoBehaviour
 
     public void AppendAttack()
     {
-        if (Input.GetKeyDown(AttackKey) && Time.time >= attacktime)
+        if (Input.GetKeyDown(gameSetting.attack) && Time.time >= attacktime)
         {
 
             attackDirection = GetAttackDirection();
@@ -101,9 +101,9 @@ public class AttackScript : MonoBehaviour
         
     }
 
-    public static void UpdateAttackKey(){
-        AttackKey = gameSetting.attack;
-    }
+    //public void UpdateAttackKey(){
+    //    AttackKey = gameSetting.attack;
+    //}
 
     void CastAttackBox(Vector2 direction)
     {
@@ -159,7 +159,8 @@ public class AttackScript : MonoBehaviour
     void OnAirJump(bool isEnemy)
     {
         playerController.DoPOGO(POGOMultiplier, isEnemy);
-        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(new Vector3(hitPoint.x, hitPoint.y + 1.5f));
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(hitPoint.x, transform.position.y), Vector2.down, attackMask);
+        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(hit.point);
         // animator.SetBool("isJumping", true);
     }
 
