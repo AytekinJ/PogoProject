@@ -159,8 +159,7 @@ public class AttackScript : MonoBehaviour
     void OnAirJump(bool isEnemy)
     {
         playerController.DoPOGO(POGOMultiplier, isEnemy);
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(hitPoint.x, transform.position.y), Vector2.down, attackMask);
-        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(hit.point);
+        Camera.main.GetComponent<CameraFollow>().SetCamFollowPublic(new Vector3(hitPoint.x, hitPoint.y + 1.5f));
         // animator.SetBool("isJumping", true);
     }
 

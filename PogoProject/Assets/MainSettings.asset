@@ -28,12 +28,12 @@ MonoBehaviour:
   left: 337
   up: 334
   down: 335
-  attack: 345
+  attack: 332
   rightAim: 336
   leftAim: 337
   upAim: 334
   downAim: 335
-  JumpButton: 344
+  JumpButton: 330
   DpadUp: 334
   DpadDown: 336
   DpadLeft: 337
