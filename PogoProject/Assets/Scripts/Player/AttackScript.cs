@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour

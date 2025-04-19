@@ -3,28 +3,26 @@ using UnityEngine.UI;
 
 public class HealthUIScript : MonoBehaviour
 {
-    // Text Text; // UnityEngine.UI Text ise using ekleyin
-    TMPro.TextMeshProUGUI Text; // TMP ise using ekleyin
+    TMPro.TextMeshProUGUI Text; 
 
     void Start() {
-        Text = GetComponent<TMPro.TextMeshProUGUI>(); // Veya UnityEngine.UI.Text
-        UpdateUI(); // Başlangıçta güncelle
-        // İdeal olarak HealthScript'teki bir event'e abone olunmalı
+        Text = GetComponent<TMPro.TextMeshProUGUI>(); 
+        UpdateUI(); 
+
     }
 
     void Update() {
-         // Update içinde sürekli güncellemek yerine event kullanmak daha iyi
-         // Ama şimdilik böyle kalabilir:
+
          UpdateUI();
     }
 
-    public void UpdateUI(int health, bool armor) // HealthScript tarafından çağrılabilir hale getirildi
+    public void UpdateUI(int health, bool armor) 
     {
          if (Text != null) {
              Text.text = $"Health: {health}\nArmor: {armor}";
          }
     }
-    public void UpdateUI() // Instance üzerinden veri çekmek için
+    public void UpdateUI() 
     {
          if (HealthScript.Instance != null && Text != null) {
               Text.text = $"Health: {HealthScript.Instance.HealthValue}\nArmor: {HealthScript.Instance.HasArmor}";

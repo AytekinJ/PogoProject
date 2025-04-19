@@ -387,7 +387,6 @@ public class ScoreManager : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 0;
-        // Disable player controls on game over
         if (Score.player != null && Score.player.gameObject != null)
         {
             Controller controller = Score.player.gameObject.GetComponent<Controller>();
@@ -404,16 +403,5 @@ public class ScoreManager : MonoBehaviour
             return star;
         }
         return null;
-    }
-
-
-    // başlangıçta eğer bu şekilde bir temizleme yapılmazsa, singleton objeler bellekte kalıyor ve oyun kapatılmadığı sürece
-    // değişmiyorlar. Önceki verilerle birlikte üst üste bindikleri için oyunun çoğu mekaniği (singleton ile çalışanlar)
-    // bozuluyor. Bu yüzden sahne yüklendiğinde, sahne değiştiğinde veya oyun sıfırlandığında bu temizleme yapılmalı.
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R)) {
-            SceneLoader.ReloadCurrentScene();
-        }
     }
 }

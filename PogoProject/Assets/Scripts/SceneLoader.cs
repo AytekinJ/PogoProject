@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using System.Collections.Generic;
-// using System.Threading.Tasks; // Bu using ifadesi kodunuzda kullanılmıyor gibi görünüyor.
 
 public class SceneLoader : MonoBehaviour
 {
@@ -23,7 +21,6 @@ public class SceneLoader : MonoBehaviour
     [Tooltip("How often to change the funny loading message (in seconds).")]
     public float messageChangeInterval = 2.5f;
 
-    // Funny messages dizisi aynı kalabilir...
     string[] funnyMessages = new string[]
     {
        // ... (mesajlarınız burada) ...
@@ -94,7 +91,7 @@ public class SceneLoader : MonoBehaviour
 
         progressBar.value = 0f;
         infoText.text = GetRandomMessage();
-        lastMessageChangeTime = Time.time; // Time.time yerine Time.unscaledTime kullanmak donmalardan etkilenmemesini sağlayabilir.
+        lastMessageChangeTime = Time.time;
     }
 
     void Start()
@@ -105,7 +102,6 @@ public class SceneLoader : MonoBehaviour
         {
             Debug.LogError("SceneLoader: SceneData.SceneToLoad içinde sahne adı belirtilmemiş! Sahne yüklenemiyor.");
             infoText.text = "Hata: Hedef sahne belirtilmedi!";
-            // Burada belki bir varsayılan sahneye dönmek veya hatayı kullanıcıya göstermek için ek mantık eklenebilir.
             return;
         }
 
@@ -119,41 +115,31 @@ public class SceneLoader : MonoBehaviour
         GC.Collect();
         Resources.UnloadUnusedAssets();
 
-        // Sahneyi asenkron olarak yüklemeye başla
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
-        // Yükleme bitene kadar sahnenin otomatik olarak aktifleşmesini engelle
+
         asyncOperation.allowSceneActivation = false;
 
-        // Yükleme işlemi bitene kadar döngüde kal
         while (!asyncOperation.isDone)
         {
-            // Geçen süreyi güncelle (scaled time yerine unscaled time kullanmak, Time.timeScale değişikliklerinden etkilenmez)
             timeElapsed += Time.unscaledDeltaTime;
 
-            // Gerçek yükleme ilerlemesini al (0.9'a kadar gider) ve 0-1 aralığına ölçekle
             float targetProgress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
 
-            // Progress bar'ı yumuşak bir şekilde hedef değere doğru ilerlet
             progressBar.value = Mathf.MoveTowards(progressBar.value, targetProgress, Time.unscaledDeltaTime * progressBarSpeed);
 
-            // Belirli aralıklarla mesajı değiştir
             if (Time.unscaledTime >= lastMessageChangeTime + messageChangeInterval)
             {
                 infoText.text = GetRandomMessage();
                 lastMessageChangeTime = Time.unscaledTime;
             }
 
-            // Yükleme neredeyse tamamlandıysa (%90), progress bar tamamen dolduysa VE minimum bekleme süresi geçtiyse sahneyi aktif et
             if (asyncOperation.progress >= 0.9f && Mathf.Approximately(progressBar.value, 1.0f) && timeElapsed >= minimumLoadTime)
             {
-                infoText.text = "Tamamlanıyor..."; // Son mesaj
-                // Küçük bir gecikme ekleyerek "Tamamlanıyor..." mesajının görünmesini sağla (isteğe bağlı)
-                // yield return new WaitForSecondsRealtime(0.2f); // WaitForSeconds yerine Realtime kullanmak Time.timeScale'den etkilenmez
-                asyncOperation.allowSceneActivation = true; // Sahnenin görünmesine izin ver
+                infoText.text = "Finalizing..."; 
+                asyncOperation.allowSceneActivation = true; 
             }
 
-            // Bir sonraki frame'e kadar bekle
             yield return null;
         }
     }
@@ -162,40 +148,28 @@ public class SceneLoader : MonoBehaviour
     {
         if (funnyMessages == null || funnyMessages.Length == 0)
         {
-            return "Yükleniyor..."; // Fallback message
+            return "Loading..."; 
         }
         int randomIndex = UnityEngine.Random.Range(0, funnyMessages.Length);
         return funnyMessages[randomIndex];
     }
 
-    // --- DÜZELTİLMİŞ YENİDEN YÜKLEME METODU ---
-    /// <summary>
-    /// Mevcut aktif sahneyi "LoadingScene" aracılığıyla yeniden yükler.
-    /// Bellek temizleme işlemleri buradan kaldırıldı.
-    /// </summary>
     public static void ReloadCurrentScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         Debug.Log($"Sahne yeniden yükleniyor: {currentSceneName}");
 
-        // Sahne yöneticisi zaten Single modda yükleme yaparken eski sahneyi kaldıracak.
-        // Resources.UnloadUnusedAssets(); // BURADAN KALDIRILDI - Performans sorunlarına neden olabilir.
-        // GC.Collect(); // BURADAN KESİNLİKLE KALDIRILDI - Ciddi donmalara neden olur.
 
-        // Yüklenecek sahneyi ayarla
         SceneData.SceneToLoad = currentSceneName;
 
-        // LoadingScene'i yükleyerek işlemi başlat
         SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
     }
 }
 
-// SceneData sınıfı aynı kalabilir
 public static class SceneData
 {
     public static string SceneToLoad = "";
 
-    // Sahne yüklemesini başlatmak için kullanılabilecek yardımcı bir metod (isteğe bağlı)
     public static void LoadScene()
     {
         SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single); // LoadingScene'in adının bu olduğundan emin olun
