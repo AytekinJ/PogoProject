@@ -117,6 +117,10 @@ public class ESCMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
     }
+    public void BackButtonMain()
+    {
+        TogglePauseMenu();
+    }
 
     public void BackButton()
     {
