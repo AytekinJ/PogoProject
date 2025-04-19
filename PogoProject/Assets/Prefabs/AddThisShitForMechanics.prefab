@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 11400000, guid: 432993ac5c54f4941995c90cd36cede7, type: 2}
-  timeScaleInterpolationSpeed: 0.1
+  timeScaleInterpolationSpeed: 0.3
   time: 200
   timerText: {fileID: 0}
   starsInLevel: 3

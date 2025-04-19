@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2077041525105888880}
   - component: {fileID: 8150733656240999391}
   - component: {fileID: 7113484342888264187}
-  - component: {fileID: 7584990014960928456}
   - component: {fileID: 9116001554114656950}
+  - component: {fileID: 7584990014960928456}
   - component: {fileID: 406716477077676511}
   m_Layer: 9
   m_Name: Cannon BUNU KULLANMA
@@ -74,7 +74,7 @@ MonoBehaviour:
   shootAngle: 0
   shootDelay: 2
   shootRange: 10
-  bulletSpeed: 4
+  bulletSpeed: 5
   bulletPrefab: {fileID: 6976742288042995816, guid: 715084efda2c0491faa44121a9c8e217, type: 3}
   activeGoomba: 0
   goombaSpeed: 0
@@ -88,6 +88,21 @@ MonoBehaviour:
     m_Bits: 0
   PlayerObject: {fileID: 0}
   sr: {fileID: 0}
+--- !u!114 &9116001554114656950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778559892664157125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa796e098debeb34891357fe055cadca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointValue: 1
+  IncreaseHealth: 0
+  healthScript: {fileID: 0}
 --- !u!61 &7584990014960928456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,21 +149,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.45445094, y: 0.5225712}
   m_EdgeRadius: 0
---- !u!114 &9116001554114656950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2778559892664157125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa796e098debeb34891357fe055cadca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PointValue: 1
-  IncreaseHealth: 0
-  healthScript: {fileID: 0}
 --- !u!58 &406716477077676511
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -25,6 +25,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  bestTime: 34
-  completionPercentage: 100
-  isCompleted: 1
+  bestTime: 0
+  completionPercentage: 0
+  isCompleted: 0

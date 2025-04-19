@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 518991457378814321}
   - component: {fileID: 231817594773521033}
   - component: {fileID: 2282380598058676304}
+  - component: {fileID: 3793747045387897873}
   - component: {fileID: 7133224890854093679}
   - component: {fileID: 1441458129461662768}
-  - component: {fileID: 1135000161705617286}
   - component: {fileID: 2178339346079281050}
   m_Layer: 9
   m_Name: Eagle
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   respawn: 0
+  isRespawning: 0
 --- !u!114 &2282380598058676304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +144,21 @@ MonoBehaviour:
     m_Bits: 0
   PlayerObject: {fileID: 0}
   sr: {fileID: 0}
+--- !u!114 &3793747045387897873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6720547394845805270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa796e098debeb34891357fe055cadca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointValue: 1
+  IncreaseHealth: 0
+  healthScript: {fileID: 0}
 --- !u!61 &7133224890854093679
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,20 +227,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1135000161705617286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6720547394845805270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a261cfe908846534e964e0c7aa2f0dd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X: 15
-  Y: 1
 --- !u!58 &2178339346079281050
 CircleCollider2D:
   m_ObjectHideFlags: 0

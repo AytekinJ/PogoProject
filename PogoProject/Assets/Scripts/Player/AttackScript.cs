@@ -125,6 +125,8 @@ public class AttackScript : MonoBehaviour
                     ScoreManager.main.towerPogo = true;
                     ScoreManager.main.ControlScores();
                     ScoreManager.main.EndGame();
+                    hit.collider.gameObject.GetComponent<Animator>().SetBool("Pogo", true);
+                    hit.collider.gameObject.GetComponent<Animator>().SetTrigger("Hit");
                 }
             }
             if (hit.collider.gameObject.CompareTag("Enemy"))
@@ -146,6 +148,8 @@ public class AttackScript : MonoBehaviour
                 ScoreManager.main.towerPogo = false;
                 ScoreManager.main.ControlScores();
                 ScoreManager.main.EndGame();
+                hit.collider.gameObject.transform.parent.GetComponent<Animator>().SetBool("Pogo", false);
+                hit.collider.gameObject.transform.parent.GetComponent<Animator>().SetTrigger("Hit");
                 Debug.Log("TowerBody hit!");
             }
         }
