@@ -13,6 +13,7 @@ public class ResetPlatforms : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Y))
         {
             ResetAllPlatforms();
+            ResetAllChainsaws();
         }
     }
     public static void ResetAllPlatforms()
@@ -20,8 +21,16 @@ public class ResetPlatforms : MonoBehaviour
         NewMovingPlatform[] platforms = FindObjectsByType<NewMovingPlatform>(FindObjectsSortMode.None);
         for(int i = platforms.Length; i > 0; i--)
         {
-            Debug.Log("Platform" + i + "resetlendi.");
             platforms[i-1].ResetPlatform();
+        }
+    }
+
+    public static void ResetAllChainsaws()
+    {
+        ChainsawScript[] chainsaws = FindObjectsByType<ChainsawScript>(FindObjectsSortMode.None);
+        for(int i = chainsaws.Length; i > 0; i--)
+        {
+            chainsaws[i-1].ResetChainsaw();
         }
     }
 }

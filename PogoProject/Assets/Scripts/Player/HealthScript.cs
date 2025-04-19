@@ -167,6 +167,7 @@ public class HealthScript : MonoBehaviour
         PlayDamageSFX();
 
         ResetPlatforms.ResetAllPlatforms(); // Static olmayan metod çağrısı
+        ResetPlatforms.ResetAllChainsaws();
         
         CameraShake.StartShake(0.1f, 0.05f); // Bu static kalabilir
         if (cameraFadeScript != null) cameraFadeScript.StartDamageFlash(0.1f);

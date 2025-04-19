@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0d164b35dea941b93a1f8676d9c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSetting: {fileID: 11400000, guid: 6f6ab7219c63b7948adb8125b6c7bbc2, type: 2}
+  gameSetting: {fileID: 11400000, guid: 43c9bfa7ed0a1d949bd0f315bc065ac7, type: 2}
   Damage: 1
   POGOMultiplier: 11
   normalGfx: {fileID: 4233213808909911435}

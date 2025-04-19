@@ -72,11 +72,13 @@ public class EnemyManager : MonoBehaviour
                     yield return new WaitForSeconds(eagle.afterDashDelay);
                     continue;
                 }
+
                 eagle.GetComponent<Animator>().SetBool("isAttacking",true);
-                yield return new WaitForSeconds(eagle.dashDelay);
+                yield return new WaitForSeconds(eagle.dashDelay);              
                 yield return StartCoroutine(EagleDash(eagle, targetPos));
                 eagle.GetComponent<Animator>().SetBool("isAttacking",false);
                 yield return new WaitForSeconds(eagle.afterDashDelay);
+                
             }
             yield return null;
         }
@@ -86,7 +88,7 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator EagleDash(Enemy eagle, Vector2 target)
     {
-        while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE && !eagle.collided)
+        while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE && !eagle.collided && eagle.GetComponent<EnemyHealth>().isRespawning == false)
         {
             eagle.transform.position = Vector2.MoveTowards(eagle.transform.position, target, eagle.dashSpeed * Time.deltaTime);
             yield return null;

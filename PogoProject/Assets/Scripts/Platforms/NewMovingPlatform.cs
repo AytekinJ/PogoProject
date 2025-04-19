@@ -150,7 +150,7 @@ public class NewMovingPlatform : MonoBehaviour
     {
         isActive = startOnPlayerContact == true ? false : true;
         transform.position = startPos;
-        isWaiting = startOnPlayerContact == true ? false : true;
+        isWaiting = false;
     }
 
     // Optional: Visualize the path in the editor

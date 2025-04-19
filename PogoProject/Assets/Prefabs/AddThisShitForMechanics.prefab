@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5620163047529065854}
   - component: {fileID: 9167661191799293026}
   - component: {fileID: 8658737421118108031}
+  - component: {fileID: 122882559950652450}
   m_Layer: 0
   m_Name: AddThisShitForMechanics
   m_TagString: Untagged
@@ -168,3 +169,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   cameraFadeScript: {fileID: 0}
+--- !u!114 &122882559950652450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707282676390004595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b23f228c96260b4e896df88455d0b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
