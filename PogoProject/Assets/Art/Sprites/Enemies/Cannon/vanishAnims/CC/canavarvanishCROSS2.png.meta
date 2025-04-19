@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 5c96b1200c548b24b94b2476f004f5fd
+guid: 2cc380f3feb76134888dbff1ff60b5a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4849998942194840186
-    second: Checkpoint2_0
+      213: -4452360401376367488
+    second: canavarvanishCROSS2_0
   - first:
-      213: -2653757581461109615
-    second: Checkpoint2_1
+      213: 1121902745021782608
+    second: canavarvanishCROSS2_1
+  - first:
+      213: -6362336770204100745
+    second: canavarvanishCROSS2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Checkpoint2_0
+      name: canavarvanishCROSS2_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 34
-        height: 40
+        x: 41
+        y: 21
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a723b8e6758ae4340800000000000000
-      internalID: 4849998942194840186
+      spriteID: 08c22f7fdc90632c0800000000000000
+      internalID: -4452360401376367488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint2_1
+      name: canavarvanishCROSS2_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 35
-        width: 14
-        height: 19
+        x: 51
+        y: 24
+        width: 20
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +143,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 194c2053a85fb2bd0800000000000000
-      internalID: -2653757581461109615
+      spriteID: 05a1f8d3a9cc19f00800000000000000
+      internalID: 1121902745021782608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: canavarvanishCROSS2_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 14
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7771496aa6074b7a0800000000000000
+      internalID: -6362336770204100745
       vertices: []
       indices: 
       edges: []
@@ -160,8 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Checkpoint2_0: 4849998942194840186
-      Checkpoint2_1: -2653757581461109615
+      canavarvanishCROSS2_0: -4452360401376367488
+      canavarvanishCROSS2_1: 1121902745021782608
+      canavarvanishCROSS2_2: -6362336770204100745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

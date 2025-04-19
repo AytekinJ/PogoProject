@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 5c96b1200c548b24b94b2476f004f5fd
+guid: c28a6fe88dcda0e4eba357e23db259aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4849998942194840186
-    second: Checkpoint2_0
+      213: 8529513451654604558
+    second: canavarvanish5_0
   - first:
-      213: -2653757581461109615
-    second: Checkpoint2_1
+      213: -3331016182967476663
+    second: canavarvanish5_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Checkpoint2_0
+      name: canavarvanish5_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 34
-        height: 40
+        x: 36
+        y: 11
+        width: 40
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a723b8e6758ae4340800000000000000
-      internalID: 4849998942194840186
+      spriteID: e07e9c00b4bee5670800000000000000
+      internalID: 8529513451654604558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint2_1
+      name: canavarvanish5_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 35
-        width: 14
-        height: 19
+        x: 58
+        y: 33
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 194c2053a85fb2bd0800000000000000
-      internalID: -2653757581461109615
+      spriteID: 94e55291e6ad5c1d0800000000000000
+      internalID: -3331016182967476663
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Checkpoint2_0: 4849998942194840186
-      Checkpoint2_1: -2653757581461109615
+      canavarvanish5_0: 8529513451654604558
+      canavarvanish5_1: -3331016182967476663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

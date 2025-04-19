@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 3868580502561774405
     second: Checkpoint1_0
+  - first:
+      213: 2861668865834319030
+    second: Checkpoint1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +109,7 @@ TextureImporter:
         x: 7
         y: 0
         width: 34
-        height: 52
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,6 +120,28 @@ TextureImporter:
       bones: []
       spriteID: 54b52307875ffa530800000000000000
       internalID: 3868580502561774405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint1_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 34
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bc79d4fba0b6b720800000000000000
+      internalID: 2861668865834319030
       vertices: []
       indices: 
       edges: []
@@ -136,6 +161,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Checkpoint1_0: 3868580502561774405
+      Checkpoint1_1: 2861668865834319030
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

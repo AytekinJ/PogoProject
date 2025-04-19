@@ -102,7 +102,12 @@ public class EnemyManager : MonoBehaviour
         while (activeEnemies.Contains(cannon))
         {
             Vector2 target = (Vector2)cannon.transform.localPosition + (Vector2)cannon.transform.up * cannon.shootRange;
-            StartCoroutine(CannonBullet(Instantiate(cannon.bulletPrefab, cannon.transform.position, Quaternion.identity), target, cannon));
+            if(cannon.gameObject.GetComponent<EnemyHealth>().isRespawning == false)
+            {
+                StartCoroutine(CannonBullet(Instantiate(cannon.bulletPrefab, cannon.transform.position, Quaternion.identity), target, cannon));
+                cannon.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Hit");
+            }
+            
             yield return new WaitForSeconds(cannon.shootDelay);
         }
     }

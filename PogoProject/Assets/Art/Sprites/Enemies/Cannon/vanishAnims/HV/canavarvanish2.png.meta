@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 5c96b1200c548b24b94b2476f004f5fd
+guid: eb42afeb6f3fb944aab0a8ca86dc30a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4849998942194840186
-    second: Checkpoint2_0
+      213: -9099189224261175424
+    second: canavarvanish2_0
   - first:
-      213: -2653757581461109615
-    second: Checkpoint2_1
+      213: 4925094629654080077
+    second: canavarvanish2_1
+  - first:
+      213: 7335706136804855755
+    second: canavarvanish2_2
+  - first:
+      213: -5586079140102437759
+    second: canavarvanish2_3
+  - first:
+      213: 963545991696232305
+    second: canavarvanish2_4
+  - first:
+      213: 5723031017275221757
+    second: canavarvanish2_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Checkpoint2_0
+      name: canavarvanish2_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 34
-        height: 40
+        x: 48
+        y: 35
+        width: 7
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a723b8e6758ae4340800000000000000
-      internalID: 4849998942194840186
+      spriteID: 087b9df2c9f29b180800000000000000
+      internalID: -9099189224261175424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint2_1
+      name: canavarvanish2_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 35
-        width: 14
-        height: 19
+        x: 48
+        y: 24
+        width: 17
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +152,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 194c2053a85fb2bd0800000000000000
-      internalID: -2653757581461109615
+      spriteID: d4a27bda873795440800000000000000
+      internalID: 4925094629654080077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: canavarvanish2_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 34
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf08ec7dd9adc560800000000000000
+      internalID: 7335706136804855755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: canavarvanish2_3
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 19
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18489fe4e924a72b0800000000000000
+      internalID: -5586079140102437759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: canavarvanish2_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 18
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17f2ecf69f33f5d00800000000000000
+      internalID: 963545991696232305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: canavarvanish2_5
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 18
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df66b37636a4c6f40800000000000000
+      internalID: 5723031017275221757
       vertices: []
       indices: 
       edges: []
@@ -160,8 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Checkpoint2_0: 4849998942194840186
-      Checkpoint2_1: -2653757581461109615
+      canavarvanish2_0: -9099189224261175424
+      canavarvanish2_1: 4925094629654080077
+      canavarvanish2_2: 7335706136804855755
+      canavarvanish2_3: -5586079140102437759
+      canavarvanish2_4: 963545991696232305
+      canavarvanish2_5: 5723031017275221757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
