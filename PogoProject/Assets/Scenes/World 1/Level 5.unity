@@ -732,7 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3460921206987320868}
   offset: {x: 0, y: 0, z: -10}
-  smoothValueY: 0.2
+  smoothValueY: 0.1
   smoothValueX: 0.2
 --- !u!1 &198265113
 GameObject:
@@ -2031,6 +2031,30 @@ PrefabInstance:
     - target: {fileID: 1408640491423399887, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551754784608395004, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.26424137
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551754784608395004, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
+      propertyPath: m_Size.y
+      value: 2.8772714
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551754784608395004, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.0476371
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810189229281218668, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810189229281218668, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.87318957
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810189229281218668, guid: 95f1da9e03c04d847a69b84cbf6c1bfd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7688679
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23329,7 +23353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4716166072720387904, guid: c875cdaf6494de0458ac5d6eccd0e165, type: 3}
       propertyPath: shootRange
-      value: 6.61
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32165,14 +32189,6 @@ PrefabInstance:
     - target: {fileID: 3430814374371888949, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
       propertyPath: m_Name
       value: PlayerM
-      objectReference: {fileID: 0}
-    - target: {fileID: 6211370459690129259, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
-      propertyPath: jumpForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6211370459690129259, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
-      propertyPath: fallMultiplier
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
