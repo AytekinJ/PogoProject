@@ -25,5 +25,6 @@ public class EndScreenButtons : MonoBehaviour
         }
         LevelsManager.instance.currentLevel++;
         SceneData.SceneToLoad = "Level "+currentLevel;
+        SceneData.LoadScene();
     }
 }
