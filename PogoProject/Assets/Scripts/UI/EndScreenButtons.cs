@@ -24,7 +24,8 @@ public class EndScreenButtons : MonoBehaviour
             return; // şuanlık 6 dan büyük level olmadığı için işlem iptal
         }
         LevelsManager.instance.currentLevel++;
-        SceneData.SceneToLoad = "Level "+currentLevel+2;
+        SceneData.SceneToLoad = "Level "+(int.Parse(currentLevel)+2);
         SceneData.LoadScene();
+        Time.timeScale=1f;
     }
 }
