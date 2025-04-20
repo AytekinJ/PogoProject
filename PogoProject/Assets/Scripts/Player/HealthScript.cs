@@ -21,6 +21,8 @@ public class HealthScript : MonoBehaviour
     [SerializeField] private Transform worldSpawnPoint; // Dünyanın başlangıç noktası
     [SerializeField] private CameraFadeScript cameraFadeScript; // Kamera fade script'i
 
+    bool canBeHurt = true;
+
     // Diğer script referansları (gerekirse)
     private ResetPlatforms resetScript; // Player üzerinde mi?
 
@@ -162,6 +164,10 @@ public class HealthScript : MonoBehaviour
 
     public void DecreaseHealth(int HealthInt, string damagingObjectTag)
     {
+        if (!canBeHurt)
+            return;
+        StartCoroutine(Invinciblity());
+
         if (HealthValue <= 0) return; // Zaten ölü
 
         PlayDamageSFX();
@@ -245,7 +251,7 @@ public class HealthScript : MonoBehaviour
         HealthUIScript healthUI = FindAnyObjectByType<HealthUIScript>(); // Performanslı değil, cachelemek daha iyi
         if (healthUI != null)
         {
-            healthUI.UpdateUI(HealthValue, HasArmor); // HealthUIScript'te public UpdateUI metodu olmalı
+            healthUI.UpdateUI(HealthValue); // HealthUIScript'te public UpdateUI metodu olmalı
         }
     }
 
@@ -326,12 +332,19 @@ public class HealthScript : MonoBehaviour
         // Controller'daki Move metodu güncellenmiş XKnockBack'i kullanacaktır.
         XKnockBack = Mathf.Lerp(XKnockBack, 0, 10f * Time.deltaTime); // 10f değeri ayarlanabilir
     }
-    
+
 
     #endregion
 
     // Eski Hatalı Yeniden Yükleme Metodu Kaldırıldı
     // private static IEnumerator ReloadScene() { ... }
+
+    IEnumerator Invinciblity()
+    {
+        canBeHurt = false;
+        yield return new WaitForSeconds(0.2f);
+        canBeHurt = true;
+    }
 
     IEnumerator LatePlatformReset()
     {
