@@ -174,4 +174,6 @@ public static class SceneData
     {
         SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single); // LoadingScene'in adının bu olduğundan emin olun
     }
+
+    public static bool isLevelSelection = false;
 }

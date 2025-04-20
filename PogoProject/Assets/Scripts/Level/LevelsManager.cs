@@ -8,8 +8,21 @@ using UnityEngine.UI;
 public class LevelsManager : ScriptableObject
 {
     [SerializeField] public List<LevelData> levels = new List<LevelData>();
+    public static LevelsManager instance;
     [SerializeField] public int currentLevel = 0;
 
+    void Awake()
+    {
+        if (instance)
+        {
+            Destroy(instance);
+            instance = this;
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     public void LoadLevelsUI(GameObject parentUI){
         for (int i = 0; i < parentUI.transform.childCount; i++)
         {
