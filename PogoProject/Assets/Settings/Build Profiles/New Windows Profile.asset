@@ -40,7 +40,7 @@ MonoBehaviour:
     - line: '|   cursorHotspot: {x: 0, y: 0}'
     - line: '|   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b:
         0.1254902, a: 1}'
-    - line: '|   m_ShowUnitySplashScreen: 1'
+    - line: '|   m_ShowUnitySplashScreen: 0'
     - line: '|   m_ShowUnitySplashLogo: 1'
     - line: '|   m_SplashScreenOverlayOpacity: 1'
     - line: '|   m_SplashScreenAnimation: 1'
@@ -163,7 +163,7 @@ MonoBehaviour:
     - line: '|   loadStoreDebugModeEnabled: 0'
     - line: '|   visionOSBundleVersion: 1.0'
     - line: '|   tvOSBundleVersion: 1.0'
-    - line: '|   bundleVersion: 1.0 (Alpha)'
+    - line: '|   bundleVersion: 0.1'
     - line: '|   preloadedAssets:'
     - line: '|   - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
         type: 3}'
@@ -312,53 +312,10 @@ MonoBehaviour:
     - line: '|   AndroidReportGooglePlayAppDependencies: 1'
     - line: '|   androidSymbolsSizeThreshold: 800'
     - line: '|   m_BuildTargetIcons:'
-    - line: '|   - m_BuildTarget: Standalone'
-    - line: '|     m_Icons:'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {fileID: 2800000, guid: 893c5f2f74b033b408f32a8f2471593e,
-        type: 3}'
-    - line: '|       m_Width: 1024'
-    - line: '|       m_Height: 1024'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 512'
-    - line: '|       m_Height: 512'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 256'
-    - line: '|       m_Height: 256'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 128'
-    - line: '|       m_Height: 128'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 64'
-    - line: '|       m_Height: 64'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 48'
-    - line: '|       m_Height: 48'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 32'
-    - line: '|       m_Height: 32'
-    - line: '|       m_Kind: 0'
-    - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {instanceID: 0}'
-    - line: '|       m_Width: 16'
-    - line: '|       m_Height: 16'
-    - line: '|       m_Kind: 0'
     - line: '|   - m_BuildTarget: '
     - line: '|     m_Icons:'
     - line: '|     - serializedVersion: 2'
-    - line: '|       m_Icon: {fileID: 2800000, guid: 229d5990d2ce9624bbffc5bf42d1f129,
+    - line: '|       m_Icon: {fileID: 2800000, guid: 2af29a0ecb483b3498f122eef28c3d92,
         type: 3}'
     - line: '|       m_Width: 128'
     - line: '|       m_Height: 128'
@@ -896,7 +853,7 @@ MonoBehaviour:
         m_ExplicitNullChecks: 0
         m_ExplicitDivideByZeroChecks: 0
         m_ExplicitArrayBoundsChecks: 0
-        m_CompressionType: 3
+        m_CompressionType: 0
         m_InstallInBuildFolder: 0
         m_WindowsBuildAndRunDeployTarget: 0
         m_Architecture: 0

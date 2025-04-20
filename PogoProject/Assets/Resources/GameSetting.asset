@@ -28,7 +28,7 @@ MonoBehaviour:
   left: 97
   up: 119
   down: 115
-  attack: 32
+  attack: 323
   rightAim: 275
   leftAim: 276
   upAim: 273
