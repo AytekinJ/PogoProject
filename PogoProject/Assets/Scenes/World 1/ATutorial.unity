@@ -612,7 +612,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 67397352}
-  - component: {fileID: 67397351}
   - component: {fileID: 67397354}
   - component: {fileID: 67397350}
   - component: {fileID: 67397349}
@@ -620,6 +619,7 @@ GameObject:
   - component: {fileID: 67397347}
   - component: {fileID: 67397353}
   - component: {fileID: 67397355}
+  - component: {fileID: 67397356}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -754,28 +754,6 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
---- !u!114 &67397351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67397346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbbb2c494e737049bde901bc7da0488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 42084291}
-  UnGroundedTransform: {fileID: 1542756778}
-  GroundedTransform: {fileID: 801499092}
-  offset: {x: 0, y: 0.5, z: -10}
-  smoothValue: 0.2
-  controllerScript: {fileID: 0}
-  DownY: 0.34
-  GroundMask:
-    serializedVersion: 2
-    m_Bits: 887
 --- !u!4 &67397352
 Transform:
   m_ObjectHideFlags: 0
@@ -835,6 +813,22 @@ MonoBehaviour:
   DamagePanel: {fileID: 0}
   PlayerNormalSkins: []
   cameraFollowScript: {fileID: 0}
+--- !u!114 &67397356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67397346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc23edfee38134f9afb03ace40ccfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 42084291}
+  offset: {x: 0, y: 0, z: -10}
+  smoothValueY: 0.2
+  smoothValueX: 0.2
 --- !u!43 &70800849
 Mesh:
   m_ObjectHideFlags: 0
@@ -86928,6 +86922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3c061ed78382c419d07a8e84ccaa74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Text: {fileID: 0}
 --- !u!114 &1182625526
 MonoBehaviour:
   m_ObjectHideFlags: 0
