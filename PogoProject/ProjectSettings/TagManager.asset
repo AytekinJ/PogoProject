@@ -22,6 +22,7 @@ TagManager:
   - EndScreen
   - SettingsNavigation
   - SettingsPanel
+  - LoseScreen
   layers:
   - Default
   - TransparentFX

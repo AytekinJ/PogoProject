@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI recordTimeText;
     [SerializeField] private TextMeshProUGUI pogoText;
+    GameObject loseScreen;
 
     private Dictionary<int, Pickupable> starLookup = new Dictionary<int, Pickupable>();
     private List<int> collectedStarIDsThisRun = new List<int>();
@@ -54,8 +56,9 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         main = this;
-        
+        loseScreen = GameObject.FindGameObjectWithTag("LoseScreen");
         timerText = GameObject.FindGameObjectWithTag("TimerUI").GetComponent<TextMeshProUGUI>();
+        loseScreen.SetActive(false);
 
         if (levelManager == null) { Debug.LogError("LevelsManager atanmamış!"); return; }
         if (DatabaseManager.main == null) { Debug.LogError("DatabaseManager sahnede bulunamadı veya aktif değil!"); return; }
@@ -362,7 +365,9 @@ public class ScoreManager : MonoBehaviour
                 remainingTime = 0;
                 if (!gameOver) {
                    
-                    EndGame();
+                    StartCoroutine(SlowMoEnd());
+                    yield return new WaitForSeconds(0.5f);
+                    StartCoroutine(OutOfTime());
                 }
             }
 
@@ -374,6 +379,62 @@ public class ScoreManager : MonoBehaviour
         }
 
     }
+
+    private IEnumerator OutOfTime()
+{
+    loseScreen.SetActive(true);
+
+    Image loseScreenColor = loseScreen.GetComponent<Image>();
+    Image[] otherColors = loseScreen.GetComponentsInChildren<Image>();
+
+    TextMeshProUGUI[] texts = loseScreen.GetComponentsInChildren<TextMeshProUGUI>();
+    Color[] firstTextColors = new Color[texts.Length];
+    Color[] targetTextColors = new Color[texts.Length];
+
+    for (int i = 0; i < texts.Length; i++)
+    {
+        firstTextColors[i] = texts[i].color;
+        firstTextColors[i].a = 0;
+        targetTextColors[i] = new Color(firstTextColors[i].r, firstTextColors[i].g, firstTextColors[i].b, 1);
+        texts[i].color = firstTextColors[i];
+    }
+
+    Color[] firstColors = new Color[otherColors.Length];
+    Color[] targetColors = new Color[otherColors.Length];
+
+    for (int i = 0; i < otherColors.Length; i++)
+    {
+        firstColors[i] = otherColors[i].color;
+        firstColors[i].a = 0;
+        targetColors[i] = new Color(firstColors[i].r, firstColors[i].g, firstColors[i].b, 1);
+        otherColors[i].color = firstColors[i];
+    }
+
+    Color firstColor = loseScreenColor.color;
+    firstColor.a = 0;
+    loseScreenColor.color = firstColor;
+    Color targetColor = new Color(firstColor.r, firstColor.g, firstColor.b, 1);
+
+    float t = 0f;
+    while (t < 1)
+    {
+        t += Time.unscaledDeltaTime * 2;
+
+        for (int i = 0; i < otherColors.Length; i++)
+        {
+            otherColors[i].color = Color.Lerp(firstColors[i], targetColors[i], t);
+        }
+
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].color = Color.Lerp(firstTextColors[i], targetTextColors[i], t);
+        }
+
+        loseScreenColor.color = Color.Lerp(firstColor, targetColor, t);
+
+        yield return null;
+    }
+}
 
     private IEnumerator SlowMoEnd()
 
