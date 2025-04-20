@@ -40,7 +40,7 @@ public class GameSetting : ScriptableObject
     public KeyCode left = KeyCode.A;
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
-    public KeyCode attack = KeyCode.Space;
+    public KeyCode attack = KeyCode.Mouse0;
     public KeyCode rightAim = KeyCode.RightArrow;
     public KeyCode leftAim = KeyCode.LeftArrow;
     public KeyCode upAim = KeyCode.UpArrow;
