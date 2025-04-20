@@ -175,7 +175,7 @@ public class HealthScript : MonoBehaviour
         
         
         CameraShake.StartShake(0.1f, 0.05f); // Bu static kalabilir
-        if (cameraFadeScript != null) cameraFadeScript.StartDamageFlash(0.1f);
+        if (cameraFadeScript != null) cameraFadeScript.StartDamageFlash(0.3f);
 
         // Zırh Kontrolü
         if (HasArmor)
