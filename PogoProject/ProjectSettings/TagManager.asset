@@ -22,6 +22,7 @@ TagManager:
   - EndScreen
   - SettingsNavigation
   - SettingsPanel
+  - Bullet
   layers:
   - Default
   - TransparentFX

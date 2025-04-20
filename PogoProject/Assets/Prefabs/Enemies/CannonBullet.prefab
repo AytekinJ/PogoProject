@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7764544342120684268}
   m_Layer: 8
   m_Name: CannonBullet
-  m_TagString: Thrones
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointValue: 1
   IncreaseHealth: 0
+  healthScript: {fileID: 0}

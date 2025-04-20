@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ResetPlatforms : MonoBehaviour
@@ -32,5 +33,17 @@ public class ResetPlatforms : MonoBehaviour
         {
             chainsaws[i-1].ResetChainsaw();
         }
+    }
+
+    static IEnumerator LateResetPlatform(NewMovingPlatform platform)
+    {
+        yield return new WaitForSeconds(0.2f);
+        platform.ResetPlatform();
+    }
+
+    static IEnumerator LateResetChainsaw(ChainsawScript chainsaw)
+    {
+        yield return new WaitForSeconds(0.2f);
+        chainsaw.ResetChainsaw();
     }
 }

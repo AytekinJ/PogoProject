@@ -165,9 +165,8 @@ public class HealthScript : MonoBehaviour
         if (HealthValue <= 0) return; // Zaten ölü
 
         PlayDamageSFX();
-
-        ResetPlatforms.ResetAllPlatforms(); // Static olmayan metod çağrısı
-        ResetPlatforms.ResetAllChainsaws();
+        StartCoroutine(LatePlatformReset());
+        
         
         CameraShake.StartShake(0.1f, 0.05f); // Bu static kalabilir
         if (cameraFadeScript != null) cameraFadeScript.StartDamageFlash(0.1f);
@@ -333,4 +332,11 @@ public class HealthScript : MonoBehaviour
 
     // Eski Hatalı Yeniden Yükleme Metodu Kaldırıldı
     // private static IEnumerator ReloadScene() { ... }
+
+    IEnumerator LatePlatformReset()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ResetPlatforms.ResetAllPlatforms();
+        ResetPlatforms.ResetAllChainsaws();
+    }
 }

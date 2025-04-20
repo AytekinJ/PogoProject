@@ -129,6 +129,7 @@ public class AttackScript : MonoBehaviour
                     hit.collider.gameObject.GetComponent<Animator>().SetTrigger("Hit");
                 }
             }
+
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
                 EnemyHealth enemyHealth = hit.collider.gameObject.GetComponent<EnemyHealth>();
