@@ -12,7 +12,7 @@ public class CameraFadeScript : MonoBehaviour
 
     public SpriteRenderer[] PlayerNormalSkins;
 
-    public CameraFollow cameraFollowScript;
+    public NewCameraFollow cameraFollowScript;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class CameraFadeScript : MonoBehaviour
 
         FadeUI = FadePannel.GetComponent<Image>();
         DamageUI = DamagePanel.GetComponent<Image>();
-        cameraFollowScript = GetComponent<CameraFollow>();
+        cameraFollowScript = GetComponent<NewCameraFollow>();
         FadeUI.color = new Color(FadeUI.color.r, FadeUI.color.g, FadeUI.color.b, 1f);
         StartCoroutine(UnFadeCoroutine(0.1f));
 

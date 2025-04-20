@@ -13,8 +13,10 @@ public class EnemyHealth : MonoBehaviour
    Enemy enemyScript;
    BoxCollider2D boxCollider;
    CircleCollider2D circleCollider;
+   Vector3 startPos;
     private void Start() 
     {
+       startPos = transform.position;
        enemyScript = GetComponent<Enemy>();
        boxCollider = GetComponent<BoxCollider2D>();
        circleCollider = GetComponent<CircleCollider2D>();
@@ -73,6 +75,22 @@ public class EnemyHealth : MonoBehaviour
          circleCollider.enabled = true;
          Health = 1;
       }
-      
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(ResetPos());
+            Debug.Log("Enemy Pos Reset");
+        }
+    }
+    
+
+    IEnumerator ResetPos()
+    {
+       yield return new WaitForSeconds(0.2f);
+       transform.position = startPos;
     }
 }

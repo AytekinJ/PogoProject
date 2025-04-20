@@ -1,30 +1,39 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Kaldırıldı (Reload için SceneLoader kullanılıyor)
 
 public class HealthScript : MonoBehaviour
 {
+    // --- Singleton Deseni ---
     public static HealthScript Instance { get; private set; }
+    // ------------------------
 
     [Header("Durum Değişkenleri (Instance)")]
     public bool HasArmor = false;
     public int HealthValue = 10;
-    public float XKnockBack = 0f;
+    public float XKnockBack = 0f; // Knockback durumu oyuncuya ait olmalı
     public Transform CurrentCheckpoint = null;
     public Transform CurrentPlatformCheckpoint = null;
 
     [Header("Referanslar (Inspector'dan atanmalı veya Start'ta bulunmalı)")]
-    [SerializeField] private int startingHealth = 10;
-    [SerializeField] private GameObject damageSFXPrefab;
-    [SerializeField] private Transform worldSpawnPoint;
-    [SerializeField] private CameraFadeScript cameraFadeScript;
-    private ResetPlatforms resetScript;
+    [SerializeField] private int startingHealth = 10; // Başlangıç canı
+    [SerializeField] private GameObject damageSFXPrefab; // Hasar sesi prefabı
+    [SerializeField] private Transform worldSpawnPoint; // Dünyanın başlangıç noktası
+    [SerializeField] private CameraFadeScript cameraFadeScript; // Kamera fade script'i
+
+    bool canBeHurt = true;
+
+    // Diğer script referansları (gerekirse)
+    private ResetPlatforms resetScript; // Player üzerinde mi?
 
     void Awake()
     {
+        // --- Singleton Uygulaması ---
         if (Instance == null)
         {
             Instance = this;
-
+            // Opsiyonel: Eğer oyuncu ve HealthScript sahneler arası taşınacaksa:
+            // DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {
@@ -32,18 +41,21 @@ public class HealthScript : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        // ----------------------------
+
+        // Başlangıç değerlerini ayarla
         HealthValue = startingHealth;
         HasArmor = false;
         XKnockBack = 0f;
-        CurrentCheckpoint = null; 
+        CurrentCheckpoint = null; // Sahne başında checkpoint olmaz
         CurrentPlatformCheckpoint = null;
 
-        resetScript = GetComponent<ResetPlatforms>(); 
+        resetScript = GetComponent<ResetPlatforms>(); // Eğer Player üzerindeyse
     }
 
     void Start()
     {
-
+        // Referansları Start içinde bulmak daha güvenli olabilir
         if (worldSpawnPoint == null)
         {
             GameObject spawnGO = GameObject.FindGameObjectWithTag("WorldSpawnPoint");
@@ -52,7 +64,7 @@ public class HealthScript : MonoBehaviour
         }
         if (cameraFadeScript == null)
         {
-            Camera mainCam = Camera.main;
+            Camera mainCam = Camera.main; // Camera.main performans için cachelenebilir
             if (mainCam != null) cameraFadeScript = mainCam.GetComponent<CameraFadeScript>();
             if (cameraFadeScript == null) Debug.LogError("Ana Kamerada CameraFadeScript bulunamadı!", this);
         }
@@ -64,7 +76,7 @@ public class HealthScript : MonoBehaviour
     {
         Debug.Log($"Yeni Checkpoint Ayarlandı: {TransformToSet.name}", TransformToSet);
         CurrentCheckpoint = TransformToSet;
-        CurrentPlatformCheckpoint = null; 
+        CurrentPlatformCheckpoint = null; // Normal checkpoint platform checkpoint'ini sıfırlar
     }
 
     public void SetPlatformCheckpoint(Transform TransformToSet)
@@ -89,7 +101,8 @@ public class HealthScript : MonoBehaviour
         if (worldSpawnPoint == null)
         {
             Debug.LogError("WorldSpawnPoint ayarlanmamış, teleport yapılamıyor!", this);
-
+            // Belki sahneyi yeniden başlatmak daha iyi bir fallback olabilir?
+            // SceneLoader.ReloadCurrentScene();
             return;
         }
         StartCoroutine(TeleportCoroutine(worldSpawnPoint.position));
@@ -99,23 +112,24 @@ public class HealthScript : MonoBehaviour
     {
         if (cameraFadeScript != null)
         {
+            // Fade out başlat (unfadeAfter = false, çünkü pozisyon değişecek)
             cameraFadeScript.StartFade(0.2f, true, false);
-            yield return new WaitForSecondsRealtime(0.2f); 
+            yield return new WaitForSecondsRealtime(0.2f); // Zaman ölçeğinden bağımsız bekle
         }
 
         // Pozisyonu değiştir
         transform.position = targetPosition;
-       
+        // Fizik motorunu güncellemek için kısa bir bekleme iyi olabilir
         yield return new WaitForFixedUpdate();
-    
+        // Velocity'yi sıfırlamak isteyebilirsin
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = Vector2.zero;
-        XKnockBack = 0f; 
+        XKnockBack = 0f; // Knockback'i sıfırla
 
         if (cameraFadeScript != null)
         {
             // Fade in başlat
-            cameraFadeScript.StartFade(0.2f,true,true); 
+            cameraFadeScript.StartFade(0.2f,true,true); // UnFadeCoroutine public olmalı veya yeni bir public metod yazılmalı
         }
     }
 
@@ -127,9 +141,10 @@ public class HealthScript : MonoBehaviour
     public void IncreaseHealth(int HealthInt)
     {
         HealthValue += HealthInt;
-
+        // İsteğe bağlı: Max can kontrolü
+        // HealthValue = Mathf.Min(HealthValue, maxHealth);
         Debug.Log($"Can Arttı: {HealthValue}", this);
-
+        // UI Güncellemesi (Event veya doğrudan çağrı ile)
         UpdateHealthUI();
     }
 
@@ -149,20 +164,25 @@ public class HealthScript : MonoBehaviour
 
     public void DecreaseHealth(int HealthInt, string damagingObjectTag)
     {
-        if (HealthValue <= 0) return;
+        if (!canBeHurt)
+            return;
+        StartCoroutine(Invinciblity());
+
+        if (HealthValue <= 0) return; // Zaten ölü
 
         PlayDamageSFX();
-
-        ResetPlatforms.ResetAllPlatforms();
-        CameraShake.StartShake(0.1f, 0.05f);
-        if (cameraFadeScript != null) cameraFadeScript.StartDamageFlash(0.1f);
+        StartCoroutine(LatePlatformReset());
+        
+        
+        CameraShake.StartShake(0.1f, 0.05f); // Bu static kalabilir
+        if (cameraFadeScript != null) cameraFadeScript.StartDamageFlash(0.3f);
 
         // Zırh Kontrolü
         if (HasArmor)
         {
             Debug.Log("Zırh hasarı engelledi.", this);
-            RemoveArmor();
-
+            RemoveArmor(); // Zırhı kaldır
+            // Zırh varken özel teleport mantığı (Platform checkpoint vs.)
             if (damagingObjectTag == "Thrones")
             {
                 if (CurrentPlatformCheckpoint != null)
@@ -178,25 +198,27 @@ public class HealthScript : MonoBehaviour
                     TeleportToSpawn();
                 }
             }
-         
+            // Zırh kaldırıldıktan sonra can azaltma işlemi yapılmaz.
             return;
         }
 
-       
+        // Can Azaltma
         HealthValue -= HealthInt;
         Debug.Log($"Can Azaldı: {HealthValue}", this);
-        UpdateHealthUI();
+        UpdateHealthUI(); // UI Güncelle
 
-    
+        // Ölüm Kontrolü
         if (HealthValue <= 0)
         {
             Debug.Log("Oyuncu Öldü! Sahne yeniden yükleniyor.", this);
-
+            // Ölüm animasyonu/efekti için bekleme eklenebilir
+            // gameObject.SetActive(false); // Oyuncuyu devre dışı bırak
+            // yield return new WaitForSecondsRealtime(1.0f); // Kısa bekleme
             Die();
-            return; 
+            return; // Ölüm sonrası teleport olmasın
         }
 
- 
+        // Ölmediyse Checkpoint'e Işınla
         if (CurrentCheckpoint != null)
         {
             Teleport(CurrentCheckpoint);
@@ -209,18 +231,27 @@ public class HealthScript : MonoBehaviour
 
     private void Die()
     {
-        Time.timeScale = 1f;
-        SceneLoader.ReloadCurrentScene();
+         // Ölüm işlemleri burada yapılabilir (animasyon, ses vb.)
+        Time.timeScale = 1f; // Zamanı normale döndür (eğer durdurulmuşsa)
+        SceneLoader.ReloadCurrentScene(); // Sahneyi yeniden yükle
     }
 
-
+    // Bu metod muhtemelen gereksiz, IncreaseHealth yeterli
+    // public void SetHealth(int HealthInt)
+    // {
+    //     HealthValue = HealthInt;
+    //     UpdateHealthUI();
+    // }
 
     private void UpdateHealthUI()
     {
-        HealthUIScript healthUI = FindAnyObjectByType<HealthUIScript>(); 
+        // Sağlık UI'ını güncellemek için bir event sistemi veya doğrudan çağrı kullanın.
+        // Örnek: UIManager.Instance.UpdateHealth(HealthValue, HasArmor);
+        // Veya HealthUIScript'e doğrudan referans:
+        HealthUIScript healthUI = FindAnyObjectByType<HealthUIScript>(); // Performanslı değil, cachelemek daha iyi
         if (healthUI != null)
         {
-            healthUI.UpdateUI(HealthValue, HasArmor);
+            healthUI.UpdateUI(HealthValue); // HealthUIScript'te public UpdateUI metodu olmalı
         }
     }
 
@@ -234,8 +265,8 @@ public class HealthScript : MonoBehaviour
         {
             Debug.Log("Zırh Kaldırıldı.", this);
             HasArmor = false;
-            UpdateHealthUI(); 
-
+            UpdateHealthUI(); // UI Güncelle
+            // Zırh kaldırma efekti/sesi
         }
     }
 
@@ -245,8 +276,8 @@ public class HealthScript : MonoBehaviour
         {
             Debug.Log("Zırh Giyildi.", this);
             HasArmor = true;
-            UpdateHealthUI(); 
-      
+            UpdateHealthUI(); // UI Güncelle
+            // Zırh giyme efekti/sesi
         }
     }
 
@@ -259,25 +290,30 @@ public class HealthScript : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb == null) return;
 
+        // Yönü belirle (hasar kaynağına göre ters yönde)
         float direction = Mathf.Sign(transform.position.x - damageSource.position.x);
-        XKnockBack = direction * xPower; 
+        XKnockBack = direction * xPower; // XKnockBack durumunu ayarla
 
-
+        // Y ekseninde anlık kuvvet uygula
+        // Var olan Y hızını sıfırlayıp sadece yeni kuvveti eklemek daha kontrollü olabilir
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
         rb.AddForce(new Vector2(0, yPower), ForceMode2D.Impulse);
 
-        StartCoroutine(ReduceKnockbackOverTime()); 
+        StartCoroutine(ReduceKnockbackOverTime()); // Knockback'i zamanla azalt
     }
 
+    // Knockback'i zamanla azaltmak için Coroutine
     private IEnumerator ReduceKnockbackOverTime()
     {
         float timer = 0f;
-        float reduceDuration = 0.5f;
+        float reduceDuration = 0.5f; // Knockback'in azalma süresi (ayarlanabilir)
         float initialKnockback = XKnockBack;
 
         while (timer < reduceDuration && Mathf.Abs(XKnockBack) > 0.01f)
         {
-   
+            // Yatay hızı doğrudan ayarlamak yerine XKnockBack'i azaltıp Move metodunda kullanmak daha iyi
+            // Rigidbody hızını doğrudan ayarlarken dikkatli olun, fizik motoruyla çakışabilir.
+            // Controller script'i XKnockBack'i zaten kullanıyor.
             XKnockBack = Mathf.Lerp(initialKnockback, 0, timer / reduceDuration);
             timer += Time.deltaTime;
             yield return null;
@@ -286,14 +322,34 @@ public class HealthScript : MonoBehaviour
     }
 
 
+    // Bu metod Controller script'i içinde zaten var gibi görünüyor.
+    // Controller içindeki ReduceXKnockBack kullanılmalı veya buradaki mantık oraya taşınmalı.
     
     public void ReduceXKnockBack()
     {
-
-        XKnockBack = Mathf.Lerp(XKnockBack, 0, 10f * Time.deltaTime); 
+        // Controller scripti zaten rb.velocity.x içinde XKnockBack'i kullanıyor.
+        // Bu yüzden burada sadece XKnockBack değerini azaltmak yeterli olmalı.
+        // Controller'daki Move metodu güncellenmiş XKnockBack'i kullanacaktır.
+        XKnockBack = Mathf.Lerp(XKnockBack, 0, 10f * Time.deltaTime); // 10f değeri ayarlanabilir
     }
-    
+
 
     #endregion
 
+    // Eski Hatalı Yeniden Yükleme Metodu Kaldırıldı
+    // private static IEnumerator ReloadScene() { ... }
+
+    IEnumerator Invinciblity()
+    {
+        canBeHurt = false;
+        yield return new WaitForSeconds(0.2f);
+        canBeHurt = true;
+    }
+
+    IEnumerator LatePlatformReset()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ResetPlatforms.ResetAllPlatforms();
+        ResetPlatforms.ResetAllChainsaws();
+    }
 }

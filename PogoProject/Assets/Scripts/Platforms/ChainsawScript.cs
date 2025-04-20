@@ -17,9 +17,11 @@ public class ChainsawScript : MonoBehaviour
     private float waitTimer = 0f;
     private bool isWaiting = false;
     private bool isActive = false;
+    private Vector3 startPos;
 
     private void Start()
     {
+        startPos = transform.position;
         // Set initial target point based on selected value
         targetPoint = startTowardsPointB ? pointB : pointA;
         
@@ -116,6 +118,13 @@ public class ChainsawScript : MonoBehaviour
     public void SetDirection(bool towardsPointB)
     {
         targetPoint = towardsPointB ? pointB : pointA;
+    }
+
+    public void ResetChainsaw()
+    {
+        isActive = true;
+        transform.position = startPos;
+        isWaiting = false;
     }
 
     // Optional: Visualize the path in the editor
