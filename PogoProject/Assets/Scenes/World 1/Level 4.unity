@@ -1655,7 +1655,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1255647573}
   - {fileID: 1819585869}
   - {fileID: 1938100819}
   - {fileID: 1338708983}
@@ -1666,6 +1665,7 @@ Transform:
   - {fileID: 16703393}
   - {fileID: 2057479694}
   - {fileID: 118497090}
+  - {fileID: 1255647573}
   - {fileID: 310085675}
   - {fileID: 1813567512}
   - {fileID: 1907961746}
@@ -83103,6 +83103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1836329105}
+  - component: {fileID: 1836329112}
   - component: {fileID: 1836329107}
   - component: {fileID: 1836329106}
   - component: {fileID: 1836329111}
@@ -83407,6 +83408,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1836329112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836329104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa796e098debeb34891357fe055cadca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointValue: 1
+  IncreaseHealth: 0
+  healthScript: {fileID: 0}
 --- !u!1001 &1838845496
 PrefabInstance:
   m_ObjectHideFlags: 0

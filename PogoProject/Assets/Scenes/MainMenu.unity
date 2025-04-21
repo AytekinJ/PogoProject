@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CRYOFROST
+  m_text: CryoFrost
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21966f929006c934aa232e815ecd4c43, type: 2}
   m_sharedMaterial: {fileID: 4297383289194225148, guid: 21966f929006c934aa232e815ecd4c43, type: 2}

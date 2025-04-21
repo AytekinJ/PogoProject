@@ -16,7 +16,13 @@ MonoBehaviour:
   sceneNumber: 3
   levelIcon: {fileID: -6674868978544099146, guid: c1f8beeca522bf142bc17592afed0a25, type: 3}
   takenPickups: []
-  allPickups: []
+  allPickups:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bestTime: 0
   completionPercentage: 0
   isCompleted: 0
