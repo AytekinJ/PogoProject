@@ -21,7 +21,6 @@ public class ESCMenu : MonoBehaviour
 
     void Awake()
     {
-        // 🧽 UI bileşenlerini buluyoruz
         pauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu");
         settingsMenuUI = GameObject.FindGameObjectWithTag("PauseSettings");
         cameraFadeScript = FindFirstObjectByType<CameraFadeScript>();
@@ -32,16 +31,14 @@ public class ESCMenu : MonoBehaviour
             return;
         }
 
-        // 🔁 Settings panellerini sırayla al (BackGround altından, 0. ve 1. çocuğu atlıyoruz)
+
         Transform parent = GameObject.Find("BackGround").transform;
         settingsPanels = new GameObject[4];
         for (int i = 0; i < 4; i++)
         {
-            settingsPanels[i] = parent.GetChild(i + 1).gameObject; // i+1 çünkü 0'ı atlıyoruz
+            settingsPanels[i] = parent.GetChild(i + 1).gameObject; 
         }
-        settingsPanels[0].SetActive(true); // İlk panel aktif
-
-        // 🔁 Settings navigation butonlarını tersten sırayla al
+        settingsPanels[0].SetActive(true); 
         GameObject[] buttonObjects = GameObject.FindGameObjectsWithTag("SettingsNavigation");
         buttons = new List<Button>();
         for (int i = buttonObjects.Length - 1; i >= 0; i--)
@@ -51,14 +48,12 @@ public class ESCMenu : MonoBehaviour
                 buttons.Add(btn);
         }
 
-        // 🧠 Her butona panel açma eventi ekle
         for (int i = 0; i < buttons.Count; i++)
         {
             int index = i; // closure için sabitleme
             buttons[i].onClick.AddListener(() => OpenMenu(index));
         }
 
-        // Başlangıçta UI'lar kapalı
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(false);
         isPaused = false;
@@ -76,13 +71,13 @@ public class ESCMenu : MonoBehaviour
 
         Time.timeScale = isPaused ? 0f : 1f;
         pauseMenuUI.SetActive(isPaused);
-        settingsMenuUI.SetActive(false); // ESC'den çıkarken ayar menüsünü de kapat
+        settingsMenuUI.SetActive(false);
     }
 
     public void OpenMenu(int index)
     {
         for (int i = 0; i < settingsPanels.Length; i++)
-            settingsPanels[i].SetActive(i == index); // sadece istenen aktif
+            settingsPanels[i].SetActive(i == index);
     }
 
     public void MainMenu()

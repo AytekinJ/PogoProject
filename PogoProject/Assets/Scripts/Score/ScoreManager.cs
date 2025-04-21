@@ -202,13 +202,13 @@ public class ScoreManager : MonoBehaviour
         if (finishedTime > 0 && finishedTime < progressToSave.bestTime)
         {
             progressToSave.bestTime = finishedTime;
-            recordTimeText.text = $"YENİ REKOR! : {progressToSave.bestTime:F2} saniye";
+            recordTimeText.text = $"NEW RECORD! : {progressToSave.bestTime:F2} seconds";
         }
         else if (progressToSave.bestTime != float.PositiveInfinity)
         {
-            recordTimeText.text = $"Rekor : {progressToSave.bestTime:F2} saniye";
+            recordTimeText.text = $"Record : {progressToSave.bestTime:F2} seconds";
         } else {
-            recordTimeText.text = "Rekor Yok";
+            recordTimeText.text = "No record";
         }
         levelData.bestTime = progressToSave.bestTime;
 
@@ -237,11 +237,11 @@ public class ScoreManager : MonoBehaviour
         endGameScreenPrefab.SetActive(true);
         percentageText.text = $"{scorePercentage:F2}%";
         if (finishedTime != float.PositiveInfinity) {
-             timeText.text = $"Bitirme Süresi: {finishedTime:F2} saniye";
+             timeText.text = $"Finish time: {finishedTime:F2} seconds";
         } else {
              timeText.text = "Süre Hesaplanamadı";
         }
-        pogoText.text = towerPogo ? "POGO İLE BİTTİ!" : "POGO YOK!";
+        pogoText.text = towerPogo ? "Completed With Pogo!" : "No Pogo!";
 
         foreach (Transform child in starsParent.transform) { Destroy(child.gameObject); }
         int totalStarsCollectedEver = progressToSave.takenStarIDs.Count;

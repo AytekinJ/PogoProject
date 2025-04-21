@@ -11,6 +11,17 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject levelSelectionMenu;
 
+    void Start()
+    {
+        if (SceneData.isLevelSelection)
+        {
+            mainMenu.SetActive(false);
+            settingsMenu.SetActive(false);
+            levelSelectionMenu.SetActive(true);
+            SceneData.isLevelSelection = false;
+        }
+    }
+
     public void StartGame()
     {
         mainMenu.SetActive(false);
