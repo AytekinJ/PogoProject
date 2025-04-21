@@ -118,6 +118,7 @@ public class HealthScript : MonoBehaviour
         }
 
         // Pozisyonu değiştir
+        gameObject.transform.SetParent(null);
         transform.position = targetPosition;
         // Fizik motorunu güncellemek için kısa bir bekleme iyi olabilir
         yield return new WaitForFixedUpdate();
