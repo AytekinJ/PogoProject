@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
         if (heartsCollected+1 <= maxHearts)
         {
             heartsCollected += 1;
-            player.gameObject.GetComponent<HealthScript>().IncreaseHealth(1);
+            player.gameObject.GetComponent<HealthScript>().IncreaseHealth(2);
         }
     }
 
