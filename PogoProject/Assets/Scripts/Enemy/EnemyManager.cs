@@ -88,7 +88,7 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator EagleDash(Enemy eagle, Vector2 target)
     {
-        while (Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE && !eagle.collided && eagle.GetComponent<EnemyHealth>().isRespawning == false)
+        while (eagle != null && Vector2.Distance(eagle.transform.position, target) > MAX_TOLERANCE && !eagle.collided && eagle.GetComponent<EnemyHealth>().isRespawning == false)
         {
             eagle.transform.position = Vector2.MoveTowards(eagle.transform.position, target, eagle.dashSpeed * Time.deltaTime);
             yield return null;

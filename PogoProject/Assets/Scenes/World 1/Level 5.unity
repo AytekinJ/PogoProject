@@ -31496,6 +31496,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoseBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 1779550558818665037, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779550558818665037, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779550558818665037, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779550558818665037, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2603308370069147661, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -31582,6 +31598,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4179344436634223423, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793316407982395285, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793316407982395285, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793316407982395285, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793316407982395285, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8351943472238442538, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
@@ -32427,14 +32459,6 @@ PrefabInstance:
     - target: {fileID: 5974560354158845774, guid: cb78e00bda099594690f6e9ddc715913, type: 3}
       propertyPath: m_Name
       value: ThronePlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 8221788675499401059, guid: cb78e00bda099594690f6e9ddc715913, type: 3}
-      propertyPath: m_Size.y
-      value: 0.8785534
-      objectReference: {fileID: 0}
-    - target: {fileID: 8221788675499401059, guid: cb78e00bda099594690f6e9ddc715913, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.11485863
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
