@@ -196,7 +196,8 @@ public class HealthScript : MonoBehaviour
                 }
                 else
                 {
-                    TeleportToSpawn();
+                    //TeleportToSpawn();
+                    Die();
                 }
             }
             // Zırh kaldırıldıktan sonra can azaltma işlemi yapılmaz.
@@ -226,7 +227,8 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
-            TeleportToSpawn();
+            //TeleportToSpawn();
+            Die();
         }
     }
 
