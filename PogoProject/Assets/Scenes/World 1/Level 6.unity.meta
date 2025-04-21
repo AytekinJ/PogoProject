@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:PogoProject/Assets/Prefabs/UI/LoseBackground.prefab.meta
+guid: 833aea777bf6c1040ac21c6af5eb9cf9
+PrefabImporter:
+========
 guid: 2a65083a5a6a0674e9ad8ec50781095a
 DefaultImporter:
+>>>>>>>> origin/Aytekin:PogoProject/Assets/Scenes/World 1/Level 6.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

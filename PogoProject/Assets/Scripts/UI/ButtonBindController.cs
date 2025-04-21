@@ -5,11 +5,9 @@ using System.Collections.Generic;
 
 public class KeyBinderInitializer : MonoBehaviour
 {
-    // Buttons in sequence: Up, Right, Left, Down, Attack, AimUp, AimRight, AimLeft, AimDown, DpadUp, DpadRight, DpadLeft, DpadDown
     [SerializeField] public List<Button> buttons;
     [SerializeField] private GameSetting settings;
     
-    // List to store the keycodes from settings
     private List<KeyCode> targetKeyCodes = new List<KeyCode>();
 
     private void Start()
@@ -47,14 +45,14 @@ public class KeyBinderInitializer : MonoBehaviour
     
     public void InitializeKeyBindings()
     {
-        // Check if settings are assigned
+ 
         if (settings == null)
         {
             Debug.LogError("KeyBinderInitializer: GameSetting reference is missing!", this);
             return;
         }
 
-        // Check if we have the correct number of buttons
+   
         const int expectedButtonCount = 14;
         if (buttons == null || buttons.Count != expectedButtonCount)
         {
@@ -62,10 +60,10 @@ public class KeyBinderInitializer : MonoBehaviour
             return;
         }
 
-        // Populate the key codes from settings
+  
         PopulateTargetKeyCodes();
 
-        // Loop through buttons and set their text to display the corresponding key
+      
         for (int i = 0; i < buttons.Count; i++)
         {
             if (i >= targetKeyCodes.Count)
@@ -83,7 +81,7 @@ public class KeyBinderInitializer : MonoBehaviour
                 continue;
             }
 
-            // Find the text component on the button
+     
             TextMeshProUGUI buttonText = currentButton.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText == null)
             {
@@ -91,10 +89,10 @@ public class KeyBinderInitializer : MonoBehaviour
                 continue;
             }
 
-            // Set the text to display the key
+        
             buttonText.text = targetKey.ToString();
 
-            // If the button has a KeyBinder component, initialize it
+     
             KeyBinder keyBinder = currentButton.GetComponent<KeyBinder>();
             if (keyBinder != null)
             {
@@ -103,7 +101,7 @@ public class KeyBinderInitializer : MonoBehaviour
             else
             {
                 Debug.LogWarning($"KeyBinderInitializer: Button '{currentButton.name}' does not have a KeyBinder component!", currentButton);
-                // Add KeyBinder component if not found
+      
                 keyBinder = currentButton.gameObject.AddComponent<KeyBinder>();
                 keyBinder.InitializeKey(targetKey);
             }
@@ -112,12 +110,12 @@ public class KeyBinderInitializer : MonoBehaviour
         Debug.Log("KeyBinderInitializer: All buttons initialized successfully.");
     }
 
-    // Populate the target key codes list from settings
+
     private void PopulateTargetKeyCodes()
     {
         targetKeyCodes.Clear();
 
-        // Add keys in the expected order
+
         targetKeyCodes.Add(settings.JumpButton);
         targetKeyCodes.Add(settings.up);
         targetKeyCodes.Add(settings.right);

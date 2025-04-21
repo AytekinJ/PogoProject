@@ -31,16 +31,16 @@ public class KeyBinder : MonoBehaviour
             return;
         }
         
-        // Add click listener
+     
         button.onClick.AddListener(StartListeningForKey);
     }
 
-    // Called by KeyBinderInitializer
+
     public void InitializeKey(KeyCode key)
     {
         currentKey = key;
         
-        // Update the button text to show current key binding
+      
         if (buttonText != null)
         {
             buttonText.text = key.ToString();
@@ -59,7 +59,7 @@ public class KeyBinder : MonoBehaviour
     {
         if (!isWaitingForKeyInput) return;
 
-        // Check for any key press
+
         
         foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
         {
@@ -71,7 +71,7 @@ public class KeyBinder : MonoBehaviour
         }
         
         
-        // Allow canceling with Escape key
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CancelKeyBinding();
@@ -80,7 +80,7 @@ public class KeyBinder : MonoBehaviour
 
     private void AssignNewKey(KeyCode newKey)
     {
-        // Skip keys that shouldn't be bindable
+      
         if (newKey == KeyCode.Escape || newKey == KeyCode.Return)
         {
             CancelKeyBinding();
@@ -90,19 +90,19 @@ public class KeyBinder : MonoBehaviour
         currentKey = newKey;
         isWaitingForKeyInput = false;
         
-        // Update button text
+
         if (buttonText != null)
         {
             buttonText.text = newKey.ToString();
         }
         
-        // Update the corresponding key in settings based on binding type
+
         if (settings != null)
         {
             UpdateSettingsKey(newKey);
         }
         
-        // Optional: Save settings
+   
         SaveSettings();
     }
 
@@ -110,7 +110,7 @@ public class KeyBinder : MonoBehaviour
     {
         isWaitingForKeyInput = false;
         
-        // Reset text to current key
+   
         if (buttonText != null)
         {
             buttonText.text = currentKey.ToString();
@@ -121,13 +121,11 @@ public class KeyBinder : MonoBehaviour
     {
         if (settings == null) return;
 
-        // Find button index in KeyBinderInitializer
+
         KeyBinderInitializer initializer = FindFirstObjectByType<KeyBinderInitializer>();
         if (initializer != null)
         {
             int buttonIndex = initializer.buttons.IndexOf(button);
-            
-            // Update the appropriate setting based on button index
             switch (buttonIndex)
             {
                 case 0: settings.JumpButton = newKey; break;
@@ -151,8 +149,6 @@ public class KeyBinder : MonoBehaviour
 
     private void SaveSettings()
     {
-        // Implement if you have a settings saving system
-        // For example:
         // SettingsManager.Instance.SaveSettings();
     }
 }

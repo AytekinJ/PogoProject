@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Kaldırılabilir, artık kullanılmıyor
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] private LevelsManager levelsManager; // Inspector'dan atanmalı
+    [SerializeField] private LevelsManager levelsManager;
 
     void Start()
     {
@@ -14,14 +13,14 @@ public class LevelSelect : MonoBehaviour
             return;
         }
 
-        // Butonlara listener ekle
+     
         for (int i = 0; i < transform.childCount; i++)
         {
-            // Buton olup olmadığını kontrol etmek daha güvenli olabilir
+      
             Button button = transform.GetChild(i).GetComponent<Button>();
             if (button != null)
             {
-                int index = i; // Lambda içinde doğru index'i yakalamak için
+                int index = i;
                 button.onClick.AddListener(() => OnLevelButtonClick(index));
             }
         }
@@ -53,7 +52,7 @@ public class LevelSelect : MonoBehaviour
             return;
         }
 
-        // Sahne adını kontrol et
+      
         string sceneNameToLoad = selectedLevel.sceneName;
         if (string.IsNullOrEmpty(sceneNameToLoad))
         {
@@ -64,9 +63,9 @@ public class LevelSelect : MonoBehaviour
         levelsManager.currentLevel = levelIndex;
         Debug.Log("Loading Level Scene (via SceneLoader): " + sceneNameToLoad); // Log mesajı güncellendi
 
-        // --- Düzeltilmiş Sahne Yükleme ---
+
         SceneData.SceneToLoad = sceneNameToLoad;
-        SceneData.LoadScene(); // SceneLoader'ı kullanan yardımcı metot
-        // ------------------------------------
+        SceneData.LoadScene();
+
     }
 }
