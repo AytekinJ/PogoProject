@@ -82,15 +82,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(ResetPos());
+            transform.position = startPos;
             Debug.Log("Enemy Pos Reset");
         }
     }
     
-
-    IEnumerator ResetPos()
-    {
-       yield return new WaitForSeconds(0.2f);
-       transform.position = startPos;
-    }
 }
