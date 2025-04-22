@@ -66,7 +66,8 @@ public class MainMenuController : MonoBehaviour
     }
     public void Credits()
     {
-        Debug.Log("Credits Button Pressed");
+        SceneData.SceneToLoad = "Credits";
+        SceneData.LoadScene();
     }
 
     public void QuitGame()
