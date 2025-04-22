@@ -2205,6 +2205,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   smoothValueY: 0.2
   smoothValueX: 0.2
+  MinYValue: 0
+  yMultiplier: 1
 --- !u!1001 &147934458
 PrefabInstance:
   m_ObjectHideFlags: 0

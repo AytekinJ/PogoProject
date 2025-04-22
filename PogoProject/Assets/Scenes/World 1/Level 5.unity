@@ -989,7 +989,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.8125
+  orthographic size: 4.21875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1019,8 +1019,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 32
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
+  m_RefResolutionX: 480
+  m_RefResolutionY: 270
   m_CropFrame: 4
   m_GridSnapping: 0
   m_FilterMode: 1
@@ -1060,8 +1060,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   smoothValueY: 0.1
   smoothValueX: 0.2
-  MinYValue: -1
-  yMultiplier: 3
+  MinYValue: 0
+  yMultiplier: 1
 --- !u!1001 &163609396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36536,6 +36536,10 @@ PrefabInstance:
     - target: {fileID: 3672977474801373284, guid: cb78e00bda099594690f6e9ddc715913, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489450321982149842, guid: cb78e00bda099594690f6e9ddc715913, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4489450321982149842, guid: cb78e00bda099594690f6e9ddc715913, type: 3}
       propertyPath: m_Offset.y
