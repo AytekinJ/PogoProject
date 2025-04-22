@@ -5,37 +5,55 @@ public class NewCameraFollow : MonoBehaviour
     public static NewCameraFollow Instance;
 
     public Transform target;
-    //public Transform UnGroundedTransform;
-    //public Transform GroundedTransform;
     public Vector3 offset = new Vector3(0, 0, -10);
     public float smoothValueY = 0.2f;
     public float smoothValueX = 0.2f;
+    float velocity = 0;
+    Vector3 vel = Vector3.zero;
+
+    public float MinYValue = 0f;
+    public float yMultiplier = 3f;
+
+    //public Controller controllerScript;
+
+    #region old
+    //public Transform UnGroundedTransform;
+    //public Transform GroundedTransform;
+    #endregion
+    #region old
     //public Controller controllerScript;
     //[SerializeField] float DownY = 0.34f;
     //public LayerMask GroundMask;
-
+    #endregion
+    #region old
     //public Transform movePosition;
-    float velocity = 0;
-    Vector3 vel = Vector3.zero;
+    #endregion
+    #region old
     //private Vector3 defaultOffset;
     //float inputYHoldTime;
+    #endregion
+
     private void Start()
     {
         Instance = this;
+        //controllerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
+        #region old
         //movePosition.position = new Vector3(target.position.x, target.position.y, offset.z);
         //controllerScript = GameObject.FindGameObjectWithTag("Player").transform.GetComponent<Controller>();
         //defaultOffset = offset;
         //SetUnGrounded();
         //SetGrounded();
+        #endregion
     }
 
     private void Update()
     {
+        #region old
         //SetGrounded();
         //SetUnGrounded();
         //SetMovePosition();
-        Lerp();
-
+        #endregion
+        #region old
         // if(Mathf.Abs(target.position.y - gameObject.transform.position.y) > 2.5)
         // {
         //     SetCamFollowPublic(target.position);
@@ -55,25 +73,35 @@ public class NewCameraFollow : MonoBehaviour
         //    offset = defaultOffset;
         //    inputYHoldTime = 0;
         //}
+        #endregion
+        Lerp();
     }
 
     void Lerp()
     {
-        //float lerpingY;
-        //float lerpingX;
-
+        
         Vector3 xLerp;
         Vector3 yLerp;
 
-        xLerp = Vector3.SmoothDamp(transform.position, target.position, ref vel, smoothValueX);
-        yLerp = Vector3.SmoothDamp(transform.position, target.position, ref vel, smoothValueY);
+        if (Controller.Instance.playerRb.linearVelocityY >= MinYValue)
+        {
+            xLerp = Vector3.SmoothDamp(transform.position, target.position, ref vel, smoothValueX);
+            yLerp = Vector3.SmoothDamp(transform.position, target.position, ref vel, smoothValueY);
+            transform.position = new Vector3(xLerp.x, yLerp.y, 0) + offset;
+        }
+        else if (Controller.Instance.playerRb.linearVelocityY < MinYValue)
+        {
+            xLerp = Vector3.SmoothDamp(transform.position, target.position, ref vel, smoothValueX);
+            yLerp = Vector3.SmoothDamp(transform.position, target.position, ref vel, smoothValueY * yMultiplier);
+            transform.position = new Vector3(xLerp.x, yLerp.y, 0) + offset;
+        }
 
-        //lerpingX = Mathf.SmoothDamp(transform.position.x, target.position.x, ref velocity, smoothValueX);
-        //lerpingY = Mathf.SmoothDamp(transform.position.y, target.position.y, ref velocity, smoothValueY);
+        
 
-        transform.position = new Vector3(xLerp.x, yLerp.y, 0) + offset;
+        
     }
 
+    #region old
     //void SetMovePosition()
     //{
     //    if (controllerScript.CheckGrounded())
@@ -106,4 +134,5 @@ public class NewCameraFollow : MonoBehaviour
     //{
     //    GroundedTransform.position = targetTransorm + offset;
     //}
+    #endregion
 }

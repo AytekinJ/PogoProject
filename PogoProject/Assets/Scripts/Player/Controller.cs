@@ -14,10 +14,10 @@ public class Controller : MonoBehaviour
     public bool canChangeAnim = true;
 
 
-    public static Rigidbody2D rb; 
-     
+    //public static Rigidbody2D rb;
 
-    private Rigidbody2D playerRb;
+
+    public Rigidbody2D playerRb;
 
 
     public float inputX;
