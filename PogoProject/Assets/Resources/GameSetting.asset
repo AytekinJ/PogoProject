@@ -19,6 +19,7 @@ MonoBehaviour:
   musicVolume: 100
   sfxVolume: 100
   inputEnabled: 1
+  playWithDpad: 0
   right: 100
   left: 97
   up: 119

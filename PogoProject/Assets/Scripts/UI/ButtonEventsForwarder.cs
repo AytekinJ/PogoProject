@@ -10,7 +10,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject levelSelectionMenu;
-
     void Start()
     {
         if (SceneData.isLevelSelection)

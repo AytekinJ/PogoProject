@@ -36,6 +36,7 @@ public class GameSetting : ScriptableObject
 
     [Header("Input")]
     public bool inputEnabled = true;
+    public bool playWithDpad;
     public KeyCode right = KeyCode.D;
     public KeyCode left = KeyCode.A;
     public KeyCode up = KeyCode.W;

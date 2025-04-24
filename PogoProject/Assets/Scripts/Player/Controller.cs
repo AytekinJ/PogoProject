@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
@@ -66,8 +67,20 @@ public class Controller : MonoBehaviour
     private bool HasController;
     [SerializeField] private bool isPogoing;
 
+    InputSystem_Actions PlayerControls;
+    Vector2 moveDpad;
+
+    void OnEnable()
+    {
+        PlayerControls.DpadMove.Enable();
+    }
+
+    private void OnDisable() {
+        PlayerControls.DpadMove.Disable();
+    }
     private void Awake()
     {
+        PlayerControls = new InputSystem_Actions();
 
         if (Instance == null)
         {
@@ -202,17 +215,16 @@ public class Controller : MonoBehaviour
     void HandleInputs()
     {
 
-        inputX = 0f;
-        inputY = 0f;
+        
 
         //if (HasController)
         {
             //bool dpadUsed = false;
     
-            if (Input.GetKey(gameSetting.up)) { inputY = 1f; /*dpadUsed = true;*/ }
-            else if (Input.GetKey(gameSetting.down)) { inputY = -1f; /*dpadUsed = true;*/ }
-            if (Input.GetKey(gameSetting.left)) { inputX = -1f; /*dpadUsed = true;*/ }
-            else if (Input.GetKey(gameSetting.right)) { inputX = 1f; /*dpadUsed = true;*/ }
+            // if (Input.GetKey(gameSetting.up)) { inputY = 1f; /*dpadUsed = true;*/ }
+            // else if (Input.GetKey(gameSetting.down)) { inputY = -1f; /*dpadUsed = true;*/ }
+            // if (Input.GetKey(gameSetting.left)) { inputX = -1f; /*dpadUsed = true;*/ }
+            // else if (Input.GetKey(gameSetting.right)) { inputX = 1f; /*dpadUsed = true;*/ }
 
             //if (!dpadUsed)
             //{
@@ -226,11 +238,36 @@ public class Controller : MonoBehaviour
         }
         //else
         //{
-        //    // Klavye kontrolü
-        //    inputX = Input.GetAxisRaw("Horizontal");
-        //    inputY = Input.GetAxisRaw("Vertical"); 
+           // Klavye kontrolü
+           
+            
+            
+           
         //}
+        if(gameSetting.playWithDpad)
+        {
+            PlayerControls.DpadMove.DpadUp.performed += ctx => inputY = 1;
+            PlayerControls.DpadMove.DpadUp.canceled += ctx => inputY= 0;
 
+            PlayerControls.DpadMove.DpadDown.performed += ctx => inputY = -1;
+            PlayerControls.DpadMove.DpadDown.canceled += ctx => inputY = 0;
+
+            PlayerControls.DpadMove.DpadRight.performed += ctx => inputX = 1;
+            PlayerControls.DpadMove.DpadRight.canceled += ctx => inputX= 0;
+
+            PlayerControls.DpadMove.DpadLeft.performed += ctx => inputX = -1;
+            PlayerControls.DpadMove.DpadLeft.canceled += ctx => inputX= 0;
+        }
+        else
+        {
+            if (Input.GetKey(gameSetting.up)) { inputY = 1f; /*dpadUsed = true;*/ }
+            else if (Input.GetKey(gameSetting.down)) { inputY = -1f; /*dpadUsed = true;*/ }
+            if (Input.GetKey(gameSetting.left)) { inputX = -1f; /*dpadUsed = true;*/ }
+            else if (Input.GetKey(gameSetting.right)) { inputX = 1f; /*dpadUsed = true;*/ }
+
+            inputX = 0f;
+            inputY = 0f;
+        }
 
         if (Input.GetKeyDown(JumpButton)) { jumpBufferCounter = jumpBufferTime; }
         else { jumpBufferCounter -= Time.deltaTime; }
