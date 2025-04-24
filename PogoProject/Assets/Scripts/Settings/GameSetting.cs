@@ -23,11 +23,11 @@ public class GameSetting : ScriptableObject
     public int rWidth = 1920;
     public int rHeight = 1080;
     public FPS fps = FPS.High;
-    public bool vsync = true;
-    public bool shadows = true;
-    public bool postprocessing = true;
-    public AntiAliasing antialiasing = AntiAliasing.FXAA;
-    public Quality antialiasingQuality = Quality.High;
+    //public bool vsync = true;
+    //public bool shadows = true;
+    //public bool postprocessing = true;
+    //public AntiAliasing antialiasing = AntiAliasing.FXAA;
+    //public Quality antialiasingQuality = Quality.High;
 
     [Header("Audio")]
     [Range(0, 100)] public int masterVolume = 100;
@@ -41,15 +41,15 @@ public class GameSetting : ScriptableObject
     public KeyCode up = KeyCode.W;
     public KeyCode down = KeyCode.S;
     public KeyCode attack = KeyCode.X;
-    public KeyCode rightAim = KeyCode.RightArrow;
-    public KeyCode leftAim = KeyCode.LeftArrow;
-    public KeyCode upAim = KeyCode.UpArrow;
-    public KeyCode downAim = KeyCode.DownArrow;
+    //public KeyCode rightAim = KeyCode.RightArrow;
+    //public KeyCode leftAim = KeyCode.LeftArrow;
+    //public KeyCode upAim = KeyCode.UpArrow;
+    //public KeyCode downAim = KeyCode.DownArrow;
     public KeyCode JumpButton = KeyCode.Space;
-    public KeyCode DpadUp = KeyCode.JoystickButton4;
-    public KeyCode DpadDown = KeyCode.JoystickButton6;
-    public KeyCode DpadLeft = KeyCode.JoystickButton7;
-    public KeyCode DpadRight = KeyCode.JoystickButton5;
+    //public KeyCode DpadUp = KeyCode.JoystickButton4;
+    //public KeyCode DpadDown = KeyCode.JoystickButton6;
+    //public KeyCode DpadLeft = KeyCode.JoystickButton7;
+    //public KeyCode DpadRight = KeyCode.JoystickButton5;
 }
 
 
@@ -58,12 +58,12 @@ public class GameSettingData
 {
     public int rWidth, rHeight;
     public FPS fps;
-    public bool vsync, shadows, postprocessing;
-    public AntiAliasing antialiasing;
-    public Quality antialiasingQuality;
+    //public bool vsync, shadows, postprocessing;
+    //public AntiAliasing antialiasing;
+    //public Quality antialiasingQuality;
     public int masterVolume, musicVolume, sfxVolume;
     public bool inputEnabled;
-    public KeyCode right, left, up, down, attack;
-    public KeyCode rightAim, leftAim, upAim, downAim;
-    public KeyCode JumpButton, DpadUp, DpadDown, DpadLeft, DpadRight;
+    public KeyCode right, left, up, down, attack, JumpButton;
+    //public KeyCode rightAim, leftAim, upAim, downAim;
+    //public KeyCode JumpButton, DpadUp, DpadDown, DpadLeft, DpadRight;
 }

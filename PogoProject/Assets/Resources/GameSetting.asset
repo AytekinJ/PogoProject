@@ -15,12 +15,7 @@ MonoBehaviour:
   rWidth: 1920
   rHeight: 1080
   fps: 144
-  vsync: 1
-  shadows: 1
-  postprocessing: 1
-  antialiasing: 1
-  antialiasingQuality: 2
-  masterVolume: 100
+  masterVolume: 75
   musicVolume: 100
   sfxVolume: 100
   inputEnabled: 1
@@ -28,13 +23,5 @@ MonoBehaviour:
   left: 97
   up: 119
   down: 115
-  attack: 323
-  rightAim: 275
-  leftAim: 276
-  upAim: 273
-  downAim: 274
+  attack: 120
   JumpButton: 32
-  DpadUp: 334
-  DpadDown: 336
-  DpadLeft: 337
-  DpadRight: 335

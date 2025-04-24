@@ -128,20 +128,21 @@ public class KeyBinder : MonoBehaviour
             int buttonIndex = initializer.buttons.IndexOf(button);
             switch (buttonIndex)
             {
-                case 0: settings.JumpButton = newKey; break;
-                case 1: settings.up = newKey; break;
-                case 2: settings.right = newKey; break;
-                case 3: settings.left = newKey; break;
-                case 4: settings.down = newKey; break;
-                case 5: settings.attack = newKey; break;
-                case 6: settings.upAim = newKey; break;
-                case 7: settings.rightAim = newKey; break;
-                case 8: settings.leftAim = newKey; break;
-                case 9: settings.downAim = newKey; break;
-                case 10: settings.DpadUp = newKey; break;
-                case 11: settings.DpadRight = newKey; break;
-                case 12: settings.DpadLeft = newKey; break;
-                case 13: settings.DpadDown = newKey; break;
+                
+                case 0: settings.right = newKey; break;
+                case 1: settings.left = newKey; break;
+                case 2: settings.up = newKey; break;
+                case 3: settings.down = newKey; break;
+                case 4: settings.attack = newKey; break;
+                case 5: settings.JumpButton = newKey; break;
+                //case 6: settings.upAim = newKey; break;
+                //case 7: settings.rightAim = newKey; break;
+                //case 8: settings.leftAim = newKey; break;
+                //case 9: settings.downAim = newKey; break;
+                //case 10: settings.DpadUp = newKey; break;
+                //case 11: settings.DpadRight = newKey; break;
+                //case 12: settings.DpadLeft = newKey; break;
+                //case 13: settings.DpadDown = newKey; break;
                 default: Debug.LogWarning("KeyBinder: Unknown button index: " + buttonIndex); break;
             }
         }

@@ -1,24 +1,33 @@
-using System;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
+using UnityEngine.Audio;
 
 public class SliderValueCounter : MonoBehaviour
 {
-    [SerializeField] Slider slider;
-    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private string exposedParam = "MasterVolume";
 
     private void Awake()
     {
-        slider = GetComponent<Slider>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
+        if (slider == null) slider = GetComponent<Slider>();
+        if (text == null) text = GetComponentInChildren<TextMeshProUGUI>();
+
+        slider.onValueChanged.AddListener(delegate { SliderValueChanged(); });
         SliderValueChanged();
     }
 
     public void SliderValueChanged()
     {
-        text.text = ((int)(slider.value * 100)).ToString()+"%";
+        float percent = slider.value * 100;
+        text.text = ((int)percent) + "%";
+
+        if (audioMixer != null)
+        {
+            float volume = Mathf.Log10(slider.value <= 0.0001f ? 0.0001f : slider.value) * 20f;
+            audioMixer.SetFloat(exposedParam, volume);
+        }
     }
 }

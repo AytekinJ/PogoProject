@@ -140,11 +140,11 @@ public class DatabaseManager : MonoBehaviour
             rWidth = data.rWidth,
             rHeight = data.rHeight,
             fps = data.fps,
-            vsync = data.vsync,
-            shadows = data.shadows,
-            postprocessing = data.postprocessing,
-            antialiasing = data.antialiasing,
-            antialiasingQuality = data.antialiasingQuality,
+            //vsync = data.vsync,
+            //shadows = data.shadows,
+            //postprocessing = data.postprocessing,
+            //antialiasing = data.antialiasing,
+            //antialiasingQuality = data.antialiasingQuality,
             masterVolume = data.masterVolume,
             musicVolume = data.musicVolume,
             sfxVolume = data.sfxVolume,
@@ -154,15 +154,15 @@ public class DatabaseManager : MonoBehaviour
             up = data.up,
             down = data.down,
             attack = data.attack,
-            rightAim = data.rightAim,
-            leftAim = data.leftAim,
-            upAim = data.upAim,
-            downAim = data.downAim,
+            //rightAim = data.rightAim,
+            //leftAim = data.leftAim,
+            //upAim = data.upAim,
+            //downAim = data.downAim,
             JumpButton = data.JumpButton,
-            DpadUp = data.DpadUp,
-            DpadDown = data.DpadDown,
-            DpadLeft = data.DpadLeft,
-            DpadRight = data.DpadRight
+            //DpadUp = data.DpadUp,
+            //DpadDown = data.DpadDown,
+            //DpadLeft = data.DpadLeft,
+            //DpadRight = data.DpadRight
         };
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -190,11 +190,11 @@ public class DatabaseManager : MonoBehaviour
             GameSetting.Instance.rWidth = loadData.rWidth;
             GameSetting.Instance.rHeight = loadData.rHeight;
             GameSetting.Instance.fps = loadData.fps;
-            GameSetting.Instance.vsync = loadData.vsync;
-            GameSetting.Instance.shadows = loadData.shadows;
-            GameSetting.Instance.postprocessing = loadData.postprocessing;
-            GameSetting.Instance.antialiasing = loadData.antialiasing;
-            GameSetting.Instance.antialiasingQuality = loadData.antialiasingQuality;
+            //GameSetting.Instance.vsync = loadData.vsync;
+            //GameSetting.Instance.shadows = loadData.shadows;
+            //GameSetting.Instance.postprocessing = loadData.postprocessing;
+            //GameSetting.Instance.antialiasing = loadData.antialiasing;
+            //GameSetting.Instance.antialiasingQuality = loadData.antialiasingQuality;
             GameSetting.Instance.masterVolume = loadData.masterVolume;
             GameSetting.Instance.musicVolume = loadData.musicVolume;
             GameSetting.Instance.sfxVolume = loadData.sfxVolume;
@@ -204,15 +204,15 @@ public class DatabaseManager : MonoBehaviour
             GameSetting.Instance.up = loadData.up;
             GameSetting.Instance.down = loadData.down;
             GameSetting.Instance.attack = loadData.attack;
-            GameSetting.Instance.rightAim = loadData.rightAim;
-            GameSetting.Instance.leftAim = loadData.leftAim;
-            GameSetting.Instance.upAim = loadData.upAim;
-            GameSetting.Instance.downAim = loadData.downAim;
+            //GameSetting.Instance.rightAim = loadData.rightAim;
+            //GameSetting.Instance.leftAim = loadData.leftAim;
+            //GameSetting.Instance.upAim = loadData.upAim;
+            //GameSetting.Instance.downAim = loadData.downAim;
             GameSetting.Instance.JumpButton = loadData.JumpButton;
-            GameSetting.Instance.DpadUp = loadData.DpadUp;
-            GameSetting.Instance.DpadDown = loadData.DpadDown;
-            GameSetting.Instance.DpadLeft = loadData.DpadLeft;
-            GameSetting.Instance.DpadRight = loadData.DpadRight;
+            //GameSetting.Instance.DpadUp = loadData.DpadUp;
+            //GameSetting.Instance.DpadDown = loadData.DpadDown;
+            //GameSetting.Instance.DpadLeft = loadData.DpadLeft;
+            //GameSetting.Instance.DpadRight = loadData.DpadRight;
         }
 
         Debug.Log("Ayarlar başarıyla hortlatıldı.");

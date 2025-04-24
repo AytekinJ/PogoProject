@@ -31,10 +31,10 @@ public class Controller : MonoBehaviour
     [Header("Hareket Ayarları")]
     public float speed = 5f;
     public KeyCode JumpButton;
-    public KeyCode DpadUp;
-    public KeyCode DpadDown;
-    public KeyCode DpadLeft;
-    public KeyCode DpadRight;
+    //public KeyCode DpadUp;
+    //public KeyCode DpadDown;
+    //public KeyCode DpadLeft;
+    //public KeyCode DpadRight;
 
 
     [Header("Zıplama Ayarları")]
@@ -148,10 +148,11 @@ public class Controller : MonoBehaviour
     {
         if (gameSetting == null) return;
         JumpButton = gameSetting.JumpButton;
-        DpadUp = gameSetting.DpadUp;
-        DpadDown = gameSetting.DpadDown;
-        DpadLeft = gameSetting.DpadLeft;
-        DpadRight = gameSetting.DpadRight;
+
+        //DpadUp = gameSetting.DpadUp;
+        //DpadDown = gameSetting.DpadDown;
+        //DpadLeft = gameSetting.DpadLeft;
+        //DpadRight = gameSetting.DpadRight;
     }
 
     public void CheckController()
@@ -204,31 +205,31 @@ public class Controller : MonoBehaviour
         inputX = 0f;
         inputY = 0f;
 
-        if (HasController)
+        //if (HasController)
         {
-            bool dpadUsed = false;
+            //bool dpadUsed = false;
     
-            if (Input.GetKey(DpadUp)) { inputY = 1f; dpadUsed = true; }
-            else if (Input.GetKey(DpadDown)) { inputY = -1f; dpadUsed = true; }
-            if (Input.GetKey(DpadLeft)) { inputX = -1f; dpadUsed = true; }
-            else if (Input.GetKey(DpadRight)) { inputX = 1f; dpadUsed = true; }
+            if (Input.GetKey(gameSetting.up)) { inputY = 1f; /*dpadUsed = true;*/ }
+            else if (Input.GetKey(gameSetting.down)) { inputY = -1f; /*dpadUsed = true;*/ }
+            if (Input.GetKey(gameSetting.left)) { inputX = -1f; /*dpadUsed = true;*/ }
+            else if (Input.GetKey(gameSetting.right)) { inputX = 1f; /*dpadUsed = true;*/ }
 
-            if (!dpadUsed)
-            {
+            //if (!dpadUsed)
+            //{
     
-                inputX = Input.GetAxisRaw("Horizontal");
-                inputY = Input.GetAxisRaw("Vertical");
+            //    inputX = Input.GetAxisRaw("Horizontal");
+            //    inputY = Input.GetAxisRaw("Vertical");
        
-                if (Mathf.Abs(inputX) < 0.1f) inputX = 0f;
-                if (Mathf.Abs(inputY) < 0.1f) inputY = 0f;
-            }
+            //    if (Mathf.Abs(inputX) < 0.1f) inputX = 0f;
+            //    if (Mathf.Abs(inputY) < 0.1f) inputY = 0f;
+            //}
         }
-        else
-        {
-            // Klavye kontrolü
-            inputX = Input.GetAxisRaw("Horizontal");
-            inputY = Input.GetAxisRaw("Vertical"); 
-        }
+        //else
+        //{
+        //    // Klavye kontrolü
+        //    inputX = Input.GetAxisRaw("Horizontal");
+        //    inputY = Input.GetAxisRaw("Vertical"); 
+        //}
 
 
         if (Input.GetKeyDown(JumpButton)) { jumpBufferCounter = jumpBufferTime; }
@@ -362,4 +363,9 @@ public class Controller : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheckPos.position, groundCheckRadius);
         }
     }
+
+    //private void OnMouseDown()
+    //{
+    //    Cursor.visible = false;
+    //}
 }

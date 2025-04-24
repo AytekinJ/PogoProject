@@ -99,7 +99,7 @@ public class ApplySettings : MonoBehaviour
             }
         }
 
-        const int expectedButtonCount = 13;
+        const int expectedButtonCount = 5;
         if (parsedKeyCodes.Count < expectedButtonCount)
         {
             Debug.LogError($"Tu� atama buton say�s� beklenenden az ({parsedKeyCodes.Count}/{expectedButtonCount})! �ndeks tabanl� atamalar yap�lam�yor.");
@@ -108,20 +108,20 @@ public class ApplySettings : MonoBehaviour
 
         Debug.Log($"Okunan {parsedKeyCodes.Count} KeyCode, GameSetting'e indeks tabanl� atan�yor...");
 
-        settings.JumpButton = parsedKeyCodes[0];
-        settings.up = parsedKeyCodes[1];
-        settings.down = parsedKeyCodes[2];
-        settings.left = parsedKeyCodes[3];
-        settings.right = parsedKeyCodes[4];
-        settings.attack = parsedKeyCodes[5];
-        settings.upAim = parsedKeyCodes[6];
-        settings.downAim = parsedKeyCodes[7];
-        settings.leftAim = parsedKeyCodes[8];
-        settings.rightAim = parsedKeyCodes[9];
-        settings.DpadUp = parsedKeyCodes[10];  
-        settings.DpadDown = parsedKeyCodes[11]; 
-        settings.DpadLeft = parsedKeyCodes[12]; 
-        settings.DpadRight = parsedKeyCodes[13];
+        settings.right = parsedKeyCodes[0];
+        settings.left = parsedKeyCodes[1];
+        settings.up = parsedKeyCodes[2];
+        settings.down = parsedKeyCodes[3];
+        settings.JumpButton = parsedKeyCodes[5];
+        settings.attack = parsedKeyCodes[4];
+        //settings.upAim = parsedKeyCodes[6];
+        //settings.downAim = parsedKeyCodes[7];
+        //settings.leftAim = parsedKeyCodes[8];
+        //settings.rightAim = parsedKeyCodes[9];
+        //settings.DpadUp = parsedKeyCodes[10];  
+        //settings.DpadDown = parsedKeyCodes[11]; 
+        //settings.DpadLeft = parsedKeyCodes[12]; 
+        //settings.DpadRight = parsedKeyCodes[13];
 
         Debug.Log("Tu� atamalar� (indeks tabanl�) tamamland�.");
         DatabaseManager.main.SaveSettingsData();
@@ -190,7 +190,7 @@ public class ApplySettings : MonoBehaviour
 
 
 
-        settings.postprocessing = postprocess.isOn;
+        //settings.postprocessing = postprocess.isOn;
 
     }
 
@@ -234,7 +234,7 @@ public class ApplySettings : MonoBehaviour
             else
             return option.text.Equals(((int)settings.fps).ToString(), StringComparison.OrdinalIgnoreCase);
         });
-        postprocess.isOn = settings.postprocessing;
+        //postprocess.isOn = settings.postprocessing;
         if (mainMenuController != null)
         mainMenuController.ActivateFirstPanel(); 
         else

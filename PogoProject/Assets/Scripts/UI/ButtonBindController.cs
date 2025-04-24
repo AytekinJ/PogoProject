@@ -53,7 +53,7 @@ public class KeyBinderInitializer : MonoBehaviour
         }
 
    
-        const int expectedButtonCount = 14;
+        const int expectedButtonCount = 6;
         if (buttons == null || buttons.Count != expectedButtonCount)
         {
             Debug.LogError($"KeyBinderInitializer: Please assign exactly {expectedButtonCount} buttons in the Inspector!", this);
@@ -114,21 +114,19 @@ public class KeyBinderInitializer : MonoBehaviour
     private void PopulateTargetKeyCodes()
     {
         targetKeyCodes.Clear();
-
-
-        targetKeyCodes.Add(settings.JumpButton);
-        targetKeyCodes.Add(settings.up);
         targetKeyCodes.Add(settings.right);
         targetKeyCodes.Add(settings.left);
+        targetKeyCodes.Add(settings.up);
         targetKeyCodes.Add(settings.down);
         targetKeyCodes.Add(settings.attack);
-        targetKeyCodes.Add(settings.upAim);
-        targetKeyCodes.Add(settings.rightAim);
-        targetKeyCodes.Add(settings.leftAim);
-        targetKeyCodes.Add(settings.downAim);
-        targetKeyCodes.Add(settings.DpadUp);
-        targetKeyCodes.Add(settings.DpadRight);
-        targetKeyCodes.Add(settings.DpadLeft);
-        targetKeyCodes.Add(settings.DpadDown);
+        targetKeyCodes.Add(settings.JumpButton);
+        //targetKeyCodes.Add(settings.upAim);
+        //targetKeyCodes.Add(settings.rightAim);
+        //targetKeyCodes.Add(settings.leftAim);
+        //targetKeyCodes.Add(settings.downAim);
+        //targetKeyCodes.Add(settings.DpadUp);
+        //targetKeyCodes.Add(settings.DpadRight);
+        //targetKeyCodes.Add(settings.DpadLeft);
+        //targetKeyCodes.Add(settings.DpadDown);
     }
 }

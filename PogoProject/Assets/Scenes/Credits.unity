@@ -939,6 +939,7 @@ GameObject:
   - component: {fileID: 866331046}
   - component: {fileID: 866331045}
   - component: {fileID: 866331049}
+  - component: {fileID: 866331050}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1071,7 +1072,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866331044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a67379b2c4d1d2a4d843bda0593253b2, type: 3}
   m_Name: 
@@ -1079,6 +1080,22 @@ MonoBehaviour:
   messageCanvas: {fileID: 780204018}
   fadeDuration: 1
   displayTime: 2
+--- !u!114 &866331050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866331044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f3f4621dd148e499fc51292a6fe728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectsToOpen: []
+  ComponentsToOpen:
+  - {fileID: 866331049}
+  WaitSeconds: 5
 --- !u!1 &869404567
 GameObject:
   m_ObjectHideFlags: 0
