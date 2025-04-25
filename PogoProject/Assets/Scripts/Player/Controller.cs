@@ -260,13 +260,15 @@ public class Controller : MonoBehaviour
         }
         else
         {
+            inputX = 0f;
+            inputY = 0f;
+            
             if (Input.GetKey(gameSetting.up)) { inputY = 1f; /*dpadUsed = true;*/ }
             else if (Input.GetKey(gameSetting.down)) { inputY = -1f; /*dpadUsed = true;*/ }
             if (Input.GetKey(gameSetting.left)) { inputX = -1f; /*dpadUsed = true;*/ }
             else if (Input.GetKey(gameSetting.right)) { inputX = 1f; /*dpadUsed = true;*/ }
 
-            inputX = 0f;
-            inputY = 0f;
+            
         }
 
         if (Input.GetKeyDown(JumpButton)) { jumpBufferCounter = jumpBufferTime; }
