@@ -323,10 +323,6 @@ MonoBehaviour:
   goldGfx: {fileID: 78928594970178162}
   speed: 5
   JumpButton: 32
-  DpadUp: 334
-  DpadDown: 336
-  DpadLeft: 337
-  DpadRight: 335
   groundCheckPos: {fileID: 7055823131214300178}
   groundCheckRadius: 0.15
   groundCheckLayer:
@@ -630,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FootstepSnow:
   - {fileID: 7269873125136112546, guid: 6de2301350f968c4a8bdfd2949e83c80, type: 3}
+  - {fileID: 7269873125136112546, guid: c5ce8883a6da7424a98ac663c3983b4d, type: 3}
   FootStepStone:
   - {fileID: 7269873125136112546, guid: 4436c470f3cda234992d07e0bf8eec12, type: 3}
   - {fileID: 7269873125136112546, guid: dae5c10290e376e4d8b1e3dcbed59f3e, type: 3}
