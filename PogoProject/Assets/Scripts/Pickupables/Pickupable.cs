@@ -7,6 +7,7 @@ public class Pickupable : MonoBehaviour
     [SerializeField] public PickupableType type;
     [SerializeField] public int id;
     [SerializeField] public bool hasTaken = false;
+    public GameObject PickupSFX;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,6 +18,7 @@ public class Pickupable : MonoBehaviour
 
         if (type == PickupableType.Star)
         {
+            PlaySFX();
             hasTaken = true;
 
             if (Score.player != null) { Score.player.addStar(); } else { Debug.LogError("Score.player null!");}
@@ -30,6 +32,7 @@ public class Pickupable : MonoBehaviour
         }
         else if (type == PickupableType.Health)
         {
+            PlaySFX();
             if (Score.player != null) { Score.player.addHeart(); }
 
             if(Score.player != null && Score.player.pickUpEffect != null) {
@@ -37,5 +40,13 @@ public class Pickupable : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    void PlaySFX()
+    {
+        var sfx = Instantiate(PickupSFX, transform.position, Quaternion.identity);
+        AudioSource audioSource = sfx.GetComponent<AudioSource>();
+        if (audioSource != null) audioSource.pitch = UnityEngine.Random.Range(0.6f, 0.8f);
+        Destroy(sfx, 3f);
     }
 }

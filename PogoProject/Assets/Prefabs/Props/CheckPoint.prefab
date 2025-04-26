@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPlatformCheckPoint: 0
-  CheckpointSFX: {fileID: 7269873125136112546, guid: bf06855c3cd613b4f911c6b25936a1e0, type: 3}
+  CheckPointSFX: {fileID: 7269873125136112546, guid: bf06855c3cd613b4f911c6b25936a1e0, type: 3}
+  CheckPointIdleSFX: {fileID: 7269873125136112546, guid: 0d60390bd853bd54ba1db6bc9fcad677, type: 3}
 --- !u!114 &872004777640092403
 MonoBehaviour:
   m_ObjectHideFlags: 0

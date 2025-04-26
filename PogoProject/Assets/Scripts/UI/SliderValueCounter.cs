@@ -10,10 +10,15 @@ public class SliderValueCounter : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private string exposedParam = "MasterVolume";
 
+    public GameSetting gameSetting;
+
     private void Awake()
     {
+        gameSetting = GameSetting.Instance;
         if (slider == null) slider = GetComponent<Slider>();
         if (text == null) text = GetComponentInChildren<TextMeshProUGUI>();
+
+        slider.value = gameSetting.masterVolume;
 
         slider.onValueChanged.AddListener(delegate { SliderValueChanged(); });
         SliderValueChanged();

@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7949560153829296866, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
+      propertyPath: PickupSFX
+      value: 
+      objectReference: {fileID: 7269873125136112546, guid: 39c9c6f1c3407ca4e98ac54e6b7c8c98, type: 3}
     - target: {fileID: 8238350264575017652, guid: e66d5d56f46b57158a57f368bab5d9c6, type: 3}
       propertyPath: m_Size.x
       value: 0.4112151

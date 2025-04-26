@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 2463873496423336256}
   - component: {fileID: 288213466490073605}
   - component: {fileID: 4108730748519225529}
+  - component: {fileID: -1438062055383813825}
   m_Layer: 7
   m_Name: PlayerM
   m_TagString: Player
@@ -337,6 +338,7 @@ MonoBehaviour:
   hasJumpedDuringCoyote: 0
   isFacingRight: 1
   isPogoing: 0
+  GroundHitPrefab: {fileID: 3121763401200467556, guid: d8862f58c6c06f84a96cc464b8362848, type: 3}
 --- !u!114 &2540748845447814682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +490,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleTime: 1.5
+--- !u!114 &-1438062055383813825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430814374371888949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1287bc6e66a9575418ddf104bfe24bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transforms:
+  - {x: 2.2521477e+34, y: 6.38e-43, z: 2.2520803e+34}
+  - {x: 6.38e-43, y: 2.2521556e+34, z: 6.38e-43}
 --- !u!1 &4233213808909911435
 GameObject:
   m_ObjectHideFlags: 0

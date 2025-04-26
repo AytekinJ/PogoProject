@@ -70,6 +70,14 @@ public class Controller : MonoBehaviour
     InputSystem_Actions PlayerControls;
     Vector2 moveDpad;
 
+    public GameObject GroundHitPrefab;
+
+    FootStepPlayer footStepPlayer;
+
+    CheckFall checkFall;
+
+    bool HasPlayedEffect;
+
     void OnEnable()
     {
         PlayerControls.DpadMove.Enable();
@@ -80,6 +88,8 @@ public class Controller : MonoBehaviour
     }
     private void Awake()
     {
+        footStepPlayer = GetComponentInChildren<FootStepPlayer>();
+        checkFall = GetComponent<CheckFall>();
         PlayerControls = new InputSystem_Actions();
 
         if (Instance == null)
@@ -199,6 +209,7 @@ public class Controller : MonoBehaviour
         AnimatorVariables(); 
         Flip();
         Landed();
+        CheckFallEffect();
 
 
         if (Input.GetKeyDown(KeyCode.G))
@@ -392,6 +403,24 @@ public class Controller : MonoBehaviour
     {
         if (groundCheckPos == null) return false;
         return Physics2D.OverlapCircle(groundCheckPos.position, groundCheckRadius, groundCheckLayer);
+    }
+
+    void CheckFallEffect()
+    {
+        if (!CheckGrounded()) return;
+
+        if (checkFall.transforms[0] < checkFall.transforms[1] && checkFall.transforms[1] < -9f)
+        {
+            HasPlayedEffect = true;
+            PlayGroundHitVFX();
+        }
+        return;
+    }
+
+    void PlayGroundHitVFX()
+    {
+        Instantiate(GroundHitPrefab, groundCheckPos.position, Quaternion.identity);
+        footStepPlayer.PlayGroundHitSFX();
     }
 
     void OnDrawGizmosSelected()
