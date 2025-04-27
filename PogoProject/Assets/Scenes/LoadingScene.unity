@@ -945,8 +945,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1166626585}
   infoText: {fileID: 509620934}
-  minimumLoadTime: 2
-  progressBarSpeed: 1
+  minimumLoadTime: 4
+  progressBarSpeed: 0.5
   messageChangeInterval: 2
 --- !u!4 &1599547812
 Transform:

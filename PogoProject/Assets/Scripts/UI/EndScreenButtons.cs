@@ -19,9 +19,9 @@ public class EndScreenButtons : MonoBehaviour
     public void NextLevel()
     {
         string currentLevel = LevelsManager.instance.currentLevel.ToString();
-        if(int.Parse(currentLevel) == 6)
+        if(int.Parse(currentLevel) == 7)
         {
-            return; // şuanlık 6 dan büyük level olmadığı için işlem iptal
+            return; // şuanlık 7 dan büyük level olmadığı için işlem iptal
         }
         LevelsManager.instance.currentLevel++;
         SceneData.SceneToLoad = "Level "+(int.Parse(currentLevel)+2);
