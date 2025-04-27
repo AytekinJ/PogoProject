@@ -37,7 +37,7 @@ public class AttackScript : MonoBehaviour
     [SerializeField] GameObject SwordSwaySFX;
 
     public static AttackScript Instance;
-    Vector3 hitPoint;
+    RaycastHit2D hitGlobl;
 
     
     void Start()
@@ -107,7 +107,7 @@ public class AttackScript : MonoBehaviour
     {
         Vector2 attackPosition = (Vector2)transform.position + direction * attackRange;
         RaycastHit2D hit = Physics2D.BoxCast(attackPosition, boxSize, 0f, direction, 0f, attackMask);
-        hitPoint = hit.point;
+        hitGlobl = hit;
         if (hit.collider != null)
         {
             //Debug.Log(hit.collider.name);
@@ -238,4 +238,26 @@ public class AttackScript : MonoBehaviour
     //     yield return new WaitForSeconds(0.1f);
     //     animator.SetBool("isAttacking", false);
     // }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Tower"))
+        {
+            ScoreManager.main.towerPogo = false;
+            ScoreManager.main.ControlScores();
+            ScoreManager.main.EndGame();
+            collision.transform.GetComponent<Animator>().SetBool("Pogo", false);
+            collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Hit");
+            Debug.Log("Tower touched!");
+        }
+        else if(collision.gameObject.CompareTag("TowerBody"))
+        {
+            ScoreManager.main.towerPogo = false;
+            ScoreManager.main.ControlScores();
+            ScoreManager.main.EndGame();
+            collision.transform.parent.GetComponent<Animator>().SetBool("Pogo", false);
+            collision.gameObject.transform.parent.GetComponent<Animator>().SetTrigger("Hit");
+            Debug.Log("Tower touched!");
+        }
+    }
 }
