@@ -50,6 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3302004557f5c5dc4963209a2b3a0c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXPrefab:
+  - {fileID: 7269873125136112546, guid: 99941dc2e193d8b46b1f55aafe8b8522, type: 3}
+  - {fileID: 7269873125136112546, guid: 6e5586a5f6ef0f0449fe2b724b099873, type: 3}
   Health: 1
   respawn: 1
   isRespawning: 0
