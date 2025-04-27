@@ -134,6 +134,12 @@ public class HealthScript : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.H))
+        {
+            IncreaseHealth(5);
+        }
+    }
 
     #endregion
 
