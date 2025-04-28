@@ -419,6 +419,7 @@ public class Controller : MonoBehaviour
 
     void PlayGroundHitVFX()
     {
+        CameraShake.StartShake(0.1f, 0.05f * MathF.Abs((checkFall.transforms[1] / 9f)));
         Instantiate(GroundHitPrefab, groundCheckPos.position, Quaternion.identity);
         footStepPlayer.PlayGroundHitSFX();
     }
