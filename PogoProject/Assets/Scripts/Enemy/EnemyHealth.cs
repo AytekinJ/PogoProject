@@ -79,7 +79,7 @@ public class EnemyHealth : MonoBehaviour
             boxCollider.enabled = false;
             circleCollider.enabled = false;
             transform.GetChild(0).GetComponent<Animator>().SetBool("isVanishing", true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             transform.GetChild(0).GetComponent<Animator>().SetBool("isVanishing", false);
             yield return new WaitForSeconds(0.7f);
             isRespawning = false;
