@@ -90463,6 +90463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoseBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 457374519827839027, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1779550558818665037, guid: cb5e7cb9b62b76a43abd12d6ed7af493, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -179,6 +179,7 @@ public class HealthScript : MonoBehaviour
 
         PlayDamageSFX();
         StartCoroutine(LatePlatformReset());
+        ResetPlatforms.ResetAllEnemies();
         
         
         CameraShake.StartShake(0.1f, 0.05f); // Bu static kalabilir

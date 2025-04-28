@@ -1619,6 +1619,7 @@ MonoBehaviour:
   text: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: f3e60ad3eb991624693f57dd30e57b8a, type: 2}
   exposedParam: MasterVolume
+  gameSetting: {fileID: 0}
 --- !u!1 &2325895718022987149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,6 +3008,7 @@ MonoBehaviour:
   text: {fileID: 0}
   audioMixer: {fileID: 0}
   exposedParam: MasterVolume
+  gameSetting: {fileID: 0}
 --- !u!1 &4893229111300957587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +3874,7 @@ MonoBehaviour:
   text: {fileID: 0}
   audioMixer: {fileID: 0}
   exposedParam: MasterVolume
+  gameSetting: {fileID: 0}
 --- !u!1 &5968475109537235011
 GameObject:
   m_ObjectHideFlags: 0

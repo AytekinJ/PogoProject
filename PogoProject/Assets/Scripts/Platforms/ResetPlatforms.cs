@@ -35,6 +35,16 @@ public class ResetPlatforms : MonoBehaviour
         }
     }
 
+    public static void ResetAllEnemies()
+    {
+        EnemyHealth[] enemies = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None);
+        
+        for(int i = enemies.Length; i > 0; i--)
+        {
+            enemies[i-1].ResetEnemy();
+        }
+
+    }
     static IEnumerator LateResetPlatform(NewMovingPlatform platform)
     {
         yield return new WaitForSeconds(0.2f);

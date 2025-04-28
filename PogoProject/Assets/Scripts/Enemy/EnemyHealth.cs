@@ -89,14 +89,10 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
-    void OnTriggerEnter2D(Collider2D collision)
+    public void ResetEnemy()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            transform.position = startPos;
-            Debug.Log("Enemy Pos Reset");
-        }
+        transform.position = startPos;
     }
+
 
 }

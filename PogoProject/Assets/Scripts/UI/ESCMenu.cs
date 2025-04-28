@@ -62,7 +62,15 @@ public class ESCMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             TogglePauseMenu();
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
+
     }
 
     private void TogglePauseMenu()
