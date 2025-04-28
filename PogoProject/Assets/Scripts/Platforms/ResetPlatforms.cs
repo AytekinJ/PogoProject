@@ -11,11 +11,7 @@ public class ResetPlatforms : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            ResetAllPlatforms();
-            ResetAllChainsaws();
-        }
+        
     }
     public static void ResetAllPlatforms()
     {
