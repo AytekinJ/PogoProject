@@ -28,13 +28,13 @@ EditorBuildSettings:
     guid: e2b4be5144a0ac64889d30fde75ed36f
   - enabled: 1
     path: Assets/Scenes/World 1/Level 6.unity
-    guid: 2a65083a5a6a0674e9ad8ec50781095a
-  - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
-    guid: c4257b53ed74c3c4986451839bdac630
+    guid: 833aea777bf6c1040ac21c6af5eb9cf9
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 4fb2342ce7ee0c74aac7b04436ec80dc
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: c4257b53ed74c3c4986451839bdac630
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
