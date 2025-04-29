@@ -15,14 +15,11 @@ MonoBehaviour:
   sceneName: Level 2
   sceneNumber: 2
   levelIcon: {fileID: 21300000, guid: 2acd8d640cc341449bb2a273cb8b73b3, type: 3}
-  takenPickups:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  takenPickups: []
   allPickups:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  bestTime: 16
-  completionPercentage: 100
-  isCompleted: 1
+  bestTime: 0
+  completionPercentage: 0
+  isCompleted: 0
