@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Level 5
   sceneNumber: 5
-  levelIcon: {fileID: -6674868978544099146, guid: c1f8beeca522bf142bc17592afed0a25, type: 3}
+  levelIcon: {fileID: 21300000, guid: bcaac0ba8c0537f4b9d53a76c93b06ab, type: 3}
   takenPickups: []
   allPickups:
   - {fileID: 0}
