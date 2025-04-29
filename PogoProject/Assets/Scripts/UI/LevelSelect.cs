@@ -61,7 +61,7 @@ public class LevelSelect : MonoBehaviour
         }
 
         levelsManager.currentLevel = levelIndex;
-        Debug.Log("Loading Level Scene (via SceneLoader): " + sceneNameToLoad); // Log mesajı güncellendi
+        Debug.Log("Loading Level Scene (via SceneLoader): " + sceneNameToLoad);
 
 
         SceneData.SceneToLoad = sceneNameToLoad;
