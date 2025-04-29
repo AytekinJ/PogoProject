@@ -20,9 +20,9 @@ MonoBehaviour:
   sfxVolume: 100
   inputEnabled: 1
   playWithDpad: 0
-  right: 100
-  left: 97
-  up: 119
-  down: 115
+  right: 275
+  left: 276
+  up: 273
+  down: 274
   attack: 120
   JumpButton: 32

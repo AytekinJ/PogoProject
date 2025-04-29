@@ -37,10 +37,10 @@ public class GameSetting : ScriptableObject
     [Header("Input")]
     public bool inputEnabled = true;
     public bool playWithDpad;
-    public KeyCode right = KeyCode.D;
-    public KeyCode left = KeyCode.A;
-    public KeyCode up = KeyCode.W;
-    public KeyCode down = KeyCode.S;
+    public KeyCode right = KeyCode.RightArrow;
+    public KeyCode left = KeyCode.LeftArrow;
+    public KeyCode up = KeyCode.UpArrow;
+    public KeyCode down = KeyCode.DownArrow;
     public KeyCode attack = KeyCode.X;
     //public KeyCode rightAim = KeyCode.RightArrow;
     //public KeyCode leftAim = KeyCode.LeftArrow;
