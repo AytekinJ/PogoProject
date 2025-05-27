@@ -324,6 +324,9 @@ MonoBehaviour:
   goldGfx: {fileID: 78928594970178162}
   speed: 5
   JumpButton: 32
+  dashSpeed: 15
+  dashDuration: 0.15
+  dashCooldown: 3
   groundCheckPos: {fileID: 7055823131214300178}
   groundCheckRadius: 0.15
   groundCheckLayer:
@@ -503,8 +506,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transforms:
-  - {x: 2.2521477e+34, y: 6.38e-43, z: 2.2520803e+34}
-  - {x: 6.38e-43, y: 2.2521556e+34, z: 6.38e-43}
+  - 0
+  - 0
+  controller: {fileID: 0}
 --- !u!1 &4233213808909911435
 GameObject:
   m_ObjectHideFlags: 0

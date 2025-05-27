@@ -62,6 +62,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec9d0c3e-94b1-4565-a554-d3b92ca46dad"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""e5d20878-814b-4ec5-8bfc-f11cbaad8565"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -106,6 +124,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DpadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7a4a40f-e4b9-4d9b-8e73-4874d650ea43"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eecc1f7a-4e66-4001-805e-a16b55258fbd"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -181,6 +221,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_DpadMove_DpadDown = m_DpadMove.FindAction("DpadDown", throwIfNotFound: true);
         m_DpadMove_DpadRight = m_DpadMove.FindAction("DpadRight", throwIfNotFound: true);
         m_DpadMove_DpadLeft = m_DpadMove.FindAction("DpadLeft", throwIfNotFound: true);
+        m_DpadMove_Dash = m_DpadMove.FindAction("Dash", throwIfNotFound: true);
+        m_DpadMove_Move = m_DpadMove.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -251,6 +293,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_DpadMove_DpadDown;
     private readonly InputAction m_DpadMove_DpadRight;
     private readonly InputAction m_DpadMove_DpadLeft;
+    private readonly InputAction m_DpadMove_Dash;
+    private readonly InputAction m_DpadMove_Move;
     public struct DpadMoveActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -259,6 +303,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @DpadDown => m_Wrapper.m_DpadMove_DpadDown;
         public InputAction @DpadRight => m_Wrapper.m_DpadMove_DpadRight;
         public InputAction @DpadLeft => m_Wrapper.m_DpadMove_DpadLeft;
+        public InputAction @Dash => m_Wrapper.m_DpadMove_Dash;
+        public InputAction @Move => m_Wrapper.m_DpadMove_Move;
         public InputActionMap Get() { return m_Wrapper.m_DpadMove; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +326,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @DpadLeft.started += instance.OnDpadLeft;
             @DpadLeft.performed += instance.OnDpadLeft;
             @DpadLeft.canceled += instance.OnDpadLeft;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IDpadMoveActions instance)
@@ -296,6 +348,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @DpadLeft.started -= instance.OnDpadLeft;
             @DpadLeft.performed -= instance.OnDpadLeft;
             @DpadLeft.canceled -= instance.OnDpadLeft;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IDpadMoveActions instance)
@@ -364,5 +422,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnDpadDown(InputAction.CallbackContext context);
         void OnDpadRight(InputAction.CallbackContext context);
         void OnDpadLeft(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

@@ -110,6 +110,7 @@ public class HealthScript : MonoBehaviour
 
     private IEnumerator TeleportCoroutine(Vector3 targetPosition)
     {
+        HitParticleScript.Instance.enabled = false;
         if (cameraFadeScript != null)
         {
             // Fade out başlat (unfadeAfter = false, çünkü pozisyon değişecek)
@@ -132,6 +133,7 @@ public class HealthScript : MonoBehaviour
             // Fade in başlat
             cameraFadeScript.StartFade(0.2f,true,true); // UnFadeCoroutine public olmalı veya yeni bir public metod yazılmalı
         }
+        HitParticleScript.Instance.enabled = true;
     }
 
     private void Update() {

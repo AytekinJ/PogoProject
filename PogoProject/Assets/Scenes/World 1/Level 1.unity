@@ -914,10 +914,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2578125
+    x: 0
     y: 0
-    width: 0.2851852
-    height: 0.2851852
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -90159,13 +90159,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3430814374371888949, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3460921206987320888}
   m_SourcePrefab: {fileID: 100100000, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
 --- !u!4 &3460921206987320876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 539143649889575921, guid: 13596c4c334354e4aa6fb49815b112fb, type: 3}
   m_PrefabInstance: {fileID: 3460921206987320867}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3460921206987320888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42084290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6043854bdea72674283c67c4205a2fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCheckDistance: 0.5
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallCheckOffset: 0.1
+  wallSlideSpeed: -2
+  wallJumpForceX: 0
+  wallJumpForceY: 5
+  wallStickTime: 0.1
 --- !u!1001 &5530294435788301169
 PrefabInstance:
   m_ObjectHideFlags: 0
