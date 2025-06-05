@@ -180,7 +180,7 @@ public class AttackScript : MonoBehaviour
         Debug.DrawLine(bottomLeft, topLeft, color, duration);
     }
 
-    void CalculateDirection()
+    public void CalculateDirection()
     {
         if (Yinput > 0f)
         {

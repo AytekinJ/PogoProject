@@ -324,9 +324,6 @@ MonoBehaviour:
   goldGfx: {fileID: 78928594970178162}
   speed: 5
   JumpButton: 32
-  dashSpeed: 15
-  dashDuration: 0.15
-  dashCooldown: 3
   groundCheckPos: {fileID: 7055823131214300178}
   groundCheckRadius: 0.15
   groundCheckLayer:
@@ -652,6 +649,8 @@ MonoBehaviour:
   - {fileID: 7269873125136112546, guid: 4436c470f3cda234992d07e0bf8eec12, type: 3}
   - {fileID: 7269873125136112546, guid: dae5c10290e376e4d8b1e3dcbed59f3e, type: 3}
   - {fileID: 7269873125136112546, guid: 6395faa77342bf441b6040dc877f921f, type: 3}
+  SnowFootStepVFX: {fileID: 3121763401200467556, guid: 4115160fe6110ed4b8a9e45ebba3e08c, type: 3}
+  StoneFootStepVFX: {fileID: 3121763401200467556, guid: a571fd4470e61f341ad31a420af636dd, type: 3}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64

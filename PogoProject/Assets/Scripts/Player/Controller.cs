@@ -39,7 +39,7 @@ public class Controller : MonoBehaviour
 
 
     [Header("Zıplama Ayarları")]
-    [SerializeField] Transform groundCheckPos;
+    [SerializeField] public Transform groundCheckPos;
     [SerializeField] float groundCheckRadius = 0.1f;
     [SerializeField] LayerMask groundCheckLayer;
     [SerializeField] float jumpForce = 7f;
