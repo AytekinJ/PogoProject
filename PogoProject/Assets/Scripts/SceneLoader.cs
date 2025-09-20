@@ -23,7 +23,6 @@ public class SceneLoader : MonoBehaviour
 
     string[] funnyMessages = new string[]
     {
-       // ... (mesajlarınız burada) ...
        "Cleaning the mess you made...",
        "Stealing RAM from your neighbor...",
        "Loading... hopefully...",
@@ -182,7 +181,7 @@ public static class SceneData
 
     public static void LoadScene()
     {
-        SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single); // LoadingScene'in adının bu olduğundan emin olun
+        SceneManager.LoadScene("LoadingScene", LoadSceneMode.Single);
     }
 
     public static bool isLevelSelection = false;
