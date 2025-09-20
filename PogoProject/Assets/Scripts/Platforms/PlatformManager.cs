@@ -110,7 +110,7 @@ public class PlatformManager : MonoBehaviour
     {
         Vector2 startPos, endPos;
 
-        if (platform.useLength) // use this if platform doesnt use spesific positions
+        if (platform.useLength)
         {
             if (platform.vertical)
             {
@@ -123,7 +123,7 @@ public class PlatformManager : MonoBehaviour
                 endPos = new Vector2(platform.center.x + platform.moveLength, platform.center.y);
             }
         }
-        else // use this if platform uses spesific positions
+        else
         {
             startPos = platform.startPosition.position;
             endPos = platform.endPosition.position;
@@ -177,7 +177,7 @@ public class PlatformManager : MonoBehaviour
                 mainSprite.color = mainCollider.enabled ? activeColor : notActiveColor;
                 matchSprite.color = matchCollider.enabled ? activeColor : notActiveColor;
 
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space)); // finished
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
             }
 
             yield return null;
