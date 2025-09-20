@@ -16,9 +16,7 @@ public class CheckFall : MonoBehaviour
 
     void Update()
     {
-        // Shift previous frame
         transforms[1] = transforms[0];
-        // Update current frame
         transforms[0] = controller.playerRb.linearVelocityY;
 
         //Debug.Log("Current: " + transforms[0]);
