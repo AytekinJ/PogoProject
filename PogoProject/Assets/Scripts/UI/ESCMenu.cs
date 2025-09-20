@@ -27,7 +27,7 @@ public class ESCMenu : MonoBehaviour
 
         if (pauseMenuUI == null || settingsMenuUI == null || cameraFadeScript == null)
         {
-            Debug.LogError("🚨 UI veya Fade Script eksik! Sahneye düzgün atılmamış olabilir.");
+            Debug.LogError(" UI veya Fade Script eksik! Sahneye düzgün atılmamış olabilir.");
             return;
         }
 
@@ -50,7 +50,7 @@ public class ESCMenu : MonoBehaviour
 
         for (int i = 0; i < buttons.Count; i++)
         {
-            int index = i; // closure için sabitleme
+            int index = i; 
             buttons[i].onClick.AddListener(() => OpenMenu(index));
         }
 
